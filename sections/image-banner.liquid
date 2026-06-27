@@ -405,23 +405,14 @@
 {%- assign first_image = first_slide.settings.image -%}
 {%- if section.settings.image_height == 'adapt' and first_image != blank -%}
   {%- style -%}
-    @media screen and (max-width: 749px) {
-      #Banner-{{ section.id }}::before,
-      #Banner-{{ section.id }} .banner__media::before,
-      #Banner-{{ section.id }}:not(.banner--mobile-bottom) .banner__content::before {
-        padding-bottom: {{ 1 | divided_by: first_image.aspect_ratio | times: 100 }}% !important;
-        content: '' !important;
-        display: block !important;
-      }
+    #Banner-{{ section.id }} {
+      aspect-ratio: {{ first_image.aspect_ratio }} !important;
+      height: auto !important;
     }
-
-    @media screen and (min-width: 750px) {
-      #Banner-{{ section.id }}::before,
-      #Banner-{{ section.id }} .banner__media::before {
-        padding-bottom: {{ 1 | divided_by: first_image.aspect_ratio | times: 100 }}% !important;
-        content: '' !important;
-        display: block !important;
-      }
+    #Banner-{{ section.id }}::before,
+    #Banner-{{ section.id }} .banner__media::before {
+      display: none !important;
+      padding-bottom: 0 !important;
     }
   {%- endstyle -%}
 {%- endif -%}
