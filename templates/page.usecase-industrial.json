@@ -1,0 +1,131 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "svarakshit-usecase-hero",
+      "settings": {
+        "heading": "Special Environment Enquiries",
+        "subtitle": "If your environment goes beyond a standard home or kitchen setup, speak with us before ordering.",
+        "overlay_opacity": 40
+      }
+    },
+    "intro_text": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Let Us Understand Your Requirement First",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Swarakshit is positioned first as a portable rechargeable gas monitor for homes and kitchens. If you have a more specialized environment and want to understand whether the product is suitable, contact us before placing an order.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 80
+      }
+    },
+    "content_features": {
+      "type": "swarakshit-usecase-content",
+      "blocks": {
+        "block_1": {
+          "type": "content_block",
+          "settings": {
+            "image_position": "left",
+            "subtitle": "START WITH YOUR USE CASE",
+            "heading": "Share Your Gas Safety Requirement",
+            "text": "<p>Tell us where you plan to use the device, what gas connection points you need to check, and how your environment differs from a standard home kitchen setup.</p>"
+          }
+        },
+        "block_2": {
+          "type": "content_block",
+          "settings": {
+            "image_position": "right",
+            "subtitle": "GET A PRACTICAL RESPONSE",
+            "heading": "Confirm Suitability Before Buying",
+            "text": "<p>We can help you decide whether Swarakshit fits your use case directly or whether your setup needs a different type of gas-safety solution.</p>"
+          }
+        },
+        "block_3": {
+          "type": "content_block",
+          "settings": {
+            "image_position": "left",
+            "subtitle": "KEEP EXPECTATIONS CLEAR",
+            "heading": "Home-First Product Positioning",
+            "text": "<p>This product page is intentionally cautious because Swarakshit is currently described on this site as a home-and-kitchen-first device, not an industrial gas monitoring system.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "block_1",
+        "block_2",
+        "block_3"
+      ],
+      "settings": {
+        "bg_color": "#FAFAFA"
+      }
+    },
+    "testimonials": {
+      "type": "svarakshit-testimonials",
+      "blocks": {
+        "test_1": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Special Requirement Enquiry",
+            "text": "We reached out before ordering because our environment was outside a normal home setup, and that made the decision process much clearer."
+          }
+        },
+        "test_2": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Technical Buyer",
+            "text": "It was helpful to clarify suitability first instead of assuming a home-use device would automatically match every type of site."
+          }
+        }
+      },
+      "block_order": [
+        "test_1",
+        "test_2"
+      ],
+      "settings": {
+        "heading": "Talk to Us Before Ordering"
+      }
+    },
+    "product": {
+      "type": "svarakshit-our-product",
+      "settings": {
+        "left_heading": "Request Product Guidance",
+        "left_text": "Share your setup and gas-checking requirement with us before ordering if your environment is outside a standard home or kitchen use case."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "intro_text",
+    "content_features",
+    "testimonials",
+    "product"
+  ]
+}

@@ -1,0 +1,259 @@
+<style>
+  .svarakshit-faq-section {
+    padding: 80px 5rem;
+    background-color: {{ section.settings.bg_color }};
+  }
+  
+  .svarakshit-faq-container {
+    max-width: 800px; /* Narrow width as requested */
+    margin: 0 auto;
+  }
+  
+  .svarakshit-faq-heading {
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin: 0 0 4rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #111111;
+  }
+  
+  .svarakshit-faq-item {
+    border-bottom: 1px solid #eaeaea;
+  }
+  .svarakshit-faq-item:first-child {
+    border-top: 1px solid #eaeaea;
+  }
+  
+  .svarakshit-faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000000;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    transition: color 0.3s ease;
+  }
+  
+  .svarakshit-faq-question:hover {
+    color: #555555;
+  }
+  
+  .svarakshit-faq-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 20px;
+    font-weight: 400;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 20px;
+  }
+  
+  .svarakshit-faq-item.active .svarakshit-faq-icon {
+    transform: rotate(45deg);
+    background-color: #000000;
+    color: #ffffff;
+  }
+  
+  .svarakshit-faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  
+  .svarakshit-faq-answer-inner {
+    padding-bottom: 24px;
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.6;
+    padding-right: 52px; /* Space for the icon so text doesn't overlap under it */
+  }
+
+  @media screen and (max-width: 768px) {
+    .svarakshit-faq-section {
+      padding: 60px 2rem;
+    }
+    
+    .svarakshit-faq-heading {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+    }
+    
+    .svarakshit-faq-question {
+      font-size: 16px;
+      padding: 20px 0;
+    }
+    
+    .svarakshit-faq-answer-inner {
+      font-size: 14px;
+      padding-right: 0;
+    }
+  }
+</style>
+
+<div class="svarakshit-faq-section">
+  <div class="svarakshit-faq-container">
+    {% if section.settings.heading != blank %}
+      <h2 class="svarakshit-faq-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="svarakshit-faq-list">
+      {% for block in section.blocks %}
+        <div class="svarakshit-faq-item" {{ block.shopify_attributes }}>
+          <button class="svarakshit-faq-question">
+            <span>{{ block.settings.question }}</span>
+            <span class="svarakshit-faq-icon">+</span>
+          </button>
+          <div class="svarakshit-faq-answer">
+            <div class="svarakshit-faq-answer-inner">
+              {{ block.settings.answer }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.svarakshit-faq-item');
+    
+    faqItems.forEach(item => {
+      const question = item.querySelector('.svarakshit-faq-question');
+      const answer = item.querySelector('.svarakshit-faq-answer');
+      
+      question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all other items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+            otherItem.querySelector('.svarakshit-faq-answer').style.maxHeight = null;
+          }
+        });
+        
+        // Toggle current item
+        if (isActive) {
+          item.classList.remove('active');
+          answer.style.maxHeight = null;
+        } else {
+          item.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Svarakshit FAQ",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f9f9f9"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently Asked Questions"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Question goes here?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Answer goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Svarakshit FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What gases does Swarakshit detect?",
+            "answer": "Swarakshit detects all combustible gases including LPG, PNG, CNG, methane, propane, butane and other hydrocarbons. It is NOT designed to detect CO (carbon monoxide) — for CO, you need a dedicated CO alarm."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What does LERC certification mean?",
+            "answer": "LERC (Liquefied Petroleum Gas Equipment Research Centre) is India's premier government-recognized body for testing and certifying LPG safety equipment. LERC certification means the device has been independently tested for accuracy, sensitivity, and durability — the gold standard in India."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does the battery last?",
+            "answer": "The built-in rechargeable battery lasts 8–10 hours of continuous use. For typical home use (5–10 minute daily checks), the battery lasts several weeks between charges. USB charging takes approximately 2 hours to full."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I use it for commercial kitchens?",
+            "answer": "Yes. Swarakshit is used in hotels, restaurants, cloud kitchens, gas stations, and industrial facilities across India. LERC certification makes it compliant with safety audit requirements. We offer bulk pricing — WhatsApp us for commercial orders."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is the warranty and return policy?",
+            "answer": "Every Swarakshit device comes with a 1-year manufacturer's warranty and a 30-day no-questions-asked return policy. Contact us at info@rakshit.net.in or call 9529154548."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How often should I test for gas leaks?",
+            "answer": "Weekly — around LPG cylinder and rubber pipe connections. Monthly — around all gas appliances including geysers. Immediately — after any new appliance installation or if you smell even a faint gas odour."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is it safe to use if I already smell gas?",
+            "answer": "If you already smell strong gas, DO NOT use any electrical device including Swarakshit. Immediately turn off the main gas valve, open all windows, evacuate, and call your gas agency. Use Swarakshit for routine preventive checks when no visible leak is apparent."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

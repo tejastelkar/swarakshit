@@ -1,0 +1,160 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - text:        
+        - generic [ref=e7]:
+          - link "LERC Website" [ref=e12] [cursor=pointer]:
+            - /url: https://lerc.co.in/
+            - img "LERC Website" [ref=e14]
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - navigation "Primary Menu":
+                      - generic [ref=e15]:
+                        - list [ref=e16]:
+                          - listitem [ref=e17]:
+                            - link "Home" [ref=e18] [cursor=pointer]:
+                              - /url: https://lerc.co.in/
+                          - listitem [ref=e19]:
+                            - link "About Us" [ref=e20] [cursor=pointer]:
+                              - /url: https://lerc.co.in/our-history/
+                            - generic [ref=e22] [cursor=pointer]: 
+                          - listitem [ref=e23]:
+                            - link "Our Activities" [ref=e24] [cursor=pointer]:
+                              - /url: https://lerc.co.in/product-testing/
+                            - generic [ref=e26] [cursor=pointer]: 
+                          - listitem [ref=e27]:
+                            - link "Recognition" [ref=e28] [cursor=pointer]:
+                              - /url: https://lerc.co.in/dsir/
+                            - generic [ref=e30] [cursor=pointer]: 
+                          - listitem [ref=e31]:
+                            - link "LERC LINKS" [ref=e32] [cursor=pointer]:
+                              - /url: "#"
+                            - generic [ref=e34] [cursor=pointer]: 
+                          - listitem [ref=e35]:
+                            - link "CEO Desk" [ref=e36] [cursor=pointer]:
+                              - /url: https://lerc.co.in/ceo-desk/
+                          - listitem [ref=e37]:
+                            - link "What’s New" [ref=e38] [cursor=pointer]:
+                              - /url: https://lerc.co.in/whats-new/
+                            - generic [ref=e40] [cursor=pointer]: 
+                          - listitem [ref=e41]:
+                            - link "How to Save LPG" [ref=e42] [cursor=pointer]:
+                              - /url: https://lerc.co.in/hi/
+                          - listitem [ref=e43]:
+                            - link "Contact us" [ref=e44] [cursor=pointer]:
+                              - /url: https://lerc.co.in/locate-us/
+                            - generic [ref=e46] [cursor=pointer]: 
+                        - generic [ref=e48] [cursor=pointer]: 
+                      - button "" [ref=e49] [cursor=pointer]:
+                        - generic [ref=e50]: 
+    - generic [ref=e60]:
+      - main [ref=e62]:
+        - article [ref=e63]:
+          - generic [ref=e71]:
+            - paragraph
+            - heading "Our History" [level=3] [ref=e72]
+            - paragraph [ref=e73]: Situated amidst the sylvan surroundings in the Garden City of Bangalore in India, LPG Equipment Research Centre holds a very strategic position in the technical up gradation, safety and quality assurance of LPG Equipment in the country.
+            - paragraph
+            - paragraph [ref=e74]: LPG though the most preferred and sought after cooking fuel used in 142 million Indian household which covers nearly half the population of the country, LPG is a hazardous fuel unless handled in a safe manner. The 1980’s saw a lot of domestic accidents due to poor quality of LPG equipments used as there were no proper quality control measures to monitor the same. LERC was conceptualized by the Three Oil Majors of India and was set up in 1990 with a purpose to develop quality equipments for usage with LPG and suitable quality control measures so as to ensure safety to customers. LERC commenced operation in April 1990 and was registered as a society under Karnataka Societies Registration Act 1960 in January 1993.
+            - paragraph
+            - paragraph [ref=e75]: LERC is a unique collaborative joint venture of the 3 Oil Major Fortune 500 companies viz Indian Oil Corporation Limited, Bharat Petroleum Corporation Ltd and Hindustan Petroleum Corporation Limited with a stake holding in the ratio of 50:25:25 respectively, which do not have a parallel anywhere in the world. The Governing Body / Executive Committee of LERC comprises of Board Level Executives of the Three Major Oil Companies along with External Agencies like Chief Controller of Explosives, PCRA, Petrofed Federation of India, Bureau of Indian Standards, Indian Institute of Petroleum. The day to day activities of LERC is monitored by Oil Industry Technical Committee which comprises of a team of technical members from all the Three Major Oil Companies.
+            - paragraph
+            - paragraph [ref=e76]: This centre has been recognized by the Department of Scientific and Industrial Research, Govt. of India (DSIR). The testing labs at LERC are recognized by National Accreditation Board for Laboratories (NABL) and Bureau of Indian Standards (BIS). LERC is also a member of various Committees in Bureau of Indian Standards and is actively involved in the standards developed for various LPG equipments.
+      - complementary [ref=e77]:
+        - complementary [ref=e78]:
+          - list [ref=e80]:
+            - listitem [ref=e81]:
+              - link "Our History " [ref=e82] [cursor=pointer]:
+                - /url: https://lerc.co.in/our-history/
+            - listitem [ref=e83]:
+              - link "Our Structure " [ref=e84] [cursor=pointer]:
+                - /url: https://lerc.co.in/our-structure/
+            - listitem [ref=e85]:
+              - link "Vision and Mission " [ref=e86] [cursor=pointer]:
+                - /url: https://lerc.co.in/vision-and-mission/
+            - listitem [ref=e87]:
+              - link "Management Hierarchy " [ref=e88] [cursor=pointer]:
+                - /url: https://lerc.co.in/management-hierarchy-2/
+            - listitem [ref=e89]:
+              - link "Parent Organization " [ref=e90] [cursor=pointer]:
+                - /url: https://lercnew.lerc.co.in/iocl/
+              - list [ref=e91]:
+                - listitem [ref=e92]:
+                  - link "IOCL " [ref=e93] [cursor=pointer]:
+                    - /url: https://lerc.co.in/iocl/
+                - listitem [ref=e94]:
+                  - link "BPCL " [ref=e95] [cursor=pointer]:
+                    - /url: https://lerc.co.in/bpcl/
+                - listitem [ref=e96]:
+                  - link "HPCL " [ref=e97] [cursor=pointer]:
+                    - /url: https://lerc.co.in/hpcl/
+            - listitem [ref=e98]:
+              - link "Quality Policy " [ref=e99] [cursor=pointer]:
+                - /url: https://lerc.co.in/quality-policy/
+    - contentinfo [ref=e100]:
+      - generic [ref=e103]:
+        - complementary [ref=e106]:
+          - generic [ref=e111]:
+            - complementary [ref=e112]:
+              - heading "About LERC" [level=3] [ref=e113]
+              - list [ref=e115]:
+                - listitem [ref=e116]:
+                  - link "Our History" [ref=e117] [cursor=pointer]:
+                    - /url: https://lerc.co.in/our-history/
+                - listitem [ref=e118]:
+                  - link "Organizational Structure" [ref=e119] [cursor=pointer]:
+                    - /url: https://lerc.co.in/our-structure/
+                - listitem [ref=e120]:
+                  - link "Vision and Mission" [ref=e121] [cursor=pointer]:
+                    - /url: https://lerc.co.in/vision-and-mission/
+                - listitem [ref=e122]:
+                  - link "Quality Policy" [ref=e123] [cursor=pointer]:
+                    - /url: https://lerc.co.in/quality-policy/
+            - complementary [ref=e124]:
+              - heading "Our Activities" [level=3] [ref=e125]
+              - list [ref=e127]:
+                - listitem [ref=e128]:
+                  - link "Research and development" [ref=e129] [cursor=pointer]:
+                    - /url: https://lerc.co.in/research-and-development/
+                - listitem [ref=e130]:
+                  - link "Product Testing" [ref=e131] [cursor=pointer]:
+                    - /url: https://lerc.co.in/product-testing/
+            - complementary [ref=e132]:
+              - heading "Important Links" [level=3] [ref=e133]
+              - list [ref=e135]:
+                - listitem [ref=e136]:
+                  - link "Employee Search" [ref=e137] [cursor=pointer]:
+                    - /url: https://lerc.co.in/employee-search/
+            - complementary [ref=e138]:
+              - heading "Parent Organizations" [level=3] [ref=e139]
+              - list [ref=e141]:
+                - listitem [ref=e142]:
+                  - link "IndianOil Corp Ltd" [ref=e143] [cursor=pointer]:
+                    - /url: https://iocl.com/
+                - listitem [ref=e144]:
+                  - link "Bharat Petroleum Corp Ltd" [ref=e145] [cursor=pointer]:
+                    - /url: https://bharatpetroleum.com/
+                - listitem [ref=e146]:
+                  - link "Hindustan Petroleum Corp Ltd" [ref=e147] [cursor=pointer]:
+                    - /url: https://hindustanpetroleum.com/
+            - complementary [ref=e148]:
+              - heading "Connect With Us" [level=3] [ref=e149]
+              - list [ref=e151]:
+                - listitem [ref=e152]:
+                  - link "Locate Us" [ref=e153] [cursor=pointer]:
+                    - /url: https://lerc.co.in/locate-us/
+                - listitem [ref=e154]:
+                  - link "Your Ideas" [ref=e155] [cursor=pointer]:
+                    - /url: https://lerc.co.in/your-ideas/
+        - generic [ref=e160]:
+          - generic [ref=e161]: ©2024 LERC
+          - generic [ref=e162]:
+            - text: Powered By
+            - link "Riverdale" [ref=e163] [cursor=pointer]:
+              - /url: http://www.riverdale.co.in/
+  - text: 
+  - generic [ref=e164]: desktop

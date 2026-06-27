@@ -1,0 +1,508 @@
+<style>
+  .svarakshit-testimonials-section {
+    background-color: {{ section.settings.bg_color }};
+    font-family: 'Inter', sans-serif;
+    padding: 110px 5rem 120px;
+    color: #111111;
+    position: relative;
+    overflow: hidden;
+  }
+  .svarakshit-testimonials-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: transparent;
+  }
+  .svarakshit-testimonials-heading {
+    max-width: 12ch;
+    font-size: clamp(3.8rem, 5vw, 5.6rem);
+    font-weight: 800;
+    text-align: center;
+    margin: 0 auto 4.75rem;
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+    color: #111111;
+  }
+  
+  /* Rating Wrap */
+  .svarakshit-rating-wrap {
+    display: grid;
+    grid-template-columns: minmax(240px, 360px) minmax(360px, 1fr);
+    align-items: center;
+    gap: 56px;
+    margin-bottom: 36px;
+    padding: 46px 52px;
+    background: #ffffff;
+    border: 1px solid #ece5db;
+    border-radius: 32px;
+    box-shadow: 0 24px 60px rgba(17, 17, 17, 0.06);
+    max-width: 1060px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+  .svarakshit-big-r {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100%;
+  }
+  .svarakshit-big-rn {
+    font-size: clamp(6.2rem, 8.5vw, 8rem);
+    font-weight: 800;
+    line-height: 0.9;
+    color: #111111;
+    margin-bottom: 16px;
+    letter-spacing: -0.06em;
+  }
+  .svarakshit-big-rs {
+    color: #111111;
+    font-size: 2.9rem;
+    letter-spacing: 5px;
+    margin-bottom: 18px;
+    line-height: 1;
+  }
+  .svarakshit-big-rc {
+    color: #111111;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+  .svarakshit-rsep {
+    width: 1px;
+    height: 132px;
+    background: linear-gradient(180deg, rgba(17, 17, 17, 0) 0%, rgba(17, 17, 17, 0.12) 45%, rgba(17, 17, 17, 0) 100%);
+  }
+  .svarakshit-rbars {
+    flex: 1;
+    max-width: 100%;
+    padding-top: 6px;
+  }
+  .svarakshit-rbar {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 16px;
+    font-size: 1.6rem;
+    color: #111111;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .svarakshit-rbl {
+    width: 52px;
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: -0.02em;
+  }
+  .svarakshit-rbt {
+    flex: 1;
+    height: 14px;
+    background: #ece7e0;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .svarakshit-rbf {
+    height: 14px !important;
+    background: linear-gradient(90deg, #ff6b00 0%, #ff8f3c 100%) !important;
+    border-radius: 999px;
+    display: block !important;
+    min-height: 14px;
+  }
+  .svarakshit-rbp {
+    width: 64px;
+    text-align: right;
+    font-weight: 700;
+    font-size: 1.52rem;
+    letter-spacing: -0.01em;
+  }
+
+  .svarakshit-rev-marquee {
+    position: relative;
+    overflow: hidden;
+    margin-top: 46px;
+  }
+  .svarakshit-rev-marquee::before,
+  .svarakshit-rev-marquee::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 92px;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .svarakshit-rev-marquee::before {
+    left: 0;
+    background: linear-gradient(90deg, {{ section.settings.bg_color }} 0%, rgba(255, 255, 255, 0) 100%);
+  }
+  .svarakshit-rev-marquee::after {
+    right: 0;
+    background: linear-gradient(270deg, {{ section.settings.bg_color }} 0%, rgba(255, 255, 255, 0) 100%);
+  }
+  .svarakshit-rev-track {
+    display: flex;
+    align-items: stretch;
+    gap: 26px;
+    width: max-content;
+    animation: svarakshitReviewsScroll 34s linear infinite;
+  }
+  .svarakshit-rev-marquee:hover .svarakshit-rev-track {
+    animation-play-state: paused;
+  }
+  .svarakshit-rev-card {
+    background: #ffffff;
+    border: 1px solid #ece5db;
+    border-radius: 26px;
+    padding: 26px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 332px;
+    aspect-ratio: 1 / 1;
+    flex: 0 0 332px;
+    box-shadow: 0 18px 40px rgba(17, 17, 17, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .svarakshit-rev-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 50px rgba(17, 17, 17, 0.08);
+    border-color: rgba(255, 107, 0, 0.22);
+  }
+  .svarakshit-rev-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 26px;
+    gap: 18px;
+  }
+  .svarakshit-reviewer {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .svarakshit-rev-av {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 24px;
+    box-shadow: inset 0 0 0 6px rgba(255, 255, 255, 0.14);
+  }
+  .svarakshit-rev-name {
+    font-weight: 700;
+    color: #111111;
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+    letter-spacing: -0.02em;
+  }
+  .svarakshit-rev-ver {
+    color: #127b56;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .svarakshit-rev-stars {
+    color: #111111;
+    font-size: 1.7rem;
+    letter-spacing: 2px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .svarakshit-rev-q {
+    color: #413c36;
+    font-size: 1.66rem;
+    line-height: 1.68;
+    font-style: normal;
+    margin: 0;
+    flex: 1 1 auto;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+  }
+  .svarakshit-rev-q::before {
+    content: '“';
+    display: inline-block;
+    margin-right: 6px;
+    color: #ff6b00;
+    font-size: 2.4rem;
+    line-height: 0;
+    vertical-align: -0.15em;
+  }
+  .svarakshit-rev-q::after {
+    content: '”';
+    color: #ff6b00;
+    font-size: 2.4rem;
+    line-height: 0;
+    vertical-align: -0.15em;
+  }
+
+  @keyframes svarakshitReviewsScroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 13px));
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .svarakshit-testimonials-section {
+      padding: 90px 3rem 100px;
+    }
+    .svarakshit-rating-wrap {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      max-width: 760px;
+      padding: 44px 32px 34px;
+    }
+    .svarakshit-rsep {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255, 107, 0, 0) 0%, rgba(255, 107, 0, 0.3) 50%, rgba(255, 107, 0, 0) 100%);
+    }
+    .svarakshit-rev-marquee {
+      margin-top: 34px;
+    }
+    .svarakshit-rev-marquee::before,
+    .svarakshit-rev-marquee::after {
+      width: 56px;
+    }
+    .svarakshit-rev-track {
+      gap: 18px;
+    }
+    .svarakshit-rev-card {
+      width: 316px;
+      flex-basis: 316px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .svarakshit-testimonials-section {
+      padding: 72px 1.5rem 82px;
+    }
+    .svarakshit-testimonials-heading {
+      font-size: 3.2rem;
+      margin-bottom: 3.25rem;
+    }
+    .svarakshit-rating-wrap {
+      gap: 24px;
+      padding: 28px 20px 24px;
+      border-radius: 24px;
+      margin-bottom: 26px;
+    }
+    .svarakshit-rsep {
+      display: none;
+    }
+    .svarakshit-big-r {
+      text-align: center;
+    }
+    .svarakshit-rbars {
+      width: 100%;
+      padding-top: 0;
+    }
+    .svarakshit-big-rn {
+      font-size: 4.7rem;
+    }
+    .svarakshit-big-rs {
+      font-size: 2.25rem;
+      letter-spacing: 4px;
+    }
+    .svarakshit-big-rc {
+      font-size: 1.18rem;
+    }
+    .svarakshit-rbar {
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 1.28rem;
+    }
+    .svarakshit-rbl {
+      width: 42px;
+      font-size: 1.28rem;
+    }
+    .svarakshit-rbp {
+      width: 48px;
+      font-size: 1.24rem;
+    }
+    .svarakshit-rbt,
+    .svarakshit-rbf {
+      height: 10px !important;
+      min-height: 10px;
+    }
+    .svarakshit-rev-marquee {
+      margin-top: 28px;
+    }
+    .svarakshit-rev-marquee::before,
+    .svarakshit-rev-marquee::after {
+      width: 28px;
+    }
+    .svarakshit-rev-card {
+      padding: 22px;
+      border-radius: 22px;
+      width: 270px;
+      flex-basis: 270px;
+    }
+    .svarakshit-rev-top {
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .svarakshit-rev-stars {
+      font-size: 1.35rem;
+    }
+    .svarakshit-rev-q {
+      font-size: 1.34rem;
+      line-height: 1.58;
+    }
+  }
+</style>
+
+<div class="svarakshit-testimonials-section">
+  <div class="svarakshit-testimonials-container">
+    {% if section.settings.heading != blank %}
+      <h2 class="svarakshit-testimonials-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="svarakshit-rating-wrap">
+      <div class="svarakshit-big-r">
+        <div class="svarakshit-big-rn">{{ section.settings.rating }}</div>
+        <div class="svarakshit-big-rs">★★★★★</div>
+        <div class="svarakshit-big-rc">{{ section.settings.reviews_count }}</div>
+      </div>
+      <div class="svarakshit-rsep"></div>
+      <div class="svarakshit-rbars">
+        <div class="svarakshit-rbar"><span class="svarakshit-rbl">5★</span><div class="svarakshit-rbt"><div class="svarakshit-rbf" style="width: 78%"></div></div><span class="svarakshit-rbp">78%</span></div>
+        <div class="svarakshit-rbar"><span class="svarakshit-rbl">4★</span><div class="svarakshit-rbt"><div class="svarakshit-rbf" style="width: 14%"></div></div><span class="svarakshit-rbp">14%</span></div>
+        <div class="svarakshit-rbar"><span class="svarakshit-rbl">3★</span><div class="svarakshit-rbt"><div class="svarakshit-rbf" style="width: 5%"></div></div><span class="svarakshit-rbp">5%</span></div>
+        <div class="svarakshit-rbar"><span class="svarakshit-rbl">2★</span><div class="svarakshit-rbt"><div class="svarakshit-rbf" style="width: 2%"></div></div><span class="svarakshit-rbp">2%</span></div>
+        <div class="svarakshit-rbar"><span class="svarakshit-rbl">1★</span><div class="svarakshit-rbt"><div class="svarakshit-rbf" style="width: 1%"></div></div><span class="svarakshit-rbp">1%</span></div>
+      </div>
+    </div>
+
+    <div class="svarakshit-rev-marquee">
+      <div class="svarakshit-rev-track">
+        {% for repeat in (1..2) %}
+          {% for block in section.blocks %}
+            {% assign initial = block.settings.author | slice: 0 %}
+            <div class="svarakshit-rev-card" {% if repeat == 1 %}{{ block.shopify_attributes }}{% endif %}>
+              <div class="svarakshit-rev-top">
+                <div class="svarakshit-reviewer">
+                  <div class="svarakshit-rev-av" style="background-color: {{ block.settings.avatar_color | default: '#ff6b00' }}">{{ initial }}</div>
+                  <div>
+                    <div class="svarakshit-rev-name">{{ block.settings.author }}</div>
+                    <div class="svarakshit-rev-ver">{{ block.settings.verified_text }}</div>
+                  </div>
+                </div>
+                <div class="svarakshit-rev-stars">★★★★★</div>
+              </div>
+              <p class="svarakshit-rev-q">{{ block.settings.text }}</p>
+            </div>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Svarakshit Testimonials",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Trusted by 50,000+ Families"
+    },
+    {
+      "type": "text",
+      "id": "rating",
+      "label": "Overall Rating",
+      "default": "4.8"
+    },
+    {
+      "type": "text",
+      "id": "reviews_count",
+      "label": "Reviews Count",
+      "default": "1,247 verified reviews"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name"
+        },
+        {
+          "type": "text",
+          "id": "verified_text",
+          "label": "Verified Text",
+          "default": "Verified"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Testimonial Text"
+        },
+        {
+          "type": "color",
+          "id": "avatar_color",
+          "label": "Avatar Color",
+          "default": "#ff6b00"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Svarakshit Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "author": "Rajesh Sharma",
+            "verified_text": "Verified · Mumbai",
+            "text": "This device literally saved my family. It beeped loudly at 2am near our kitchen — a small pipe connection was loose. Without Swarakshit we would not have known till morning!",
+            "avatar_color": "#ff6b00"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "author": "Priya Mehta",
+            "verified_text": "Verified · Pune",
+            "text": "Very easy to use. The LCD display is clear, the beep is very loud. Even my 68-year-old mother uses it easily. Excellent product from an Indian company!",
+            "avatar_color": "#8b5cf6"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "author": "Amit Patel",
+            "verified_text": "Verified · Ahmedabad",
+            "text": "I run a restaurant chain. We use Swarakshit for daily safety checks. Our food inspector appreciated it during the last audit. LERC certification gives complete confidence. Ordered 12 units!",
+            "avatar_color": "#059669"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

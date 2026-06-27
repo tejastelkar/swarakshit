@@ -1,0 +1,413 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - navigation [ref=e5]:
+        - generic [ref=e6]:
+          - link "Home" [ref=e11] [cursor=pointer]:
+            - /url: /
+            - img "Home" [ref=e12]
+          - navigation "Main navigation" [ref=e15]:
+            - heading "Main navigation" [level=5] [ref=e16]
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - link "HOME" [ref=e19] [cursor=pointer]:
+                  - /url: /
+              - listitem [ref=e20]:
+                - link "SECTORS" [ref=e21] [cursor=pointer]:
+                  - /url: /sectors
+              - listitem [ref=e22]:
+                - link "INVESTOR DESK" [ref=e23] [cursor=pointer]:
+                  - /url: /investor-desk
+              - listitem [ref=e24]:
+                - link "OPPORTUNITIES" [ref=e25] [cursor=pointer]:
+                  - /url: /opportunities
+              - listitem [ref=e26]:
+                - link "POLICIES" [ref=e27] [cursor=pointer]:
+                  - /url: /policies
+              - listitem [ref=e28]:
+                - link "EASE OF DOING BUSINESS" [ref=e29] [cursor=pointer]:
+                  - /url: /eodb
+              - listitem [ref=e30]:
+                - link "LISTICLES" [ref=e31] [cursor=pointer]:
+                  - /url: /listicles
+              - listitem [ref=e32]:
+                - link "FAQs" [ref=e33] [cursor=pointer]:
+                  - /url: /faqs
+              - listitem [ref=e34]:
+                - link "CONTACT" [ref=e35] [cursor=pointer]:
+                  - /url: https://www.investindia.gov.in/contact-us
+    - main [ref=e36]:
+      - generic [ref=e39]:
+        - generic [ref=e42]:
+          - generic [ref=e44]:
+            - list [ref=e45]:
+              - listitem [ref=e46] [cursor=pointer]
+              - listitem [ref=e47] [cursor=pointer]
+              - listitem [ref=e48] [cursor=pointer]
+              - listitem [ref=e49] [cursor=pointer]
+              - listitem [ref=e50] [cursor=pointer]
+              - listitem [ref=e51] [cursor=pointer]
+            - link "Slider Image" [ref=e54] [cursor=pointer]:
+              - /url: https://www.investindia.gov.in/team-india-blogs/10-global-corporations-expanding-operations-india-2025
+              - img "Slider Image" [ref=e55]
+          - generic [ref=e56]:
+            - heading "Latest Updates" [level=1] [ref=e58]
+            - list [ref=e59]:
+              - listitem [ref=e60]:
+                - link "Major Achievements under Make in India" [ref=e61] [cursor=pointer]:
+                  - /url: https://pib.gov.in/PressNoteDetails.aspx?NoteId=153203&ModuleId=3&reg=3&lang=1
+                - generic [ref=e62]: 25-09-2024
+              - listitem [ref=e63]:
+                - link "Cabinet approves one more semiconductor unit under India Semiconductor Mission (ISM)" [ref=e64] [cursor=pointer]:
+                  - /url: https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2050859
+                - generic [ref=e65]: 02-09-2024
+              - listitem [ref=e66]:
+                - link "Coal Production in the Country Grows 7.12% YoY to Reach 370 MT in FY 2024-25" [ref=e67] [cursor=pointer]:
+                  - /url: https://pib.gov.in/PressReleseDetailm.aspx?PRID=2049176&reg=3&lang=1
+                - generic [ref=e68]: 27-08-2024
+              - listitem [ref=e69]:
+                - link "India's IIP records a growth of 4.2% in the June 2024" [ref=e70] [cursor=pointer]:
+                  - /url: https://pib.gov.in/PressReleasePage.aspx?PRID=2044601
+                - generic [ref=e71]: 12-08-2024
+              - listitem [ref=e72]:
+                - link "Overall Coal Stock Reaches 88.01 MT Registering an Increase of 24.7%" [ref=e73] [cursor=pointer]:
+                  - /url: https://www.pib.gov.in/PressReleasePage.aspx?PRID=1952061
+                - generic [ref=e74]: 28-08-2023
+              - listitem [ref=e75]:
+                - link "Major step of MoPSW towards Public-Private Partnership with INR 4,243.64 crore Mega Terminal Project at Kandla, Gujarat" [ref=e76] [cursor=pointer]:
+                  - /url: https://www.pib.gov.in/PressReleasePage.aspx?PRID=1952512
+                - generic [ref=e77]: 28-08-2023
+              - listitem [ref=e78]:
+                - link "Chandrayaan-3 has proved India's capability for cost-effective Space missions" [ref=e79] [cursor=pointer]:
+                  - /url: https://www.pib.gov.in/PressReleasePage.aspx?PRID=1952448
+                - generic [ref=e80]: 28-08-2023
+              - listitem [ref=e81]:
+                - link "Pradhan Mantri Jan Dhan Yojana (PMJDY) - National Mission for Financial Inclusion, completes nine years of successful implementation" [ref=e82] [cursor=pointer]:
+                  - /url: https://www.pib.gov.in/PressReleasePage.aspx?PRID=1952793
+                - generic [ref=e83]: 28-08-2023
+              - listitem [ref=e84]:
+                - link "SOP signed for exchange of White Shipping Information between Indian Navy & Philippine Coast Guard" [ref=e85] [cursor=pointer]:
+                  - /url: https://www.pib.gov.in/PressReleasePage.aspx?PRID=1951398
+                - generic [ref=e86]: 24-08-2023
+              - listitem [ref=e87]:
+                - link "LCA Tejas successfully test-fires indigenous ASTRA Beyond Visual Range air-to-air missile off Goa coast" [ref=e88] [cursor=pointer]:
+                  - /url: https://www.pib.gov.in/PressReleasePage.aspx?PRID=1951428
+                - generic [ref=e89]: 24-08-2023
+              - listitem [ref=e90]:
+                - link "Load More" [ref=e91] [cursor=pointer]:
+                  - /url: /latest_updates
+        - tablist [ref=e96]:
+          - generic [ref=e97]:
+            - tab "- SPOTLIGHT" [ref=e98]:
+              - heading "- SPOTLIGHT" [level=4] [ref=e99]:
+                - button "- SPOTLIGHT" [expanded] [ref=e100] [cursor=pointer]:
+                  - text: "-"
+                  - text: SPOTLIGHT
+            - tabpanel "- SPOTLIGHT" [ref=e101]:
+              - generic [ref=e103]:
+                - generic [ref=e104]:
+                  - link [ref=e105] [cursor=pointer]:
+                    - /url: https://www.investindia.gov.in/team-india-blogs/10-global-corporations-expanding-operations-india-2025
+                    - img [ref=e106]
+                  - heading "10 global corporations expanding operations in Ind ..." [level=4] [ref=e107]:
+                    - link "10 global corporations expanding operations in Ind ..." [ref=e108] [cursor=pointer]:
+                      - /url: https://www.investindia.gov.in/team-india-blogs/10-global-corporations-expanding-operations-india-2025
+                  - paragraph [ref=e109]
+                - generic [ref=e110]:
+                  - link [ref=e111] [cursor=pointer]:
+                    - /url: /10-indian-mega-projects-are-redefining-infrastructure-2025
+                    - img [ref=e112]
+                  - heading "10 Indian mega projects that are redefining infras ..." [level=4] [ref=e113]:
+                    - link "10 Indian mega projects that are redefining infras ..." [ref=e114] [cursor=pointer]:
+                      - /url: /10-indian-mega-projects-are-redefining-infrastructure-2025
+                  - paragraph [ref=e115]
+                - generic [ref=e116]:
+                  - link [ref=e117] [cursor=pointer]:
+                    - /url: https://www.investindia.gov.in/team-india-blogs/5-key-factors-driving-indias-growth-tech-investment-destination
+                    - img [ref=e118]
+                  - heading "5 Key Factors Driving India's Growth as a Tech Inv ..." [level=4] [ref=e119]:
+                    - link "5 Key Factors Driving India's Growth as a Tech Inv ..." [ref=e120] [cursor=pointer]:
+                      - /url: https://www.investindia.gov.in/team-india-blogs/5-key-factors-driving-indias-growth-tech-investment-destination
+                  - paragraph [ref=e121]
+                - generic [ref=e122]:
+                  - link [ref=e123] [cursor=pointer]:
+                    - /url: https://www.investindia.gov.in/team-india-blogs/electronics-component-manufacturing-scheme-semiconductor-mission-making-india-self
+                    - img [ref=e124]
+                  - heading "Electronics Component Manufacturing Scheme & Semic ..." [level=4] [ref=e125]:
+                    - link "Electronics Component Manufacturing Scheme & Semic ..." [ref=e126] [cursor=pointer]:
+                      - /url: https://www.investindia.gov.in/team-india-blogs/electronics-component-manufacturing-scheme-semiconductor-mission-making-india-self
+                  - paragraph [ref=e127]
+                - generic [ref=e128]:
+                  - link [ref=e129] [cursor=pointer]:
+                    - /url: /10-benefits-setting-business-india
+                    - img [ref=e130]
+                  - heading "10 benefits of setting up business in India" [level=4] [ref=e131]:
+                    - link "10 benefits of setting up business in India" [ref=e132] [cursor=pointer]:
+                      - /url: /10-benefits-setting-business-india
+                  - paragraph [ref=e133]
+                - generic [ref=e134]:
+                  - link [ref=e135] [cursor=pointer]:
+                    - /url: https://www.investindia.gov.in/team-india-blogs/curious-case-capacitors
+                    - img [ref=e136]
+                  - heading "The Curious case of Capacitors" [level=4] [ref=e137]:
+                    - link "The Curious case of Capacitors" [ref=e138] [cursor=pointer]:
+                      - /url: https://www.investindia.gov.in/team-india-blogs/curious-case-capacitors
+                  - paragraph [ref=e139]
+                - generic [ref=e140]:
+                  - link [ref=e141] [cursor=pointer]:
+                    - /url: https://www.investindia.gov.in/team-india-blogs/five-indian-states-highest-fdi-fy-2024-25?utm_source=mii
+                    - img [ref=e142]
+                  - heading "Five Indian states with highest FDI in FY 2024-25" [level=4] [ref=e143]:
+                    - link "Five Indian states with highest FDI in FY 2024-25" [ref=e144] [cursor=pointer]:
+                      - /url: https://www.investindia.gov.in/team-india-blogs/five-indian-states-highest-fdi-fy-2024-25?utm_source=mii
+                  - paragraph [ref=e145]
+                - generic [ref=e146]:
+                  - link [ref=e147] [cursor=pointer]:
+                    - /url: https://www.investindia.gov.in/team-india-blogs/how-demographics-make-india-prime-destination-global-investments?utm_source=mii
+                    - img [ref=e148]
+                  - heading "How demographics make India a prime destination fo ..." [level=4] [ref=e149]:
+                    - link "How demographics make India a prime destination fo ..." [ref=e150] [cursor=pointer]:
+                      - /url: https://www.investindia.gov.in/team-india-blogs/how-demographics-make-india-prime-destination-global-investments?utm_source=mii
+                  - paragraph [ref=e151]
+                - generic [ref=e152]:
+                  - link [ref=e153] [cursor=pointer]:
+                    - /url: https://www.investindia.gov.in/team-india-blogs/10-reasons-why-india-next-global-investment-hub?utm_source=mii
+                    - img [ref=e154]
+                  - heading "10 reasons why India is the next global investment ..." [level=4] [ref=e155]:
+                    - link "10 reasons why India is the next global investment ..." [ref=e156] [cursor=pointer]:
+                      - /url: https://www.investindia.gov.in/team-india-blogs/10-reasons-why-india-next-global-investment-hub?utm_source=mii
+                  - paragraph [ref=e157]
+                - generic [ref=e158]:
+                  - link [ref=e159] [cursor=pointer]:
+                    - /url: https://www.investindia.gov.in/team-india-blogs/seven-high-growth-sectors-india?utm_source=mii
+                    - img [ref=e160]
+                  - heading "Seven high-growth sectors in India" [level=4] [ref=e161]:
+                    - link "Seven high-growth sectors in India" [ref=e162] [cursor=pointer]:
+                      - /url: https://www.investindia.gov.in/team-india-blogs/seven-high-growth-sectors-india?utm_source=mii
+                  - paragraph [ref=e163]
+                - generic [ref=e164]:
+                  - link [ref=e165] [cursor=pointer]:
+                    - /url: https://pib.gov.in/PressNoteDetails.aspx?NoteId=153203&ModuleId=3&reg=3&lang=1
+                    - img [ref=e166]
+                  - heading "#10YearsOfMakeInIndia" [level=4] [ref=e167]:
+                    - link "#10YearsOfMakeInIndia" [ref=e168] [cursor=pointer]:
+                      - /url: https://pib.gov.in/PressNoteDetails.aspx?NoteId=153203&ModuleId=3&reg=3&lang=1
+                  - paragraph [ref=e169]
+                - generic [ref=e170]:
+                  - link [ref=e171] [cursor=pointer]:
+                    - /url: /defense-acquisition-procedure
+                    - img [ref=e172]
+                  - heading "Defense Acquisition Procedure" [level=4] [ref=e173]:
+                    - link "Defense Acquisition Procedure" [ref=e174] [cursor=pointer]:
+                      - /url: /defense-acquisition-procedure
+                  - paragraph [ref=e175]
+                - generic [ref=e176]:
+                  - link [ref=e177] [cursor=pointer]:
+                    - /url: /bharatamala-pariyojana-visionary-corridor-across-india
+                    - img [ref=e178]
+                  - heading "Bharatamala Pariyojana – Visionary Corridor across ..." [level=4] [ref=e179]:
+                    - link "Bharatamala Pariyojana – Visionary Corridor across ..." [ref=e180] [cursor=pointer]:
+                      - /url: /bharatamala-pariyojana-visionary-corridor-across-india
+                  - paragraph [ref=e181]
+                - generic [ref=e182]:
+                  - link [ref=e183] [cursor=pointer]:
+                    - /url: /farming-produce-trade-and-commerce-act-2020
+                    - img [ref=e184]
+                  - heading "The Farming Produce Trade and Commerce Act, 2020" [level=4] [ref=e185]:
+                    - link "The Farming Produce Trade and Commerce Act, 2020" [ref=e186] [cursor=pointer]:
+                      - /url: /farming-produce-trade-and-commerce-act-2020
+                  - paragraph [ref=e187]
+                - generic [ref=e188]:
+                  - link [ref=e189] [cursor=pointer]:
+                    - /url: /rbi-measure-fight-covid-19
+                    - img [ref=e190]
+                  - heading "RBI measure to fight COVID-19" [level=4] [ref=e191]:
+                    - link "RBI measure to fight COVID-19" [ref=e192] [cursor=pointer]:
+                      - /url: /rbi-measure-fight-covid-19
+                  - paragraph [ref=e193]: Discover how RBI tackled COVID-19's financial fallout. Explore liquidity enhancements and support to sectors like real estate as part of RBI ...
+                - generic [ref=e194]:
+                  - link [ref=e195] [cursor=pointer]:
+                    - /url: /enhancing-investment-ecosystem
+                    - img [ref=e196]
+                  - heading "Enhancing Investment Ecosystem" [level=4] [ref=e197]:
+                    - link "Enhancing Investment Ecosystem" [ref=e198] [cursor=pointer]:
+                      - /url: /enhancing-investment-ecosystem
+                  - paragraph [ref=e199]: Discover India's investor-friendly ecosystem gains momentum with the Empowered Group of Secretaries and Project Development Cells, set up to ...
+                - generic [ref=e200]:
+                  - link [ref=e201] [cursor=pointer]:
+                    - /url: /revival-business-including-msmes
+                    - img [ref=e202]
+                  - heading "Revival of Business Including MSMEs" [level=4] [ref=e203]:
+                    - link "Revival of Business Including MSMEs" [ref=e204] [cursor=pointer]:
+                      - /url: /revival-business-including-msmes
+                  - paragraph [ref=e205]: Discover India's business revival measures! Explore aid for employees, employers, and MSMEs to resume operations. Uncover financial stimuli, ...
+                - generic [ref=e206]:
+                  - link [ref=e207] [cursor=pointer]:
+                    - /url: /redefining-msme-champions
+                    - img [ref=e208]
+                  - heading "Redefining MSME Champions" [level=4] [ref=e209]:
+                    - link "Redefining MSME Champions" [ref=e210] [cursor=pointer]:
+                      - /url: /redefining-msme-champions
+                  - paragraph [ref=e211]: Explore India's revamped MSME support! Discover the CHAMPIONS platform and new financial schemes. See how these align with 'Atmanirbhar Bhar ...
+                - generic [ref=e212]:
+                  - link [ref=e213] [cursor=pointer]:
+                    - /url: /atmanirbhar-bharat-abhiyaan
+                    - img [ref=e214]
+                  - heading "Atmanirbhar Bharat Abhiyaan" [level=4] [ref=e215]:
+                    - link "Atmanirbhar Bharat Abhiyaan" [ref=e216] [cursor=pointer]:
+                      - /url: /atmanirbhar-bharat-abhiyaan
+                  - paragraph [ref=e217]: Explore the Atmanirbhar Bharat Abhiyaan, a comprehensive economic package announced by Hon'ble PM Narendra Modi, aimed at providing financia ...
+                - generic [ref=e218]:
+                  - link [ref=e219] [cursor=pointer]:
+                    - /url: /sector-highlights-pharmaceuticals
+                    - img [ref=e220]
+                  - 'heading "Sector Highlights: Pharmaceuticals" [level=4] [ref=e221]':
+                    - 'link "Sector Highlights: Pharmaceuticals" [ref=e222] [cursor=pointer]':
+                      - /url: /sector-highlights-pharmaceuticals
+                  - paragraph [ref=e223]: Discover India's pharmaceutical prowess! Explore its global role as the 'Pharmacy of the World', dominating medicine exports to over 200 cou ...
+                - generic [ref=e224]:
+                  - link [ref=e225] [cursor=pointer]:
+                    - /url: /startup-ecosystem-india
+                    - img [ref=e226]
+                  - heading "Startup Ecosystem In India" [level=4] [ref=e227]:
+                    - link "Startup Ecosystem In India" [ref=e228] [cursor=pointer]:
+                      - /url: /startup-ecosystem-india
+                  - paragraph [ref=e229]: "Explore India's vibrant Startup Ecosystem: From the Startup India initiative's impact to government support, discover the thriving landscape ..."
+                - generic [ref=e230]:
+                  - link [ref=e231] [cursor=pointer]:
+                    - /url: /defence-industrial-corridors-india
+                    - img [ref=e232]
+                  - heading "Defence Industrial Corridors in India" [level=4] [ref=e233]:
+                    - link "Defence Industrial Corridors in India" [ref=e234] [cursor=pointer]:
+                      - /url: /defence-industrial-corridors-india
+                  - paragraph [ref=e235]: Discover India's Defence Industrial Corridors, boosting indigenous defence production. Spanning Uttar Pradesh and Tamil Nadu, these corridor ...
+                - generic [ref=e236]:
+                  - link [ref=e237] [cursor=pointer]:
+                    - /url: /national-broadband-mission-connecting-india
+                    - img [ref=e238]
+                  - heading "National Broadband Mission Connecting India" [level=4] [ref=e239]:
+                    - link "National Broadband Mission Connecting India" [ref=e240] [cursor=pointer]:
+                      - /url: /national-broadband-mission-connecting-india
+                  - paragraph [ref=e241]: India’s National Broadband Mission aims to ensure universal, bridging socio-economic gaps. With goals to connect all villages, and drive 5G ...
+                - generic [ref=e242]:
+                  - link [ref=e243] [cursor=pointer]:
+                    - /url: /pm-formalization-micro-food-processing-enterprises-scheme
+                    - img [ref=e244]
+                  - heading "PM Formalization of Micro Food Processing Enterpri ..." [level=4] [ref=e245]:
+                    - link "PM Formalization of Micro Food Processing Enterpri ..." [ref=e246] [cursor=pointer]:
+                      - /url: /pm-formalization-micro-food-processing-enterprises-scheme
+                  - paragraph [ref=e247]: "Boosting micro food processing: PM FME Scheme aids units with upgrades, technical training, branding, and financial support, aligning with ' ..."
+          - tab "+ NEW PROCESSES" [ref=e249]:
+            - heading "+ NEW PROCESSES" [level=4] [ref=e250]:
+              - button "+ NEW PROCESSES" [ref=e251] [cursor=pointer]:
+                - text: +
+                - text: NEW PROCESSES
+          - tab "+ INVESTMENTS" [ref=e253]:
+            - heading "+ INVESTMENTS" [level=4] [ref=e254]:
+              - button "+ INVESTMENTS" [ref=e255] [cursor=pointer]:
+                - text: +
+                - text: INVESTMENTS
+          - tab "+ FOCUS SECTORS" [ref=e257]:
+            - heading "+ FOCUS SECTORS" [level=4] [ref=e258]:
+              - button "+ FOCUS SECTORS" [ref=e259] [cursor=pointer]:
+                - text: +
+                - text: FOCUS SECTORS
+          - tab "+ MAKERS OF MAKE IN INDIA" [ref=e261]:
+            - heading "+ MAKERS OF MAKE IN INDIA" [level=4] [ref=e262]:
+              - button "+ MAKERS OF MAKE IN INDIA" [ref=e263] [cursor=pointer]:
+                - text: +
+                - text: MAKERS OF MAKE IN INDIA
+        - listbox [ref=e269]:
+          - link [ref=e271] [cursor=pointer]:
+            - /url: https://ejalshakti.gov.in/JSA/JSA/Home.aspx
+            - img [ref=e272]
+          - link [ref=e274] [cursor=pointer]:
+            - /url: https://www.digitalindia.gov.in/
+            - img [ref=e275]
+          - link [ref=e277] [cursor=pointer]:
+            - /url: https://skillindia.gov.in/
+            - img [ref=e278]
+          - link [ref=e280] [cursor=pointer]:
+            - /url: https://swachhbharatmission.gov.in/sbmcms/index.htm
+            - img [ref=e281]
+          - link [ref=e283] [cursor=pointer]:
+            - /url: http://smartcities.gov.in/content/
+            - img [ref=e284]
+          - link [ref=e286] [cursor=pointer]:
+            - /url: https://statueofunity.in/
+            - img [ref=e287]
+          - option [ref=e288]:
+            - link [ref=e289] [cursor=pointer]:
+              - /url: https://www.india.gov.in/
+              - img [ref=e290]
+          - option [ref=e291]:
+            - link [ref=e292] [cursor=pointer]:
+              - /url: https://ejalshakti.gov.in/JSA/JSA/Home.aspx
+              - img [ref=e293]
+          - option [ref=e294]:
+            - link [ref=e295] [cursor=pointer]:
+              - /url: https://www.digitalindia.gov.in/
+              - img [ref=e296]
+          - option [ref=e297]:
+            - link [ref=e298] [cursor=pointer]:
+              - /url: https://skillindia.gov.in/
+              - img [ref=e299]
+          - option [ref=e300]:
+            - link [ref=e301] [cursor=pointer]:
+              - /url: https://swachhbharatmission.gov.in/sbmcms/index.htm
+              - img [ref=e302]
+          - option [ref=e303]:
+            - link [ref=e304] [cursor=pointer]:
+              - /url: http://smartcities.gov.in/content/
+              - img [ref=e305]
+          - option [ref=e306]:
+            - link [ref=e307] [cursor=pointer]:
+              - /url: https://statueofunity.in/
+              - img [ref=e308]
+          - link [ref=e310] [cursor=pointer]:
+            - /url: https://www.india.gov.in/
+            - img [ref=e311]
+          - link [ref=e313] [cursor=pointer]:
+            - /url: https://ejalshakti.gov.in/JSA/JSA/Home.aspx
+            - img [ref=e314]
+          - link [ref=e316] [cursor=pointer]:
+            - /url: https://www.digitalindia.gov.in/
+            - img [ref=e317]
+          - link [ref=e319] [cursor=pointer]:
+            - /url: https://skillindia.gov.in/
+            - img [ref=e320]
+          - link [ref=e322] [cursor=pointer]:
+            - /url: https://swachhbharatmission.gov.in/sbmcms/index.htm
+            - img [ref=e323]
+          - link [ref=e325] [cursor=pointer]:
+            - /url: http://smartcities.gov.in/content/
+            - img [ref=e326]
+    - contentinfo [ref=e327]:
+      - generic [ref=e328]:
+        - navigation "Footer" [ref=e330]:
+          - heading "Footer" [level=5] [ref=e331]
+          - list [ref=e332]:
+            - listitem [ref=e333]:
+              - link "About" [ref=e334] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e335]:
+              - link "|Contact" [ref=e336] [cursor=pointer]:
+                - /url: https://www.investindia.gov.in/contact-us
+            - listitem [ref=e337]:
+              - link "|Cookies Policy" [ref=e338] [cursor=pointer]:
+                - /url: /cookies-policy
+            - listitem [ref=e339]:
+              - link "|Downloads" [ref=e340] [cursor=pointer]:
+                - /url: /downloads
+            - listitem [ref=e341]:
+              - link "|Links" [ref=e342] [cursor=pointer]:
+                - /url: /links
+            - listitem [ref=e343]:
+              - link "|Terms Of Service" [ref=e344] [cursor=pointer]:
+                - /url: /terms-conditions
+        - paragraph [ref=e345]:
+          - text: Use of the 'Make in India' logo is strictly prohibited without permission of
+          - link "DPIIT" [ref=e346] [cursor=pointer]:
+            - /url: https://dpiit.gov.in/

@@ -1,0 +1,549 @@
+<style>
+  .svarakshit-htu {
+    padding: 8rem 0;
+    background: {{ section.settings.bg_color }};
+    font-family: 'Inter', sans-serif;
+    color: #111;
+  }
+
+  .htu-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Header */
+  .htu-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+
+  .htu-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 1rem;
+    color: #111;
+  }
+
+  .htu-subtitle {
+    font-size: 1.6rem;
+    color: #666;
+    max-width: 600px;
+  }
+
+  /* Timeline */
+  .htu-timeline {
+    position: relative;
+    padding-left: 120px; /* Space for the line and dots */
+  }
+
+  .htu-line {
+    position: absolute;
+    display: block !important;
+    left: 59px; /* Center of the 120px space */
+    top: 40px; /* start at center of first dot */
+    bottom: 40px; /* end at center of last dot */
+    width: 4px;
+    background: #e4e4e4;
+    z-index: 1;
+    border-radius: 4px;
+  }
+
+  .htu-line-fill {
+    position: absolute;
+    display: block !important;
+    left: 59px;
+    top: 40px;
+    width: 4px;
+    background: #E87722;
+    z-index: 2;
+    height: 0px; /* updated via JS in px */
+    border-radius: 4px;
+    transition: height 0.1s ease-out;
+  }
+
+  /* Steps */
+  .htu-step {
+    position: relative;
+    margin-bottom: 5rem;
+    display: flex;
+    align-items: flex-start;
+  }
+  .htu-step:last-child {
+    margin-bottom: 0;
+  }
+
+  .htu-step-indicator {
+    position: absolute;
+    left: -120px; /* Pull back into the padding space */
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+    padding-top: 0; 
+  }
+
+  .htu-step-dot {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #e4e4e4;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+  }
+
+  .htu-step-num {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #111;
+    line-height: 1;
+    transition: color 0.4s ease;
+  }
+
+  .htu-step-lbl {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #666;
+    letter-spacing: 1px;
+    margin-top: 4px;
+    transition: color 0.4s ease;
+  }
+
+  /* Active State for Indicator */
+  .htu-step.is-active .htu-step-dot {
+    border-color: #E87722;
+    background: #E87722;
+    box-shadow: 0 0 0 10px rgba(232, 119, 34, 0.15);
+  }
+  .htu-step.is-active .htu-step-num,
+  .htu-step.is-active .htu-step-lbl {
+    color: #fff;
+  }
+
+  /* Card */
+  .htu-card {
+    flex: 1;
+    background: #fff;
+    border: 2px solid #111;
+    border-radius: 20px;
+    padding: 3rem;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    /* subtle shadow */
+    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+  }
+
+  .htu-step.is-active .htu-card {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.08);
+  }
+
+  .htu-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .htu-card-icon {
+    display: inline-flex;
+    width: 64px;
+    height: 64px;
+    align-items: center;
+    justify-content: center;
+    background: #f4f4f4;
+    border-radius: 16px;
+    color: #E87722;
+  }
+
+  .htu-card-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .htu-card-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #111;
+    letter-spacing: -0.5px;
+    margin: 0;
+  }
+
+  .htu-card-desc {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+  }
+
+  .htu-card-desc ul {
+    margin-top: 1.5rem;
+    padding-left: 2rem;
+    list-style-type: disc;
+  }
+
+  .htu-card-desc li {
+    margin-bottom: 0.8rem;
+  }
+
+  /* Pills */
+  .htu-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 20px;
+    border: 2px solid #111;
+    border-radius: 50px;
+    background: #fff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #111;
+    margin-top: 2rem;
+    gap: 8px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .svarakshit-htu {
+      padding: 4rem 0;
+    }
+    .htu-header {
+      margin-bottom: 3rem;
+    }
+    .htu-timeline {
+      padding-left: 48px;
+    }
+    .htu-line, .htu-line-fill {
+      left: 22px;
+    }
+    .htu-step-indicator {
+      left: -48px;
+      width: 48px;
+    }
+    .htu-step-dot {
+      width: 36px;
+      height: 36px;
+      border-width: 2px;
+    }
+    .htu-step-num {
+      font-size: 1.4rem;
+    }
+    .htu-step-lbl {
+      display: none;
+    }
+    .htu-card {
+      padding: 1.5rem;
+      border-radius: 16px;
+    }
+    .htu-title {
+      font-size: 2.5rem;
+    }
+    .htu-card-header {
+      gap: 1rem;
+    }
+    .htu-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+    }
+    .htu-card-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+    .htu-card-title {
+      font-size: 1.8rem;
+    }
+    .htu-card-desc {
+      font-size: 1.4rem;
+    }
+    .htu-pill {
+      font-size: 1.2rem;
+      padding: 12px 16px;
+      border-radius: 16px;
+      align-items: flex-start;
+    }
+    .htu-pill svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+  }
+</style>
+
+<div class="svarakshit-htu">
+  <div class="htu-container">
+    <div class="htu-header">
+      <h2 class="htu-title">{{ section.settings.title | default: 'How to Use Swarakshit' }}</h2>
+      <p class="htu-subtitle">{{ section.settings.subtitle | default: 'Follow these 5 simple steps to detect gas leaks accurately and keep your home safe' }}</p>
+    </div>
+
+    <div class="htu-timeline" id="htuTimeline">
+      <div class="htu-line"></div>
+      <div class="htu-line-fill" id="htuLineFill"></div>
+
+      <!-- Step 1 -->
+      <div class="htu-step" data-step="1">
+        <div class="htu-step-indicator">
+          <div class="htu-step-dot">
+            <span class="htu-step-num">01</span>
+            <span class="htu-step-lbl">Step</span>
+          </div>
+        </div>
+        <div class="htu-card">
+          <div class="htu-card-header">
+            <div class="htu-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 10.5h.375c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125H21M4.5 10.5h6.75V15H4.5v-4.5zM3.75 18h15A2.25 2.25 0 0021 15.75v-6a2.25 2.25 0 00-2.25-2.25h-15A2.25 2.25 0 001.5 9.75v6A2.25 2.25 0 003.75 18z" />
+              </svg>
+            </div>
+            <h3 class="htu-card-title">Charge & Power On</h3>
+          </div>
+          <div class="htu-card-desc">
+            <p>Before first use, charge the device fully using the included USB cable. The LED turns green when fully charged (approx. 2 hours). Press and hold the red power button for 2 seconds to switch on. The LCD display will light up and show a startup sequence.</p>
+          </div>
+          <div class="htu-pill">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.516 0c.85.493 1.509 1.333 1.509 2.316V18" />
+            </svg>
+            Tip: Charge once a week for regular household use
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="htu-step" data-step="2">
+        <div class="htu-step-indicator">
+          <div class="htu-step-dot">
+            <span class="htu-step-num">02</span>
+            <span class="htu-step-lbl">Step</span>
+          </div>
+        </div>
+        <div class="htu-card">
+          <div class="htu-card-header">
+            <div class="htu-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="htu-card-title">Wait for Sensor Warmup (30 Seconds)</h3>
+          </div>
+          <div class="htu-card-desc">
+            <p>After powering on, wait 30 seconds for the electrochemical sensor to reach operating temperature. The display will show dashes or a countdown. Do NOT start testing until the warmup is complete — early readings may be inaccurate. The device will beep once when ready.</p>
+          </div>
+          <div class="htu-pill">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            Important: Do not skip the warmup phase
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="htu-step" data-step="3">
+        <div class="htu-step-indicator">
+          <div class="htu-step-dot">
+            <span class="htu-step-num">03</span>
+            <span class="htu-step-lbl">Step</span>
+          </div>
+        </div>
+        <div class="htu-card">
+          <div class="htu-card-header">
+            <div class="htu-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+              </svg>
+            </div>
+            <h3 class="htu-card-title">Scan Near Gas Points</h3>
+          </div>
+          <div class="htu-card-desc">
+            <p>Hold the device by the grip and move the silver metal sensor tip to within <strong style="color:#E87722;">5–10 cm</strong> of potential leak points. Move slowly — about 5 cm per second — to give the sensor time to respond. Check these key areas in order:</p>
+            <ul>
+              <li>LPG cylinder valve & pressure regulator</li>
+              <li>Rubber pipe connections at both ends</li>
+              <li>Gas burner nozzles and knobs</li>
+              <li>Gas geyser pipe connections</li>
+              <li>PNG meter and pipe joints</li>
+            </ul>
+          </div>
+          <div class="htu-pill">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+            </svg>
+            Keep sensor tip 5–10 cm from surface for best accuracy
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="htu-step" data-step="4">
+        <div class="htu-step-indicator">
+          <div class="htu-step-dot">
+            <span class="htu-step-num">04</span>
+            <span class="htu-step-lbl">Step</span>
+          </div>
+        </div>
+        <div class="htu-card">
+          <div class="htu-card-header">
+            <div class="htu-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+              </svg>
+            </div>
+            <h3 class="htu-card-title">Read the LCD Display</h3>
+          </div>
+          <div class="htu-card-desc">
+            <p>The LCD continuously shows the ambient gas concentration level and temperature. Watch for changes as you move the sensor:</p>
+            <ul>
+              <li><strong style="color:#059669">Normal reading</strong> — Low numbers, no alarm. Area is safe.</li>
+              <li><strong style="color:#E87722">Rising numbers</strong> — Approaching a gas source. Slow down and probe carefully.</li>
+              <li><strong style="color:#EF4444">"Hi" on display + loud beep</strong> — Gas leak detected at this point!</li>
+            </ul>
+          </div>
+          <div class="htu-pill">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+            </svg>
+            The display also shows temperature — useful for kitchen safety checks
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="htu-step" data-step="5">
+        <div class="htu-step-indicator">
+          <div class="htu-step-dot">
+            <span class="htu-step-num">05</span>
+            <span class="htu-step-lbl">Step</span>
+          </div>
+        </div>
+        <div class="htu-card">
+          <div class="htu-card-header">
+            <div class="htu-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+            </div>
+            <h3 class="htu-card-title">If Leak Detected — Act Immediately</h3>
+          </div>
+          <div class="htu-card-desc">
+            <p>If the device shows <strong style="color:#EF4444">"Hi"</strong> and alarms:</p>
+            <ul>
+              <li><strong>DON'T panic</strong> — stay calm</li>
+              <li><strong>Turn OFF</strong> the gas cylinder valve or main PNG valve immediately</li>
+              <li><strong>Open ALL windows & doors</strong> — ventilate the area</li>
+              <li><strong>Do NOT use</strong> electrical switches, lighters, phones near the area</li>
+              <li><strong>Evacuate</strong> everyone from the room</li>
+              <li><strong>Call your gas agency</strong> and a licensed plumber for inspection</li>
+            </ul>
+          </div>
+          <div class="htu-pill">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.896-1.596-5.48-4.18-7.076-7.076l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+            Emergency: Call 1906 (LPG) or 101 (Fire)
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const timeline = document.getElementById('htuTimeline');
+    const fill = document.getElementById('htuLineFill');
+    const steps = document.querySelectorAll('.htu-step');
+    
+    if (!timeline || !fill || steps.length === 0) return;
+
+    const onScroll = () => {
+      const windowHeight = window.innerHeight;
+      const triggerY = windowHeight * 0.6; // Trigger line is 60% down the screen
+      
+      const firstStep = steps[0].getBoundingClientRect();
+      const lastStep = steps[steps.length - 1].getBoundingClientRect();
+      
+      // The dot is 80px, so center is at 40px
+      const startTrigger = firstStep.top + 40; 
+      const endTrigger = lastStep.top + 40;
+      
+      const totalDistance = endTrigger - startTrigger;
+      const scrolledPastStart = triggerY - startTrigger;
+      
+      // Stop the gray line exactly at the last dot
+      const grayLine = document.querySelector('.htu-line');
+      if (grayLine && totalDistance > 0) {
+        grayLine.style.height = `${totalDistance}px`;
+        grayLine.style.bottom = 'auto';
+      }
+      
+      let fillPixels = 0;
+      if (scrolledPastStart > 0) {
+        fillPixels = Math.min(scrolledPastStart, totalDistance);
+      }
+      
+      fill.style.height = `${fillPixels}px`;
+      
+      // Activate steps
+      steps.forEach(step => {
+        const stepRect = step.getBoundingClientRect();
+        const stepCenter = stepRect.top + 40; 
+        
+        if (stepCenter <= triggerY) {
+          step.classList.add('is-active');
+        } else {
+          step.classList.remove('is-active');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // Run once on load
+    setTimeout(onScroll, 100);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Swarakshit How To Use",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "How to Use Swarakshit"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "Follow these 5 simple steps to detect gas leaks accurately and keep your home safe"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f9f9f9"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Swarakshit How To Use"
+    }
+  ]
+}
+{% endschema %}

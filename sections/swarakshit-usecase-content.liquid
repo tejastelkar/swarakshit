@@ -1,0 +1,231 @@
+{% schema %}
+{
+  "name": "Swarakshit Usecase Text",
+  "tag": "section",
+  "class": "section-usecase-content",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "content_block",
+      "name": "Content Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Block Image"
+        },
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "Image Position on Desktop",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "THE PROBLEM"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Silent Accumulation"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Detailed Text",
+          "default": "<p>Enclosed lower-level spaces can become risky when they contain cylinders, joints, pipes, or appliances in poorly ventilated areas. Regular combustible gas checks can help households catch issues earlier.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Swarakshit Usecase Content"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    font-family: 'Inter', sans-serif;
+  }
+
+  .usecase-premium-block {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  @media screen and (min-width: 990px) {
+    .usecase-premium-block {
+      flex-direction: row;
+      align-items: center;
+      min-height: 80vh;
+    }
+
+    .usecase-premium-block--image-right {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .usecase-premium-media {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    min-height: 50vh;
+    overflow: hidden;
+  }
+
+  @media screen and (min-width: 990px) {
+    .usecase-premium-media {
+      min-height: 80vh;
+      width: 50%;
+    }
+  }
+
+  .usecase-premium-media img,
+  .usecase-premium-media svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.05);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+  }
+
+  .usecase-premium-media.is-visible img,
+  .usecase-premium-media.is-visible svg {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .usecase-premium-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(60px, 10vw, 120px) clamp(20px, 8vw, 80px);
+    max-width: 800px;
+  }
+
+  @media screen and (min-width: 990px) {
+    .usecase-premium-info {
+      width: 50%;
+    }
+  }
+
+  .usecase-premium-subtitle {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 24px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+  }
+
+  .usecase-premium-heading {
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #111;
+    margin: 0 0 32px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+  }
+
+  .usecase-premium-text {
+    font-size: clamp(18px, 1.5vw, 22px);
+    line-height: 1.6;
+    color: #444;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+  }
+
+  .usecase-premium-text p {
+    margin-bottom: 24px;
+  }
+  .usecase-premium-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .usecase-premium-block.is-visible .usecase-premium-subtitle,
+  .usecase-premium-block.is-visible .usecase-premium-heading,
+  .usecase-premium-block.is-visible .usecase-premium-text {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<div class="usecase-premium-wrapper">
+  {%- for block in section.blocks -%}
+    <div class="usecase-premium-block js-usecase-block {% if block.settings.image_position == 'right' %}usecase-premium-block--image-right{% endif %}" {{ block.shopify_attributes }}>
+      <div class="usecase-premium-media js-usecase-media">
+        {%- if block.settings.image != blank -%}
+          {{ block.settings.image | image_url: width: 1500 | image_tag: loading: 'lazy' }}
+        {%- else -%}
+          {% render 'svarakshit-fallback-image',
+            context: block.settings.heading,
+            alt: block.settings.heading,
+            class: 'placeholder-svg',
+            loading: 'lazy'
+          %}
+        {%- endif -%}
+      </div>
+      <div class="usecase-premium-info">
+        {%- if block.settings.subtitle != blank -%}
+          <div class="usecase-premium-subtitle">{{ block.settings.subtitle }}</div>
+        {%- endif -%}
+        <h2 class="usecase-premium-heading">{{ block.settings.heading }}</h2>
+        <div class="usecase-premium-text">{{ block.settings.text }}</div>
+      </div>
+    </div>
+  {%- endfor -%}
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const blocks = document.querySelectorAll('.js-usecase-block');
+    const medias = document.querySelectorAll('.js-usecase-media');
+
+    if (!blocks.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          if (entry.target.querySelector('.js-usecase-media')) {
+             entry.target.querySelector('.js-usecase-media').classList.add('is-visible');
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    blocks.forEach(block => observer.observe(block));
+  });
+</script>

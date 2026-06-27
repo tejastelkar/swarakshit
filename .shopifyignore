@@ -1,0 +1,15 @@
+.agents/
+.git/
+.github/
+.DS_Store
+*.zip
+*.mp4
+*.mov
+*.log
+*.tmp
+*.bak
+*.backup
+node_modules/
+dist/
+build/
+coverage/

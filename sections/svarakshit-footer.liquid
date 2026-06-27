@@ -1,0 +1,389 @@
+<style>
+  .svarakshit-footer {
+    background-color: #1c1c1c; /* Dark background matching airvalent */
+    color: #ffffff;
+    padding: 120px 5rem 40px;
+    margin-top: -40px;
+    position: relative;
+    z-index: 0;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .svarakshit-footer-top {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 80px;
+    margin-bottom: 80px;
+  }
+
+  /* Left column: Logo + Socials */
+  .svarakshit-footer-left {
+    flex: 0 0 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .svarakshit-footer-logo {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .svarakshit-footer-socials {
+    display: flex;
+    gap: 20px;
+  }
+
+  .svarakshit-footer-social-icon {
+    width: 24px;
+    height: 24px;
+    color: #ffffff;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+  
+  .svarakshit-footer-social-icon:hover {
+    opacity: 1;
+  }
+
+  /* Right Columns: Menus & Contact Info */
+  .svarakshit-footer-menus {
+    display: flex;
+    gap: 80px;
+    flex-wrap: wrap;
+  }
+
+  .svarakshit-footer-block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 150px;
+  }
+
+  .svarakshit-footer-block h4 {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .svarakshit-footer-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .svarakshit-footer-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    opacity: 0.7;
+    font-size: 15px;
+    transition: opacity 0.3s ease;
+  }
+
+  .svarakshit-footer-menu a:hover {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .svarakshit-footer-contact-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .svarakshit-footer-contact-text p {
+    margin: 0;
+    font-size: 16px;
+    color: #ffffff;
+    opacity: 0.9;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  /* Bottom Strip */
+  .svarakshit-footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .svarakshit-footer-bottom-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .svarakshit-footer-copyright {
+    color: #ffffff;
+    opacity: 0.6;
+    font-size: 13px;
+    margin: 0;
+  }
+  
+  .svarakshit-footer-copyright a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .svarakshit-footer-copyright a:hover {
+    text-decoration: underline;
+  }
+
+  .svarakshit-footer-policies {
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .svarakshit-footer-policies a {
+    color: #ffffff;
+    opacity: 0.6;
+    font-size: 13px;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .svarakshit-footer-policies a:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
+  .svarakshit-footer-payments {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .svarakshit-footer-payment-icon {
+    width: 38px;
+    height: 24px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+  }
+  
+  .svarakshit-footer-payment-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media screen and (max-width: 989px) {
+    .svarakshit-footer {
+      padding: 100px 2rem 30px;
+      margin-top: -40px;
+    }
+    .svarakshit-footer-top {
+      flex-direction: column;
+      gap: 40px;
+    }
+    .svarakshit-footer-menus {
+      width: 100%;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .svarakshit-footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .svarakshit-footer-policies {
+      flex-wrap: wrap;
+    }
+  }
+</style>
+
+<div class="svarakshit-footer">
+  <div class="svarakshit-footer-top">
+    <!-- Left Column: Logo & Socials -->
+    <div class="svarakshit-footer-left">
+      {% if section.settings.logo %}
+        <img
+          src="{{ section.settings.logo | image_url: width: 300 }}"
+          alt="{{ shop.name | escape }}"
+          style="max-width: 200px;"
+          loading="lazy"
+          width="{{ section.settings.logo.width }}"
+          height="{{ section.settings.logo.height }}"
+        >
+      {% else %}
+        {% if section.settings.logo_text != blank %}
+          <a href="{{ routes.root_url }}" class="svarakshit-footer-logo">{{ section.settings.logo_text }}</a>
+        {% endif %}
+      {% endif %}
+
+      <div class="svarakshit-footer-socials">
+        <!-- Facebook -->
+        <a href="#" class="svarakshit-footer-social-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+        </a>
+        <!-- X / Twitter -->
+        <a href="#" class="svarakshit-footer-social-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="#" class="svarakshit-footer-social-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <!-- YouTube -->
+        <a href="#" class="svarakshit-footer-social-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 00-2.122 2.136C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.016 3.016 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Columns: Blocks -->
+    <div class="svarakshit-footer-menus">
+      {% for block in section.blocks %}
+        {% if block.type == 'link_list' %}
+          <div class="svarakshit-footer-block svarakshit-footer-menu" {{ block.shopify_attributes }}>
+            <h4>{{ block.settings.heading }}</h4>
+            {% if block.settings.menu != blank %}
+              <ul>
+                {% for link in linklists[block.settings.menu].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        {% elsif block.type == 'contact_info' %}
+          <div class="svarakshit-footer-block" {{ block.shopify_attributes }}>
+            {% if block.settings.text != blank %}
+              <div class="svarakshit-footer-contact-text">
+                {% assign contact_lines = block.settings.text | newline_to_br | split: '<br />' %}
+                {% for line in contact_lines %}
+                  <p>{{ line | strip }}</p>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="svarakshit-footer-bottom">
+    <div class="svarakshit-footer-bottom-left">
+      <p class="svarakshit-footer-copyright">
+        &copy; {{ 'now' | date: "%Y" }} {{ shop.name }}. <a href="https://www.shopify.com" target="_blank" rel="nofollow">Powered by Shopify</a>
+      </p>
+      <ul class="svarakshit-footer-policies">
+        <li><a href="/policies/refund-policy">Refund policy</a></li>
+        <li><a href="/policies/privacy-policy">Privacy policy</a></li>
+        <li><a href="/policies/terms-of-service">Terms of service</a></li>
+        <li><a href="/pages/contact">Contact information</a></li>
+      </ul>
+    </div>
+    
+    <div class="svarakshit-footer-payments">
+      {% assign payment_types = shop.enabled_payment_types %}
+      {% if payment_types == empty %}
+        {% assign payment_types = 'amex,apple_pay,diners_club,discover,google_pay,jcb,master,paypal,visa' | split: ',' %}
+      {% endif %}
+      {% for type in payment_types %}
+        <div class="svarakshit-footer-payment-icon">
+          {{ type | payment_type_svg_tag }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Swarakshit Footer",
+  "tag": "footer",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "SWARAKSHIT"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Quick links",
+          "label": "Heading"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "footer",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "contact_info",
+      "name": "Contact Info",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Contact Details",
+          "default": "(+91) 98765 43210\nsupport@svarakshit.com"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Swarakshit Footer",
+      "blocks": [
+        {
+          "type": "link_list",
+          "settings": {
+            "heading": "Quick links",
+            "menu": "footer"
+          }
+        },
+        {
+          "type": "link_list",
+          "settings": {
+            "heading": "Page sites",
+            "menu": "main-menu"
+          }
+        },
+        {
+          "type": "contact_info",
+          "settings": {
+            "text": "(+91) 98765 43210\nsupport@svarakshit.com"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

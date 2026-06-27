@@ -1,0 +1,184 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - link "Pushpam Consultancy" [ref=e5] [cursor=pointer]:
+        - /url: https://pushpamconsultancy.com/
+        - img "Pushpam Consultancy" [ref=e6]
+      - list [ref=e8]:
+        - listitem [ref=e9]:
+          - link "Home" [ref=e10] [cursor=pointer]:
+            - /url: index.php
+        - listitem [ref=e11]:
+          - link "Kiosk Solutions" [ref=e12] [cursor=pointer]:
+            - /url: kiosk-solutions.php
+        - listitem [ref=e13]:
+          - link "About us" [ref=e14] [cursor=pointer]:
+            - /url: about-us.php
+        - listitem [ref=e15]:
+          - link "Gallery" [ref=e16] [cursor=pointer]:
+            - /url: Gallery.php
+        - listitem [ref=e17]:
+          - link "Case Study" [ref=e18] [cursor=pointer]:
+            - /url: case-study.php
+        - listitem [ref=e19]:
+          - link "Blogs & Media" [ref=e20] [cursor=pointer]:
+            - /url: blogs.php
+        - listitem [ref=e21]:
+          - link "Contact" [ref=e22] [cursor=pointer]:
+            - /url: contact-us.php
+  - heading "Blogs and Media" [level=1] [ref=e26]
+  - generic [ref=e28]:
+    - generic [ref=e30]:
+      - img "Benefits of Airport Branding Kiosk" [ref=e31]
+      - generic [ref=e32]:
+        - heading "Benefits of Airport Branding Kiosk" [level=5] [ref=e33]
+        - link "Read More " [ref=e34] [cursor=pointer]:
+          - /url: ./blogs/benefits-of-airport-branding-kiosk.html
+          - text: Read More
+          - generic [ref=e35]: 
+    - generic [ref=e37]:
+      - img "Digital Podium Kiosk- Easy Way To Upgrade Conference Room" [ref=e38]
+      - generic [ref=e39]:
+        - heading "Top 12 Benefits of Digital Podium Kiosk Solutions" [level=5] [ref=e40]
+        - link "Read More " [ref=e41] [cursor=pointer]:
+          - /url: ./blogs/digital-smart-podium-kiosk.html
+          - text: Read More
+          - generic [ref=e42]: 
+    - generic [ref=e44]:
+      - img "Employee Self-Service Kiosk – Best HR Practice" [ref=e45]
+      - generic [ref=e46]:
+        - 'heading "HR Self-Service Kiosk: Streamline Your Workforce" [level=5] [ref=e47]'
+        - link "Read More " [ref=e48] [cursor=pointer]:
+          - /url: ./blogs/hr-self-service-kiosk.html
+          - text: Read More
+          - generic [ref=e49]: 
+    - generic [ref=e51]:
+      - img "The Increasing Utilization Of Branding Kiosk In Indian Markets" [ref=e52]
+      - generic [ref=e53]:
+        - heading "How Branding Kiosk Solutions Can Elevate Your Retail Experience" [level=5] [ref=e54]
+        - link "Read More " [ref=e55] [cursor=pointer]:
+          - /url: ./blogs/branding-kiosk.html
+          - text: Read More
+          - generic [ref=e56]: 
+    - generic [ref=e58]:
+      - img "HR Self-Service Kiosk" [ref=e59]
+      - generic [ref=e60]:
+        - heading "How HR Self Service Kiosks Empower Employees and HR" [level=5] [ref=e61]
+        - link "Read More " [ref=e62] [cursor=pointer]:
+          - /url: ./blogs/hr-kiosk.html
+          - text: Read More
+          - generic [ref=e63]: 
+    - generic [ref=e65]:
+      - img "Manage Hassle Free Delivery Service" [ref=e66]
+      - generic [ref=e67]:
+        - heading "How Airports & Airlines Can Transform Passenger Experience with Branded Kiosk Solutions" [level=5] [ref=e68]
+        - link "Read More " [ref=e69] [cursor=pointer]:
+          - /url: ./blogs/airport_kiosk_branding_solutions.html
+          - text: Read More
+          - generic [ref=e70]: 
+    - generic [ref=e72]:
+      - img "Manage Hassle Free Delivery Service" [ref=e73]
+      - generic [ref=e74]:
+        - 'heading "India’s Best Kiosks Manufacturer: Pushpam Consultancy & Solutions" [level=5] [ref=e75]'
+        - link "Read More " [ref=e76] [cursor=pointer]:
+          - /url: ./blogs/best-kiosks-manufacturer-in-india.html
+          - text: Read More
+          - generic [ref=e77]: 
+    - generic [ref=e79]:
+      - img "Small Businesses Should Invest in Delivery Management System" [ref=e80]
+      - generic [ref=e81]:
+        - 'heading "The Power of Kiosk Branding: Drive Sales and Build Stronger Brand Identity" [level=5] [ref=e82]'
+        - link "Read More " [ref=e83] [cursor=pointer]:
+          - /url: ./blogs/power_of_kiosk_branding.html
+          - text: Read More
+          - generic [ref=e84]: 
+    - generic [ref=e86]:
+      - img "Guard Touring Monitoring System – GTMS" [ref=e87]
+      - generic [ref=e88]:
+        - heading "Guard Touring Monitoring System – GTMS" [level=5] [ref=e89]
+        - link "Read More " [ref=e90] [cursor=pointer]:
+          - /url: ./blogs/guard-touring-monitoring-system.html
+          - text: Read More
+          - generic [ref=e91]: 
+    - generic [ref=e93]:
+      - img "5 Reasons to Include Attendance Management System in Your Organisation" [ref=e94]
+      - generic [ref=e95]:
+        - heading "5 Reasons to Include Attendance Management System in Your Organisation" [level=5] [ref=e96]
+        - link "Read More " [ref=e97] [cursor=pointer]:
+          - /url: ./blogs/5-reasons-to-include-attendance-management-system-in-your-organisation.html
+          - text: Read More
+          - generic [ref=e98]: 
+    - generic [ref=e100]:
+      - img "..." [ref=e101]
+      - generic [ref=e102]:
+        - heading "Why Every Organisation Should Invest in Keynote/Keynote Pro?" [level=5] [ref=e103]
+        - link "Read More " [ref=e104] [cursor=pointer]:
+          - /url: ./blogs/why-every-organisation-should-invest-in-keynote-keynotepro.html
+          - text: Read More
+          - generic [ref=e105]: 
+  - contentinfo [ref=e106]:
+    - generic [ref=e109]:
+      - generic [ref=e112]:
+        - paragraph [ref=e113]: Call for a consultation now!
+        - paragraph [ref=e116]:
+          - link "+91 9370210282" [ref=e117] [cursor=pointer]:
+            - /url: tel:+919370210282
+      - generic [ref=e120]:
+        - paragraph [ref=e121]: Write to us
+        - paragraph [ref=e124]:
+          - link "info@pushpam.com" [ref=e125] [cursor=pointer]:
+            - /url: mailto:info@pushpam.com
+        - paragraph [ref=e128]:
+          - link "sales@pushpam.com" [ref=e129] [cursor=pointer]:
+            - /url: mailto:sales@pushpam.com
+      - generic [ref=e132]:
+        - paragraph [ref=e133]: Address
+        - paragraph [ref=e134]: 1st Floor, 635/1B, New Gajara Co-op Housing Society, Bibwewadi Road, Bibwewadi, Pune, Maharashtra - 411037
+    - generic [ref=e136]:
+      - generic [ref=e137]:
+        - img "Pushpam Consultancy logo" [ref=e139]
+        - paragraph [ref=e140]: Pushpam Consultancy brings over three decades of trusted experience as one of the leading kiosks manufacturers in Pune. We offer innovative solutions and partner with leading brands to deliver quality, value, and technology that makes a real difference.
+        - paragraph [ref=e141]: GST - 27AAFCP6703R1ZT
+        - list [ref=e142]:
+          - listitem [ref=e143]:
+            - link [ref=e144] [cursor=pointer]:
+              - /url: https://www.facebook.com/PCSPL1993/
+            - link [ref=e145] [cursor=pointer]:
+              - /url: https://www.instagram.com/pushpamconsultancy/
+            - link [ref=e146] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/pushpamcomputers&softwarepvt.ltd./
+            - link [ref=e147] [cursor=pointer]:
+              - /url: https://www.youtube.com/channel/UCeUgOeDNsxw6sH21z1qlipg/videos
+      - generic [ref=e148]:
+        - heading "Quick Link" [level=4] [ref=e149]
+        - list [ref=e150]:
+          - listitem [ref=e151]:
+            - link "> Kiosk Solutions" [ref=e152] [cursor=pointer]:
+              - /url: ./kiosk-solutions.php
+              - generic [ref=e153]: ">"
+              - text: Kiosk Solutions
+          - listitem [ref=e154]:
+            - link "> Contact Us" [ref=e155] [cursor=pointer]:
+              - /url: ./contact-us.php
+              - generic [ref=e156]: ">"
+              - text: Contact Us
+          - listitem [ref=e157]:
+            - link "> Career" [ref=e158] [cursor=pointer]:
+              - /url: "./career.php\n          "
+              - generic [ref=e159]: ">"
+              - text: Career
+          - listitem [ref=e160]:
+            - link "> Privacy Policy" [ref=e161] [cursor=pointer]:
+              - /url: ./privacy_policy.php
+              - generic [ref=e162]: ">"
+              - text: Privacy Policy
+      - generic [ref=e163]:
+        - heading "Enquiry" [level=4] [ref=e164]
+        - generic [ref=e165]:
+          - textbox "Name" [ref=e167]
+          - textbox "Email" [ref=e169]
+          - textbox "Contact no." [ref=e171]
+          - generic [ref=e173]:
+            - generic [ref=e175]: 96j4l
+            - textbox [ref=e176]
+          - button "Submit" [ref=e178] [cursor=pointer]

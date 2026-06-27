@@ -1,0 +1,15 @@
+[     356ms] [ERROR] TypeError: Failed to fetch
+    at T (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1371)
+    at w (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1319)
+    at D (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1739) @ https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:2
+[     356ms] [ERROR] TypeError: Failed to fetch
+    at T (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1371)
+    at w (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1319)
+    at D (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1739)
+    at HTMLDocument.<anonymous> (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1787) @ https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:2
+[   43275ms] [INFO] Clear-Site-Data header on 'https://w1mru4-mj.myshopify.com/cart/add': Cleared data types: "prefetchCache", "prerenderCache". @ https://w1mru4-mj.myshopify.com/products/gas-sensor:0
+[   43521ms] TypeError: Cannot read properties of null (reading 'querySelectorAll')
+    at getFocusableElements (https://w1mru4-mj.myshopify.com/cdn/shop/t/4/assets/global.js?v=7301445359237545521781821678:1:70)
+    at trapFocus (https://w1mru4-mj.myshopify.com/cdn/shop/t/4/assets/global.js?v=7301445359237545521781821678:1:2420)
+    at addEventListener.once (https://w1mru4-mj.myshopify.com/cdn/shop/t/4/assets/cart-drawer.js?v=169981311261118214701781821679:1:1230)
+    at CartDrawer.a (event-observer-collector.js:2:531)

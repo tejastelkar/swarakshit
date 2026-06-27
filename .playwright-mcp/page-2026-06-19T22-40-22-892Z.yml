@@ -1,0 +1,119 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#MainContent"
+  - generic [ref=e5]:
+    - button "Previous" [ref=e6] [cursor=pointer]:
+      - img [ref=e7]
+    - generic [ref=e9]:
+      - generic:
+        - generic:
+          - generic: For company purchases, please contact us via email
+      - generic [ref=e12]: Welcome to our store
+    - button "Next" [ref=e13] [cursor=pointer]:
+      - img [ref=e14]
+  - banner [ref=e18]:
+    - link "SWARAKSHIT" [ref=e19] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=e20]:
+      - list [ref=e21]:
+        - listitem [ref=e22]:
+          - link "Home" [ref=e23] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e24]: Home
+        - listitem [ref=e25]:
+          - link "Catalog" [ref=e26] [cursor=pointer]:
+            - /url: /collections/all
+            - generic [ref=e27]: Catalog
+        - listitem [ref=e28]:
+          - link "Contact" [ref=e29] [cursor=pointer]:
+            - /url: /pages/contact
+            - generic [ref=e30]: Contact
+    - generic [ref=e31]:
+      - group [ref=e33]:
+        - button "Search" [ref=e34] [cursor=pointer]:
+          - img [ref=e37]
+      - link "Log in" [ref=e39] [cursor=pointer]:
+        - /url: https://w1mru4-mj.myshopify.com/customer_authentication/redirect?locale=en&region_country=IN
+        - img [ref=e42]
+        - generic [ref=e44]: Log in
+      - button "Cart" [ref=e45] [cursor=pointer]:
+        - img [ref=e47]
+        - generic [ref=e49]: Cart
+  - main [ref=e50]:
+    - generic [ref=e52]:
+      - paragraph [ref=e53]: "404"
+      - heading "Page not found" [level=1] [ref=e54]
+      - link "Continue shopping" [ref=e55] [cursor=pointer]:
+        - /url: /collections/all
+  - contentinfo [ref=e56]:
+    - generic [ref=e57]:
+      - generic [ref=e58]:
+        - generic [ref=e59]:
+          - link "SWARAKSHIT" [ref=e60] [cursor=pointer]:
+            - /url: /
+          - generic [ref=e61]:
+            - link [ref=e62] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e63]
+            - link [ref=e65] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e66]
+            - link [ref=e68] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e69]
+            - link [ref=e71] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e72]
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - heading "Quick links" [level=4] [ref=e76]
+            - list [ref=e77]:
+              - listitem [ref=e78]:
+                - link "Search" [ref=e79] [cursor=pointer]:
+                  - /url: /search
+          - generic [ref=e80]:
+            - heading "Page sites" [level=4] [ref=e81]
+            - list [ref=e82]:
+              - listitem [ref=e83]:
+                - link "Home" [ref=e84] [cursor=pointer]:
+                  - /url: /
+              - listitem [ref=e85]:
+                - link "Catalog" [ref=e86] [cursor=pointer]:
+                  - /url: /collections/all
+              - listitem [ref=e87]:
+                - link "Contact" [ref=e88] [cursor=pointer]:
+                  - /url: /pages/contact
+          - generic [ref=e90]:
+            - paragraph [ref=e91]: (+91) 98765 43210
+            - paragraph [ref=e92]: support@svarakshit.com
+            - paragraph [ref=e93]: (+91) 98765 43211
+            - paragraph [ref=e94]: sales@svarakshit.com
+      - generic [ref=e95]:
+        - generic [ref=e96]:
+          - paragraph [ref=e97]:
+            - text: © 2026 Swarakshit | Smart Gas Leak Detectors & Home Safety.
+            - link "Powered by Shopify" [ref=e98] [cursor=pointer]:
+              - /url: https://www.shopify.com
+          - list [ref=e99]:
+            - listitem [ref=e100]:
+              - link "Refund policy" [ref=e101] [cursor=pointer]:
+                - /url: /policies/refund-policy
+            - listitem [ref=e102]:
+              - link "Privacy policy" [ref=e103] [cursor=pointer]:
+                - /url: /policies/privacy-policy
+            - listitem [ref=e104]:
+              - link "Terms of service" [ref=e105] [cursor=pointer]:
+                - /url: /policies/terms-of-service
+            - listitem [ref=e106]:
+              - link "Contact information" [ref=e107] [cursor=pointer]:
+                - /url: /pages/contact
+        - generic [ref=e108]:
+          - img "Generic" [ref=e110]
+          - img "Apple Pay" [ref=e118]
+          - img "Diners Club" [ref=e130]
+          - img "Discover" [ref=e135]
+          - img "Google Pay" [ref=e145]
+          - img "JCB" [ref=e154]
+          - img "Mastercard" [ref=e164]
+          - img "PayPal" [ref=e172]
+          - img "Visa" [ref=e179]

@@ -1,0 +1,9 @@
+[     351ms] [ERROR] TypeError: Failed to fetch
+    at T (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1371)
+    at w (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1319)
+    at D (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1739) @ https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:2
+[     356ms] [ERROR] TypeError: Failed to fetch
+    at T (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1371)
+    at w (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1319)
+    at D (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1739)
+    at HTMLDocument.<anonymous> (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1787) @ https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:2

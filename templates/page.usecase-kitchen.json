@@ -1,0 +1,121 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "svarakshit-usecase-hero",
+      "settings": {
+        "heading": "Swarakshit for Home Kitchens",
+        "subtitle": "Protect your family by checking for combustible gas leaks where daily cooking happens most.",
+        "overlay_opacity": 30
+      }
+    },
+    "intro_text": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Everyday Cooking Spaces Need Everyday Gas Safety",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Kitchens are one of the most important safety zones in any home that uses LPG or PNG. Regular checks around cylinders, pipes, regulators, burner joints, and stove connections can help families catch combustible gas leaks before they become dangerous. Swarakshit is designed to make those routine checks easier, faster, and more dependable.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 80,
+        "padding_bottom": 60
+      }
+    },
+    "deep_dive_text": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Protecting the Elderly and Children",
+            "heading_size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Elderly family members may not always notice a faint leak quickly, and children can accidentally disturb knobs, pipes, or nearby fittings. Swarakshit adds a practical layer of support for households that want a more reliable way to check kitchen gas points and build safer habits around daily cooking.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-2",
+        "full_width": true,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "testimonials": {
+      "type": "svarakshit-testimonials",
+      "blocks": {
+        "test_1": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Priya S., Mumbai",
+            "text": "I often leave things simmering while I manage my kids. Swarakshit caught a slow leak from my old stove pipe that I couldn't even smell. It literally saved our house."
+          }
+        },
+        "test_2": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Rahul M., Bangalore",
+            "text": "We wanted something practical for regular kitchen checks without adding clutter. Swarakshit is simple to keep nearby and easy for everyone at home to use."
+          }
+        }
+      },
+      "block_order": [
+        "test_1",
+        "test_2"
+      ],
+      "settings": {
+        "heading": "Trusted by Thousands of Families"
+      }
+    },
+    "product": {
+      "type": "svarakshit-our-product",
+      "settings": {
+        "left_heading": "Secure Your Kitchen Today",
+        "left_text": "Bring home the Swarakshit portable gas monitor for regular kitchen safety checks around your stove, cylinder, pipe connections, and regulator."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "intro_text",
+    "deep_dive_text",
+    "testimonials",
+    "product"
+  ]
+}

@@ -1,0 +1,152 @@
+<style>
+  .app-hero {
+    position: relative;
+    width: 100%;
+    min-height: 90vh; 
+    background-size: cover;
+    background-position: center;
+    background-color: #1a1a1a;
+    display: flex;
+    align-items: flex-end; 
+    padding-top: 150px; /* space for header */
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-bottom: 8rem; /* space for the rounded overlap of the next section */
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+  .app-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
+    z-index: 1;
+  }
+  .app-hero__container {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .app-hero__content {
+    color: #fff;
+    padding-bottom: 2rem;
+    max-width: 100%;
+  }
+  .app-hero__subtitle {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: #c49a6c;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+  .app-hero__title {
+    font-size: clamp(4rem, 6vw, 7rem);
+    font-weight: 700;
+    line-height: 1;
+    margin: 0 0 1.5rem 0;
+    color: #fff;
+    letter-spacing: -0.04em;
+  }
+  .app-hero__text {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 500px;
+  }
+
+  .app-hero__bg-fallback {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.65;
+  }
+
+  @media screen and (max-width: 990px) {
+    .app-hero {
+      min-height: 80vh;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      padding-bottom: 6rem;
+    }
+    .app-hero__container {
+      align-items: flex-start;
+      padding: 0;
+    }
+    .app-hero__content {
+      padding-bottom: 0;
+    }
+  }
+</style>
+
+<div class="app-hero" {% if section.settings.bg_image %}style="background-image: url({{ section.settings.bg_image | image_url: width: 2000 }});"{% endif %}>
+  {% if section.settings.bg_image == blank %}
+    {% render 'svarakshit-fallback-image',
+      context: section.settings.title,
+      alt: section.settings.title,
+      class: 'app-hero__bg-fallback',
+      loading: 'eager'
+    %}
+  {% endif %}
+  <div class="app-hero__container">
+    <div class="app-hero__content">
+      {% if section.settings.subtitle != blank %}
+        <div class="app-hero__subtitle">{{ section.settings.subtitle }}</div>
+      {% endif %}
+      {% if section.settings.title != blank %}
+        <h1 class="app-hero__title">{{ section.settings.title }}</h1>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <div class="app-hero__text">{{ section.settings.text }}</div>
+      {% endif %}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Application Hero",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "SWARAKSHIT"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Office Kit"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Get personalized SWARAKSHIT set for your Office"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Application Hero"
+    }
+  ]
+}
+{% endschema %}

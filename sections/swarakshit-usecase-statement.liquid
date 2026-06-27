@@ -1,0 +1,91 @@
+{% schema %}
+{
+  "name": "Swarakshit Statement",
+  "tag": "section",
+  "class": "section-usecase-statement",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#111111"
+    },
+    {
+      "type": "textarea",
+      "id": "statement",
+      "label": "Statement",
+      "default": "In an industrial environment, an undetected leak isn't just an inconvenience. It's a catastrophe waiting to happen."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Swarakshit Statement"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding: clamp(100px, 15vw, 200px) 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+  }
+
+  #shopify-section-{{ section.id }} .swarakshit-statement {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .swarakshit-statement__text {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+    /* Animation state */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #shopify-section-{{ section.id }} .swarakshit-statement.is-visible .swarakshit-statement__text {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<div class="swarakshit-statement" id="statement-{{ section.id }}">
+  <h2 class="swarakshit-statement__text">
+    {{ section.settings.statement }}
+  </h2>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const statementContainer = document.getElementById('statement-{{ section.id }}');
+    if (!statementContainer) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          statementContainer.classList.add('is-visible');
+          observer.unobserve(statementContainer);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    observer.observe(statementContainer);
+  });
+</script>

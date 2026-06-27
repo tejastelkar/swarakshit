@@ -1,0 +1,327 @@
+{% schema %}
+{
+  "name": "Svarakshit Cards Slider",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Protects Every Space"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "From your kitchen to large commercial kitchens — Swarakshit works wherever gas flows"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Card Title"
+        },
+        {
+          "type": "text",
+          "id": "card_subtitle",
+          "label": "Card Subtitle",
+          "default": "Short description of the product or feature."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Card Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Svarakshit Cards Slider",
+      "blocks": [
+        { "type": "card", "settings": { "title": "LPG Cylinders", "card_subtitle": "Check cylinder valves, rubber pipes & pressure regulators before they become dangerous" } },
+        { "type": "card", "settings": { "title": "PNG Pipelines", "card_subtitle": "Test piped natural gas connections at meter points, joints & burner connections" } },
+        { "type": "card", "settings": { "title": "Gas Geysers", "card_subtitle": "Enclosed bathrooms trap gas — test geyser connections regularly to prevent accidents" } },
+        { "type": "card", "settings": { "title": "Hotels & Restaurants", "card_subtitle": "Commercial kitchens with multiple burners — daily FSSAI-compliant safety checks" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .svarakshit-cards-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .svarakshit-cards-heading {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0 0 16px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #111111;
+  }
+
+  .svarakshit-cards-sub {
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  @media screen and (max-width: 989px) {
+    .svarakshit-cards-heading {
+      font-size: 2.5rem;
+    }
+    .svarakshit-cards-header {
+      margin-bottom: 3rem;
+    }
+  }
+
+  .svarakshit-cards-slider-wrapper {
+    overflow: hidden;
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  @media screen and (max-width: 1600px) {
+    .svarakshit-cards-slider-wrapper {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  @media screen and (max-width: 989px) {
+    .svarakshit-cards-slider-wrapper {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  .svarakshit-cards-slider {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    padding: 0;
+    align-items: stretch;
+  }
+
+  @media (max-width: 989px) {
+    .svarakshit-cards-slider {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .svarakshit-cards-slider {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .svarakshit-card {
+    min-height: 100%;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    background: #ffffff;
+  }
+
+  @media (max-width: 768px) {
+    .svarakshit-card {
+      min-height: 0;
+    }
+  }
+
+  .svarakshit-card__image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.22 / 1;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    flex-shrink: 0;
+  }
+
+  .svarakshit-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .svarakshit-card:hover .svarakshit-card__image {
+    transform: scale(1.05);
+  }
+
+  .svarakshit-card__content {
+    width: 100%;
+    padding: 20px 18px 18px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+    background-color: #ffffff;
+    flex: 1 1 auto;
+  }
+
+  .svarakshit-card__title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4px;
+    color: #000000;
+  }
+
+  .svarakshit-card__title-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  .svarakshit-card__title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(18px, 1.35vw, 22px);
+    font-weight: 700;
+    margin: 0;
+    color: inherit;
+    letter-spacing: -0.03em;
+    line-height: 1.16;
+  }
+
+  .svarakshit-card__superscript {
+    font-size: 12px;
+    font-weight: 600;
+    vertical-align: super;
+    margin-left: 1px;
+  }
+
+  .svarakshit-card__title-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+  }
+
+  .svarakshit-card:hover .svarakshit-card__title-wrapper::after {
+    width: 100%;
+  }
+
+  .svarakshit-card__subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(13px, 0.92vw, 14.5px);
+    line-height: 1.38;
+    color: #333333;
+    margin: 0;
+    max-width: 100%;
+    font-weight: 400;
+  }
+
+  @media (max-width: 1400px) {
+    .svarakshit-card__content {
+      padding: 18px 16px 16px;
+    }
+
+    .svarakshit-card__title {
+      font-size: 17px;
+    }
+
+    .svarakshit-card__subtitle {
+      font-size: 12.5px;
+    }
+  }
+
+  @media (max-width: 989px) {
+    .svarakshit-card__image-container {
+      aspect-ratio: 1.25 / 1;
+    }
+
+    .svarakshit-card__content {
+      padding: 20px;
+    }
+
+    .svarakshit-card__title {
+      font-size: 19px;
+    }
+  }
+
+</style>
+
+<div class="svarakshit-cards-slider-wrapper">
+  <div class="svarakshit-cards-header">
+    {% if section.settings.heading != blank %}
+      <h2 class="svarakshit-cards-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.subtitle != blank %}
+      <p class="svarakshit-cards-sub">{{ section.settings.subtitle }}</p>
+    {% endif %}
+  </div>
+  <div class="svarakshit-cards-slider">
+    {% for block in section.blocks %}
+      <a href="{{ block.settings.link | default: '#' }}" class="svarakshit-card" {{ block.shopify_attributes }}>
+        <div class="svarakshit-card__image-container">
+          {% if block.settings.image %}
+            <img
+              src="{{ block.settings.image | image_url: width: 600 }}"
+              alt="{{ block.settings.title | escape }}"
+              class="svarakshit-card__image"
+              loading="lazy"
+              width="{{ block.settings.image.width }}"
+              height="{{ block.settings.image.height }}"
+            >
+          {% else %}
+            {% render 'svarakshit-fallback-image',
+              context: block.settings.title,
+              alt: block.settings.title,
+              class: 'svarakshit-card__image',
+              loading: 'lazy'
+            %}
+          {% endif %}
+        </div>
+        <div class="svarakshit-card__content">
+          <div class="svarakshit-card__title-row">
+            <div class="svarakshit-card__title-wrapper">
+              <h3 class="svarakshit-card__title">
+                {{ block.settings.title }}
+              </h3>
+            </div>
+          </div>
+          <p class="svarakshit-card__subtitle">{{ block.settings.card_subtitle }}</p>
+        </div>
+      </a>
+    {% else %}
+      {%- if request.design_mode -%}
+        <div style="padding:40px;text-align:center;color:#999;font-size:16px;border:2px dashed #ddd;border-radius:16px;width:100%;">
+          Add cards using the block controls in the Customizer.
+        </div>
+      {%- endif -%}
+    {% endfor %}
+  </div>
+</div>

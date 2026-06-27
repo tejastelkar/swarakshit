@@ -1,0 +1,1763 @@
+{% comment %}
+  Swarakshit Main Product Section
+  Pixel-perfect replica of Airvalent Elegance layout.
+
+  Gallery layout (from Airvalent computed styles at 1440px):
+  - Outer product: CSS grid, LEFT col (auto/1fr) + RIGHT col (382px)
+  - Gallery inner: CSS grid, cols = 563px + 310px, gap = 20px
+  - Main image: 563px wide × natural height (auto), object-fit: cover
+  - Thumbnails: 310×310px FIXED SQUARE each, stacked in right col
+
+  Right info panel:
+  - sticky, top: 120px
+  - vendor (text-base), title+price (side by side), description,
+    inventory (stock text + gradient progress bar::before), 
+    qty+ATC form, payment button (separate form), 
+    more payment options, share row, trust items (4)
+{% endcomment %}
+
+{{ 'component-accordion.css' | asset_url | stylesheet_tag }}
+
+<style>
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+/* ──────────────────────────────────────────────────────────
+   BASE — font, wrapper, reset
+   ────────────────────────────────────────────────────────── */
+.av-wrap * {
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+}
+
+.av-wrap {
+  width: 100%;
+  background: #fff;
+  color: rgb(20, 20, 20);
+  margin-top: {{ section.settings.margin_top }}px;
+  margin-bottom: {{ section.settings.margin_bottom }}px;
+}
+
+.av-product > * {
+  min-width: 0;
+}
+
+/* ──────────────────────────────────────────────────────────
+   OUTER PRODUCT GRID
+   Desktop: LEFT (auto) + RIGHT (382px gap-5)
+   Mobile: single column
+   ────────────────────────────────────────────────────────── */
+.av-product {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  padding: 1.5rem;
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+@media (min-width: 1024px) {
+  .av-product {
+    display: grid;
+    grid-template-columns: minmax(0, 58%) minmax(26rem, 42%);
+    gap: clamp(1rem, 1.6vw, 1.5rem);
+    align-items: flex-start;
+    padding: 0 1.5rem 2rem;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   LEFT: GALLERY
+   Inner CSS grid: 2 cols — main (auto/1fr) + thumbs (310px)
+   On mobile: single col, thumbs wrap horizontal
+   ────────────────────────────────────────────────────────── */
+.av-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  min-width: 0;
+}
+
+@media (min-width: 1024px) {
+  .av-gallery {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(10rem, 18vw, 14rem);
+    grid-template-rows: auto;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+}
+
+/* MAIN IMAGE — left cell, bounded height matching Airvalent ~505px */
+.av-gallery__main {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-radius: 24px;
+  box-shadow: none;
+  overflow: hidden;
+  grid-row: 1;
+  grid-column: 1;
+  height: clamp(30rem, 55vw, 56rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.av-gallery__main img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  padding: clamp(3rem, 4.6vw, 4.5rem) clamp(1.2rem, 1.8vw, 1.6rem) clamp(1.2rem, 1.8vw, 1.6rem);
+  margin: 0 auto;
+  display: block;
+}
+
+/* On mobile: fixed height */
+@media (max-width: 1023px) {
+  .av-gallery__main {
+    height: 480px;
+  }
+  .av-gallery__main img {
+    object-fit: contain;
+    object-position: center center;
+    padding: 2.25rem 1rem 1rem;
+  }
+}
+
+/* THUMB COLUMN — right cell */
+.av-gallery__thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  grid-row: 1;
+  grid-column: 2;
+}
+
+@media (max-width: 1023px) {
+  .av-gallery__thumbs {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+}
+
+/* Each thumb is a FIXED 310×310 square — exact Airvalent spec */
+.av-gallery__thumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 22px;
+  overflow: hidden;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+
+.av-gallery__thumb:hover { opacity: 0.85; }
+
+.av-gallery__thumb img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  padding: 1.4rem 0.85rem 0.85rem;
+  margin: 0 auto;
+  display: block;
+}
+
+@media (max-width: 1023px) {
+  .av-gallery__thumb {
+    width: calc(50% - 0.375rem);
+    aspect-ratio: 1 / 1;
+  }
+  .av-gallery__thumb img {
+    object-fit: contain;
+    object-position: center center;
+    padding: 1.1rem 0.75rem 0.75rem;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   RIGHT: INFO PANEL
+   Matches Airvalent flex-col layout
+   ────────────────────────────────────────────────────────── */
+.av-info {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* ── Vendor ──────────────── */
+.av-info__vendor {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25.6px;
+  letter-spacing: normal;
+  color: rgb(20, 20, 20);
+  margin-bottom: 1rem;
+}
+
+/* ── Title + Price — stacked vertically ─── */
+.av-info__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.av-info__title {
+  font-size: clamp(2.4rem, 2.2vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -1.2px;
+  color: rgb(20, 20, 20);
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.av-info__price {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: normal;
+  color: rgb(20, 20, 20);
+  white-space: nowrap;
+  padding-top: 0;
+}
+
+/* ── Description ───────────── */
+.av-info__desc {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25.6px;
+  letter-spacing: normal;
+  color: rgb(20, 20, 20);
+  margin-bottom: 1.5rem;
+  opacity: 0.85;
+}
+
+.av-info__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+
+/* Quantity pill — Airvalent: 1px border rgba(20,20,20,0.1), radius 60px, h 52px */
+.av-info__qty {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(20, 20, 20, 0.1);
+  border-radius: 60px;
+  height: 56px;
+  min-width: 120px;
+  background: #fff;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.av-info__qty-btn {
+  width: 42px;
+  height: 56px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: rgb(20, 20, 20);
+  transition: opacity 0.15s;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.av-info__qty-btn:hover { opacity: 0.5; }
+
+.av-info__qty-input {
+  flex: 1;
+  height: 56px;
+  border: none;
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: rgb(20, 20, 20);
+  background: transparent;
+  -moz-appearance: textfield;
+  padding: 0;
+  min-width: 28px;
+}
+
+.av-info__qty-input::-webkit-outer-spin-button,
+.av-info__qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ATC button — exact Airvalent: 15.2693px, weight 700, white */
+.av-info__atc {
+  flex: 1;
+  height: 56px;
+  min-height: 56px;
+  background: rgb(20, 20, 20);
+  color: #fff;
+  border: none;
+  border-radius: 60px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: normal;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  padding: 0 1.5rem;
+}
+
+.av-info__atc:hover:not(:disabled) {
+  background: rgb(40, 40, 40);
+}
+
+.av-info__atc:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.av-info__atc:disabled {
+  background: rgba(20, 20, 20, 0.35);
+  cursor: not-allowed;
+}
+
+@media screen and (max-width: 768px) {
+  .av-info__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .av-info__qty {
+    width: auto;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  .av-info__atc {
+    width: auto;
+    flex: none;
+    box-sizing: border-box;
+  }
+}
+
+/* ── Payment button — own form to fix hover-bleed bug ── */
+.av-info__payment {
+  margin-bottom: 1.75rem;
+  position: relative;
+  isolation: isolate;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: 60px;
+}
+
+.av-info__payment .shopify-payment-button__button {
+  border-radius: 60px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 700 !important;
+  min-height: 56px !important;
+  font-size: 16px !important;
+  background-color: #E87722 !important;
+  color: #ffffff !important;
+}
+
+.av-info__payment .shopify-payment-button__button:hover,
+.av-info__payment .shopify-payment-button__button:focus-visible {
+  background-color: #C5611A !important;
+  color: #ffffff !important;
+}
+
+/* ── "More payment options" link ─── */
+.av-info__more-pay {
+  text-align: center;
+  margin-bottom: 1.4rem;
+}
+
+.av-info__more-pay a {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.5px;
+  letter-spacing: normal;
+  color: rgb(20, 20, 20);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  opacity: 0.8;
+  transition: opacity 0.15s;
+}
+
+.av-info__more-pay a:hover { opacity: 1; }
+
+/* ── Share row — exact Airvalent ─── */
+.av-info__share {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: normal;
+  color: rgb(20, 20, 20);
+}
+
+.av-info__share-label { flex-shrink: 0; }
+
+.av-info__share-icons {
+  display: flex;
+  gap: 0.1rem;
+  align-items: center;
+}
+
+.av-info__share-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(20, 20, 20);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.av-info__share-icons a:hover {
+  background: rgba(20, 20, 20, 0.06);
+}
+
+.av-info__share-icons svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.av-info__need-help {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: rgb(20, 20, 20);
+  text-decoration: none;
+  white-space: nowrap;
+  opacity: 0.9;
+  transition: opacity 0.15s;
+}
+
+.av-info__need-help:hover { opacity: 1; }
+
+.av-info__need-help svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  flex-shrink: 0;
+}
+
+/* ── Trust items — Airvalent style: no card, just stacked divs with icon+text ── */
+.av-info__trust {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 1.5rem;
+}
+
+.av-info__trust-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.5px;
+  letter-spacing: normal;
+  color: rgb(20, 20, 20);
+  background: rgb(var(--color-background, 248 248 248));
+  border-radius: 16px;
+  margin-bottom: 0.5rem;
+}
+
+.av-info__trust-item:last-child { margin-bottom: 0; }
+
+.av-info__trust-item svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  stroke: rgb(20, 20, 20);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.7;
+}
+
+/* ── Accordions ─────────────────── */
+.av-info__accordions {
+  border-top: 1px solid rgba(20, 20, 20, 0.1);
+}
+
+.av-info__accordion {
+  border-bottom: 1px solid rgba(20, 20, 20, 0.1);
+}
+
+.av-info__accordion summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 0;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: rgb(20, 20, 20);
+  list-style: none;
+  user-select: none;
+  -webkit-user-select: none;
+  gap: 1rem;
+}
+
+.av-info__accordion summary::-webkit-details-marker { display: none; }
+
+.av-info__accordion-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.av-info__accordion-icon::before,
+.av-info__accordion-icon::after {
+  content: '';
+  position: absolute;
+  background: rgb(20, 20, 20);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.av-info__accordion-icon::before {
+  top: 7px; left: 0;
+  width: 16px; height: 1.5px;
+}
+
+.av-info__accordion-icon::after {
+  top: 0; left: 7px;
+  width: 1.5px; height: 16px;
+}
+
+details[open].av-info__accordion .av-info__accordion-icon::after {
+  transform: rotate(90deg);
+  opacity: 0;
+}
+
+.av-info__accordion-body {
+  padding-bottom: 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: rgba(20, 20, 20, 0.65);
+}
+
+.av-info__accordion-body p { margin: 0 0 0.5rem; }
+.av-info__accordion-body p:last-child { margin-bottom: 0; }
+
+/* ── Responsive ─── */
+@media (max-width: 1023px) {
+  .av-info {
+    position: static;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1320px) {
+  .av-info__vendor {
+    margin-bottom: 0.75rem;
+  }
+
+  .av-info__head {
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .av-info__price {
+    font-size: 1.9rem;
+    padding-top: 0.2rem;
+  }
+
+  .av-info__desc {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    margin-bottom: 1.35rem;
+  }
+
+  .av-info__actions {
+    gap: 0.625rem;
+  }
+
+  .av-info__qty,
+  .av-info__atc,
+  .av-info__payment .shopify-payment-button__button {
+    height: 52px;
+    min-height: 52px !important;
+  }
+
+  .av-info__qty-btn,
+  .av-info__qty-input {
+    height: 52px;
+  }
+
+  .av-info__atc {
+    font-size: 15px;
+    padding: 0 1.2rem;
+  }
+}
+</style>
+
+<div class="av-wrap">
+  <div class="av-product">
+
+    {%- comment -%}━━━━ LEFT: GALLERY ━━━━{%- endcomment -%}
+    <div class="av-gallery">
+
+      {%- assign first_img = product.media | first -%}
+
+      {%- comment -%} Main large image — click to open lightbox {%- endcomment -%}
+      <div class="av-gallery__main" id="av-main-wrap" onclick="avOpenLightbox(window.avCurrentIndex || 0)" style="cursor:zoom-in;">
+        {%- if first_img.media_type == 'image' -%}
+          <img
+            id="av-main-img"
+            src="{{ first_img | image_url: width: 1400 }}"
+            srcset="{{ first_img | image_url: width: 600 }} 600w, {{ first_img | image_url: width: 1000 }} 1000w, {{ first_img | image_url: width: 1400 }} 1400w"
+            sizes="(min-width: 1024px) 55vw, 100vw"
+            alt="{{ first_img.preview_image.alt | escape }}"
+            loading="eager"
+            width="{{ first_img.preview_image.width }}"
+            height="{{ first_img.preview_image.height }}"
+            data-full-src="{{ first_img | image_url: width: 2048 }}"
+          >
+        {%- elsif first_img.media_type == 'video' -%}
+          {{ first_img | media_tag }}
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Thumbnail column — click updates main image + highlights active thumb {%- endcomment -%}
+      {%- if product.media.size > 1 -%}
+        <div class="av-gallery__thumbs">
+          {%- for media in product.media offset: 1 -%}
+            {%- if media.media_type == 'image' -%}
+              <div
+                class="av-gallery__thumb"
+                data-src="{{ media | image_url: width: 1400 }}"
+                data-full="{{ media | image_url: width: 2048 }}"
+                data-index="{{ forloop.index }}"
+                onclick="avSetMain(this)"
+                aria-label="{{ media.preview_image.alt | escape }}"
+              >
+                <img
+                  src="{{ media | image_url: width: 400 }}"
+                  srcset="{{ media | image_url: width: 250 }} 250w, {{ media | image_url: width: 400 }} 400w"
+                  sizes="(min-width: 768px) 310px, 50vw"
+                  alt="{{ media.preview_image.alt | escape }}"
+                  loading="lazy"
+                  width="{{ media.preview_image.width }}"
+                  height="{{ media.preview_image.height }}"
+                >
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+    {%- comment -%}━━━━ /GALLERY ━━━━{%- endcomment -%}
+
+    {%- comment -%}━━━━ RIGHT: INFO PANEL ━━━━{%- endcomment -%}
+    <div class="av-info">
+
+      {%- comment -%} Vendor / brand — split on pipe to show only the brand name {%- endcomment -%}
+      {%- assign vendor_parts = shop.name | split: ' | ' -%}
+      <div class="av-info__vendor">{{ vendor_parts[0] }}</div>
+
+      {%- comment -%} Title + Price — 2-col grid exactly like Airvalent {%- endcomment -%}
+      <div class="av-info__head">
+        <h1 class="av-info__title">{{ product.title }}</h1>
+        <div class="av-info__price">{{ product.price | money }}</div>
+      </div>
+
+      <div class="av-info__reviews" aria-label="Customer reviews summary">
+        <!-- Start of Judge.me code -->
+        <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
+          {{ product.metafields.judgeme.badge }}
+        </div>
+        <!-- End of Judge.me code -->
+      </div>
+
+      {%- comment -%} Short description from product {%- endcomment -%}
+      <div class="av-info__desc">
+        {%- if product.metafields.custom.short_description != blank -%}
+          {{ product.metafields.custom.short_description | metafield_tag }}
+        {%- elsif product.description != blank -%}
+          {{ product.description | strip_html | truncatewords: 25 }}
+        {%- else -%}
+          Portable · Instant Alert · Multi-Gas Detection
+        {%- endif -%}
+      </div>
+
+
+      {%- comment -%}
+        PRODUCT FORM — qty + Add to Cart ONLY.
+        Payment button is a SEPARATE form below to prevent
+        Shopify's dynamic checkout overlay from intercepting
+        hover events over the whole right panel.
+      {%- endcomment -%}
+      {%- form 'product', product, id: 'av-product-form' -%}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <div class="av-info__actions">
+
+          {%- comment -%} Quantity picker {%- endcomment -%}
+          <div class="av-info__qty">
+            <button
+              type="button"
+              class="av-info__qty-btn"
+              aria-label="Decrease quantity"
+              onclick="(function(btn){var i=btn.closest('.av-info__qty').querySelector('input');if(parseInt(i.value)>1){i.value=parseInt(i.value)-1;syncPayQty(i.value);}})(this)"
+            >
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <input
+              class="av-info__qty-input"
+              type="number"
+              id="av-qty"
+              name="quantity"
+              min="1"
+              value="1"
+              aria-label="Quantity"
+            >
+            <button
+              type="button"
+              class="av-info__qty-btn"
+              aria-label="Increase quantity"
+              onclick="(function(btn){var i=btn.closest('.av-info__qty').querySelector('input');i.value=parseInt(i.value)+1;syncPayQty(i.value);})(this)"
+            >
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3v6M9 6H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+
+          {%- comment -%} Add to cart button {%- endcomment -%}
+          <button
+            type="submit"
+            name="add"
+            id="av-atc"
+            class="av-info__atc"
+            {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+          >
+            {%- if product.selected_or_first_available_variant.available -%}
+              Add to cart&nbsp;&nbsp;&dash;&nbsp;&nbsp;{{ product.price | money }}
+            {%- else -%}
+              Sold out
+            {%- endif -%}
+          </button>
+
+        </div>
+      {%- endform -%}
+
+      {%- comment -%}
+        PAYMENT BUTTON — separate form.
+        Shopify's dynamic checkout button renders a position:absolute overlay
+        that covers its parent form; keeping it in its own form prevents hover-
+        bleed over the qty/ATC row.
+      {%- endcomment -%}
+      <div class="av-info__payment">
+        {%- form 'product', product, id: 'av-pay-form' -%}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <input type="hidden" name="quantity" id="av-pay-qty" value="1">
+          {{ form | payment_button }}
+        {%- endform -%}
+      </div>
+
+
+
+      {%- comment -%} Share + Need help {%- endcomment -%}
+      <div class="av-info__share">
+        <span class="av-info__share-label">Share:</span>
+        <div class="av-info__share-icons">
+          <a href="https://wa.me/?text={{ product.title | url_encode }}%20{{ shop.url | append: product.url | url_encode }}" target="_blank" rel="noopener" aria-label="Share on WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.8 11.8 0 0 0 12.09 0C5.52 0 .16 5.34.16 11.93c0 2.1.55 4.15 1.59 5.95L0 24l6.27-1.64a11.94 11.94 0 0 0 5.81 1.48h.01c6.57 0 11.93-5.35 11.93-11.93 0-3.18-1.24-6.17-3.5-8.43zM12.09 21.82h-.01a9.9 9.9 0 0 1-5.05-1.39l-.36-.21-3.72.98.99-3.63-.23-.37a9.9 9.9 0 0 1-1.52-5.27c0-5.46 4.44-9.91 9.91-9.91 2.65 0 5.14 1.03 7.01 2.9a9.86 9.86 0 0 1 2.9 7.01c0 5.47-4.45 9.92-9.92 9.92zm5.43-7.41c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.95 1.18-.18.2-.35.22-.65.08-.3-.15-1.27-.47-2.42-1.5-.89-.79-1.5-1.77-1.68-2.07-.18-.3-.02-.46.13-.6.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.64-.93-2.24-.25-.6-.5-.52-.68-.53h-.58c-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.5s1.08 2.9 1.23 3.1c.15.2 2.12 3.23 5.13 4.53.72.31 1.28.5 1.72.64.72.23 1.37.2 1.88.12.57-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.17-1.42-.08-.12-.28-.2-.58-.35z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url | url_encode }}{{ product.url | url_encode }}" target="_blank" rel="noopener" aria-label="Share on Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://twitter.com/intent/tweet?url={{ shop.url | url_encode }}{{ product.url | url_encode }}&text={{ product.title | url_encode }}" target="_blank" rel="noopener" aria-label="Share on X">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="mailto:?subject={{ product.title | url_encode }}&body={{ shop.url | url_encode }}{{ product.url | url_encode }}" aria-label="Share via Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          </a>
+        </div>
+        <a href="#swarakshit-faq" class="av-info__need-help">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2.5"/></svg>
+          Need help?
+        </a>
+      </div>
+
+      {%- comment -%} Trust items — matching Airvalent's exact text and icon set {%- endcomment -%}
+      <div class="av-info__trust">
+        <div class="av-info__trust-item">
+          <svg viewBox="0 0 24 24">
+            <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+          <span>Ready to ship within 5 business days from our factory</span>
+        </div>
+        <div class="av-info__trust-item">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+          </svg>
+          <span>30-day return policy</span>
+        </div>
+        <div class="av-info__trust-item">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <span>5-Year manufacturer's Warranty</span>
+        </div>
+        <div class="av-info__trust-item">
+          <svg viewBox="0 0 24 24">
+            <polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/>
+          </svg>
+          <span>USB-C charging cable included</span>
+        </div>
+      </div>
+
+
+
+    </div>
+    {%- comment -%}━━━━ /INFO PANEL ━━━━{%- endcomment -%}
+
+  </div>
+</div>
+
+<style>
+/* ── Product Details Section ─── */
+.av-product-details {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 32px 5rem;
+  color: rgb(23, 23, 23);
+  font-family: 'Inter', sans-serif;
+}
+
+.av-details-header {
+  margin-bottom: 2rem;
+}
+
+.av-details-header h2 {
+  font-size: 48.4992px;
+  font-weight: 700;
+  line-height: 48.4992px;
+  letter-spacing: -1.45498px;
+  color: rgb(0, 0, 0);
+  margin: 0;
+}
+
+.av-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding-top: 32px;
+}
+
+@media screen and (max-width: 989px) {
+  .av-product-details {
+    padding: 32px 2rem;
+  }
+  .av-details-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .av-details-header h2 {
+    font-size: 36px;
+    line-height: 1.1;
+  }
+  .av-details-label {
+    position: relative;
+    top: auto;
+  }
+}
+
+.av-details-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.av-details-label {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.54px;
+  color: rgb(0, 0, 0);
+  margin: 0;
+  position: sticky;
+  top: 0;
+}
+
+.av-details-text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25.6px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.av-details-text p {
+  margin: 0 0 18px;
+}
+.av-details-text p:last-child {
+  margin-bottom: 0;
+}
+
+.av-details-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.av-accordion {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.av-details-element[open] .av-summary-icon {
+  transform: rotate(45deg);
+}
+
+.av-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0;
+  cursor: pointer;
+  list-style: none;
+}
+.av-summary::-webkit-details-marker {
+  display: none;
+}
+
+.av-summary-title {
+  font-size: 18.54px;
+  font-weight: 500;
+  line-height: 18.54px;
+  letter-spacing: -0.5562px;
+  color: rgb(0, 0, 0);
+}
+
+.av-summary-icon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s ease;
+}
+
+.av-accordion-content {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25.6px;
+  color: rgb(0, 0, 0);
+  padding: 0 0 32px 0;
+  margin-top: -10px;
+}
+.av-accordion-content p {
+  margin: 0;
+}
+
+.av-info__reviews {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0 18px;
+  min-height: 24px;
+}
+
+.av-info__app-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 14px 0 18px;
+}
+
+.av-info__app-blocks:empty {
+  display: none;
+}
+
+.av-info__reviews .jdgm-widget {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+}
+
+.av-info__reviews .jdgm-prev-badge {
+  display: inline-flex !important;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.av-info__reviews .jdgm-prev-badge__stars {
+  display: inline-flex;
+  align-items: center;
+}
+
+.av-info__reviews .jdgm-star {
+  color: #e87722 !important;
+}
+
+.av-info__reviews .jdgm-prev-badge__text {
+  visibility: visible !important;
+  color: rgba(17, 17, 17, 0.72) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+}
+
+.av-reviews-section {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px 5rem 72px;
+  color: rgb(23, 23, 23);
+  font-family: 'Inter', sans-serif;
+}
+
+.av-reviews-section__inner {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 32px;
+}
+
+#judgeme_product_reviews {
+  width: 100%;
+}
+
+#judgeme_product_reviews .jdgm-rev-widg {
+  padding: 0 !important;
+}
+
+#judgeme_product_reviews .jdgm-rev-widg__title,
+#judgeme_product_reviews .jdgm-widget-title {
+  display: none !important;
+}
+
+#judgeme_product_reviews .jdgm-rev-widg__summary,
+#judgeme_product_reviews .jdgm-row-stars {
+  margin-bottom: 20px !important;
+}
+
+#judgeme_product_reviews .jdgm-rev-widg__summary-text,
+#judgeme_product_reviews .jdgm-prev-badge__text {
+  visibility: visible !important;
+}
+
+#judgeme_product_reviews .jdgm-rev-widg__reviews {
+  margin-top: 24px !important;
+}
+
+#judgeme_product_reviews .jdgm-rev-widg__body {
+  padding-top: 0 !important;
+}
+
+#judgeme_product_reviews .jdgm-noreviews {
+  padding: 20px 0 0 !important;
+}
+
+#judgeme_product_reviews .jdgm-rev-widg__summary,
+#judgeme_product_reviews .jdgm-noreviews,
+#judgeme_product_reviews .jdgm-rev-widg__reviews,
+#judgeme_product_reviews .jdgm-paginate {
+  max-width: 100% !important;
+}
+
+#judgeme_product_reviews .jdgm-btn,
+#judgeme_product_reviews .jdgm-write-rev-link,
+#judgeme_product_reviews .jdgm-ask-question-btn {
+  border-radius: 999px !important;
+  min-height: 48px !important;
+  padding: 0 26px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  box-shadow: none !important;
+}
+
+#judgeme_product_reviews .jdgm-write-rev-link,
+#judgeme_product_reviews .jdgm-btn {
+  background: #e87722 !important;
+  border-color: #e87722 !important;
+  color: #ffffff !important;
+}
+
+#judgeme_product_reviews .jdgm-write-rev-link:hover,
+#judgeme_product_reviews .jdgm-btn:hover {
+  background: #c5611a !important;
+  border-color: #c5611a !important;
+}
+
+#judgeme_product_reviews .jdgm-histogram,
+#judgeme_product_reviews .jdgm-gallery-wrap,
+#judgeme_product_reviews .jdgm-ugc {
+  margin-top: 20px !important;
+}
+
+@media (max-width: 1023px) {
+  .av-details-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .av-product-details {
+    padding: 32px 24px;
+  }
+  .av-reviews-section {
+    padding: 24px 24px 56px;
+  }
+}
+@media (max-width: 768px) {
+  .av-product-details {
+    padding: 24px 16px;
+  }
+  .av-details-header h2 {
+    font-size: 36px;
+    line-height: 36px;
+  }
+  .av-reviews-section {
+    padding: 24px 16px 48px;
+  }
+  .av-reviews-section__inner {
+    padding-top: 24px;
+  }
+}
+</style>
+
+<div class="av-product-details">
+  <div class="av-details-header">
+    <h2>Product details</h2>
+  </div>
+  <div class="av-details-grid">
+    <div class="av-details-left">
+      <h3 class="av-details-label">Description</h3>
+      <div class="av-details-text">
+        {%- if product.description != blank -%}
+          {{ product.description }}
+        {%- else -%}
+          <p><strong>Swarakshit Gas Leak Tester</strong></p>
+          <p>Portable · Instant Alert · Multi-Gas Detection</p>
+          <p><strong>Multi-Gas Detection:</strong> Detects LPG, PNG, CNG, methane & all combustible gases.</p>
+          <p><strong>LCD Display with "Hi" Alert:</strong> Digital screen shows gas level + 24°C temperature reading.</p>
+          <p><strong>LERC Certified:</strong> Approved by India's top gas safety authority.</p>
+          <p><strong>USB Rechargeable:</strong> 8+ hours battery with wrist strap for portability.</p>
+          <p><strong>Best Suited For:</strong> Home kitchens, LPG cylinder checks, PNG joints, gas regulator points, and similar household gas connections.</p>
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="av-details-right">
+      {%- assign detail_blocks = section.blocks | where: 'type', 'collapsible_tab' -%}
+      {%- for block in detail_blocks -%}
+        <div class="av-accordion"{% if forloop.last %} style="border-bottom: none;"{% endif %} {{ block.shopify_attributes }}>
+          <details class="av-details-element">
+            <summary class="av-summary">
+              <span class="av-summary-title">{{ block.settings.heading | escape }}</span>
+              <svg class="av-summary-icon" viewBox="0 0 14 14" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 1V13M13 7H1"></path>
+              </svg>
+            </summary>
+            <div class="av-accordion-content">
+              {%- assign heading_lower = block.settings.heading | downcase -%}
+              {%- if heading_lower contains 'device' and product.metafields.custom.device_parameters != blank -%}
+                {{ product.metafields.custom.device_parameters | metafield_tag }}
+              {%- elsif heading_lower contains 'shipping' and product.metafields.custom.shipping_warranty != blank -%}
+                {{ product.metafields.custom.shipping_warranty | metafield_tag }}
+              {%- elsif heading_lower contains 'payment' and product.metafields.custom.payment_options != blank -%}
+                {{ product.metafields.custom.payment_options | metafield_tag }}
+              {%- else -%}
+                {{ block.settings.content }}
+                {{ block.settings.page.content }}
+              {%- endif -%}
+            </div>
+          </details>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<div class="av-reviews-section">
+  <div class="av-reviews-section__inner">
+    <!-- Start of Judge.me code -->
+    {% assign has_legacy = false %}
+    {% if product.metafields.judgeme.widget.size > 20 %}
+      {% assign has_legacy = true %}
+    {% endif %}
+    <div style="clear: both"></div>
+    <div
+      id="judgeme_product_reviews"
+      class="jdgm-widget jdgm-review-widget"
+      data-product-title="{{ product.title | escape }}"
+      data-id="{{ product.id }}"
+      data-product-id="{{ product.id }}"
+      data-widget="review"
+      data-auto-install="false"
+      data-shop-reviews-count="{{ shop.metafields.judgeme.shop_reviews_count | default: 0 | escape }}"
+      data-entry-point="review_widget.js"
+      data-entry-key="review-widget/main.js"
+    >
+      {% if has_legacy %}
+        <div class="jdgm-legacy-widget-content" style="display: none;">{{ product.metafields.judgeme.widget }}</div>
+      {% endif %}
+    </div>
+    {% if product.metafields.judgeme.review_widget_data %}
+      <script>
+        jdgm.data ||= {};
+        jdgm.data.reviewWidget ||= {};
+        jdgm.data.reviewWidget[{{ product.id }}] = {{ product.metafields.judgeme.review_widget_data }};
+      </script>
+    {% endif %}
+    <!-- End of Judge.me code -->
+  </div>
+</div>
+
+<script>
+  function syncPayQty(v) {
+    var pq = document.getElementById('av-pay-qty');
+    if (pq) pq.value = v;
+  }
+  var qtyInput = document.getElementById('av-qty');
+  if (qtyInput) {
+    qtyInput.addEventListener('input', function() { syncPayQty(this.value); });
+  }
+</script>
+
+<style>
+.av-sticky-cart {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08), 0 4px 10px rgba(0,0,0,0.04);
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  width: 550px;
+  max-width: calc(100vw - 48px);
+  gap: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  border: 1px solid #EFEFEF;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+}
+
+.av-sticky-cart.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.av-sticky-cart__img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #F5F5F5;
+  flex-shrink: 0;
+}
+
+.av-sticky-cart__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.av-sticky-cart__title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #141414;
+  margin: 0 0 4px 0;
+  line-height: 1.4;
+}
+
+.av-sticky-cart__price {
+  font-size: 16px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.av-sticky-cart__btn {
+  background: #141414;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 9999px;
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+  flex-shrink: 0;
+}
+
+.av-sticky-cart__btn:hover {
+  background: #000000;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .av-sticky-cart {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 16px;
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+    gap: 12px;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    border: none;
+    border-top: 1px solid #EFEFEF;
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+    justify-content: space-between;
+  }
+  .av-sticky-cart__img {
+    display: none;
+  }
+  .av-sticky-cart__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex-shrink: 0;
+    width: 45%;
+  }
+  .av-sticky-cart__title {
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+  }
+  .av-sticky-cart__price {
+    font-size: 14px;
+    font-weight: 600;
+    color: #141414;
+    margin: 0;
+  }
+  .av-sticky-cart__btn {
+    padding: 0 16px;
+    font-size: 15px;
+    flex-grow: 1;
+    text-align: center;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+  }
+}
+</style>
+
+<div class="av-sticky-cart" id="av-sticky-cart">
+  {% if product.featured_image %}
+    <img
+      src="{{ product.featured_image | image_url: width: 100, height: 100 }}"
+      alt="{{ product.title | escape }}"
+      class="av-sticky-cart__img"
+      width="100"
+      height="100"
+      loading="lazy"
+    >
+  {% endif %}
+  <div class="av-sticky-cart__info">
+    <p class="av-sticky-cart__title">{{ product.title }}</p>
+    <p class="av-sticky-cart__price">{{ product.price | money }}</p>
+  </div>
+  <button type="button" class="av-sticky-cart__btn" id="av-sticky-cart-btn">
+    Add to cart
+  </button>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const stickyCart = document.getElementById('av-sticky-cart');
+    const mainAtcBtn = document.querySelector('.av-info__atc');
+    const stickyAtcBtn = document.getElementById('av-sticky-cart-btn');
+    const productForm = document.getElementById('av-product-form');
+    const cartDrawer = document.querySelector('cart-drawer');
+
+    const submitProductToCartDrawer = async (triggerButton) => {
+      if (!productForm || !window.fetchConfig || triggerButton?.dataset.loading === 'true') return;
+
+      const config = fetchConfig('javascript');
+      config.headers['X-Requested-With'] = 'XMLHttpRequest';
+      delete config.headers['Content-Type'];
+
+      const formData = new FormData(productForm);
+
+      if (cartDrawer) {
+        formData.append(
+          'sections',
+          cartDrawer.getSectionsToRender().map((section) => section.id)
+        );
+        formData.append('sections_url', window.location.pathname);
+        cartDrawer.setActiveElement(triggerButton || document.activeElement);
+      }
+
+      config.body = formData;
+
+      if (triggerButton) {
+        triggerButton.dataset.loading = 'true';
+        triggerButton.setAttribute('aria-disabled', 'true');
+        triggerButton.disabled = true;
+      }
+
+      try {
+        const response = await fetch(`${routes.cart_add_url}`, config);
+        const responseJson = await response.json();
+
+        if (responseJson.status) {
+          console.error('Sticky cart add failed:', responseJson.description || responseJson.message || responseJson.errors);
+          return;
+        }
+
+        if (cartDrawer) {
+          if (cartDrawer.classList.contains('is-empty')) {
+            cartDrawer.classList.remove('is-empty');
+          }
+          cartDrawer.renderContents(responseJson);
+          return;
+        }
+
+        window.location = window.routes.cart_url;
+      } catch (error) {
+        console.error('Sticky cart add failed:', error);
+      } finally {
+        if (triggerButton) {
+          delete triggerButton.dataset.loading;
+          triggerButton.removeAttribute('aria-disabled');
+          triggerButton.disabled = false;
+        }
+      }
+    };
+    
+    if (stickyCart && mainAtcBtn) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+            stickyCart.classList.add('is-visible');
+          } else {
+            stickyCart.classList.remove('is-visible');
+          }
+        });
+      }, { threshold: 0 });
+      
+      observer.observe(mainAtcBtn);
+    }
+
+    if (productForm) {
+      productForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        submitProductToCartDrawer(mainAtcBtn);
+      });
+    }
+
+    if (stickyAtcBtn) {
+      stickyAtcBtn.addEventListener('click', () => {
+        submitProductToCartDrawer(stickyAtcBtn);
+      });
+    }
+  });
+
+  /* ── Gallery helpers ───────────────────── */
+  window.avProductMedias = [
+    {%- for media in product.media -%}
+      {%- if media.media_type == 'image' -%}
+        "{{ media | image_url: width: 2048 }}"{% unless forloop.last %},{% endunless %}
+      {%- endif -%}
+    {%- endfor -%}
+  ];
+  window.avCurrentIndex = 0;
+  window.avLbIndex = 0;
+
+  function avSetMain(thumb) {
+    var src = thumb.dataset.src;
+    var fullSrc = thumb.dataset.full || src;
+    var index = parseInt(thumb.dataset.index, 10);
+    var img = document.getElementById('av-main-img');
+    if (!img || !src) return;
+    img.removeAttribute('srcset'); /* Force browser to use the new src */
+    img.src = src;
+    img.setAttribute('data-full-src', fullSrc);
+    window.avCurrentIndex = index;
+    /* highlight active thumb */
+    document.querySelectorAll('.av-gallery__thumb').forEach(function(t) {
+      t.classList.remove('av-gallery__thumb--active');
+    });
+    thumb.classList.add('av-gallery__thumb--active');
+  }
+
+  function avOpenLightbox(index) {
+    window.avLbIndex = typeof index !== 'undefined' ? index : (window.avCurrentIndex || 0);
+    avUpdateLightbox();
+    var lb = document.getElementById('av-lightbox');
+    if (lb) lb.classList.add('av-lightbox--open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function avUpdateLightbox() {
+    var src = window.avProductMedias[window.avLbIndex];
+    if (!src) return;
+    var lbImg = document.getElementById('av-lightbox-img');
+    if (lbImg) lbImg.src = src;
+    
+    var currentEl = document.getElementById('av-lb-current');
+    if (currentEl) currentEl.innerText = window.avLbIndex + 1;
+    var totalEl = document.getElementById('av-lb-total');
+    if (totalEl) totalEl.innerText = window.avProductMedias.length;
+  }
+
+  function avPrevImage() {
+    if (window.avLbIndex > 0) {
+      window.avLbIndex--;
+    } else {
+      window.avLbIndex = window.avProductMedias.length - 1;
+    }
+    avUpdateLightbox();
+  }
+
+  function avNextImage() {
+    if (window.avLbIndex < window.avProductMedias.length - 1) {
+      window.avLbIndex++;
+    } else {
+      window.avLbIndex = 0;
+    }
+    avUpdateLightbox();
+  }
+
+  function avCloseLightbox() {
+    var lb = document.getElementById('av-lightbox');
+    if (!lb) return;
+    lb.classList.remove('av-lightbox--open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', function(e) {
+    var lb = document.getElementById('av-lightbox');
+    if (lb && lb.classList.contains('av-lightbox--open')) {
+      if (e.key === 'Escape') avCloseLightbox();
+      if (e.key === 'ArrowLeft') avPrevImage();
+      if (e.key === 'ArrowRight') avNextImage();
+    }
+  });
+</script>
+
+<!-- Lightbox overlay -->
+<style>
+  #av-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    background: #ffffff;
+    flex-direction: column;
+  }
+  #av-lightbox.av-lightbox--open { display: flex; }
+  .av-lb-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    flex-shrink: 0;
+  }
+  .av-lb-counter {
+    border: 1px solid #E5E5E5;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #141414;
+  }
+  .av-lb-close {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #E5E5E5;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #141414;
+    transition: background 0.2s;
+  }
+  .av-lb-close:hover, .av-lb-nav:hover { background: #f7f7f7; }
+  .av-lb-content {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    min-height: 0;
+  }
+  .av-lb-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border: 1px solid #E5E5E5;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #141414;
+    transition: background 0.2s;
+    z-index: 10;
+  }
+  .av-lb-prev { left: 40px; }
+  .av-lb-next { right: 40px; }
+  #av-lightbox-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    min-height: 0;
+    min-width: 0;
+    animation: avLbIn 0.25s ease;
+  }
+  @keyframes avLbIn {
+    from { transform: scale(0.96); opacity: 0; }
+    to   { transform: scale(1);    opacity: 1; }
+  }
+  @media (max-width: 768px) {
+    .av-lb-header { padding: 16px; }
+    .av-lb-prev { left: 16px; }
+    .av-lb-next { right: 16px; }
+    .av-lb-nav { width: 40px; height: 40px; }
+    .av-lb-close { width: 40px; height: 40px; }
+  }
+
+  .av-gallery__thumb--active {
+    outline: 2px solid rgb(20,20,20);
+    outline-offset: 2px;
+    border-radius: 22px;
+  }
+</style>
+
+<div id="av-lightbox">
+  <div class="av-lb-header">
+    <div class="av-lb-counter"><span id="av-lb-current">1</span> / <span id="av-lb-total">1</span></div>
+    <button class="av-lb-close" onclick="avCloseLightbox()" aria-label="Close">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="av-lb-content" onclick="if(event.target===this)avCloseLightbox()">
+    <button class="av-lb-nav av-lb-prev" onclick="avPrevImage()" aria-label="Previous">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <img id="av-lightbox-img" src="" alt="Product view">
+    <button class="av-lb-nav av-lb-next" onclick="avNextImage()" aria-label="Next">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Swarakshit Main Product",
+  "tag": "section",
+  "class": "section",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "collapsible_tab",
+      "name": "Collapsible row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Collapsible row",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Row content"
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Row content from page"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Top margin",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Bottom margin",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Swarakshit Main Product"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,123 @@
+<style>
+  .svarakshit-marquee-wrapper {
+    background-color: {{ section.settings.bg_color }};
+    padding: 60px 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .svarakshit-marquee-content {
+    display: flex;
+    white-space: nowrap;
+    animation: svarakshit-marquee {{ section.settings.speed }}s linear infinite;
+  }
+
+  .svarakshit-marquee-item {
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(80px, 12vw, 180px);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    color: {{ section.settings.text_color }};
+    line-height: 1;
+  }
+
+  .svarakshit-marquee-separator {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid {{ section.settings.text_color }};
+    border-radius: 50%;
+    margin-left: 80px;
+    margin-right: 40px;
+    opacity: 0.5;
+  }
+
+  @media screen and (max-width: 749px) {
+    .svarakshit-marquee-wrapper {
+      padding: 40px 0;
+    }
+    .svarakshit-marquee-separator {
+      width: 12px;
+      height: 12px;
+      margin-left: 40px;
+      margin-right: 20px;
+      border-width: 1.5px;
+    }
+  }
+
+  @keyframes svarakshit-marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>
+
+<div class="svarakshit-marquee-wrapper">
+  <div class="svarakshit-marquee-content">
+    {%- capture marquee_item -%}
+      <div class="svarakshit-marquee-item">
+        {{ section.settings.text }}
+        <span class="svarakshit-marquee-separator"></span>
+      </div>
+    {%- endcapture -%}
+
+    {%- comment -%}
+      Repeat enough times to fill the screen and then double it so we can seamlessly loop at 50%
+    {%- endcomment -%}
+    {%- for i in (1..10) -%}
+      {{ marquee_item }}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Swarakshit Marquee",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Marquee Text",
+      "default": "1-year warranty"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 5,
+      "max": 50,
+      "step": 1,
+      "unit": "s",
+      "label": "Animation Speed",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Swarakshit Marquee"
+    }
+  ]
+}
+{% endschema %}

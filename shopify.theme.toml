@@ -1,0 +1,44 @@
+[environments.dev]
+store = "w1mru4-mj.myshopify.com"
+
+# Safe default: use `shopify theme dev` or `shopify theme push --unpublished`
+# unless you intentionally target a specific theme ID.
+#
+# Current remote themes as of 2026-06-20:
+# live: 188972695869 (Dawn)
+# unpublished: 188952576317 (Horizon)
+# development: 188971123005 (Development (456b51-Tejass-MacBook-Air))
+
+ignore = [
+  ".agents/*",
+  "*.zip",
+  "*.mp4",
+  "*.mov",
+  "*.log",
+  "*.tmp",
+  "*.bak",
+  "*.backup"
+]
+
+[environments.existing_live]
+store = "w1mru4-mj.myshopify.com"
+theme = "188972695869"
+
+# This points at your current live theme from:
+# https://admin.shopify.com/store/w1mru4-mj/themes/188972695869/editor?section=template--27393433993533__image_banner
+#
+# Use this environment carefully. Prefer pulling from it first:
+# `shopify theme pull --environment existing_live`
+#
+# Avoid pushing to this environment unless you intentionally want to update the
+# live theme.
+ignore = [
+  ".agents/*",
+  "*.zip",
+  "*.mp4",
+  "*.mov",
+  "*.log",
+  "*.tmp",
+  "*.bak",
+  "*.backup"
+]

@@ -1,0 +1,38 @@
+{% liquid
+  assign fallback_context = context | default: '' | downcase
+  assign fallback_alt = alt | default: context | default: 'Svarakshit image'
+  assign fallback_loading = loading | default: 'lazy'
+  assign fallback_file = 'svarakshit-product-fallback.jpg'
+
+  if fallback_context contains 'lpg cylinder'
+    assign fallback_file = 'fallback-lpg-cylinders.svg'
+  elsif fallback_context contains 'png pipeline' or fallback_context contains 'pipeline'
+    assign fallback_file = 'fallback-png-pipelines.svg'
+  elsif fallback_context contains 'geyser'
+    assign fallback_file = 'fallback-gas-geyser.svg'
+  elsif fallback_context contains 'hotel' or fallback_context contains 'restaurant' or fallback_context contains 'commercial kitchen'
+    assign fallback_file = 'fallback-hotel-restaurant.svg'
+  elsif fallback_context contains 'industrial'
+    assign fallback_file = 'fallback-industrial-safety.svg'
+  elsif fallback_context contains 'basement'
+    assign fallback_file = 'fallback-basement.svg'
+  elsif fallback_context contains 'office'
+    assign fallback_file = 'fallback-commercial-office.svg'
+  elsif fallback_context contains 'kitchen kit no.1'
+    assign fallback_file = 'fallback-kitchen-kit-1.svg'
+  elsif fallback_context contains 'kitchen kit no.2'
+    assign fallback_file = 'fallback-kitchen-kit-2.svg'
+  elsif fallback_context contains 'kitchen kit no.3' or fallback_context contains 'monitoring system'
+    assign fallback_file = 'fallback-kitchen-kit-3.svg'
+  elsif fallback_context contains 'kitchen' or fallback_context contains 'home'
+    assign fallback_file = 'fallback-home-kitchen.svg'
+  endif
+%}
+<img
+  src="{{ fallback_file | asset_url }}"
+  alt="{{ fallback_alt | escape }}"
+  class="{{ class }}"
+  loading="{{ fallback_loading }}"
+  width="{{ width | default: 1600 }}"
+  height="{{ height | default: 1000 }}"
+>

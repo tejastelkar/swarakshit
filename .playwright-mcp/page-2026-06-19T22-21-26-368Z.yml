@@ -1,0 +1,181 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#MainContent"
+  - generic [ref=e5]:
+    - button "Previous" [ref=e6] [cursor=pointer]:
+      - img [ref=e7]
+    - generic [ref=e9]:
+      - generic [ref=e12]: For company purchases, please contact us via email
+      - generic:
+        - generic:
+          - generic: Welcome to our store
+    - button "Next" [ref=e13] [cursor=pointer]:
+      - img [ref=e14]
+  - banner [ref=e18]:
+    - link "SWARAKSHIT" [ref=e19] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=e20]:
+      - list [ref=e21]:
+        - listitem [ref=e22]:
+          - link "Home" [ref=e23] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e24]: Home
+        - listitem [ref=e25]:
+          - link "Catalog" [ref=e26] [cursor=pointer]:
+            - /url: /collections/all
+            - generic [ref=e27]: Catalog
+        - listitem [ref=e28]:
+          - link "Contact" [ref=e29] [cursor=pointer]:
+            - /url: /pages/contact
+            - generic [ref=e30]: Contact
+    - generic [ref=e31]:
+      - group [ref=e33]:
+        - button "Search" [ref=e34] [cursor=pointer]:
+          - img [ref=e37]
+      - link "Log in" [ref=e39] [cursor=pointer]:
+        - /url: https://w1mru4-mj.myshopify.com/customer_authentication/redirect?locale=en&region_country=IN
+        - img [ref=e42]
+        - generic [ref=e44]: Log in
+      - button "Cart" [ref=e45] [cursor=pointer]:
+        - img [ref=e47]
+        - generic [ref=e49]: Cart
+  - main [ref=e50]:
+    - heading "Home Kitchens" [level=1] [ref=e53]
+    - generic [ref=e55]:
+      - img [ref=e57]
+      - generic [ref=e96]:
+        - generic [ref=e97]:
+          - generic [ref=e98]: SWARAKSHIT
+          - heading "Kitchen Kit" [level=1] [ref=e99]
+          - generic [ref=e100]: Get personalized SWARAKSHIT set for your Kitchen
+        - img [ref=e102]
+    - generic [ref=e109]:
+      - heading "Bring SWARAKSHIT in Your Kitchen!" [level=2] [ref=e110]:
+        - text: Bring
+        - emphasis [ref=e111]: SWARAKSHIT
+        - text: in Your Kitchen!
+      - generic [ref=e112]:
+        - paragraph [ref=e113]:
+          - text: A
+          - strong [ref=e114]: Safety First study
+          - text: found that early detection of LPG leaks can reduce the risk of home fires by 80%. Swarakshit provides real-time monitoring and instant alerts.
+        - generic [ref=e115]: ~ Safety First Report (2025)
+    - generic [ref=e118]:
+      - generic [ref=e119]:
+        - img [ref=e121]
+        - generic [ref=e125]:
+          - heading "Kitchen Kit No.1" [level=2] [ref=e126]
+          - paragraph [ref=e128]: Personalized Swarakshit gas monitor for real-time indoor safety monitoring, with the option to create a custom design tailored to any interior or brand requirements. Built with reliable technology and sustainable, premium-quality materials.
+          - link "Send a request" [ref=e129] [cursor=pointer]:
+            - /url: "#"
+            - text: Send a request
+            - img [ref=e130]
+      - generic [ref=e132]:
+        - img [ref=e134]
+        - generic [ref=e138]:
+          - heading "Kitchen Kit No.2" [level=2] [ref=e139]
+          - paragraph [ref=e141]: Personalized Swarakshit gas monitor with a mounting station for easy placement. The docking station provides an elegant visual appearance and ensures continuous protection of your home.
+          - link "Send a request" [ref=e142] [cursor=pointer]:
+            - /url: "#"
+            - text: Send a request
+            - img [ref=e143]
+      - generic [ref=e145]:
+        - img [ref=e147]
+        - generic [ref=e151]:
+          - heading "Kitchen Kit No.3 - Monitoring System" [level=2] [ref=e152]
+          - paragraph [ref=e154]: Personalized Swarakshit gas monitor with a WiFi-enabled smart hub for continuous data access and control. The WiFi system allows simultaneous safety monitoring in multiple rooms, providing real-time supervision as well as access to historical data from all monitored spaces.
+          - link "Send a request" [ref=e155] [cursor=pointer]:
+            - /url: "#"
+            - text: Send a request
+            - img [ref=e156]
+    - generic [ref=e160]:
+      - generic [ref=e161]:
+        - heading "Contact Us" [level=2] [ref=e162]
+        - generic [ref=e163]: Contact us to bring SWARAKSHIT to your kitchen!
+      - generic [ref=e165]:
+        - generic [ref=e166]:
+          - generic [ref=e167]:
+            - generic [ref=e168]: Name
+            - textbox "Name" [ref=e169]
+          - generic [ref=e170]:
+            - generic [ref=e171]: Email *
+            - textbox "Email" [ref=e172]
+        - generic [ref=e173]:
+          - generic [ref=e174]: Phone
+          - textbox "Phone" [ref=e175]
+        - generic [ref=e176]:
+          - generic [ref=e177]: Message
+          - textbox "Message" [ref=e178]
+        - button "Send message" [ref=e180] [cursor=pointer]
+  - contentinfo [ref=e181]:
+    - generic [ref=e182]:
+      - generic [ref=e183]:
+        - generic [ref=e184]:
+          - link "SWARAKSHIT" [ref=e185] [cursor=pointer]:
+            - /url: /
+          - generic [ref=e186]:
+            - link [ref=e187] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e188]
+            - link [ref=e190] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e191]
+            - link [ref=e193] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e194]
+            - link [ref=e196] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e197]
+        - generic [ref=e199]:
+          - generic [ref=e200]:
+            - heading "Quick links" [level=4] [ref=e201]
+            - list [ref=e202]:
+              - listitem [ref=e203]:
+                - link "Search" [ref=e204] [cursor=pointer]:
+                  - /url: /search
+          - generic [ref=e205]:
+            - heading "Page sites" [level=4] [ref=e206]
+            - list [ref=e207]:
+              - listitem [ref=e208]:
+                - link "Home" [ref=e209] [cursor=pointer]:
+                  - /url: /
+              - listitem [ref=e210]:
+                - link "Catalog" [ref=e211] [cursor=pointer]:
+                  - /url: /collections/all
+              - listitem [ref=e212]:
+                - link "Contact" [ref=e213] [cursor=pointer]:
+                  - /url: /pages/contact
+          - generic [ref=e215]:
+            - paragraph [ref=e216]: (+91) 98765 43210
+            - paragraph [ref=e217]: support@svarakshit.com
+            - paragraph [ref=e218]: (+91) 98765 43211
+            - paragraph [ref=e219]: sales@svarakshit.com
+      - generic [ref=e220]:
+        - generic [ref=e221]:
+          - paragraph [ref=e222]:
+            - text: © 2026 Swarakshit | Smart Gas Leak Detectors & Home Safety.
+            - link "Powered by Shopify" [ref=e223] [cursor=pointer]:
+              - /url: https://www.shopify.com
+          - list [ref=e224]:
+            - listitem [ref=e225]:
+              - link "Refund policy" [ref=e226] [cursor=pointer]:
+                - /url: /policies/refund-policy
+            - listitem [ref=e227]:
+              - link "Privacy policy" [ref=e228] [cursor=pointer]:
+                - /url: /policies/privacy-policy
+            - listitem [ref=e229]:
+              - link "Terms of service" [ref=e230] [cursor=pointer]:
+                - /url: /policies/terms-of-service
+            - listitem [ref=e231]:
+              - link "Contact information" [ref=e232] [cursor=pointer]:
+                - /url: /pages/contact
+        - generic [ref=e233]:
+          - img "Generic" [ref=e235]
+          - img "Apple Pay" [ref=e243]
+          - img "Diners Club" [ref=e255]
+          - img "Discover" [ref=e260]
+          - img "Google Pay" [ref=e270]
+          - img "JCB" [ref=e279]
+          - img "Mastercard" [ref=e289]
+          - img "PayPal" [ref=e297]
+          - img "Visa" [ref=e304]

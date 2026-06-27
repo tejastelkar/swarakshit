@@ -1,0 +1,294 @@
+- generic [active] [ref=e1]:
+  - text: Poor Great Poor Great Poor Great
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#MainContent"
+  - banner [ref=e5]:
+    - link "SWARAKSHIT" [ref=e6] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=e7]:
+      - list [ref=e8]:
+        - listitem [ref=e9]:
+          - link "Home" [ref=e10] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e11]: Home
+        - listitem [ref=e12]:
+          - link "Shop" [ref=e13] [cursor=pointer]:
+            - /url: /products/gas-sensor
+            - generic [ref=e14]: Shop
+        - listitem [ref=e15]:
+          - group [ref=e17]:
+            - button "Applications" [ref=e18] [cursor=pointer]:
+              - generic [ref=e19]: Applications
+              - img [ref=e20]
+        - listitem [ref=e22]:
+          - link "Contact Us" [ref=e23] [cursor=pointer]:
+            - /url: /pages/contact
+            - generic [ref=e24]: Contact Us
+    - generic [ref=e25]:
+      - group [ref=e27]:
+        - button "Search" [ref=e28] [cursor=pointer]:
+          - img [ref=e31]
+      - link "Log in" [ref=e33] [cursor=pointer]:
+        - /url: https://w1mru4-mj.myshopify.com/customer_authentication/redirect?locale=en&region_country=IN
+        - img [ref=e36]
+        - generic [ref=e38]: Log in
+      - button "Cart" [ref=e39] [cursor=pointer]:
+        - img [ref=e41]
+        - generic [ref=e43]: Cart
+  - main [ref=e44]:
+    - generic [ref=e45]:
+      - generic [ref=e56]:
+        - generic [ref=e57]: Swarakshit
+        - generic [ref=e58]:
+          - heading "Swarakshit Gas Leak Tester" [level=1] [ref=e59]
+          - generic [ref=e60]: Rs. 1,499.00
+        - generic "Customer reviews summary" [ref=e61]:
+          - generic [ref=e63] [cursor=pointer]:
+            - generic [ref=e64]:
+              - generic [ref=e65]: 
+              - generic [ref=e66]: 
+              - generic [ref=e67]: 
+              - generic [ref=e68]: 
+              - generic [ref=e69]: 
+            - generic [ref=e70]: No reviews
+        - generic [ref=e71]: It measures harmful gas leaks and anomalies indoors. It alerts you when air quality is too bad for your family, work, studying, or even sleep.
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - button "Decrease quantity" [ref=e75] [cursor=pointer]:
+              - img [ref=e76]
+            - spinbutton "Quantity" [ref=e77]: "1"
+            - button "Increase quantity" [ref=e78] [cursor=pointer]:
+              - img [ref=e79]
+          - button "Add to cart ‐ Rs. 1,499.00" [ref=e81] [cursor=pointer]
+        - button "Buy it now" [ref=e87] [cursor=pointer]
+        - generic [ref=e88]:
+          - generic [ref=e89]: "Share:"
+          - generic [ref=e90]:
+            - link "Share on WhatsApp" [ref=e91] [cursor=pointer]:
+              - /url: https://wa.me/?text=Swarakshit+Gas+Leak+Tester%20https%3A%2F%2Fw1mru4-mj.myshopify.com%2Fproducts%2Fgas-sensor
+              - img [ref=e92]
+            - link "Share on Facebook" [ref=e94] [cursor=pointer]:
+              - /url: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fw1mru4-mj.myshopify.com%2Fproducts%2Fgas-sensor
+              - img [ref=e95]
+            - link "Share on X" [ref=e97] [cursor=pointer]:
+              - /url: https://twitter.com/intent/tweet?url=https%3A%2F%2Fw1mru4-mj.myshopify.com%2Fproducts%2Fgas-sensor&text=Swarakshit+Gas+Leak+Tester
+              - img [ref=e98]
+            - link "Share via Email" [ref=e100] [cursor=pointer]:
+              - /url: mailto:?subject=Swarakshit+Gas+Leak+Tester&body=https%3A%2F%2Fw1mru4-mj.myshopify.com%2Fproducts%2Fgas-sensor
+              - img [ref=e101]
+          - link "Need help?" [ref=e104] [cursor=pointer]:
+            - /url: "#swarakshit-faq"
+            - img [ref=e105]
+            - text: Need help?
+        - generic [ref=e108]:
+          - generic [ref=e109]:
+            - img [ref=e110]
+            - generic [ref=e115]: Ready to ship within 5 business days from our factory
+          - generic [ref=e116]:
+            - img [ref=e117]
+            - generic [ref=e120]: 30-day return policy
+          - generic [ref=e121]:
+            - img [ref=e122]
+            - generic [ref=e124]: 5-Year manufacturer's Warranty
+          - generic [ref=e125]:
+            - img [ref=e126]
+            - generic [ref=e129]: USB-C charging cable included
+      - generic [ref=e130]:
+        - heading "Product details" [level=2] [ref=e132]
+        - generic [ref=e133]:
+          - generic [ref=e134]:
+            - heading "Description" [level=3] [ref=e135]
+            - generic [ref=e136]:
+              - paragraph [ref=e137]:
+                - strong [ref=e138]: India's most trusted portable gas leak detector.
+              - paragraph [ref=e139]: Instant LCD alarm for LPG, PNG & CNG leaks. LERC certified. Protect your family in seconds.
+              - paragraph [ref=e140]: Swarakshit detects all combustible gases including LPG, PNG, CNG, methane, propane, butane, and other hydrocarbons. It is designed to give you peace of mind whether you're at home, in a hotel, or running a commercial kitchen.
+          - generic [ref=e141]:
+            - group [ref=e143]:
+              - generic "Device parameters" [ref=e144] [cursor=pointer]:
+                - generic [ref=e145]: Device parameters
+                - img [ref=e146]
+            - group [ref=e149]:
+              - generic "Shipping & Warranty" [ref=e150] [cursor=pointer]:
+                - generic [ref=e151]: Shipping & Warranty
+                - img [ref=e152]
+            - group [ref=e155]:
+              - generic "Payment Options" [ref=e156] [cursor=pointer]:
+                - generic [ref=e157]: Payment Options
+                - img [ref=e158]
+      - generic [ref=e164]:
+        - generic [ref=e165]:
+          - paragraph [ref=e168]: Customer Reviews
+          - generic [ref=e170]:
+            - paragraph [ref=e171]: Be the first to write a review
+            - button "Write a review" [ref=e174] [cursor=pointer]
+        - paragraph [ref=e177]: No items found
+      - generic:
+        - img "Swarakshit Gas Leak Tester"
+        - generic:
+          - paragraph: Swarakshit Gas Leak Tester
+          - paragraph: Rs. 1,499.00
+        - button "Add to cart"
+    - generic [ref=e179]:
+      - heading "Why SWARAKSHIT stands out" [level=2] [ref=e180]
+      - generic [ref=e181]:
+        - generic [ref=e182]:
+          - generic [ref=e183]:
+            - heading "Rapid Detection" [level=3] [ref=e184]
+            - paragraph [ref=e185]: Highly sensitive sensing helps identify gas leaks within seconds.
+            - img
+          - generic [ref=e186]:
+            - heading "Smart App Views" [level=3] [ref=e187]
+            - paragraph [ref=e188]: Access 10 useful screens and guided readings inside the SWARAKSHIT app.
+            - img
+        - img "Why SWARAKSHIT stands out" [ref=e191]
+        - generic [ref=e192]:
+          - generic [ref=e193]:
+            - heading "Precision Probe" [level=3] [ref=e194]
+            - paragraph [ref=e195]: Built to sample air accurately so you can catch trouble before it spreads.
+            - img
+          - generic [ref=e196]:
+            - heading "Pocket Friendly" [level=3] [ref=e197]
+            - paragraph [ref=e198]: Slim handheld form makes it easy to carry from kitchen to bedroom.
+            - img
+          - generic [ref=e199]:
+            - heading "USB-C Charging" [level=3] [ref=e200]
+            - paragraph [ref=e201]: Recharge fast with the included USB-C cable and stay ready to test.
+            - img
+    - generic [ref=e203]:
+      - generic [ref=e204]:
+        - heading "FAQs" [level=2] [ref=e205]
+        - generic [ref=e206]:
+          - button "What gases does Swarakshit detect? +" [ref=e207] [cursor=pointer]:
+            - text: What gases does Swarakshit detect?
+            - generic [ref=e208]: +
+          - paragraph [ref=e210]: Swarakshit detects all combustible gases including LPG, PNG, CNG, methane, propane, butane and other hydrocarbons. It is NOT designed to detect CO (carbon monoxide) — for CO, you need a dedicated CO alarm.
+        - generic [ref=e211]:
+          - button "What does LERC certification mean? +" [ref=e212] [cursor=pointer]:
+            - text: What does LERC certification mean?
+            - generic [ref=e213]: +
+          - paragraph [ref=e215]: LERC (Liquefied Petroleum Gas Equipment Research Centre) is India's premier government-recognized body for testing and certifying LPG safety equipment. LERC certification means the device has been independently tested for accuracy, sensitivity, and durability — the gold standard in India.
+        - generic [ref=e216]:
+          - button "How long does the battery last? +" [ref=e217] [cursor=pointer]:
+            - text: How long does the battery last?
+            - generic [ref=e218]: +
+          - paragraph [ref=e220]: The built-in rechargeable battery lasts 8–10 hours of continuous use. For typical home use (5–10 minute daily checks), the battery lasts several weeks between charges. USB charging takes approximately 2 hours to full.
+        - generic [ref=e221]:
+          - button "Can I use it for commercial kitchens? +" [ref=e222] [cursor=pointer]:
+            - text: Can I use it for commercial kitchens?
+            - generic [ref=e223]: +
+          - paragraph [ref=e225]: Swarakshit is designed first for homes and kitchens. It may also be useful in selected small commercial kitchen setups where regular combustible gas checks are needed. If you have a specialized or bulk requirement, contact us before ordering so we can guide you properly.
+        - generic [ref=e226]:
+          - button "What is the warranty and return policy? +" [ref=e227] [cursor=pointer]:
+            - text: What is the warranty and return policy?
+            - generic [ref=e228]: +
+          - paragraph [ref=e230]: Every Swarakshit device comes with a 1-year manufacturer's warranty and a 30-day no-questions-asked return policy. Contact us at info@rakshit.net.in or call 9529154548.
+        - generic [ref=e231]:
+          - button "How often should I test for gas leaks? +" [ref=e232] [cursor=pointer]:
+            - text: How often should I test for gas leaks?
+            - generic [ref=e233]: +
+          - paragraph [ref=e235]: Weekly — around LPG cylinder and rubber pipe connections. Monthly — around all gas appliances including geysers. Immediately — after any new appliance installation or if you smell even a faint gas odour.
+        - generic [ref=e236]:
+          - button "Is it safe to use if I already smell gas? +" [ref=e237] [cursor=pointer]:
+            - text: Is it safe to use if I already smell gas?
+            - generic [ref=e238]: +
+          - paragraph [ref=e240]: If you already smell strong gas, DO NOT use any electrical device including Swarakshit. Immediately turn off the main gas valve, open all windows, evacuate, and call your gas agency. Use Swarakshit for routine preventive checks when no visible leak is apparent.
+      - generic [ref=e241]:
+        - heading "Didn't find your answer?" [level=3] [ref=e242]
+        - paragraph [ref=e243]: Don't hesitate to contact us
+        - generic [ref=e244]:
+          - textbox "Name" [ref=e245]
+          - textbox "Email" [ref=e246]
+          - textbox "Message" [ref=e247]
+          - button "Submit" [ref=e248] [cursor=pointer]
+    - generic [ref=e250]:
+      - generic [ref=e251]:
+        - img [ref=e253]
+        - generic [ref=e255]:
+          - heading "24/7 Support" [level=4] [ref=e256]
+          - paragraph [ref=e257]: Always here to assist
+      - generic [ref=e258]:
+        - img [ref=e260]
+        - generic [ref=e262]:
+          - heading "Free Delivery" [level=4] [ref=e263]
+          - paragraph [ref=e264]: Delivery details are shared during checkout
+      - generic [ref=e265]:
+        - img [ref=e267]
+        - generic [ref=e269]:
+          - heading "Secure Payment" [level=4] [ref=e270]
+          - paragraph [ref=e271]: Your payment information is processed securely
+  - contentinfo [ref=e272]:
+    - generic [ref=e273]:
+      - generic [ref=e274]:
+        - generic [ref=e275]:
+          - link "SWARAKSHIT" [ref=e276] [cursor=pointer]:
+            - /url: /
+          - generic [ref=e277]:
+            - link [ref=e278] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e279]
+            - link [ref=e281] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e282]
+            - link [ref=e284] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e285]
+            - link [ref=e287] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e288]
+        - generic [ref=e290]:
+          - generic [ref=e291]:
+            - heading "Quick links" [level=4] [ref=e292]
+            - list [ref=e293]:
+              - listitem [ref=e294]:
+                - link "Search" [ref=e295] [cursor=pointer]:
+                  - /url: /search
+          - generic [ref=e296]:
+            - heading "Page sites" [level=4] [ref=e297]
+            - list [ref=e298]:
+              - listitem [ref=e299]:
+                - link "Home" [ref=e300] [cursor=pointer]:
+                  - /url: /
+              - listitem [ref=e301]:
+                - link "Shop" [ref=e302] [cursor=pointer]:
+                  - /url: /products/gas-sensor
+              - listitem [ref=e303]:
+                - link "Applications" [ref=e304] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e305]:
+                - link "Contact Us" [ref=e306] [cursor=pointer]:
+                  - /url: /pages/contact
+          - generic [ref=e308]:
+            - paragraph [ref=e309]: (+91) 98765 43210
+            - paragraph [ref=e310]: support@svarakshit.com
+            - paragraph [ref=e311]: (+91) 98765 43211
+            - paragraph [ref=e312]: sales@svarakshit.com
+      - generic [ref=e313]:
+        - generic [ref=e314]:
+          - paragraph [ref=e315]:
+            - text: © 2026 Swarakshit | Smart Gas Leak Detectors & Home Safety.
+            - link "Powered by Shopify" [ref=e316] [cursor=pointer]:
+              - /url: https://www.shopify.com
+          - list [ref=e317]:
+            - listitem [ref=e318]:
+              - link "Refund policy" [ref=e319] [cursor=pointer]:
+                - /url: /policies/refund-policy
+            - listitem [ref=e320]:
+              - link "Privacy policy" [ref=e321] [cursor=pointer]:
+                - /url: /policies/privacy-policy
+            - listitem [ref=e322]:
+              - link "Terms of service" [ref=e323] [cursor=pointer]:
+                - /url: /policies/terms-of-service
+            - listitem [ref=e324]:
+              - link "Contact information" [ref=e325] [cursor=pointer]:
+                - /url: /pages/contact
+        - generic [ref=e326]:
+          - img "Generic" [ref=e328]
+          - img "Apple Pay" [ref=e336]
+          - img "Diners Club" [ref=e348]
+          - img "Discover" [ref=e353]
+          - img "Google Pay" [ref=e363]
+          - img "JCB" [ref=e372]
+          - img "Mastercard" [ref=e382]
+          - img "PayPal" [ref=e390]
+          - img "Visa" [ref=e397]

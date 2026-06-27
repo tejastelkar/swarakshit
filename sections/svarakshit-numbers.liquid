@@ -1,0 +1,297 @@
+<style>
+  .svarakshit-numbers-section {
+    padding: 100px 5rem;
+    background-color: {{ section.settings.bg_color }};
+  }
+  .svarakshit-numbers-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .svarakshit-numbers-heading {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: {{ section.settings.heading_color }};
+  }
+
+  #shopify-section-{{ section.id }} .sec-head {
+    margin-bottom: 5rem;
+    text-align: center;
+  }
+
+  .svarakshit-numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+
+  .svarakshit-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+
+  /* Add dividers between columns on desktop */
+  .svarakshit-stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 60%;
+    background-color: #e0e0e0;
+  }
+
+  .svarakshit-stat-number {
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: {{ section.settings.accent_color }};
+    margin: 0 0 16px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .svarakshit-stat-text {
+    font-size: 1.125rem;
+    color: {{ section.settings.text_color }};
+    line-height: 1.6;
+    margin: 0;
+    max-width: 260px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .svarakshit-numbers-section {
+      padding: 60px 2rem;
+    }
+    
+    #shopify-section-{{ section.id }} .sec-head {
+      margin-bottom: 3rem;
+    }
+    .svarakshit-numbers-heading {
+      font-size: 2.5rem;
+    }
+
+    .svarakshit-numbers-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    /* Adjust dividers for 2-column layout — use border instead of ::after */
+    .svarakshit-stat-item:not(:last-child)::after {
+      display: none;
+    }
+    .svarakshit-stat-item:nth-child(odd) {
+      border-right: 1px solid #e0e0e0;
+      padding-right: 20px;
+    }
+
+    .svarakshit-stat-number {
+      font-size: 3rem;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .svarakshit-numbers-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    /* Remove all border dividers on single-column mobile */
+    .svarakshit-stat-item:nth-child(odd) {
+      border-right: none;
+      padding-right: 0;
+    }
+  }
+</style>
+
+<div class="svarakshit-numbers-section">
+  <div class="svarakshit-numbers-container">
+    <div class="sec-head">
+      {% if section.settings.heading != blank %}
+        <h2 class="svarakshit-numbers-heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+    </div>
+
+    <div class="svarakshit-numbers-grid">
+      {% for block in section.blocks %}
+        <div class="svarakshit-stat-item" {{ block.shopify_attributes }}>
+          <h3 class="svarakshit-stat-number">{{ block.settings.number }}</h3>
+          <p class="svarakshit-stat-text">{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const initGasSafetyAnimation = () => {
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const sectionId = "#shopify-section-{{ section.id }}";
+        const sectionEl = document.querySelector(sectionId);
+        
+        if (sectionEl) {
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: sectionEl,
+              start: "top 80%",
+              toggleActions: "play none none reverse"
+            }
+          });
+
+          tl.fromTo(
+            sectionEl.querySelector(".svarakshit-numbers-heading"),
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+          )
+          .fromTo(
+            sectionEl.querySelectorAll(".svarakshit-stat-item"),
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: "power2.out" },
+            "-=0.4"
+          )
+          .add("startCounters", "-=0.6");
+
+          // Counter Animation
+          const statNumbers = sectionEl.querySelectorAll(".svarakshit-stat-number");
+          statNumbers.forEach(el => {
+            const originalText = el.innerText.trim();
+            const numMatch = originalText.match(/([\d,]+)/);
+            
+            if(numMatch) {
+              const numStr = numMatch[1].replace(/,/g, '');
+              const targetVal = parseFloat(numStr);
+              const prefix = originalText.substring(0, originalText.indexOf(numMatch[1]));
+              const suffix = originalText.substring(originalText.indexOf(numMatch[1]) + numMatch[1].length);
+              
+              const obj = { val: 0 };
+              
+              tl.to(obj, {
+                val: targetVal,
+                duration: 2,
+                ease: "power2.out",
+                onUpdate: function() {
+                  const currentVal = Math.floor(obj.val);
+                  let displayStr = currentVal.toString();
+                  if(originalText.includes(',')) {
+                     displayStr = currentVal.toLocaleString('en-IN');
+                  }
+                  el.innerText = prefix + displayStr + suffix;
+                }
+              }, "startCounters");
+            }
+          });
+        }
+      } else {
+        // If GSAP hasn't loaded yet, try again in 100ms
+        setTimeout(initGasSafetyAnimation, 100);
+      }
+    };
+    
+    initGasSafetyAnimation();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Svarakshit Numbers",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Stat Number Color",
+      "default": "#E87722"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#a0a0a0"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Gas Safety in India"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Statistic",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "0"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Statistic description goes here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Svarakshit Numbers",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "number": "30Cr+",
+            "text": "LPG connections in India — most homes cook on gas daily"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": "5,000+",
+            "text": "Gas fire accidents reported annually across Indian households"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": "10 sec",
+            "text": "Time Swarakshit takes to detect a dangerous gas leak"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": "₹1,499",
+            "text": "The price of protecting your family vs. lakhs in damage"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

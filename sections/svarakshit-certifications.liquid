@@ -1,0 +1,466 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  .sv-cert-section {
+    background-color: #ffffff;
+    padding: 100px 5rem;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .sv-cert-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .sv-cert-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  .sv-cert-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 20px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .sv-cert-subtext {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    color: #777777;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  /* --- Grid of certification items — completely borderless --- */
+  .sv-cert-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px 40px;
+  }
+
+  .sv-cert-item {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: transparent;
+  }
+
+  /* Logo / Icon area */
+  .sv-cert-logo-wrap {
+    width: 120px;
+    height: 72px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .sv-cert-logo-wrap img,
+  .sv-cert-logo-wrap svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .sv-cert-logo-wrap--lerc,
+  .sv-cert-logo-wrap--pushpam {
+    width: 150px;
+  }
+
+  .sv-cert-logo-wrap--lerc {
+    width: 170px;
+    height: 68px;
+  }
+
+  .sv-cert-logo-wrap--pushpam {
+    width: 168px;
+    height: 72px;
+  }
+
+  .sv-cert-logo-wrap--make-india {
+    width: 140px;
+  }
+
+  .sv-cert-logo-wrap--oil-majors {
+    width: 190px;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+
+  .sv-cert-logo-wrap--oil-majors img.sv-cert-oil-logo {
+    object-fit: contain;
+    flex: 0 0 auto;
+    width: auto;
+    height: auto;
+  }
+
+  .sv-cert-logo-wrap--oil-majors img.sv-cert-oil-logo--iocl {
+    width: 56px;
+    height: auto;
+  }
+
+  .sv-cert-logo-wrap--oil-majors img.sv-cert-oil-logo--bpcl {
+    width: 40px;
+    height: auto;
+  }
+
+  .sv-cert-logo-wrap--oil-majors img.sv-cert-oil-logo--hpcl {
+    width: 44px;
+    height: auto;
+  }
+
+  .sv-cert-logo-wrap--lerc img {
+    object-position: left center;
+  }
+
+  .sv-cert-logo-wrap--pushpam img {
+    object-position: left center;
+    transform: scale(0.94);
+    transform-origin: left center;
+  }
+
+  /* Badge label */
+  .sv-cert-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #ff6b00;
+    margin-bottom: 12px;
+  }
+
+  .sv-cert-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #111111;
+    margin: 0 0 14px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .sv-cert-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.65;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  /* ---- Responsive ---- */
+  @media screen and (max-width: 1100px) {
+    .sv-cert-section {
+      padding: 80px 3rem;
+    }
+    .sv-cert-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 32px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .sv-cert-section {
+      padding: 60px 20px !important;
+    }
+    .sv-cert-header {
+      margin-bottom: 40px;
+    }
+    .sv-cert-heading {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    .sv-cert-subtext {
+      font-size: 15px;
+    }
+    .sv-cert-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .sv-cert-item {
+      align-items: center;
+      text-align: center;
+    }
+    .sv-cert-logo-wrap {
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .sv-cert-logo-wrap--oil-majors {
+      justify-content: center;
+    }
+    .sv-cert-logo-wrap--lerc img,
+    .sv-cert-logo-wrap--pushpam img {
+      object-position: center;
+    }
+    .sv-cert-logo-wrap--pushpam img {
+      transform-origin: center;
+    }
+    .sv-cert-badge {
+      margin-bottom: 8px;
+    }
+    .sv-cert-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+  }
+</style>
+
+<div class="sv-cert-section">
+  <div class="sv-cert-container">
+
+    <div class="sv-cert-header">
+      {% if section.settings.heading != blank %}
+        <h2 class="sv-cert-heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.subtext != blank %}
+        <p class="sv-cert-subtext">{{ section.settings.subtext }}</p>
+      {% endif %}
+    </div>
+
+    <div class="sv-cert-grid">
+      {% for block in section.blocks %}
+        {% assign normalized_title = block.settings.title | downcase %}
+        <div class="sv-cert-item" {{ block.shopify_attributes }}>
+          <div
+            class="sv-cert-logo-wrap{% if normalized_title contains 'lerc' %} sv-cert-logo-wrap--lerc{% elsif normalized_title contains 'make in india' %} sv-cert-logo-wrap--make-india{% elsif normalized_title contains 'iocl' or normalized_title contains 'bpcl' or normalized_title contains 'hpcl' %} sv-cert-logo-wrap--oil-majors{% elsif normalized_title contains 'pushpam' %} sv-cert-logo-wrap--pushpam{% endif %}"
+          >
+            {% if normalized_title contains 'lerc' %}
+              <img
+                src="{{ 'cert-lerc-logo-3.jpeg' | asset_url }}"
+                alt="LERC logo"
+                loading="lazy"
+                width="2560"
+                height="676"
+              >
+            {% elsif normalized_title contains 'make in india' %}
+              <img
+                src="{{ 'cert-make-in-india.png' | asset_url }}"
+                alt="Make in India logo"
+                loading="lazy"
+                width="122"
+                height="57"
+              >
+            {% elsif normalized_title contains 'iocl' or normalized_title contains 'bpcl' or normalized_title contains 'hpcl' %}
+              {% if block.settings.logo_primary != blank or block.settings.logo_secondary != blank or block.settings.logo_tertiary != blank %}
+                {% if block.settings.logo_primary != blank %}
+                  <img
+                    class="sv-cert-oil-logo sv-cert-oil-logo--iocl"
+                    src="{{ block.settings.logo_primary | image_url: width: 400 }}"
+                    alt="{{ block.settings.title | escape }} logo 1"
+                    loading="lazy"
+                    width="{{ block.settings.logo_primary.width }}"
+                    height="{{ block.settings.logo_primary.height }}"
+                  >
+                {% endif %}
+                {% if block.settings.logo_secondary != blank %}
+                  <img
+                    class="sv-cert-oil-logo sv-cert-oil-logo--bpcl"
+                    src="{{ block.settings.logo_secondary | image_url: width: 400 }}"
+                    alt="{{ block.settings.title | escape }} logo 2"
+                    loading="lazy"
+                    width="{{ block.settings.logo_secondary.width }}"
+                    height="{{ block.settings.logo_secondary.height }}"
+                  >
+                {% endif %}
+                {% if block.settings.logo_tertiary != blank %}
+                  <img
+                    class="sv-cert-oil-logo sv-cert-oil-logo--hpcl"
+                    src="{{ block.settings.logo_tertiary | image_url: width: 400 }}"
+                    alt="{{ block.settings.title | escape }} logo 3"
+                    loading="lazy"
+                    width="{{ block.settings.logo_tertiary.width }}"
+                    height="{{ block.settings.logo_tertiary.height }}"
+                  >
+                {% endif %}
+              {% else %}
+                <img
+                  class="sv-cert-oil-logo sv-cert-oil-logo--iocl"
+                  src="{{ 'cert-indianoil-logo.svg' | asset_url }}"
+                  alt="IndianOil logo"
+                  loading="lazy"
+                  width="512"
+                  height="612"
+                >
+                <img
+                  class="sv-cert-oil-logo sv-cert-oil-logo--bpcl"
+                  src="{{ 'cert-bpcl-logo.png' | asset_url }}"
+                  alt="Bharat Petroleum logo"
+                  loading="lazy"
+                  width="256"
+                  height="256"
+                >
+                <img
+                  class="sv-cert-oil-logo sv-cert-oil-logo--hpcl"
+                  src="{{ 'cert-hpcl-logo.png' | asset_url }}"
+                  alt="Hindustan Petroleum logo"
+                  loading="lazy"
+                  width="236"
+                  height="300"
+                >
+              {% endif %}
+            {% elsif normalized_title contains 'pushpam' %}
+              <img
+                src="{{ 'cert-pushpam-logo.png' | asset_url }}"
+                alt="Pushpam Consultancy logo"
+                loading="lazy"
+                width="500"
+                height="188"
+              >
+            {% elsif block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | image_url: width: 600 }}"
+                alt="{{ block.settings.title | escape }}"
+                loading="lazy"
+                width="{{ block.settings.image.width }}"
+                height="{{ block.settings.image.height }}"
+              >
+            {% elsif block.settings.custom_svg != blank %}
+              {{ block.settings.custom_svg }}
+            {% else %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ff6b00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+            {% endif %}
+          </div>
+
+          {% if block.settings.badge != blank %}
+            <div class="sv-cert-badge">{{ block.settings.badge }}</div>
+          {% endif %}
+
+          <h3 class="sv-cert-title">{{ block.settings.title }}</h3>
+          <p class="sv-cert-desc">{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Svarakshit Certifications",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Certified. Trusted. Proven."
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Every Svarakshit device is backed by India's most rigorous safety standards."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "certification",
+      "name": "Certification Item",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Logo Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo_primary",
+          "label": "Oil Logo 1",
+          "info": "Used for the IOCL / BPCL / HPCL card."
+        },
+        {
+          "type": "image_picker",
+          "id": "logo_secondary",
+          "label": "Oil Logo 2",
+          "info": "Used for the IOCL / BPCL / HPCL card."
+        },
+        {
+          "type": "image_picker",
+          "id": "logo_tertiary",
+          "label": "Oil Logo 3",
+          "info": "Used for the IOCL / BPCL / HPCL card."
+        },
+        {
+          "type": "html",
+          "id": "custom_svg",
+          "label": "Custom SVG Code",
+          "info": "Paste SVG markup here. Overrides image if provided."
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge Label (e.g. GOVERNMENT APPROVED)",
+          "info": "Short all-caps label shown above the title"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Certificate Name"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Short description of what this certification means."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Svarakshit Certifications",
+      "blocks": [
+        {
+          "type": "certification",
+          "settings": {
+            "badge": "GOVERNMENT CERTIFIED",
+            "title": "LERC Approved",
+            "text": "India's highest authority for LPG gas safety equipment — the only certification that truly matters.",
+            "custom_svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='#ff6b00' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='8' r='7'></circle><polyline points='8.21 13.89 7 23 12 20 17 23 15.79 13.88'></polyline></svg>"
+          }
+        },
+        {
+          "type": "certification",
+          "settings": {
+            "badge": "PROUDLY INDIAN",
+            "title": "Make in India",
+            "text": "Designed and manufactured entirely in India — for Indian kitchens, Indian homes, Indian families.",
+            "custom_svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='#ff6b00' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'></path><polyline points='9 22 9 12 15 12 15 22'></polyline></svg>"
+          }
+        },
+        {
+          "type": "certification",
+          "settings": {
+            "badge": "INDUSTRY TRUSTED",
+            "title": "IOCL / BPCL / HPCL",
+            "text": "Recommended by India's major oil company dealer networks for customer home safety.",
+            "custom_svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='#ff6b00' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><line x1='3' y1='22' x2='21' y2='22'></line><line x1='4' y1='9' x2='20' y2='9'></line><path d='M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18'></path><path d='M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5'></path></svg>"
+          }
+        },
+        {
+          "type": "certification",
+          "settings": {
+            "badge": "QUALITY ASSURED",
+            "title": "Pushpam Certified",
+            "text": "Independently verified by Pushpam Consultancy — a trusted quality authority since 2010.",
+            "custom_svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='#ff6b00' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z'></path><path d='m9 12 2 2 4-4'></path></svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

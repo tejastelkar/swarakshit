@@ -1,0 +1,370 @@
+{%- if section.blocks.size > 0 -%}
+  <style>
+    .svarakshit-announcement-bar {
+      background: {{ section.settings.color_background }};
+      color: {{ section.settings.color_text }};
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+      font-size: 13px;
+      font-weight: 300;
+      font-family: var(--font-body-family), sans-serif;
+      letter-spacing: 0.05em;
+    }
+    
+    .svarakshit-announcement-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 135px;
+      margin: 0 auto;
+    }
+
+    .svarakshit-announcement-slider {
+      display: grid;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .svarakshit-announcement-slide {
+      grid-area: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateX(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+    }
+
+    .svarakshit-announcement-slide.is-active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+
+    .svarakshit-announcement-slide.is-exiting {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    .svarakshit-announcement-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .svarakshit-announcement-icon svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .svarakshit-social-links {
+      position: absolute;
+      left: 20px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .svarakshit-social-links a {
+      color: {{ section.settings.color_text }};
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .svarakshit-social-links a:hover {
+      opacity: 1;
+    }
+
+    .svarakshit-social-links svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    @media screen and (max-width: 768px) {
+      .svarakshit-social-links {
+        display: none;
+      }
+      .svarakshit-announcement-center {
+        gap: 20px;
+        padding: 0 10px;
+        width: 100%;
+        justify-content: space-between;
+      }
+      .svarakshit-announcement-content {
+        gap: 5px;
+      }
+      .svarakshit-announcement-text {
+        font-size: 11px;
+      }
+    }
+
+    .svarakshit-nav-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      color: {{ section.settings.color_text }};
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .svarakshit-nav-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+
+  <svarakshit-announcement-bar class="svarakshit-announcement-bar" data-speed="{{ section.settings.autoplay_speed | times: 1000 }}">
+    {%- if section.settings.show_social -%}
+      <div class="svarakshit-social-links">
+        {%- if settings.social_facebook_link != blank -%}
+          <a href="{{ settings.social_facebook_link }}" target="_blank">
+            <svg viewBox="0 0 18 18"><path d="M16.42.61c.2 0 .38.07.52.2.14.13.2.3.2.5v15.38c0 .2-.06.37-.2.5-.14.14-.32.21-.52.21H11.6v-6.69h2.25l.34-2.61H11.6V6.43c0-.75.33-1.12.98-1.12h1.72V3.06c-.3-.04-.84-.06-1.63-.06-1.07 0-1.87.31-2.4 .93-.53.62-.8 1.48-.8 2.58v1.6H7.54v2.61h1.93v6.69H.87c-.2 0-.37-.07-.5-.21-.14-.13-.21-.3-.21-.5V1.31c0-.2.07-.37.21-.5.13-.13.3-.2.5-.2h15.55Z"/></svg>
+          </a>
+        {%- endif -%}
+        {%- if settings.social_instagram_link != blank -%}
+          <a href="{{ settings.social_instagram_link }}" target="_blank">
+            <svg viewBox="0 0 18 18"><path d="M9 1.62c2.4 0 2.68.01 3.63.05 1.03.05 1.7.23 2.15.41.6.23 1.05.54 1.48.97.43.43.74.88.97 1.48.18.45.36 1.12.41 2.15.04.95.05 1.23.05 3.63s-.01 2.68-.05 3.63c-.05 1.03-.23 1.7-.41 2.15-.23.6-.54 1.05-.97 1.48-.43.43-.88.74-1.48.97-.45.18-1.12.36-2.15.41-.95.04-1.23.05-3.63.05s-2.68-.01-3.63-.05c-1.03-.05-1.7-.23-2.15-.41-.6-.23-1.05-.54-1.48-.97-.43-.43-.74-.88-.97-1.48-.18-.45-.36-1.12-.41-2.15C1.63 11.68 1.62 11.4 1.62 9s.01-2.68.05-3.63c.05-1.03.23-1.7.41-2.15.23-.6.54-1.05.97-1.48.43-.43.88-.74 1.48-.97.45-.18 1.12-.36 2.15-.41C6.32 1.63 6.6 1.62 9 1.62ZM9 0C6.56 0 6.25.01 5.29.05 4.33.1 3.51.27 2.8.55 2.05.84 1.42 1.22.8 1.84.18 2.46-.2 3.1-.49 3.84c-.28.71-.45 1.53-.5 2.49C-.01 7.29 0 7.6 0 10.04s.01 2.75.05 3.71c.05.96.22 1.78.5 2.49.29.74.67 1.38 1.29 2 .62.62 1.26 1 2.01 1.29.71.28 1.53.45 2.49.5.96.04 1.27.05 3.71.05s2.75-.01 3.71-.05c.96-.05 1.78-.22 2.49-.5.74-.29 1.38-.67 2-1.29.62-.62 1-1.26 1.29-2.01.28-.71.45-1.53.5-2.49.04-.96.05-1.27.05-3.71s-.01-2.75-.05-3.71c-.05-.96-.22-1.78-.5-2.49-.29-.74-.67-1.38-1.29-2-.62-.62-1.26-1-2.01-1.29-.71-.28-1.53-.45-2.49-.5C11.75.01 11.44 0 9 0Zm0 4.38a4.62 4.62 0 1 0 0 9.24 4.62 4.62 0 0 0 0-9.24Zm0 7.62a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm5.86-8.8a1.08 1.08 0 1 1-2.16 0 1.08 1.08 0 0 1 2.16 0Z"/></svg>
+          </a>
+        {%- endif -%}
+        {%- if settings.social_twitter_link != blank -%}
+          <a href="{{ settings.social_twitter_link }}" target="_blank">
+            <svg viewBox="0 0 18 18"><path d="M14.26 1.62h2.72L11.04 8.4l6.96 9.2H12.55l-4.26-5.57-4.88 5.57H.69l6.32-7.22L.4 1.62h5.6l3.85 5.06 4.41-5.06Zm-1 15h1.5L4.85 3.16H3.25l10.01 13.46Z"/></svg>
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="svarakshit-announcement-center">
+      {%- if section.blocks.size > 1 -%}
+        <button type="button" class="svarakshit-nav-btn svarakshit-prev-btn" aria-label="Previous">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 7H2M2 7L6 3M2 7L6 11"></path></svg>
+        </button>
+      {%- endif -%}
+
+      <div class="svarakshit-announcement-slider">
+        {%- for block in section.blocks -%}
+          <div class="svarakshit-announcement-slide {% if forloop.first %}is-active{% endif %}" {{ block.shopify_attributes }}>
+            {%- if block.settings.link != blank -%}
+              <a href="{{ block.settings.link }}" class="svarakshit-announcement-content">
+            {%- else -%}
+              <div class="svarakshit-announcement-content">
+            {%- endif -%}
+
+              {%- if block.settings.icon != 'none' -%}
+                <span class="svarakshit-announcement-icon">
+                  {%- case block.settings.icon -%}
+                    {%- when 'lightning' -%}
+                      <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    {%- when 'star' -%}
+                      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    {%- when 'email' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    {%- else -%}
+                      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+                  {%- endcase -%}
+                </span>
+              {%- endif -%}
+
+              <span class="svarakshit-announcement-text">{{ block.settings.text }}</span>
+
+            {%- if block.settings.link != blank -%}
+              </a>
+            {%- else -%}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- if section.blocks.size > 1 -%}
+        <button type="button" class="svarakshit-nav-btn svarakshit-next-btn" aria-label="Next">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7H12M12 7L8 3M12 7L8 11"></path></svg>
+        </button>
+      {%- endif -%}
+    </div>
+  </svarakshit-announcement-bar>
+
+  <script>
+    if (!customElements.get('svarakshit-announcement-bar')) {
+      customElements.define('svarakshit-announcement-bar', class extends HTMLElement {
+        constructor() {
+          super();
+          this.slides = Array.from(this.querySelectorAll('.svarakshit-announcement-slide'));
+          this.prevBtn = this.querySelector('.svarakshit-prev-btn');
+          this.nextBtn = this.querySelector('.svarakshit-next-btn');
+          this.speed = parseInt(this.dataset.speed) || 5000;
+          this.currentIndex = 0;
+          this.isAnimating = false;
+          
+          if (this.slides.length > 1) {
+            this.init();
+          }
+        }
+
+        init() {
+          this.startTimer();
+          
+          if (this.prevBtn) {
+            this.prevBtn.addEventListener('click', () => this.changeSlide('prev'));
+          }
+          if (this.nextBtn) {
+            this.nextBtn.addEventListener('click', () => this.changeSlide('next'));
+          }
+        }
+
+        startTimer() {
+          clearInterval(this.timer);
+          this.timer = setInterval(() => this.changeSlide('next'), this.speed);
+        }
+
+        changeSlide(direction) {
+          if (this.isAnimating) return;
+          this.isAnimating = true;
+
+          const currentSlide = this.slides[this.currentIndex];
+          
+          if (direction === 'next') {
+            this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+          } else {
+            this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+          }
+          
+          const nextSlide = this.slides[this.currentIndex];
+
+          currentSlide.classList.remove('is-active');
+          
+          if (direction === 'next') {
+            currentSlide.classList.add('is-exiting');
+          } else {
+            nextSlide.style.transition = 'none';
+            nextSlide.style.transform = 'translateX(-20px)';
+          }
+
+          // Force reflow
+          void nextSlide.offsetWidth;
+          
+          if (direction === 'prev') {
+            nextSlide.style.transition = '';
+            nextSlide.style.transform = '';
+          }
+
+          nextSlide.classList.add('is-active');
+
+          setTimeout(() => {
+            currentSlide.classList.remove('is-exiting');
+            this.isAnimating = false;
+          }, 500);
+
+          this.startTimer(); // Reset timer when clicked
+        }
+      });
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Swarakshit Announcement",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": true,
+      "label": "Show social icons"
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Autoplay speed",
+      "max": 10,
+      "min": 3,
+      "step": 1,
+      "unit": "s",
+      "default": 5
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text color",
+      "default": "#fafafa"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background color",
+      "default": "#1f1f1f"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement message",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "none",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "lightning", "label": "Lightning" },
+            { "value": "star", "label": "Star" },
+            { "value": "email", "label": "Email" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "For company purchases, please contact us via email"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Swarakshit Announcement",
+      "blocks": [
+        {
+          "type": "announcement",
+          "settings": {
+            "icon": "email",
+            "text": "For company purchases, please contact us via email"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "text": "GET 10% OFF"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

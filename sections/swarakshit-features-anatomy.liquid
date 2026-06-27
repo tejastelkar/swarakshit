@@ -1,0 +1,586 @@
+<style>
+  .sf-anatomy-section {
+    padding: 80px 20px;
+    background-color: #FFFFFF;
+    font-family: var(--font-body-family, 'Inter', sans-serif);
+    overflow: visible;
+  }
+  .sf-anatomy-title {
+    text-align: center;
+    font-size: clamp(32px, 4vw, 46px);
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 64px;
+    letter-spacing: -0.04em;
+  }
+  .sf-anatomy-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(340px, calc(var(--sf-center-image-width, 390px) + 56px)) minmax(0, 1fr);
+    gap: clamp(28px, 4vw, 86px);
+    align-items: start;
+    overflow: visible;
+  }
+  .sf-anatomy-center {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    z-index: 2;
+  }
+  .sf-anatomy-media {
+    width: min(100%, var(--sf-center-image-width, 390px));
+    height: var(--sf-center-image-height, 650px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    border-radius: 0;
+    position: relative;
+  }
+  .sf-anatomy-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center var(--sf-center-image-focus-y, 42%);
+  }
+  .sf-anatomy-col {
+    display: flex;
+    flex-direction: column;
+    gap: 84px;
+    position: relative;
+    z-index: 3;
+    padding-top: 24px;
+    overflow: visible;
+  }
+  .sf-anatomy-col.left-col {
+    justify-content: flex-start;
+    padding-top: 140px;
+    gap: 154px;
+  }
+  
+  .sf-anatomy-item {
+    position: relative;
+    overflow: visible;
+  }
+  .sf-anatomy-item.align-right {
+    text-align: right;
+  }
+  .sf-anatomy-item.align-left {
+    text-align: left;
+  }
+  
+  .sf-anatomy-item h3 {
+    font-size: clamp(24px, 2.5vw, 34px);
+    font-weight: 800;
+    color: #111;
+    margin: 0 0 10px 0;
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+  }
+  .sf-anatomy-item p {
+    font-size: clamp(16px, 1.3vw, 19px);
+    color: #3d3d3d;
+    margin: 0;
+    line-height: 1.32;
+    max-width: 310px;
+    letter-spacing: -0.02em;
+  }
+  .sf-anatomy-item.align-right p {
+    margin-left: auto;
+  }
+  
+  /* SVG Arrows */
+  .sf-arrow {
+    position: absolute;
+    top: 50%;
+    width: var(--sf-arrow-width, 132px);
+    height: var(--sf-arrow-height, 132px);
+    pointer-events: none;
+    overflow: visible;
+    transform: translateY(calc(-50% + var(--sf-arrow-offset-y, 0px)));
+    z-index: 4;
+  }
+  
+  .sf-anatomy-col.left-col .sf-arrow {
+    left: calc(100% - 6px);
+  }
+  .sf-anatomy-col.right-col .sf-arrow {
+    right: calc(100% - 6px);
+  }
+  .sf-arrow-tl {
+    top: calc(50% + 28px);
+  }
+  .sf-arrow-bl {
+    top: calc(50% + 40px);
+  }
+  .sf-arrow-tr {
+    top: calc(50% + 54px);
+  }
+  .sf-arrow-mr {
+    top: calc(50% + 34px);
+  }
+  .sf-arrow-br {
+    top: calc(50% + 28px);
+  }
+  
+  /* Mobile Layout */
+  @media (max-width: 991px) {
+    .sf-anatomy-section {
+      padding: 56px 16px;
+      overflow: hidden;
+    }
+    .sf-anatomy-title {
+      font-size: 28px;
+      margin-bottom: 28px;
+    }
+    .sf-anatomy-container {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .sf-anatomy-center {
+      grid-row: 1; /* Keep image on top */
+    }
+    .sf-anatomy-media {
+      width: min(100%, 280px);
+      height: min(60vh, 440px);
+      margin: 0 auto;
+    }
+    .sf-anatomy-col, .sf-anatomy-col.left-col {
+      gap: 20px;
+      padding-top: 0;
+    }
+    .sf-anatomy-item.align-right, .sf-anatomy-item.align-left {
+      text-align: center;
+      padding: 18px 16px;
+      border: 1px solid rgba(17, 17, 17, 0.08);
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(17, 17, 17, 0.04);
+    }
+    .sf-anatomy-item h3 {
+      font-size: 24px;
+    }
+    .sf-anatomy-item p {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+    .sf-anatomy-item.align-right p, .sf-anatomy-item.align-left p {
+      margin: 0 auto;
+    }
+    .sf-arrow {
+      display: none; /* Hide complex arrows on mobile */
+    }
+  }
+</style>
+
+{%- liquid
+  assign effective_center_image_width = section.settings.center_image_width
+  assign effective_center_image_height = section.settings.center_image_height
+
+  if effective_center_image_width < 390
+    assign effective_center_image_width = 390
+  endif
+
+  if effective_center_image_height < 650
+    assign effective_center_image_height = 650
+  endif
+-%}
+
+<section
+  class="sf-anatomy-section"
+  style="--sf-center-image-width: {{ effective_center_image_width }}px; --sf-center-image-height: {{ effective_center_image_height }}px; --sf-center-image-focus-y: {{ section.settings.center_image_focus_y }}%; --sf-arrow-color: #E87722;"
+>
+  <h2 class="sf-anatomy-title">{{ section.settings.heading }}</h2>
+  
+  <div class="sf-anatomy-container">
+    
+    <!-- Left Column -->
+    <div class="sf-anatomy-col left-col">
+      <!-- Feature 1: Top Left -->
+      <div class="sf-anatomy-item align-right">
+        <h3>{{ section.settings.feature_1_title }}</h3>
+        <p>{{ section.settings.feature_1_text }}</p>
+        <svg
+          class="sf-arrow sf-arrow-tl"
+          viewBox="-12 -12 124 124"
+          fill="none"
+          style="--sf-arrow-offset-y: {{ section.settings.feature_1_arrow_offset }}px; --sf-arrow-width: {{ section.settings.feature_1_arrow_width }}px; --sf-arrow-height: {{ section.settings.feature_1_arrow_height }}px;"
+        >
+          <path d="M8 24 C36 24, 58 44, 82 76" stroke="var(--sf-arrow-color)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          <path d="M73 74 L82 76 L80 67" stroke="var(--sf-arrow-color)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+        </svg>
+      </div>
+      
+      <!-- Feature 2: Bottom Left -->
+      <div class="sf-anatomy-item align-right">
+        <h3>{{ section.settings.feature_2_title }}</h3>
+        <p>{{ section.settings.feature_2_text }}</p>
+        <svg
+          class="sf-arrow sf-arrow-bl"
+          viewBox="-12 -12 124 124"
+          fill="none"
+          style="--sf-arrow-offset-y: {{ section.settings.feature_2_arrow_offset }}px; --sf-arrow-width: {{ section.settings.feature_2_arrow_width }}px; --sf-arrow-height: {{ section.settings.feature_2_arrow_height }}px;"
+        >
+          <path d="M8 76 C36 76, 58 58, 84 30" stroke="var(--sf-arrow-color)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          <path d="M75 30 L84 30 L81 39" stroke="var(--sf-arrow-color)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+        </svg>
+      </div>
+    </div>
+    
+    <!-- Center Image -->
+    <div class="sf-anatomy-center">
+      {% assign img_url = section.settings.center_image %}
+      <div class="sf-anatomy-media">
+        {% if img_url == blank %}
+          {% assign default_url = "https://cdn.shopify.com/s/files/1/1005/0712/4029/files/gasleaksensor1.jpg?v=1781832196" %}
+          <img src="{{ default_url }}" alt="{{ section.settings.heading | escape }}" class="sf-anatomy-img" width="800" height="1200" loading="lazy">
+        {% else %}
+          <img
+            src="{{ img_url | image_url: width: 1200 }}"
+            alt="{{ section.settings.heading | escape }}"
+            class="sf-anatomy-img"
+            width="{{ img_url.width }}"
+            height="{{ img_url.height }}"
+            loading="lazy"
+          >
+        {% endif %}
+      </div>
+    </div>
+    
+    <!-- Right Column -->
+    <div class="sf-anatomy-col right-col">
+      <!-- Feature 3: Top Right -->
+      <div class="sf-anatomy-item align-left">
+        <h3>{{ section.settings.feature_3_title }}</h3>
+        <p>{{ section.settings.feature_3_text }}</p>
+        <svg
+          class="sf-arrow sf-arrow-tr"
+          viewBox="-12 -12 124 124"
+          fill="none"
+          style="--sf-arrow-offset-y: {{ section.settings.feature_3_arrow_offset }}px; --sf-arrow-width: {{ section.settings.feature_3_arrow_width }}px; --sf-arrow-height: {{ section.settings.feature_3_arrow_height }}px;"
+        >
+          <path d="M92 20 C92 44, 84 58, 54 74" stroke="var(--sf-arrow-color)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          <path d="M55 65 L54 74 L63 71" stroke="var(--sf-arrow-color)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+        </svg>
+      </div>
+      
+      <!-- Feature 4: Middle Right -->
+      <div class="sf-anatomy-item align-left">
+        <h3>{{ section.settings.feature_4_title }}</h3>
+        <p>{{ section.settings.feature_4_text }}</p>
+        <svg
+          class="sf-arrow sf-arrow-mr"
+          viewBox="-12 -12 124 124"
+          fill="none"
+          style="--sf-arrow-offset-y: {{ section.settings.feature_4_arrow_offset }}px; --sf-arrow-width: {{ section.settings.feature_4_arrow_width }}px; --sf-arrow-height: {{ section.settings.feature_4_arrow_height }}px;"
+        >
+          <path d="M92 26 C74 26, 62 34, 46 56" stroke="var(--sf-arrow-color)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          <path d="M46 47 L46 56 L55 53" stroke="var(--sf-arrow-color)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+        </svg>
+      </div>
+      
+      <!-- Feature 5: Bottom Right -->
+      <div class="sf-anatomy-item align-left">
+        <h3>{{ section.settings.feature_5_title }}</h3>
+        <p>{{ section.settings.feature_5_text }}</p>
+        <svg
+          class="sf-arrow sf-arrow-br"
+          viewBox="-12 -12 124 124"
+          fill="none"
+          style="--sf-arrow-offset-y: {{ section.settings.feature_5_arrow_offset }}px; --sf-arrow-width: {{ section.settings.feature_5_arrow_width }}px; --sf-arrow-height: {{ section.settings.feature_5_arrow_height }}px;"
+        >
+          <path d="M92 78 C72 78, 62 66, 48 44" stroke="var(--sf-arrow-color)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          <path d="M48 53 L48 44 L57 47" stroke="var(--sf-arrow-color)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+        </svg>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Features Anatomy",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why SWARAKSHIT stands out"
+    },
+    {
+      "type": "image_picker",
+      "id": "center_image",
+      "label": "Center Image (Leave blank for default gas sensor)"
+    },
+    {
+      "type": "range",
+      "id": "center_image_width",
+      "label": "Center image width",
+      "min": 180,
+      "max": 420,
+      "step": 10,
+      "unit": "px",
+      "default": 280
+    },
+    {
+      "type": "range",
+      "id": "center_image_height",
+      "label": "Center image height",
+      "min": 360,
+      "max": 760,
+      "step": 20,
+      "unit": "px",
+      "default": 620
+    },
+    {
+      "type": "range",
+      "id": "center_image_focus_y",
+      "label": "Image vertical focus",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 42
+    },
+    {
+      "type": "header",
+      "content": "Feature 1 (Top Left)"
+    },
+    {
+      "type": "text",
+      "id": "feature_1_title",
+      "label": "Title",
+      "default": "Rapid Detection"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_1_text",
+      "label": "Text",
+      "default": "Highly sensitive sensing helps identify gas leaks within seconds."
+    },
+    {
+      "type": "range",
+      "id": "feature_1_arrow_offset",
+      "label": "Arrow vertical offset",
+      "min": -100,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": -10
+    },
+    {
+      "type": "range",
+      "id": "feature_1_arrow_width",
+      "label": "Arrow width",
+      "min": 70,
+      "max": 220,
+      "step": 5,
+      "unit": "px",
+      "default": 130
+    },
+    {
+      "type": "range",
+      "id": "feature_1_arrow_height",
+      "label": "Arrow height",
+      "min": 70,
+      "max": 220,
+      "step": 5,
+      "unit": "px",
+      "default": 130
+    },
+    {
+      "type": "header",
+      "content": "Feature 2 (Bottom Left)"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_title",
+      "label": "Title",
+      "default": "Smart App Views"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_2_text",
+      "label": "Text",
+      "default": "Access 10 useful screens and guided readings inside the SWARAKSHIT app."
+    },
+    {
+      "type": "range",
+      "id": "feature_2_arrow_offset",
+      "label": "Arrow vertical offset",
+      "min": -100,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "feature_2_arrow_width",
+      "label": "Arrow width",
+      "min": 70,
+      "max": 220,
+      "step": 5,
+      "unit": "px",
+      "default": 130
+    },
+    {
+      "type": "range",
+      "id": "feature_2_arrow_height",
+      "label": "Arrow height",
+      "min": 70,
+      "max": 220,
+      "step": 5,
+      "unit": "px",
+      "default": 130
+    },
+    {
+      "type": "header",
+      "content": "Feature 3 (Top Right)"
+    },
+    {
+      "type": "text",
+      "id": "feature_3_title",
+      "label": "Title",
+      "default": "Precision Probe"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_3_text",
+      "label": "Text",
+      "default": "Built to sample air accurately so you can catch trouble before it spreads."
+    },
+    {
+      "type": "range",
+      "id": "feature_3_arrow_offset",
+      "label": "Arrow vertical offset",
+      "min": -100,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "feature_3_arrow_width",
+      "label": "Arrow width",
+      "min": 70,
+      "max": 220,
+      "step": 5,
+      "unit": "px",
+      "default": 130
+    },
+    {
+      "type": "range",
+      "id": "feature_3_arrow_height",
+      "label": "Arrow height",
+      "min": 70,
+      "max": 220,
+      "step": 5,
+      "unit": "px",
+      "default": 130
+    },
+    {
+      "type": "header",
+      "content": "Feature 4 (Middle Right)"
+    },
+    {
+      "type": "text",
+      "id": "feature_4_title",
+      "label": "Title",
+      "default": "Pocket Friendly"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_4_text",
+      "label": "Text",
+      "default": "Slim handheld form makes it easy to carry from kitchen to bedroom."
+    },
+    {
+      "type": "range",
+      "id": "feature_4_arrow_offset",
+      "label": "Arrow vertical offset",
+      "min": -100,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "feature_4_arrow_width",
+      "label": "Arrow width",
+      "min": 70,
+      "max": 220,
+      "step": 5,
+      "unit": "px",
+      "default": 130
+    },
+    {
+      "type": "range",
+      "id": "feature_4_arrow_height",
+      "label": "Arrow height",
+      "min": 70,
+      "max": 220,
+      "step": 5,
+      "unit": "px",
+      "default": 130
+    },
+    {
+      "type": "header",
+      "content": "Feature 5 (Bottom Right)"
+    },
+    {
+      "type": "text",
+      "id": "feature_5_title",
+      "label": "Title",
+      "default": "USB-C Charging"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_5_text",
+      "label": "Text",
+      "default": "Recharge fast with the included USB-C cable and stay ready to test."
+    },
+    {
+      "type": "range",
+      "id": "feature_5_arrow_offset",
+      "label": "Arrow vertical offset",
+      "min": -100,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "feature_5_arrow_width",
+      "label": "Arrow width",
+      "min": 70,
+      "max": 220,
+      "step": 5,
+      "unit": "px",
+      "default": 130
+    },
+    {
+      "type": "range",
+      "id": "feature_5_arrow_height",
+      "label": "Arrow height",
+      "min": 70,
+      "max": 220,
+      "step": 5,
+      "unit": "px",
+      "default": 130
+    }
+  ],
+  "presets": [
+    {
+      "name": "Features Anatomy"
+    }
+  ]
+}
+{% endschema %}

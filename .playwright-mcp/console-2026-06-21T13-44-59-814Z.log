@@ -1,0 +1,20 @@
+[     390ms] [ERROR] TypeError: Failed to fetch
+    at T (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1371)
+    at w (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1319)
+    at D (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1739)
+    at HTMLDocument.<anonymous> (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1787) @ https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:2
+[     390ms] [ERROR] TypeError: Failed to fetch
+    at T (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1371)
+    at w (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1319)
+    at D (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1739) @ https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:2
+[19725304ms] [ERROR] TypeError: Failed to fetch
+    at T (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1371)
+    at w (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1319)
+    at D (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1739) @ https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:2
+[19725304ms] [ERROR] TypeError: Failed to fetch
+    at T (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1371)
+    at w (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1319)
+    at D (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1739)
+    at HTMLDocument.<anonymous> (https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:3:1787) @ https://w1mru4-mj.myshopify.com/cdn/shopifycloud/storefront/assets/storefront/event_observer_reporter-de731130.js:2
+[19742629ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://w1mru4-mj.myshopify.com/favicon.ico:0
+[23354102ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://w1mru4-mj.myshopify.com/api/collect:0

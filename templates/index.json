@@ -1,0 +1,623 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Detect Gas Leaks <em>Before They</em> Detect You.",
+            "heading_size": "hxxl"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "India's most trusted portable gas leak detector. Instant LCD alarm for LPG, PNG & CNG leaks. LERC certified. Protect your family in seconds.",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Buy Now — ₹1,499",
+            "button_link_1": "shopify://products/gas-sensor",
+            "button_style_secondary_1": true,
+            "button_label_2": "WhatsApp Us",
+            "button_link_2": "https://wa.me/919529154548?text=Hi%2C%20I%20want%20to%20buy%20the%20Swarakshit%20Gas%20Leak%20Tester.",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "image_overlay_opacity": 0,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "left",
+        "show_text_below": false
+      }
+    },
+    "trust_badges_new": {
+      "type": "svarakshit-trust-badges",
+      "blocks": {
+        "badge_1": {
+          "type": "badge",
+          "settings": {
+            "icon": "shield-check",
+            "title": "LERC Approved",
+            "subtitle": "Govt. Certified Safety"
+          }
+        },
+        "badge_2": {
+          "type": "badge",
+          "settings": {
+            "icon": "flag",
+            "title": "Made in India",
+            "subtitle": "Atmanirbhar Bharat"
+          }
+        },
+        "badge_3": {
+          "type": "badge",
+          "settings": {
+            "icon": "truck",
+            "title": "Free Delivery",
+            "subtitle": "Across India"
+          }
+        },
+        "badge_4": {
+          "type": "badge",
+          "settings": {
+            "icon": "rotate-ccw",
+            "title": "30-Day Return",
+            "subtitle": "No Questions Asked"
+          }
+        }
+      },
+      "block_order": [
+        "badge_1",
+        "badge_2",
+        "badge_3",
+        "badge_4"
+      ],
+      "settings": {}
+    },
+    "svarakshit_why_section": {
+      "type": "svarakshit-why-section",
+      "settings": {
+        "heading": "Why SWARAKSHIT?",
+        "highlight_word": "SWARAKSHIT",
+        "text": "<p></p><p><strong>LERC Approved & Government Certified:</strong> India's highest authority for gas safety equipment — the only certification that matters. </p><p><strong>Detects in Under 10 Seconds:</strong> High-sensitivity sensor responds faster than any competitor in its class. <strong>Recommended by IOCL, BPCL & HPCL Dealers:</strong> Trusted by India's major oil company distributor networks for customer safety.</p>"
+      }
+    },
+    "svarakshit_our_product_epPYPh": {
+      "type": "svarakshit-our-product",
+      "blocks": {
+        "feature_NjLra4": {
+          "type": "feature",
+          "settings": {
+            "svg_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><circle cx=\"12\" cy=\"12\" r=\"5\"></circle><circle cx=\"12\" cy=\"12\" r=\"1.75\" fill=\"currentColor\" stroke=\"none\"></circle></svg>",
+            "title": "Multi-Gas Detection",
+            "description": "Detects LPG, PNG, CNG, methane & all combustible gases"
+          }
+        },
+        "feature_NcCAtN": {
+          "type": "feature",
+          "settings": {
+            "svg_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"12\" rx=\"2\"></rect><path d=\"M8 20h8\"></path><path d=\"M12 16v4\"></path></svg>",
+            "title": "LCD Display with \"Hi\" Alert",
+            "description": "Digital screen shows gas level + 24°C temperature reading"
+          }
+        },
+        "feature_gRRGkR": {
+          "type": "feature",
+          "settings": {
+            "svg_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"8\" r=\"5\"></circle><path d=\"M8.5 13.5 7 22l5-3 5 3-1.5-8.5\"></path></svg>",
+            "title": "LERC Certified",
+            "description": "Approved by India's top gas safety authority"
+          }
+        },
+        "feature_fwMcnH": {
+          "type": "feature",
+          "settings": {
+            "svg_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"2\" y=\"7\" width=\"16\" height=\"10\" rx=\"2\"></rect><path d=\"M22 11v2\"></path><path d=\"M6 5v4\"></path><path d=\"M10 5v4\"></path></svg>",
+            "title": "USB Rechargeable",
+            "description": "8+ hours battery with wrist strap for portability"
+          }
+        },
+        "feature_A643hn": {
+          "type": "feature",
+          "settings": {
+            "svg_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M3 12h18\"></path><path d=\"M12 3a15 15 0 0 1 0 18\"></path><path d=\"M12 3a15 15 0 0 0 0 18\"></path></svg>",
+            "title": "Works Everywhere",
+            "description": "Home, hotels, restaurants, industries — any gas environment"
+          }
+        },
+        "guarantee_3hnByF": {
+          "type": "guarantee",
+          "settings": {
+            "svg_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\" ry=\"2\"></rect><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"></path></svg>",
+            "text": "Secure Payment"
+          }
+        },
+        "guarantee_q43Cxc": {
+          "type": "guarantee",
+          "settings": {
+            "svg_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8\"></path><polyline points=\"3 3 3 8 8 8\"></polyline></svg>",
+            "text": "30-Day Returns"
+          }
+        },
+        "guarantee_yGYXBh": {
+          "type": "guarantee",
+          "settings": {
+            "svg_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"1\" y=\"3\" width=\"15\" height=\"13\"></rect><polygon points=\"16 8 20 8 23 11 23 16 16 16 16 8\"></polygon><circle cx=\"5.5\" cy=\"18.5\" r=\"2.5\"></circle><circle cx=\"18.5\" cy=\"18.5\" r=\"2.5\"></circle></svg>",
+            "text": "Free Shipping"
+          }
+        },
+        "guarantee_EXBKhh": {
+          "type": "guarantee",
+          "settings": {
+            "svg_icon": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"></path></svg>",
+            "text": "1-Year Warranty"
+          }
+        }
+      },
+      "block_order": [
+        "feature_NjLra4",
+        "feature_NcCAtN",
+        "feature_gRRGkR",
+        "feature_fwMcnH",
+        "feature_A643hn",
+        "guarantee_3hnByF",
+        "guarantee_q43Cxc",
+        "guarantee_yGYXBh",
+        "guarantee_EXBKhh"
+      ],
+      "name": "Swarakshit Our Product",
+      "settings": {
+        "bg_color": "#ffffff",
+        "text_color": "#333333",
+        "heading_color": "#111111",
+        "product": "gas-sensor",
+        "title": "Swarakshit Gas Leak Tester",
+        "subtitle": "Portable · Instant Alert · Multi-Gas Detection",
+        "rating_score": "4.8",
+        "rating_text": "(1,247 reviews)",
+        "whatsapp_number": "919529154548",
+        "whatsapp_message": "Buy: Swarakshit Gas Leak Tester"
+      }
+    },
+    "svarakshit_how_to_use": {
+      "type": "svarakshit-how-to-use",
+      "settings": {
+        "bg_color": "#f9f9f9"
+      }
+    },
+    "svarakshit_cards_slider_G9qiDA": {
+      "type": "svarakshit-cards-slider",
+      "blocks": {
+        "card_WmCUpL": {
+          "type": "card",
+          "settings": {
+            "title": "LPG Cylinders",
+            "subtitle": "Check cylinder valves, rubber pipes & pressure regulators before they become dangerous",
+            "link": ""
+          }
+        },
+        "card_4miJmj": {
+          "type": "card",
+          "settings": {
+            "title": "PNG Pipelines",
+            "subtitle": "Test piped natural gas connections at meter points, joints & burner connections",
+            "link": ""
+          }
+        },
+        "card_JHVe46": {
+          "type": "card",
+          "settings": {
+            "title": "Gas Geysers",
+            "subtitle": "Enclosed bathrooms trap gas — test geyser connections regularly to prevent accidents",
+            "link": ""
+          }
+        },
+        "card_3tQC9T": {
+          "type": "card",
+          "settings": {
+            "title": "Small Commercial Kitchens",
+            "subtitle": "Also useful for selected small kitchen setups that want regular combustible gas checks",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_WmCUpL",
+        "card_4miJmj",
+        "card_JHVe46",
+        "card_3tQC9T"
+      ],
+      "name": "Svarakshit Cards Slider",
+      "settings": {
+        "heading": "Where Families Use Swarakshit",
+        "subtitle": "From kitchen cylinders to PNG joints and gas geysers, Swarakshit helps households check the gas points they rely on every day."
+      }
+    },
+    "svarakshit_numbers": {
+      "type": "svarakshit-numbers",
+      "blocks": {
+        "stat_79gtK9": {
+          "type": "stat",
+          "settings": {
+            "number": "30Cr+",
+            "text": "LPG connections in India — most homes cook on gas daily"
+          }
+        },
+        "num_1": {
+          "type": "stat",
+          "settings": {
+            "number": "5,000+",
+            "text": "Gas fire accidents reported annually across Indian households"
+          }
+        },
+        "num_2": {
+          "type": "stat",
+          "settings": {
+            "number": "10 sec",
+            "text": "Time Swarakshit takes to detect a dangerous gas leak"
+          }
+        },
+        "num_3": {
+          "type": "stat",
+          "settings": {
+            "number": "₹1,499",
+            "text": "The price of protecting your family vs. lakhs in damage"
+          }
+        }
+      },
+      "block_order": [
+        "stat_79gtK9",
+        "num_1",
+        "num_2",
+        "num_3"
+      ],
+      "settings": {
+        "bg_color": "#f9f9f9",
+        "heading_color": "#020408",
+        "text_color": "#a0a0a0",
+        "heading": "Gas Safety in India"
+      }
+    },
+    "svarakshit_marquee": {
+      "type": "svarakshit-marquee",
+      "settings": {
+        "text": "1-year warranty",
+        "bg_color": "#ffffff",
+        "text_color": "#000000",
+        "speed": 20
+      }
+    },
+    "svarakshit_use_cases": {
+      "type": "svarakshit-use-cases",
+      "blocks": {
+        "uc_1": {
+          "type": "use_case",
+          "settings": {
+            "size": "tall",
+            "subtitle": "SWARAKSHIT",
+            "title": "LPG Cylinder Checks",
+            "link": ""
+          }
+        },
+        "uc_2": {
+          "type": "use_case",
+          "settings": {
+            "size": "small",
+            "subtitle": "SWARAKSHIT",
+            "title": "Home Kitchens",
+            "link": ""
+          }
+        },
+        "uc_3": {
+          "type": "use_case",
+          "settings": {
+            "size": "small",
+            "subtitle": "SWARAKSHIT",
+            "title": "Basements",
+            "link": ""
+          }
+        },
+        "uc_4": {
+          "type": "use_case",
+          "settings": {
+            "size": "small",
+            "subtitle": "SWARAKSHIT",
+            "title": "PNG Connections",
+            "link": ""
+          }
+        },
+        "use_case_kGr8JU": {
+          "type": "use_case",
+          "settings": {
+            "size": "small",
+            "subtitle": "SWARAKSHIT",
+            "title": "Gas Geysers",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "uc_1",
+        "uc_2",
+        "uc_3",
+        "uc_4",
+        "use_case_kGr8JU"
+      ],
+      "settings": {
+        "heading": "Home Safety Use Cases",
+        "text": "<p>Explore the everyday places where Indian households can use Swarakshit to check for combustible gas leaks and build safer daily habits at home.</p>"
+      }
+    },
+    "svarakshit_watch_shop": {
+      "type": "svarakshit-watch-shop",
+      "blocks": {
+        "video_item_LkHHJ3": {
+          "type": "video_item",
+          "settings": {
+            "video": "shopify://files/videos/⚠️ Most gas leaks don’t come with a warning smell. Sometimes, they stay completely silent… until.mp4",
+            "product": "gas-sensor",
+            "tag": ""
+          }
+        },
+        "video_item_ftrDiJ": {
+          "type": "video_item",
+          "settings": {
+            "video": "shopify://files/videos/🚨 A gas leak doesnt always come with a warning. Tiny leaks around PNG pipelines, joints, fitti.mp4",
+            "product": "gas-sensor",
+            "tag": ""
+          }
+        },
+        "video_item_9mabW9": {
+          "type": "video_item",
+          "settings": {
+            "video": "shopify://files/videos/🔥 Think your PNG gas bill is too high The reason might not be your usage — it could be a hidden.mp4",
+            "product": "gas-sensor",
+            "tag": ""
+          }
+        },
+        "video_item_zUdTLp": {
+          "type": "video_item",
+          "settings": {
+            "video": "shopify://files/videos/Cylinder check ki Regulator check kiPipeline check kiNahi Toh Swarakshit chahiye aapko.India ka .mp4",
+            "product": "gas-sensor",
+            "tag": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_item_LkHHJ3",
+        "video_item_ftrDiJ",
+        "video_item_9mabW9",
+        "video_item_zUdTLp"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "eyebrow": "",
+        "heading": "Watch & Shop",
+        "subtext": "Experience the Swarakshit Monitor in real homes. Tap any video to view details."
+      }
+    },
+    "svarakshit_certifications_CBxf6m": {
+      "type": "svarakshit-certifications",
+      "blocks": {
+        "certification_4TxFhT": {
+          "type": "certification",
+          "settings": {
+            "custom_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"#ff6b00\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"8\" r=\"7\"></circle><polyline points=\"8.21 13.89 7 23 12 20 17 23 15.79 13.88\"></polyline></svg>",
+            "title": "LERC Approved",
+            "text": "India's top gas safety authority certification"
+          }
+        },
+        "certification_Pa3bqe": {
+          "type": "certification",
+          "settings": {
+            "custom_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"#ff6b00\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2\"></path><path d=\"M18 14h-8\"></path><path d=\"M15 18h-5\"></path><path d=\"M10 6h8v4h-8V6Z\"></path></svg>",
+            "title": "Make in India",
+            "text": "Designed & manufactured in India"
+          }
+        },
+        "certification_QRUXKN": {
+          "type": "certification",
+          "settings": {
+            "custom_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"#ff6b00\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"3\" y1=\"22\" x2=\"21\" y2=\"22\"></line><line x1=\"4\" y1=\"9\" x2=\"20\" y2=\"9\"></line><path d=\"M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18\"></path><path d=\"M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5\"></path></svg>",
+            "title": "IOCL / BPCL / HPCL",
+            "text": "Recommended by oil company dealer networks"
+          }
+        },
+        "certification_8ztHVC": {
+          "type": "certification",
+          "settings": {
+            "custom_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"#ff6b00\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z\"></path><path d=\"m9 12 2 2 4-4\"></path></svg>",
+            "title": "Pushpam Certified",
+            "text": "By Pushpam Consultancy — trusted since 2010"
+          }
+        }
+      },
+      "block_order": [
+        "certification_4TxFhT",
+        "certification_Pa3bqe",
+        "certification_QRUXKN",
+        "certification_8ztHVC"
+      ],
+      "name": "Svarakshit Certifications",
+      "settings": {
+        "bg_color": "#f9f9f9",
+        "pill_text": "CERTIFIED & TRUSTED",
+        "heading": "Our Certifications",
+        "show_divider": true
+      }
+    },
+    "svarakshit_testimonials": {
+      "type": "svarakshit-testimonials",
+      "blocks": {
+        "test_1": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Priya S.",
+            "verified_text": "Verified",
+            "text": "This device gave me real peace of mind at home. We now check our cylinder valve, pipe joints, and regulator every few days. It feels simple, fast, and genuinely useful for family safety.",
+            "avatar_color": "#ff6b00"
+          }
+        },
+        "test_2": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Rahul M.",
+            "verified_text": "Verified",
+            "text": "It is easy to keep in the kitchen and simple to use during our weekly gas safety checks. The display is clear, the alert is loud, and the whole process feels practical even for regular everyday use.",
+            "avatar_color": "#ff6b00"
+          }
+        },
+        "test_3": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Ananya D.",
+            "verified_text": "Verified",
+            "text": "It feels well made and easy to keep nearby, which makes regular home gas checks much more practical for us. We do not need anything complicated, and this fits naturally into our home safety routine.",
+            "avatar_color": "#ff6b00"
+          }
+        },
+        "test_4": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Karan V.",
+            "verified_text": "Verified",
+            "text": "We use it as part of our home safety routine and it gives us more confidence around the gas points we check most often. It is portable, quick to recharge, and easy for everyone in the house to understand.",
+            "avatar_color": "#ff6b00"
+          }
+        },
+        "test_5": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Sneha P.",
+            "verified_text": "Verified",
+            "text": "Installed it in my parents' kitchen and the setup was very straightforward. The loud siren is reassuring, the form factor is compact, and it gives us extra confidence without adding any hassle.",
+            "avatar_color": "#ff6b00"
+          }
+        }
+      },
+      "block_order": [
+        "test_1",
+        "test_2",
+        "test_3",
+        "test_4",
+        "test_5"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "heading": "Trusted by 50,000+ Families",
+        "rating": "4.8",
+        "reviews_count": "1,247 verified reviews"
+      }
+    },
+    "svarakshit_faq_mbkmFC": {
+      "type": "svarakshit-faq",
+      "blocks": {
+        "faq_item_rnkUxk": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What gases does Swarakshit detect?",
+            "answer": "Swarakshit detects all combustible gases including LPG, PNG, CNG, methane, propane, butane and other hydrocarbons. It is NOT designed to detect CO (carbon monoxide) — for CO, you need a dedicated CO alarm."
+          }
+        },
+        "faq_item_KXFVkd": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What does LERC certification mean?",
+            "answer": "LERC (Liquefied Petroleum Gas Equipment Research Centre) is India's premier government-recognized body for testing and certifying LPG safety equipment. LERC certification means the device has been independently tested for accuracy, sensitivity, and durability — the gold standard in India."
+          }
+        },
+        "faq_item_H9gYUb": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does the battery last?",
+            "answer": "The built-in rechargeable battery lasts 8–10 hours of continuous use. For typical home use (5–10 minute daily checks), the battery lasts several weeks between charges. USB charging takes approximately 2 hours to full."
+          }
+        },
+        "faq_item_wUBeqw": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I use it for commercial kitchens?",
+            "answer": "Swarakshit is designed first for homes and kitchens. It may also be useful in selected small commercial kitchen setups where regular combustible gas checks are needed. If you have a specialized or bulk requirement, contact us before ordering so we can guide you properly."
+          }
+        },
+        "faq_item_THB8Um": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is the warranty and return policy?",
+            "answer": "Every Swarakshit device comes with a 1-year manufacturer's warranty and a 30-day no-questions-asked return policy. Contact us at info@rakshit.net.in or call 9529154548."
+          }
+        },
+        "faq_item_4DbT7N": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How often should I test for gas leaks?",
+            "answer": "Weekly — around LPG cylinder and rubber pipe connections. Monthly — around all gas appliances including geysers. Immediately — after any new appliance installation or if you smell even a faint gas odour."
+          }
+        },
+        "faq_item_BaCJen": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is it safe to use if I already smell gas?",
+            "answer": "If you already smell strong gas, DO NOT use any electrical device including Swarakshit. Immediately turn off the main gas valve, open all windows, evacuate, and call your gas agency. Use Swarakshit for routine preventive checks when no visible leak is apparent."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_rnkUxk",
+        "faq_item_KXFVkd",
+        "faq_item_H9gYUb",
+        "faq_item_wUBeqw",
+        "faq_item_THB8Um",
+        "faq_item_4DbT7N",
+        "faq_item_BaCJen"
+      ],
+      "name": "Svarakshit FAQ",
+      "settings": {
+        "bg_color": "#f9f9f9",
+        "heading": "Frequently Asked Questions"
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "trust_badges_new",
+    "svarakshit_why_section",
+    "svarakshit_our_product_epPYPh",
+    "svarakshit_how_to_use",
+    "svarakshit_cards_slider_G9qiDA",
+    "svarakshit_numbers",
+    "svarakshit_marquee",
+    "svarakshit_use_cases",
+    "svarakshit_watch_shop",
+    "svarakshit_certifications_CBxf6m",
+    "svarakshit_testimonials",
+    "svarakshit_faq_mbkmFC"
+  ]
+}

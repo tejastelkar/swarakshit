@@ -1,0 +1,109 @@
+<style>
+  .app-intro {
+    background-color: #ffffff;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    margin-top: -80px; /* overlap */
+    position: relative;
+    z-index: 10;
+    padding: 6rem 2rem 2rem;
+    font-family: 'Inter', sans-serif;
+  }
+  @media screen and (min-width: 768px) {
+    .app-intro {
+      padding: 8rem 5rem 2rem;
+    }
+  }
+  .app-intro__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .app-intro__heading {
+    font-size: clamp(4rem, 6vw, 7rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: #1a1a1a;
+    margin: 0;
+  }
+  .app-intro__heading em {
+    font-style: normal;
+  }
+  
+  .app-intro__content {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+    padding-top: 1rem;
+  }
+  .app-intro__content strong {
+    color: #1a1a1a;
+    font-weight: 700;
+  }
+  .app-intro__author {
+    margin-top: 2rem;
+    font-size: 1.6rem;
+    color: #6a6a6a;
+  }
+
+  @media screen and (max-width: 990px) {
+    .app-intro {
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      margin-top: -60px;
+      padding: 5rem 1.5rem 1rem;
+    }
+    .app-intro__container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+</style>
+
+<div class="app-intro">
+  <div class="app-intro__container">
+    <h2 class="app-intro__heading">{{ section.settings.heading }}</h2>
+    <div class="app-intro__content">
+      {{ section.settings.text }}
+      {% if section.settings.author != blank %}
+        <div class="app-intro__author">{{ section.settings.author }}</div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Application Intro",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Bring <em>SWARAKSHIT</em> in Your Kitchen!"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Right Text",
+      "default": "<p>Swarakshit helps households check for combustible gas leaks around stoves, cylinders, regulators, pipes, and other common kitchen gas points. It is portable, rechargeable, and easy to use as part of a regular home safety routine.</p>"
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "Author/Citation",
+      "default": "~ Swarakshit Home Safety"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Application Intro"
+    }
+  ]
+}
+{% endschema %}

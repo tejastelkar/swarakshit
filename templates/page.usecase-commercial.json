@@ -1,0 +1,131 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "svarakshit-usecase-hero",
+      "settings": {
+        "heading": "Swarakshit for Small Commercial Kitchens",
+        "subtitle": "For smaller kitchen environments that want a practical way to check combustible gas points with the same home-first reliability.",
+        "overlay_opacity": 40
+      }
+    },
+    "intro_text": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "A Practical Option for Selected Kitchen Setups",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Swarakshit is designed first for homes and kitchens, but it can also be useful in selected small commercial kitchen environments where teams want a simple way to check cylinders, regulators, joints, and burner connections for combustible gas leaks.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 80
+      }
+    },
+    "content_features": {
+      "type": "swarakshit-usecase-content",
+      "blocks": {
+        "block_1": {
+          "type": "content_block",
+          "settings": {
+            "image_position": "left",
+            "subtitle": "ROUTINE CHECKS",
+            "heading": "Check Key Gas Points Regularly",
+            "text": "<p>Use Swarakshit as part of a regular safety routine around cylinders, pipeline joints, regulators, and burner connections in kitchens that depend on daily gas use.</p>"
+          }
+        },
+        "block_2": {
+          "type": "content_block",
+          "settings": {
+            "image_position": "right",
+            "subtitle": "SIMPLE OPERATION",
+            "heading": "Easy for Staff to Use",
+            "text": "<p>The portable rechargeable design makes it easier for staff to carry out spot checks without needing a complex installation or technical workflow.</p>"
+          }
+        },
+        "block_3": {
+          "type": "content_block",
+          "settings": {
+            "image_position": "left",
+            "subtitle": "BEFORE YOU ORDER",
+            "heading": "Confirm Suitability First",
+            "text": "<p>If your setup involves a larger kitchen, multiple lines, or specialized safety needs, contact us before ordering so we can help you decide whether Swarakshit is the right fit.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "block_1",
+        "block_2",
+        "block_3"
+      ],
+      "settings": {
+        "bg_color": "#FAFAFA"
+      }
+    },
+    "testimonials": {
+      "type": "svarakshit-testimonials",
+      "blocks": {
+        "test_1": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Food Service Team",
+            "text": "We wanted a straightforward way to check the main gas points in our kitchen without adding complexity. Swarakshit made those routine checks easier."
+          }
+        },
+        "test_2": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Small Kitchen Operator",
+            "text": "It fits best as a practical checking tool for our gas connections, which is exactly what we needed."
+          }
+        }
+      },
+      "block_order": [
+        "test_1",
+        "test_2"
+      ],
+      "settings": {
+        "heading": "Useful for Selected Secondary Setups"
+      }
+    },
+    "product": {
+      "type": "svarakshit-our-product",
+      "settings": {
+        "left_heading": "Discuss Your Kitchen Setup",
+        "left_text": "If you are considering Swarakshit for a small commercial kitchen or bulk requirement, contact us first so we can guide you on suitability."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "intro_text",
+    "content_features",
+    "testimonials",
+    "product"
+  ]
+}

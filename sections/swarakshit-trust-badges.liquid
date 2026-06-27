@@ -1,0 +1,121 @@
+{% schema %}
+{
+  "name": "Swarakshit Trust Badges",
+  "tag": "section",
+  "class": "section-trust-badges",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "svg_icon",
+          "label": "SVG Icon Code"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Customer service"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Feel free to reach out to our team anytime"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Swarakshit Trust Badges"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    background-color: #FFFFFF;
+    border-top: 1px solid #EBEBEB;
+    border-bottom: 1px solid #EBEBEB;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .swarakshit-tb {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 20px;
+    gap: 40px;
+  }
+
+  .swarakshit-tb__item {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .swarakshit-tb__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: #111;
+  }
+
+  .swarakshit-tb__icon svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+  }
+
+  .swarakshit-tb__text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .swarakshit-tb__title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111;
+    margin: 0;
+  }
+
+  .swarakshit-tb__subtitle {
+    font-size: 12px;
+    color: #555;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 768px) {
+    .swarakshit-tb {
+      flex-direction: column;
+      gap: 32px;
+    }
+  }
+</style>
+
+<div class="swarakshit-tb">
+  {%- for block in section.blocks -%}
+    <div class="swarakshit-tb__item" {{ block.shopify_attributes }}>
+      <div class="swarakshit-tb__icon">
+        {%- if block.settings.svg_icon != blank -%}
+          {{ block.settings.svg_icon }}
+        {%- else -%}
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+        {%- endif -%}
+      </div>
+      <div class="swarakshit-tb__text">
+        <h4 class="swarakshit-tb__title">{{ block.settings.title }}</h4>
+        <p class="swarakshit-tb__subtitle">{{ block.settings.subtitle }}</p>
+      </div>
+    </div>
+  {%- endfor -%}
+</div>

@@ -1,0 +1,375 @@
+{% schema %}
+{
+  "name": "Swarakshit FAQ Contact",
+  "tag": "section",
+  "class": "section-faq-contact",
+  "settings": [
+    {
+      "type": "text",
+      "id": "faq_title",
+      "label": "FAQ Title",
+      "default": "FAQs"
+    },
+    {
+      "type": "text",
+      "id": "contact_title",
+      "label": "Contact Title",
+      "default": "Didn't find your answer?"
+    },
+    {
+      "type": "text",
+      "id": "contact_subtitle",
+      "label": "Contact Subtitle",
+      "default": "Don't hesitate to contact us"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What does the monitor measure?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>It measures LPG, Methane, and CO.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Swarakshit FAQ Contact"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    padding: 60px 20px;
+    font-family: var(--font-body-family, sans-serif);
+    background-color: #fff;
+  }
+
+  .swarakshit-fc {
+    max-width: 1360px;
+    margin: 0 auto;
+    background-color: #171717;
+    border-radius: 20px;
+    display: flex;
+    padding: 80px;
+    gap: 100px;
+    color: #FFF;
+  }
+
+  .swarakshit-fc__faqs {
+    flex: 1.2;
+  }
+
+  .swarakshit-fc__title {
+    font-size: clamp(48px, 6vw, 72px);
+    font-weight: 800;
+    color: #E87722;
+    margin: 0 0 60px 0;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .swarakshit-fc-accordion {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .swarakshit-fc-accordion:first-of-type {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .swarakshit-fc-accordion__btn {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 32px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: #FFF;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
+    letter-spacing: 0.3px;
+  }
+
+  .swarakshit-fc-accordion__icon {
+    font-size: 24px;
+    font-weight: 300;
+    color: #FFF;
+    transition: transform 0.3s ease;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .swarakshit-fc-accordion__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .swarakshit-fc-accordion__inner {
+    padding-bottom: 32px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .swarakshit-fc-accordion.is-open .swarakshit-fc-accordion__content {
+    max-height: 500px;
+  }
+
+  .swarakshit-fc-accordion.is-open .swarakshit-fc-accordion__icon {
+    transform: rotate(45deg);
+  }
+
+  .swarakshit-fc__contact {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .swarakshit-fc__contact-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #FFF;
+    margin: 0 0 12px 0;
+    letter-spacing: -0.01em;
+  }
+
+  .swarakshit-fc__contact-subtitle {
+    font-size: 15px;
+    color: #999;
+    margin: 0 0 40px 0;
+    font-weight: 400;
+  }
+
+  .swarakshit-fc-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .swarakshit-fc-input,
+  .swarakshit-fc-textarea {
+    width: 100%;
+    background: #252525;
+    border: none;
+    border-radius: 12px;
+    padding: 20px 24px;
+    font-size: 15px;
+    color: #FFF;
+    font-family: inherit;
+    transition: background 0.3s ease;
+  }
+
+  .swarakshit-fc-input:focus,
+  .swarakshit-fc-textarea:focus {
+    outline: none;
+    background: #2A2A2A;
+  }
+
+  .swarakshit-fc-input::placeholder,
+  .swarakshit-fc-textarea::placeholder {
+    color: #777;
+    font-weight: 400;
+  }
+
+  .swarakshit-fc-textarea {
+    min-height: 140px;
+    resize: vertical;
+  }
+
+  .swarakshit-fc-submit {
+    background: #FFF;
+    color: #111;
+    border: none;
+    border-radius: 30px;
+    padding: 16px 32px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 8px;
+  }
+
+  .swarakshit-fc-submit:hover {
+    background: #EAEAEA;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 989px) {
+    #shopify-section-{{ section.id }} {
+      padding: 40px 16px;
+    }
+    
+    .swarakshit-fc {
+      flex-direction: column;
+      padding: 40px 30px;
+      gap: 60px;
+      border-radius: 16px;
+    }
+    
+    .swarakshit-fc__title {
+      margin: 0 0 40px 0;
+    }
+    
+    .swarakshit-fc-accordion__btn {
+      padding: 24px 0;
+      font-size: 16px;
+    }
+  }
+</style>
+
+<div class="swarakshit-fc" id="swarakshit-faq">
+  <div class="swarakshit-fc__faqs">
+    <h2 class="swarakshit-fc__title">{{ section.settings.faq_title }}</h2>
+
+    {%- if section.blocks.size > 0 -%}
+      {%- for block in section.blocks -%}
+        <div class="swarakshit-fc-accordion js-fc-accordion" {{ block.shopify_attributes }}>
+          <button class="swarakshit-fc-accordion__btn js-fc-accordion-btn">
+            {{ block.settings.question }}
+            <span class="swarakshit-fc-accordion__icon">+</span>
+          </button>
+          <div class="swarakshit-fc-accordion__content">
+            <div class="swarakshit-fc-accordion__inner">
+              {{ block.settings.answer }}
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- else -%}
+      <div class="swarakshit-fc-accordion js-fc-accordion">
+        <button class="swarakshit-fc-accordion__btn js-fc-accordion-btn">
+          What gases does Swarakshit detect?
+          <span class="swarakshit-fc-accordion__icon">+</span>
+        </button>
+        <div class="swarakshit-fc-accordion__content">
+          <div class="swarakshit-fc-accordion__inner">
+            <p>Swarakshit detects all combustible gases including LPG, PNG, CNG, methane, propane, butane and other hydrocarbons. It is NOT designed to detect CO (carbon monoxide) — for CO, you need a dedicated CO alarm.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="swarakshit-fc-accordion js-fc-accordion">
+        <button class="swarakshit-fc-accordion__btn js-fc-accordion-btn">
+          What does LERC certification mean?
+          <span class="swarakshit-fc-accordion__icon">+</span>
+        </button>
+        <div class="swarakshit-fc-accordion__content">
+          <div class="swarakshit-fc-accordion__inner">
+            <p>LERC (Liquefied Petroleum Gas Equipment Research Centre) is India's premier government-recognized body for testing and certifying LPG safety equipment. LERC certification means the device has been independently tested for accuracy, sensitivity, and durability — the gold standard in India.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="swarakshit-fc-accordion js-fc-accordion">
+        <button class="swarakshit-fc-accordion__btn js-fc-accordion-btn">
+          How long does the battery last?
+          <span class="swarakshit-fc-accordion__icon">+</span>
+        </button>
+        <div class="swarakshit-fc-accordion__content">
+          <div class="swarakshit-fc-accordion__inner">
+            <p>The built-in rechargeable battery lasts 8–10 hours of continuous use. For typical home use (5–10 minute daily checks), the battery lasts several weeks between charges. USB charging takes approximately 2 hours to full.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="swarakshit-fc-accordion js-fc-accordion">
+        <button class="swarakshit-fc-accordion__btn js-fc-accordion-btn">
+          Can I use it for commercial kitchens?
+          <span class="swarakshit-fc-accordion__icon">+</span>
+        </button>
+        <div class="swarakshit-fc-accordion__content">
+          <div class="swarakshit-fc-accordion__inner">
+            <p>Swarakshit is designed first for homes and kitchens. It may also be useful in selected small commercial kitchen setups where regular combustible gas checks are needed. If you have a specialized or bulk requirement, contact us before ordering so we can guide you properly.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="swarakshit-fc-accordion js-fc-accordion">
+        <button class="swarakshit-fc-accordion__btn js-fc-accordion-btn">
+          What is the warranty and return policy?
+          <span class="swarakshit-fc-accordion__icon">+</span>
+        </button>
+        <div class="swarakshit-fc-accordion__content">
+          <div class="swarakshit-fc-accordion__inner">
+            <p>Every Swarakshit device comes with a 1-year manufacturer's warranty and a 30-day no-questions-asked return policy. Contact us at info@rakshit.net.in or call 9529154548.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="swarakshit-fc-accordion js-fc-accordion">
+        <button class="swarakshit-fc-accordion__btn js-fc-accordion-btn">
+          How often should I test for gas leaks?
+          <span class="swarakshit-fc-accordion__icon">+</span>
+        </button>
+        <div class="swarakshit-fc-accordion__content">
+          <div class="swarakshit-fc-accordion__inner">
+            <p>Weekly — around LPG cylinder and rubber pipe connections. Monthly — around all gas appliances including geysers. Immediately — after any new appliance installation or if you smell even a faint gas odour.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="swarakshit-fc-accordion js-fc-accordion">
+        <button class="swarakshit-fc-accordion__btn js-fc-accordion-btn">
+          Is it safe to use if I already smell gas?
+          <span class="swarakshit-fc-accordion__icon">+</span>
+        </button>
+        <div class="swarakshit-fc-accordion__content">
+          <div class="swarakshit-fc-accordion__inner">
+            <p>If you already smell strong gas, DO NOT use any electrical device including Swarakshit. Immediately turn off the main gas valve, open all windows, evacuate, and call your gas agency. Use Swarakshit for routine preventive checks when no visible leak is apparent.</p>
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="swarakshit-fc__contact">
+    <h3 class="swarakshit-fc__contact-title">{{ section.settings.contact_title }}</h3>
+    <p class="swarakshit-fc__contact-subtitle">{{ section.settings.contact_subtitle }}</p>
+    
+    {%- form 'contact', id: 'ContactForm', class: 'swarakshit-fc-form' -%}
+      <input type="text" name="contact[name]" class="swarakshit-fc-input" placeholder="Name" required>
+      <input type="email" name="contact[email]" class="swarakshit-fc-input" placeholder="Email" required>
+      <textarea name="contact[body]" class="swarakshit-fc-textarea" placeholder="Message" required></textarea>
+      <button type="submit" class="swarakshit-fc-submit">Submit</button>
+    {%- endform -%}
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const accordions = document.querySelectorAll('.js-fc-accordion');
+    accordions.forEach(acc => {
+      const btn = acc.querySelector('.js-fc-accordion-btn');
+      btn.addEventListener('click', () => {
+        const isOpen = acc.classList.contains('is-open');
+        // Close all other accordions
+        accordions.forEach(otherAcc => otherAcc.classList.remove('is-open'));
+        // Toggle current
+        if (!isOpen) {
+          acc.classList.add('is-open');
+        }
+      });
+    });
+  });
+</script>
