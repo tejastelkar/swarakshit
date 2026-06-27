@@ -2,11 +2,11 @@
 
 <style>
   #Banner-{{ section.id }} {
-    margin: 0 !important;
-    border-radius: 0 !important;
+    margin: 16px 20px 0 !important;
+    border-radius: 24px !important;
     overflow: hidden !important;
     position: relative !important;
-    width: 100% !important;
+    width: calc(100% - 40px) !important;
     display: block !important;
   }
   
@@ -18,17 +18,27 @@
     }
   }
 
-  /* The container needs to match the aspect ratio of the first slide */
-  {%- assign first_slide = section.blocks | where: 'type', 'slide' | first -%}
-  {%- if first_slide and first_slide.settings.image != blank -%}
+  @media screen and (max-width: 749px) {
     #Banner-{{ section.id }} {
-      aspect-ratio: {{ first_slide.settings.image.aspect_ratio }} !important;
+      aspect-ratio: auto !important;
+      min-height: 220px !important;
+      background-color: #ffffff !important;
     }
-  {%- else -%}
-    #Banner-{{ section.id }} {
-      aspect-ratio: 16 / 9 !important;
-    }
-  {%- endif -%}
+  }
+
+  /* The container needs to match the aspect ratio of the first slide on desktop */
+  @media screen and (min-width: 750px) {
+    {%- assign first_slide = section.blocks | where: 'type', 'slide' | first -%}
+    {%- if first_slide and first_slide.settings.image != blank -%}
+      #Banner-{{ section.id }} {
+        aspect-ratio: {{ first_slide.settings.image.aspect_ratio }} !important;
+      }
+    {%- else -%}
+      #Banner-{{ section.id }} {
+        aspect-ratio: 16 / 9 !important;
+      }
+    {%- endif -%}
+  }
 
   #Banner-{{ section.id }} .banner__slide {
     position: absolute;
