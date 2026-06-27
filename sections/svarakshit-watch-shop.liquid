@@ -43,6 +43,7 @@
       scroll-snap-type: x mandatory;
       margin-inline: calc(-1 * clamp(20px, 5vw, 60px));
       padding-inline: clamp(20px, 5vw, 60px);
+      scroll-padding-inline: clamp(20px, 5vw, 60px); /* Ensures snapping aligns with padding */
       padding-bottom: 20px;
       gap: 16px;
       scrollbar-width: none;
@@ -50,6 +51,12 @@
     }
     #shopify-section-{{ section.id }} .watch-shop__grid::-webkit-scrollbar {
       display: none;
+    }
+    /* Fix for Safari right-padding collapse on scroll containers */
+    #shopify-section-{{ section.id }} .watch-shop__grid::after {
+      content: '';
+      flex: 0 0 1px; /* tiny invisible spacer */
+      width: 1px;
     }
     #shopify-section-{{ section.id }} .watch-shop__card {
       flex: 0 0 70vw;
