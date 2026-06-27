@@ -45,34 +45,20 @@
     font-family: 'Inter', sans-serif;
   }
 
-  .swarakshit-tb-wrapper {
-    overflow: hidden;
-    width: 100%;
-    padding: 40px 0;
+  .swarakshit-tb {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
-    background-color: #FFFFFF;
-  }
-
-  .swarakshit-tb-track {
-    display: flex;
-    white-space: nowrap;
-    align-items: center;
-    will-change: transform;
-  }
-
-  .swarakshit-tb-group {
-    display: flex;
-    align-items: center;
-    gap: 80px;
-    padding-right: 80px;
-    flex-shrink: 0;
+    justify-content: space-between;
+    padding: 40px 20px;
+    gap: 40px;
   }
 
   .swarakshit-tb__item {
-    display: inline-flex;
+    flex: 1;
+    display: flex;
     align-items: flex-start;
     gap: 16px;
-    flex-shrink: 0;
   }
 
   .swarakshit-tb__icon {
@@ -92,8 +78,6 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    white-space: normal; /* allow text to wrap within its max-width */
-    max-width: 220px;
   }
 
   .swarakshit-tb__title {
@@ -111,59 +95,27 @@
   }
 
   @media (max-width: 768px) {
-    .swarakshit-tb-group {
-      gap: 40px;
-      padding-right: 40px;
-    }
-    .swarakshit-tb-wrapper {
-      padding: 24px 0;
+    .swarakshit-tb {
+      flex-direction: column;
+      gap: 32px;
     }
   }
 </style>
 
-<div class="swarakshit-tb-wrapper">
-  <div class="swarakshit-tb-track">
-    {% for i in (1..4) %}
-      <div class="swarakshit-tb-group" {% if i > 1 %}aria-hidden="true"{% endif %}>
-        {%- for block in section.blocks -%}
-          <div class="swarakshit-tb__item" {% if i == 1 %}{{ block.shopify_attributes }}{% endif %}>
-            <div class="swarakshit-tb__icon">
-              {%- if block.settings.svg_icon != blank -%}
-                {{ block.settings.svg_icon }}
-              {%- else -%}
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-              {%- endif -%}
-            </div>
-            <div class="swarakshit-tb__text">
-              <h4 class="swarakshit-tb__title">{{ block.settings.title }}</h4>
-              <p class="swarakshit-tb__subtitle">{{ block.settings.subtitle }}</p>
-            </div>
-          </div>
-        {%- endfor -%}
+<div class="swarakshit-tb">
+  {%- for block in section.blocks -%}
+    <div class="swarakshit-tb__item" {{ block.shopify_attributes }}>
+      <div class="swarakshit-tb__icon">
+        {%- if block.settings.svg_icon != blank -%}
+          {{ block.settings.svg_icon }}
+        {%- else -%}
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+        {%- endif -%}
       </div>
-    {% endfor %}
-  </div>
+      <div class="swarakshit-tb__text">
+        <h4 class="swarakshit-tb__title">{{ block.settings.title }}</h4>
+        <p class="swarakshit-tb__subtitle">{{ block.settings.subtitle }}</p>
+      </div>
+    </div>
+  {%- endfor -%}
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const initMarquee = () => {
-      if (typeof gsap !== 'undefined') {
-        const track = document.querySelector('#shopify-section-{{ section.id }} .swarakshit-tb-track');
-        if (track) {
-          // 4 groups total means 1 group is 25% of the total track width
-          // We animate by -25% to shift exactly one group over, then repeat seamlessly
-          gsap.to(track, {
-            xPercent: -25,
-            ease: "none",
-            duration: 15,
-            repeat: -1
-          });
-        }
-      } else {
-        setTimeout(initMarquee, 100);
-      }
-    };
-    initMarquee();
-  });
-</script>
