@@ -30,6 +30,28 @@
     }
   }
 
+  #Banner-{{ section.id }} .svarakshit-banner-slideshow {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  #Banner-{{ section.id }} .banner__slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 0;
+  }
+
+  #Banner-{{ section.id }} .banner__slide.active {
+    opacity: 1;
+    z-index: 1;
+  }
+
   #Banner-{{ section.id }} .banner__media {
     display: block !important;
     position: absolute !important;
@@ -75,23 +97,35 @@
       display: none !important;
     }
 
-    #Banner-{{ section.id }} .banner__media--mobile {
-      display: block !important;
+    #Banner-{{ section.id }} .svarakshit-banner-slideshow {
       position: relative !important;
       inset: auto !important;
       width: 100% !important;
-      height: 55vh !important;
-      min-height: 350px !important;
-      max-height: 500px !important;
+      height: 65vw !important;
+      min-height: 250px !important;
+      max-height: none !important;
+    }
+
+    #Banner-{{ section.id }} .banner__slide {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    #Banner-{{ section.id }} .banner__media--mobile {
+      display: block !important;
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
     }
 
     #Banner-{{ section.id }} .banner__media--desktop:not(.has-mobile-image) {
-      position: relative !important;
-      inset: auto !important;
+      position: absolute !important;
+      inset: 0 !important;
       width: 100% !important;
-      height: 55vh !important;
-      min-height: 350px !important;
-      max-height: 500px !important;
+      height: 100% !important;
     }
 
     #Banner-{{ section.id }} .banner__media img,
@@ -442,59 +476,125 @@
   id="Banner-{{ section.id }}"
   class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
 >
-  {%- if section.settings.image != blank -%}
-    <div class="banner__media banner__media--desktop media{% if section.settings.image_2 != blank %} has-mobile-image{% endif %}{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      {%- liquid
-        assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
-        assign image_class = ''
-        assign sizes = full_width
-      -%}
-      {{
-        section.settings.image
-        | image_url: width: 3840
-        | image_tag:
-          width: section.settings.image.width,
-          height: image_height,
-          class: image_class,
-          sizes: sizes,
-          widths: widths,
-          fetchpriority: fetch_priority
-      }}
-    </div>
-  {%- elsif section.settings.image_2 == blank -%}
-    <div class="banner__media banner__media--desktop media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      {%- assign _banner_heading_block = section.blocks | where: 'type', 'heading' | first -%}
-      {%- assign _banner_fallback_context = _banner_heading_block.settings.heading | default: 'hero banner' -%}
-      {% render 'svarakshit-fallback-image',
-        context: _banner_fallback_context,
-        alt: 'Svarakshit hero banner',
-        class: 'placeholder-svg',
-        loading: 'eager',
-        width: 1600,
-        height: 1000
-      %}
-    </div>
-  {%- endif -%}
-  {%- if section.settings.image_2 != blank -%}
-    <div class="banner__media banner__media--mobile media{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      {%- liquid
-        assign image_height_2 = section.settings.image_2.width | divided_by: section.settings.image_2.aspect_ratio
-        assign image_class_2 = ''
-        assign sizes = full_width
-      -%}
-      {{
-        section.settings.image_2
-        | image_url: width: 3840
-        | image_tag:
-          width: section.settings.image_2.width,
-          height: image_height_2,
-          class: image_class_2,
-          sizes: sizes,
-          widths: widths,
-          fetchpriority: fetch_priority
-      }}
-    </div>
-  {%- endif -%}
+  <div class="svarakshit-banner-slideshow">
+    {%- assign has_images = false -%}
+    
+    <!-- Slide 1 -->
+    {%- if section.settings.image != blank -%}
+      {%- assign has_images = true -%}
+      <div class="banner__slide active" data-slide="0">
+        <div class="banner__media banner__media--desktop media{% if section.settings.image_2 != blank %} has-mobile-image{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
+          {{ section.settings.image | image_url: width: 3840 | image_tag: widths: widths, fetchpriority: fetch_priority, class: 'slideshow-image' }}
+        </div>
+        {%- if section.settings.image_2 != blank -%}
+          <div class="banner__media banner__media--mobile media{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
+            {{ section.settings.image_2 | image_url: width: 3840 | image_tag: widths: widths, fetchpriority: fetch_priority, class: 'slideshow-image' }}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <!-- Slide 2 -->
+    {%- if section.settings.desktop_image_2 != blank -%}
+      {%- assign has_images = true -%}
+      <div class="banner__slide" data-slide="1">
+        <div class="banner__media banner__media--desktop media{% if section.settings.mobile_image_2 != blank %} has-mobile-image{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
+          {{ section.settings.desktop_image_2 | image_url: width: 3840 | image_tag: widths: widths, fetchpriority: fetch_priority, class: 'slideshow-image' }}
+        </div>
+        {%- if section.settings.mobile_image_2 != blank -%}
+          <div class="banner__media banner__media--mobile media{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
+            {{ section.settings.mobile_image_2 | image_url: width: 3840 | image_tag: widths: widths, fetchpriority: fetch_priority, class: 'slideshow-image' }}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <!-- Slide 3 -->
+    {%- if section.settings.desktop_image_3 != blank -%}
+      {%- assign has_images = true -%}
+      <div class="banner__slide" data-slide="2">
+        <div class="banner__media banner__media--desktop media{% if section.settings.mobile_image_3 != blank %} has-mobile-image{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
+          {{ section.settings.desktop_image_3 | image_url: width: 3840 | image_tag: widths: widths, fetchpriority: fetch_priority, class: 'slideshow-image' }}
+        </div>
+        {%- if section.settings.mobile_image_3 != blank -%}
+          <div class="banner__media banner__media--mobile media{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
+            {{ section.settings.mobile_image_3 | image_url: width: 3840 | image_tag: widths: widths, fetchpriority: fetch_priority, class: 'slideshow-image' }}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    
+    <!-- Slide 4 -->
+    {%- if section.settings.desktop_image_4 != blank -%}
+      {%- assign has_images = true -%}
+      <div class="banner__slide" data-slide="3">
+        <div class="banner__media banner__media--desktop media{% if section.settings.mobile_image_4 != blank %} has-mobile-image{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
+          {{ section.settings.desktop_image_4 | image_url: width: 3840 | image_tag: widths: widths, fetchpriority: fetch_priority, class: 'slideshow-image' }}
+        </div>
+        {%- if section.settings.mobile_image_4 != blank -%}
+          <div class="banner__media banner__media--mobile media{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
+            {{ section.settings.mobile_image_4 | image_url: width: 3840 | image_tag: widths: widths, fetchpriority: fetch_priority, class: 'slideshow-image' }}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if has_images == false -%}
+      <div class="banner__media banner__media--desktop media placeholder">
+        {%- assign _banner_heading_block = section.blocks | where: 'type', 'heading' | first -%}
+        {%- assign _banner_fallback_context = _banner_heading_block.settings.heading | default: 'hero banner' -%}
+        {% render 'svarakshit-fallback-image',
+          context: _banner_fallback_context,
+          alt: 'Svarakshit hero banner',
+          class: 'placeholder-svg',
+          loading: 'eager',
+          width: 1600,
+          height: 1000
+        %}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slides = document.querySelectorAll('#Banner-{{ section.id }} .banner__slide');
+      if (slides.length <= 1) return;
+
+      let currentSlide = 0;
+      
+      if (typeof gsap !== 'undefined') {
+        gsap.set(slides, { opacity: 0, zIndex: 0 });
+        gsap.set(slides[0], { opacity: 1, zIndex: 1 });
+
+        setInterval(() => {
+          let nextSlide = (currentSlide + 1) % slides.length;
+          
+          gsap.to(slides[currentSlide], {
+            opacity: 0,
+            duration: 1,
+            zIndex: 0,
+            ease: "power2.inOut"
+          });
+          
+          gsap.to(slides[nextSlide], {
+            opacity: 1,
+            duration: 1,
+            zIndex: 1,
+            ease: "power2.inOut"
+          });
+          
+          currentSlide = nextSlide;
+        }, 4500);
+      } else {
+        setInterval(() => {
+          let nextSlide = (currentSlide + 1) % slides.length;
+          slides[currentSlide].classList.remove('active');
+          slides[nextSlide].classList.add('active');
+          currentSlide = nextSlide;
+        }, 4500);
+      }
+    });
+  </script>
   <div class="banner__content banner__content--{{ section.settings.desktop_content_position }} page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
     <div class="banner__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
       {%- for block in section.blocks -%}
@@ -590,14 +690,44 @@
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Desktop Image",
+      "label": "Slide 1 Desktop Image",
       "info": "This image will be shown on desktop screens."
     },
     {
       "type": "image_picker",
       "id": "image_2",
-      "label": "Mobile Image",
+      "label": "Slide 1 Mobile Image",
       "info": "This image will be shown on mobile screens. If left blank, the desktop image will be used."
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image_2",
+      "label": "Slide 2 Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image_2",
+      "label": "Slide 2 Mobile Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image_3",
+      "label": "Slide 3 Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image_3",
+      "label": "Slide 3 Mobile Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image_4",
+      "label": "Slide 4 Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image_4",
+      "label": "Slide 4 Mobile Image"
     },
     {
       "type": "range",
