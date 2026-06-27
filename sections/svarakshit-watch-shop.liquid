@@ -174,12 +174,50 @@
   .svarakshit-modal__btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
   @media (max-width: 768px) {
-    .svarakshit-modal__inner { flex-direction: column; height: 90vh; border-radius: 24px; }
-    .svarakshit-modal__video { width: 100%; height: 40%; }
-    .svarakshit-modal__info { width: 100%; height: 60%; padding: 32px 24px; }
-    .svarakshit-modal__title { font-size: 24px; }
-    .svarakshit-modal__gallery img { width: 80px; height: 80px; }
-    .svarakshit-modal__close { background: rgba(255,255,255,0.8); top: 12px; right: 12px; }
+    .svarakshit-modal { padding: 16px; }
+    .svarakshit-modal__inner { 
+      flex-direction: column; 
+      height: 100%;
+      max-height: 85vh; /* fallback */
+      max-height: 85dvh; /* dynamic viewport height to respect mobile safe areas */
+      width: 100%;
+      border-radius: 20px; 
+    }
+    .svarakshit-modal__video { 
+      width: 100%; 
+      height: 38%; /* Adjusted to ensure text area has enough room */
+      flex-shrink: 0;
+    }
+    .svarakshit-modal__video video {
+      object-position: center 15%; /* Keep face visible if video is cropped */
+    }
+    .svarakshit-modal__info { 
+      width: 100%; 
+      height: 62%; 
+      padding: 24px 20px; /* Reduced padding to fit more content */
+      display: flex;
+      flex-direction: column;
+    }
+    .svarakshit-modal__title { font-size: 22px; margin-bottom: 6px; }
+    .svarakshit-modal__price { margin-bottom: 16px; font-size: 18px; }
+    .svarakshit-modal__desc { font-size: 14px; margin-bottom: 24px; line-height: 1.5; }
+    .svarakshit-modal__gallery { margin-bottom: 20px; gap: 12px; }
+    .svarakshit-modal__gallery img { width: 64px; height: 64px; border-radius: 12px; }
+    .svarakshit-modal__close { 
+      background: #ffffff; /* Solid white so it's clearly visible over the video */
+      top: 12px; 
+      right: 12px; 
+      width: 36px;
+      height: 36px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .svarakshit-modal__actions {
+      margin-top: auto; /* Pushes the button to the absolute bottom of the scroll area */
+    }
+    .svarakshit-modal__btn {
+      height: 52px;
+      font-size: 15px;
+    }
   }
 </style>
 
