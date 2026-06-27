@@ -3,27 +3,37 @@
     background-color: transparent;
     padding: 4rem 0;
     overflow: hidden;
+    width: 100%;
+    display: flex;
   }
 
-  .svarakshit-trust-badges__container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 5rem;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+  .svarakshit-trust-badges__track {
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    will-change: transform;
+  }
+
+  .svarakshit-trust-badges__group {
+    display: flex;
+    align-items: center;
     gap: 2rem;
+    padding-right: 2rem;
+    flex-shrink: 0;
   }
 
   .trust-badge-item {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 1.5rem;
     padding: 1.5rem;
     border-radius: 12px;
     background: #ffffff;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    border: 1.5px solid #1a1a1a; /* Black border box */
+    border: 1.5px solid #1a1a1a;
     box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.05);
+    width: 320px;
+    flex-shrink: 0;
   }
 
   .trust-badge-item:hover {
@@ -48,6 +58,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    white-space: normal;
   }
 
   .trust-badge-title {
@@ -67,84 +78,104 @@
   }
 
   @media screen and (max-width: 1024px) {
-    .svarakshit-trust-badges__container {
-      grid-template-columns: repeat(2, 1fr);
-      padding: 0 2.5rem;
-    }
-  }
-
-  @media screen and (max-width: 989px) {
-    .svarakshit-trust-badges__container {
-      padding: 0 1.5rem;
-      gap: 1.5rem;
+    .trust-badge-item {
+      width: 280px;
     }
   }
 
   @media screen and (max-width: 768px) {
-    .svarakshit-trust-badges__container {
-      padding: 0 2rem;
-      gap: 1.5rem;
+    .svarakshit-trust-badges {
+      padding: 3rem 0;
     }
-  }
-
-  @media screen and (max-width: 480px) {
-    .svarakshit-trust-badges__container {
-      grid-template-columns: 1fr;
+    .trust-badge-item {
+      width: 260px;
+      padding: 1.25rem;
+      gap: 1rem;
+    }
+    .svarakshit-trust-badges__group {
+      gap: 1.5rem;
+      padding-right: 1.5rem;
     }
   }
 {%- endstyle -%}
 
 <div class="svarakshit-trust-badges">
-  <div class="svarakshit-trust-badges__container">
-    {%- for block in section.blocks -%}
-      <div class="trust-badge-item" {{ block.shopify_attributes }}>
-        <div class="trust-badge-icon">
-            {%- case block.settings.icon -%}
-            {%- when 'shield-check' -%}
-              <img
-                src="{{ 'lerc-logo.jpeg' | asset_url }}"
-                alt="LERC Logo"
-                width="120"
-                height="32"
-                style="height: 32px; width: auto; object-fit: contain;"
-                loading="lazy"
-              >
-            {%- when 'flag' -%}
-              <svg class="flag-svg" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="36" height="8" fill="#F98000"/>
-                <rect y="8" width="36" height="8" fill="#FFFFFF"/>
-                <rect y="16" width="36" height="8" fill="#008000"/>
-                <circle cx="18" cy="12" r="3" fill="#000080"/>
-                <circle cx="18" cy="12" r="1.5" fill="#FFFFFF"/>
-              </svg>
-            {%- when 'truck' -%}
-              <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/>
-                <path d="M15 18H9"/>
-                <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/>
-                <circle cx="17" cy="18" r="2"/>
-                <circle cx="7" cy="18" r="2"/>
-              </svg>
-            {%- when 'rotate-ccw' -%}
-              <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
-                <path d="M3 3v5h5"/>
-              </svg>
-            {%- else -%}
-              <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                <polyline points="22 4 12 14.01 9 11.01"/>
-              </svg>
-          {%- endcase -%}
-        </div>
-        <div class="trust-badge-content">
-          <div class="trust-badge-title">{{ block.settings.title }}</div>
-          <div class="trust-badge-subtitle">{{ block.settings.subtitle }}</div>
-        </div>
+  <div class="svarakshit-trust-badges__track">
+    {% for i in (1..4) %}
+      <div class="svarakshit-trust-badges__group" {% if i > 1 %}aria-hidden="true"{% endif %}>
+        {%- for block in section.blocks -%}
+          <div class="trust-badge-item" {% if i == 1 %}{{ block.shopify_attributes }}{% endif %}>
+            <div class="trust-badge-icon">
+                {%- case block.settings.icon -%}
+                {%- when 'shield-check' -%}
+                  <img
+                    src="{{ 'lerc-logo.jpeg' | asset_url }}"
+                    alt="LERC Logo"
+                    width="120"
+                    height="32"
+                    style="height: 32px; width: auto; object-fit: contain;"
+                    loading="lazy"
+                  >
+                {%- when 'flag' -%}
+                  <svg class="flag-svg" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="36" height="8" fill="#F98000"/>
+                    <rect y="8" width="36" height="8" fill="#FFFFFF"/>
+                    <rect y="16" width="36" height="8" fill="#008000"/>
+                    <circle cx="18" cy="12" r="3" fill="#000080"/>
+                    <circle cx="18" cy="12" r="1.5" fill="#FFFFFF"/>
+                  </svg>
+                {%- when 'truck' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/>
+                    <path d="M15 18H9"/>
+                    <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/>
+                    <circle cx="17" cy="18" r="2"/>
+                    <circle cx="7" cy="18" r="2"/>
+                  </svg>
+                {%- when 'rotate-ccw' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                    <path d="M3 3v5h5"/>
+                  </svg>
+                {%- else -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+              {%- endcase -%}
+            </div>
+            <div class="trust-badge-content">
+              <div class="trust-badge-title">{{ block.settings.title }}</div>
+              <div class="trust-badge-subtitle">{{ block.settings.subtitle }}</div>
+            </div>
+          </div>
+        {%- endfor -%}
       </div>
-    {%- endfor -%}
+    {% endfor %}
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const initTrustMarquee = () => {
+      if (typeof gsap !== 'undefined') {
+        const track = document.querySelector('#shopify-section-{{ section.id }} .svarakshit-trust-badges__track');
+        if (track) {
+          gsap.to(track, {
+            xPercent: -25,
+            ease: "none",
+            duration: 18,
+            repeat: -1
+          });
+        }
+      } else {
+        setTimeout(initTrustMarquee, 100);
+      }
+    };
+    initTrustMarquee();
+  });
+</script>
+
 
 {% schema %}
 {
