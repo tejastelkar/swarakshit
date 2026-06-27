@@ -356,6 +356,11 @@
     const closeBtns = section.querySelectorAll('.js-close-modal');
     const modals = section.querySelectorAll('.svarakshit-modal');
 
+    // Move all modals to document.body immediately to escape any CSS transform/overflow traps from the grid
+    modals.forEach(modal => {
+      document.body.appendChild(modal);
+    });
+
     // Function to pause all modal videos
     const pauseAllVideos = () => {
       modals.forEach(m => {
@@ -408,7 +413,8 @@
     // Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        const openModal = section.querySelector('.svarakshit-modal.is-open');
+        // Query document instead of section since modal was moved to body
+        const openModal = document.querySelector('.svarakshit-modal.is-open');
         if (openModal) closeModal(openModal);
       }
     });
