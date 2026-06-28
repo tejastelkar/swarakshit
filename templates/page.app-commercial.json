@@ -14,14 +14,14 @@
         "bg_image": "shopify://shop_images/af5b448d-d3b0-4f27-b0a8-49aa691ae316.png",
         "subtitle": "SWARAKSHIT",
         "title": "Commercial Office Solutions",
-        "text": "Choose the Swarakshit setup that fits your office building and corporate gas safety requirements."
+        "text": "Equip your commercial building with Swarakshit to maintain workplace safety and easily detect combustible gas leaks."
       }
     },
     "intro": {
       "type": "svarakshit-app-intro",
       "settings": {
         "heading": "Bring <em>SWARAKSHIT</em> Into Your Workspace",
-        "text": "<p>Commercial buildings, office cafeterias, and centralized HVAC heating systems rely on safe gas connections. Swarakshit provides facility managers with a reliable, portable tool to routinely check for combustible gas leaks in commercial kitchens, boiler rooms, and utility closets, ensuring a safe environment for all employees.</p>",
+        "text": "<p>Commercial buildings, hotels, and corporate cafeterias require reliable safety tools. The Swarakshit Gas Leak Tester helps facility managers and maintenance staff run routine checks for combustible gas leaks around commercial kitchens, pantry areas, HVAC gas lines, and basement utilities. Compact, rechargeable, and professional.</p>",
         "author": "~ Swarakshit Commercial Safety"
       }
     },
@@ -31,9 +31,9 @@
         "kit_1": {
           "type": "kit",
           "settings": {
-            "title": "Commercial Kit No.1",
-            "description": "<p>A sleek, portable Swarakshit gas monitor for facility managers to conduct routine checks in office cafeterias, pantry areas, and utility rooms.</p>",
-            "button_text": "Send a request",
+            "title": "Cafeteria & Pantry Checks",
+            "description": "<p>A portable gas monitor for maintenance staff performing daily leak inspections around office cafeterias, commercial stoves, and food-court gas connections.</p>",
+            "button_text": "Buy Now",
             "button_link": "",
             "layout": "left"
           }
@@ -41,9 +41,9 @@
         "kit_2": {
           "type": "kit",
           "settings": {
-            "title": "Commercial Kit No.2",
-            "description": "<p>A Swarakshit gas monitoring setup with a dedicated placement option for commercial kitchens and corporate dining areas, ensuring staff can easily spot-check connections daily.</p>",
-            "button_text": "Send a request",
+            "title": "Basement Utility Monitoring",
+            "description": "<p>Equip your facility team with a highly sensitive device for checking basement utility rooms and HVAC gas lines. The loud 85dB alarm ensures any leak is detected immediately.</p>",
+            "button_text": "Buy Now",
             "button_link": "",
             "layout": "right"
           }
@@ -51,9 +51,9 @@
         "kit_3": {
           "type": "kit",
           "settings": {
-            "title": "Commercial Kit No.3",
-            "description": "<p>A broader commercial safety setup designed for multi-floor office buildings. Provides facility teams with multiple units for comprehensive coverage across HVAC systems and centralized boilers.</p>",
-            "button_text": "Send a request",
+            "title": "Multi-Floor Safety Audits",
+            "description": "<p>Easily check for leaks across sprawling commercial complexes and multiple floors. The 8-10 hour battery life supports comprehensive safety audits without needing a recharge.</p>",
+            "button_text": "Buy Now",
             "button_link": "",
             "layout": "left"
           }
@@ -73,7 +73,7 @@
       "type": "svarakshit-app-contact",
       "settings": {
         "title": "Contact Us",
-        "subtitle": "Contact us to deploy the perfect Swarakshit safety setup across your commercial property.",
+        "subtitle": "Contact our enterprise team for bulk orders of Swarakshit devices for your commercial property.",
         "bg_color": "#ffffff",
         "text_color": "#141414"
       }

@@ -14,14 +14,14 @@
         "bg_image": "shopify://shop_images/af5b448d-d3b0-4f27-b0a8-49aa691ae316.png",
         "subtitle": "SWARAKSHIT",
         "title": "Industrial Plant Solutions",
-        "text": "Choose the Swarakshit setup that fits your heavy-duty facility and industrial safety compliance needs."
+        "text": "Equip your heavy-duty facility with Swarakshit to maintain industrial safety compliance and easily detect combustible gas leaks."
       }
     },
     "intro": {
       "type": "svarakshit-app-intro",
       "settings": {
         "heading": "Bring <em>SWARAKSHIT</em> Into Your Plant",
-        "text": "<p>Industrial facilities require rigorous safety measures. Swarakshit helps floor managers and safety officers run routine checks for combustible gas leaks around heavy machinery, large storage tanks, complex pipeline networks, and industrial burners. Robust, rechargeable, and built to support your daily factory safety protocols.</p>",
+        "text": "<p>Industrial facilities require rigorous safety measures. The Swarakshit Gas Leak Tester helps floor managers and safety officers run routine checks for combustible gas leaks around heavy machinery, large storage tanks, complex pipeline networks, and industrial burners. Robust, rechargeable, and built to support your daily factory safety protocols.</p>",
         "author": "~ Swarakshit Industrial Safety"
       }
     },
@@ -31,9 +31,9 @@
         "kit_1": {
           "type": "kit",
           "settings": {
-            "title": "Industrial Kit No.1",
-            "description": "<p>A heavy-duty, portable Swarakshit gas monitor for floor managers performing routine leak inspections around high-pressure pipelines, industrial valves, and localized storage areas.</p>",
-            "button_text": "Send a request",
+            "title": "Routine Pipeline Inspections",
+            "description": "<p>A heavy-duty, portable gas monitor for floor managers performing daily or weekly leak inspections around high-pressure pipelines, industrial valves, and localized storage areas.</p>",
+            "button_text": "Buy Now",
             "button_link": "",
             "layout": "left"
           }
@@ -41,9 +41,9 @@
         "kit_2": {
           "type": "kit",
           "settings": {
-            "title": "Industrial Kit No.2",
-            "description": "<p>A Swarakshit gas monitoring setup designed for fixed-point usage near high-risk zones, allowing for consistent spot-checks near main supply lines or heavy manufacturing equipment.</p>",
-            "button_text": "Send a request",
+            "title": "Safety Officer Patrols",
+            "description": "<p>Equip your safety officers with a highly sensitive, portable device. The 8-10 hour battery life ensures continuous monitoring during long shifts and expansive factory patrols.</p>",
+            "button_text": "Buy Now",
             "button_link": "",
             "layout": "right"
           }
@@ -51,9 +51,9 @@
         "kit_3": {
           "type": "kit",
           "settings": {
-            "title": "Industrial Kit No.3",
-            "description": "<p>A comprehensive industrial safety setup for sprawling plants. Ideal for multi-point checking routines, providing wide coverage across multiple production lines and storage facilities.</p>",
-            "button_text": "Send a request",
+            "title": "Multi-Point Compliance",
+            "description": "<p>Easily check for leaks across sprawling plants and multiple production lines. Swarakshit detects LPG, PNG, CNG, and methane, providing an essential tool for your compliance toolkit.</p>",
+            "button_text": "Buy Now",
             "button_link": "",
             "layout": "left"
           }
@@ -73,7 +73,7 @@
       "type": "svarakshit-app-contact",
       "settings": {
         "title": "Contact Us",
-        "subtitle": "Contact our enterprise team to find the right Swarakshit industrial setup for your facility.",
+        "subtitle": "Contact our enterprise team for bulk orders of Swarakshit devices for your facility.",
         "bg_color": "#ffffff",
         "text_color": "#141414"
       }

@@ -1,7 +1,17 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 0,
         "padding_bottom": 0
@@ -10,16 +20,17 @@
     "hero": {
       "type": "svarakshit-app-hero",
       "settings": {
+        "bg_image": "shopify://shop_images/af5b448d-d3b0-4f27-b0a8-49aa691ae316.png",
         "subtitle": "SWARAKSHIT",
         "title": "Kitchen Safety Solutions",
-        "text": "Choose the Swarakshit setup that fits your home kitchen and daily gas safety routine."
+        "text": "Equip your home kitchen with Swarakshit to maintain household safety and easily detect combustible gas leaks."
       }
     },
     "intro": {
       "type": "svarakshit-app-intro",
       "settings": {
         "heading": "Bring <em>SWARAKSHIT</em> Into Your Kitchen",
-        "text": "<p>Swarakshit helps households check for combustible gas leaks around stoves, cylinders, regulators, pipes, and other common kitchen gas points. It is portable, rechargeable, and easy to use as part of a regular home safety routine.</p>",
+        "text": "<p>Swarakshit helps households check for combustible gas leaks around stoves, cylinders, regulators, pipes, and other common kitchen gas points. The Gas Leak Tester is portable, rechargeable, and easy to use as part of a regular home safety routine.</p>",
         "author": "~ Swarakshit Home Safety"
       }
     },
@@ -29,9 +40,9 @@
         "kit_1": {
           "type": "kit",
           "settings": {
-            "title": "Kitchen Kit No.1",
-            "description": "<p>A portable rechargeable Swarakshit gas monitor for routine checks around LPG cylinders, PNG joints, regulators, burner connections, and other everyday kitchen gas points.</p>",
-            "button_text": "Send a request",
+            "title": "Daily Cylinder Checks",
+            "description": "<p>A portable rechargeable gas monitor for routine checks around LPG cylinders, PNG joints, regulators, burner connections, and other everyday kitchen gas points.</p>",
+            "button_text": "Buy Now",
             "button_link": "",
             "layout": "left"
           }
@@ -39,9 +50,9 @@
         "kit_2": {
           "type": "kit",
           "settings": {
-            "title": "Kitchen Kit No.2",
-            "description": "<p>A Swarakshit gas monitor with a dedicated placement option for households that want a convenient fixed spot near their main kitchen testing area.</p>",
-            "button_text": "Send a request",
+            "title": "Piped Gas (PNG) Inspections",
+            "description": "<p>Perfect for modern kitchens with piped natural gas. Easily spot-check valves and joints behind cabinets or near your main kitchen testing area.</p>",
+            "button_text": "Buy Now",
             "button_link": "",
             "layout": "right"
           }
@@ -49,9 +60,9 @@
         "kit_3": {
           "type": "kit",
           "settings": {
-            "title": "Kitchen Kit No.3",
-            "description": "<p>A broader kitchen safety setup for larger homes or multi-point checking routines, designed for families that want easier coverage across more than one gas connection area.</p>",
-            "button_text": "Send a request",
+            "title": "Geyser & Bathroom Safety",
+            "description": "<p>Use the same device to check for leaks around gas geysers in bathrooms. The compact design makes it easy to carry around for multi-point checking routines in larger homes.</p>",
+            "button_text": "Buy Now",
             "button_link": "",
             "layout": "left"
           }
@@ -71,7 +82,7 @@
       "type": "svarakshit-app-contact",
       "settings": {
         "title": "Contact Us",
-        "subtitle": "Contact us to choose the right Swarakshit setup for your kitchen.",
+        "subtitle": "Order your Swarakshit Gas Leak Tester today to keep your kitchen safe.",
         "bg_color": "#ffffff",
         "text_color": "#141414"
       }

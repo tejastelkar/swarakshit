@@ -120,6 +120,7 @@
     position: relative;
     overflow: hidden;
     margin-top: 16px; /* Reduced from 46px to compensate for track padding */
+    margin-inline: -5rem;
   }
   .svarakshit-rev-marquee::before,
   .svarakshit-rev-marquee::after {
@@ -147,6 +148,7 @@
     animation: svarakshitReviewsScroll 34s linear infinite;
     padding-top: 30px;
     padding-bottom: 54px; /* Space for box-shadow and hover translate */
+    padding-left: 5rem;
   }
   .svarakshit-rev-marquee:hover .svarakshit-rev-track {
     animation-play-state: paused;
@@ -161,7 +163,7 @@
     flex-direction: column;
     justify-content: space-between;
     width: 332px;
-    aspect-ratio: 1 / 1;
+    min-height: 280px;
     flex: 0 0 332px;
     box-shadow: 0 18px 40px rgba(17, 17, 17, 0.05);
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
@@ -271,6 +273,10 @@
     }
     .svarakshit-rev-marquee {
       margin-top: 4px; /* Adjusted down because track now has padding-top */
+      margin-inline: -3rem;
+    }
+    .svarakshit-rev-track {
+      padding-left: 3rem;
     }
     .svarakshit-rev-marquee::before,
     .svarakshit-rev-marquee::after {
@@ -339,6 +345,10 @@
     }
     .svarakshit-rev-marquee {
       margin-top: 0px; /* Adjusted down because track now has padding-top */
+      margin-inline: -1.5rem;
+    }
+    .svarakshit-rev-track {
+      padding-left: 1.5rem;
     }
     .svarakshit-rev-marquee::before,
     .svarakshit-rev-marquee::after {

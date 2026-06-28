@@ -170,7 +170,15 @@
 
   .svarakshit-modal__desc { font-size: 16px; color: #666; line-height: 1.6; margin-bottom: 40px; }
 
-  .svarakshit-modal__actions { display: flex; flex-direction: column; gap: 16px; margin-top: auto; }
+  .svarakshit-modal__actions {
+    position: sticky;
+    bottom: -60px;
+    margin-inline: -48px;
+    padding: 24px 48px;
+    background: white;
+    margin-top: 16px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
   .svarakshit-modal__actions form { display: flex; width: 100%; }
 
   .svarakshit-modal__btn {
@@ -219,7 +227,9 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
     .svarakshit-modal__actions {
-      margin-top: auto; /* Pushes the button to the absolute bottom of the scroll area */
+      bottom: -24px;
+      margin-inline: -20px;
+      padding: 16px 20px 24px;
     }
     .svarakshit-modal__btn {
       height: 52px;
