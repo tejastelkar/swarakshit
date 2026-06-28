@@ -11,7 +11,7 @@
     "hero": {
       "type": "svarakshit-app-hero",
       "settings": {
-        "bg_image": "shopify:\/\/shop_images\/af5b448d-d3b0-4f27-b0a8-49aa691ae316.png",
+        "bg_image": "shopify://shop_images/af5b448d-d3b0-4f27-b0a8-49aa691ae316.png",
         "subtitle": "SWARAKSHIT",
         "title": "Industrial Plant Solutions",
         "text": "Choose the Swarakshit setup that fits your heavy-duty facility and industrial safety compliance needs."
@@ -20,8 +20,8 @@
     "intro": {
       "type": "svarakshit-app-intro",
       "settings": {
-        "heading": "Bring <em>SWARAKSHIT<\/em> Into Your Plant",
-        "text": "<p>Industrial facilities require rigorous safety measures. Swarakshit helps floor managers and safety officers run routine checks for combustible gas leaks around heavy machinery, large storage tanks, complex pipeline networks, and industrial burners. Robust, rechargeable, and built to support your daily factory safety protocols.<\/p>",
+        "heading": "Bring <em>SWARAKSHIT</em> Into Your Plant",
+        "text": "<p>Industrial facilities require rigorous safety measures. Swarakshit helps floor managers and safety officers run routine checks for combustible gas leaks around heavy machinery, large storage tanks, complex pipeline networks, and industrial burners. Robust, rechargeable, and built to support your daily factory safety protocols.</p>",
         "author": "~ Swarakshit Industrial Safety"
       }
     },
@@ -32,7 +32,7 @@
           "type": "kit",
           "settings": {
             "title": "Industrial Kit No.1",
-            "description": "<p>A heavy-duty, portable Swarakshit gas monitor for floor managers performing routine leak inspections around high-pressure pipelines, industrial valves, and localized storage areas.<\/p>",
+            "description": "<p>A heavy-duty, portable Swarakshit gas monitor for floor managers performing routine leak inspections around high-pressure pipelines, industrial valves, and localized storage areas.</p>",
             "button_text": "Send a request",
             "button_link": "",
             "layout": "left"
@@ -42,7 +42,7 @@
           "type": "kit",
           "settings": {
             "title": "Industrial Kit No.2",
-            "description": "<p>A Swarakshit gas monitoring setup designed for fixed-point usage near high-risk zones, allowing for consistent spot-checks near main supply lines or heavy manufacturing equipment.<\/p>",
+            "description": "<p>A Swarakshit gas monitoring setup designed for fixed-point usage near high-risk zones, allowing for consistent spot-checks near main supply lines or heavy manufacturing equipment.</p>",
             "button_text": "Send a request",
             "button_link": "",
             "layout": "right"
@@ -52,7 +52,7 @@
           "type": "kit",
           "settings": {
             "title": "Industrial Kit No.3",
-            "description": "<p>A comprehensive industrial safety setup for sprawling plants. Ideal for multi-point checking routines, providing wide coverage across multiple production lines and storage facilities.<\/p>",
+            "description": "<p>A comprehensive industrial safety setup for sprawling plants. Ideal for multi-point checking routines, providing wide coverage across multiple production lines and storage facilities.</p>",
             "button_text": "Send a request",
             "button_link": "",
             "layout": "left"

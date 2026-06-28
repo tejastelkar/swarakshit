@@ -1,131 +1,89 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "hero": {
-      "type": "svarakshit-usecase-hero",
+      "type": "svarakshit-app-hero",
       "settings": {
-        "heading": "Swarakshit for Small Commercial Kitchens",
-        "subtitle": "For smaller kitchen environments that want a practical way to check combustible gas points with the same home-first reliability.",
-        "overlay_opacity": 40
+        "bg_image": "shopify://shop_images/af5b448d-d3b0-4f27-b0a8-49aa691ae316.png",
+        "subtitle": "SWARAKSHIT",
+        "title": "Commercial Office Solutions",
+        "text": "Choose the Swarakshit setup that fits your office building and corporate gas safety requirements."
       }
     },
-    "intro_text": {
-      "type": "rich-text",
+    "intro": {
+      "type": "svarakshit-app-intro",
+      "settings": {
+        "heading": "Bring <em>SWARAKSHIT</em> Into Your Workspace",
+        "text": "<p>Commercial buildings, office cafeterias, and centralized HVAC heating systems rely on safe gas connections. Swarakshit provides facility managers with a reliable, portable tool to routinely check for combustible gas leaks in commercial kitchens, boiler rooms, and utility closets, ensuring a safe environment for all employees.</p>",
+        "author": "~ Swarakshit Commercial Safety"
+      }
+    },
+    "kits": {
+      "type": "svarakshit-app-kits",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "kit_1": {
+          "type": "kit",
           "settings": {
-            "heading": "A Practical Option for Selected Kitchen Setups",
-            "heading_size": "h1"
+            "title": "Commercial Kit No.1",
+            "description": "<p>A sleek, portable Swarakshit gas monitor for facility managers to conduct routine checks in office cafeterias, pantry areas, and utility rooms.</p>",
+            "button_text": "Send a request",
+            "button_link": "",
+            "layout": "left"
           }
         },
-        "text": {
-          "type": "text",
+        "kit_2": {
+          "type": "kit",
           "settings": {
-            "text": "<p>Swarakshit is designed first for homes and kitchens, but it can also be useful in selected small commercial kitchen environments where teams want a simple way to check cylinders, regulators, joints, and burner connections for combustible gas leaks.</p>"
+            "title": "Commercial Kit No.2",
+            "description": "<p>A Swarakshit gas monitoring setup with a dedicated placement option for commercial kitchens and corporate dining areas, ensuring staff can easily spot-check connections daily.</p>",
+            "button_text": "Send a request",
+            "button_link": "",
+            "layout": "right"
+          }
+        },
+        "kit_3": {
+          "type": "kit",
+          "settings": {
+            "title": "Commercial Kit No.3",
+            "description": "<p>A broader commercial safety setup designed for multi-floor office buildings. Provides facility teams with multiple units for comprehensive coverage across HVAC systems and centralized boilers.</p>",
+            "button_text": "Send a request",
+            "button_link": "",
+            "layout": "left"
           }
         }
       },
       "block_order": [
-        "heading",
-        "text"
+        "kit_1",
+        "kit_2",
+        "kit_3"
       ],
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "background-1",
-        "full_width": true,
-        "padding_top": 100,
-        "padding_bottom": 80
+        "bg_color": "#ffffff",
+        "text_color": "#1a1a1a"
       }
     },
-    "content_features": {
-      "type": "swarakshit-usecase-content",
-      "blocks": {
-        "block_1": {
-          "type": "content_block",
-          "settings": {
-            "image_position": "left",
-            "subtitle": "ROUTINE CHECKS",
-            "heading": "Check Key Gas Points Regularly",
-            "text": "<p>Use Swarakshit as part of a regular safety routine around cylinders, pipeline joints, regulators, and burner connections in kitchens that depend on daily gas use.</p>"
-          }
-        },
-        "block_2": {
-          "type": "content_block",
-          "settings": {
-            "image_position": "right",
-            "subtitle": "SIMPLE OPERATION",
-            "heading": "Easy for Staff to Use",
-            "text": "<p>The portable rechargeable design makes it easier for staff to carry out spot checks without needing a complex installation or technical workflow.</p>"
-          }
-        },
-        "block_3": {
-          "type": "content_block",
-          "settings": {
-            "image_position": "left",
-            "subtitle": "BEFORE YOU ORDER",
-            "heading": "Confirm Suitability First",
-            "text": "<p>If your setup involves a larger kitchen, multiple lines, or specialized safety needs, contact us before ordering so we can help you decide whether Swarakshit is the right fit.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "block_1",
-        "block_2",
-        "block_3"
-      ],
+    "contact": {
+      "type": "svarakshit-app-contact",
       "settings": {
-        "bg_color": "#FAFAFA"
-      }
-    },
-    "testimonials": {
-      "type": "svarakshit-testimonials",
-      "blocks": {
-        "test_1": {
-          "type": "testimonial",
-          "settings": {
-            "author": "Food Service Team",
-            "text": "We wanted a straightforward way to check the main gas points in our kitchen without adding complexity. Swarakshit made those routine checks easier."
-          }
-        },
-        "test_2": {
-          "type": "testimonial",
-          "settings": {
-            "author": "Small Kitchen Operator",
-            "text": "It fits best as a practical checking tool for our gas connections, which is exactly what we needed."
-          }
-        }
-      },
-      "block_order": [
-        "test_1",
-        "test_2"
-      ],
-      "settings": {
-        "heading": "Useful for Selected Secondary Setups"
-      }
-    },
-    "product": {
-      "type": "svarakshit-our-product",
-      "settings": {
-        "left_heading": "Discuss Your Kitchen Setup",
-        "left_text": "If you are considering Swarakshit for a small commercial kitchen or bulk requirement, contact us first so we can guide you on suitability."
+        "title": "Contact Us",
+        "subtitle": "Contact us to deploy the perfect Swarakshit safety setup across your commercial property.",
+        "bg_color": "#ffffff",
+        "text_color": "#141414"
       }
     }
   },
   "order": [
+    "main",
     "hero",
-    "intro_text",
-    "content_features",
-    "testimonials",
-    "product"
+    "intro",
+    "kits",
+    "contact"
   ]
 }

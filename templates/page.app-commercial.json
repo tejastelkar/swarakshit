@@ -11,7 +11,7 @@
     "hero": {
       "type": "svarakshit-app-hero",
       "settings": {
-        "bg_image": "shopify:\/\/shop_images\/af5b448d-d3b0-4f27-b0a8-49aa691ae316.png",
+        "bg_image": "shopify://shop_images/af5b448d-d3b0-4f27-b0a8-49aa691ae316.png",
         "subtitle": "SWARAKSHIT",
         "title": "Commercial Office Solutions",
         "text": "Choose the Swarakshit setup that fits your office building and corporate gas safety requirements."
@@ -20,8 +20,8 @@
     "intro": {
       "type": "svarakshit-app-intro",
       "settings": {
-        "heading": "Bring <em>SWARAKSHIT<\/em> Into Your Workspace",
-        "text": "<p>Commercial buildings, office cafeterias, and centralized HVAC heating systems rely on safe gas connections. Swarakshit provides facility managers with a reliable, portable tool to routinely check for combustible gas leaks in commercial kitchens, boiler rooms, and utility closets, ensuring a safe environment for all employees.<\/p>",
+        "heading": "Bring <em>SWARAKSHIT</em> Into Your Workspace",
+        "text": "<p>Commercial buildings, office cafeterias, and centralized HVAC heating systems rely on safe gas connections. Swarakshit provides facility managers with a reliable, portable tool to routinely check for combustible gas leaks in commercial kitchens, boiler rooms, and utility closets, ensuring a safe environment for all employees.</p>",
         "author": "~ Swarakshit Commercial Safety"
       }
     },
@@ -32,7 +32,7 @@
           "type": "kit",
           "settings": {
             "title": "Commercial Kit No.1",
-            "description": "<p>A sleek, portable Swarakshit gas monitor for facility managers to conduct routine checks in office cafeterias, pantry areas, and utility rooms.<\/p>",
+            "description": "<p>A sleek, portable Swarakshit gas monitor for facility managers to conduct routine checks in office cafeterias, pantry areas, and utility rooms.</p>",
             "button_text": "Send a request",
             "button_link": "",
             "layout": "left"
@@ -42,7 +42,7 @@
           "type": "kit",
           "settings": {
             "title": "Commercial Kit No.2",
-            "description": "<p>A Swarakshit gas monitoring setup with a dedicated placement option for commercial kitchens and corporate dining areas, ensuring staff can easily spot-check connections daily.<\/p>",
+            "description": "<p>A Swarakshit gas monitoring setup with a dedicated placement option for commercial kitchens and corporate dining areas, ensuring staff can easily spot-check connections daily.</p>",
             "button_text": "Send a request",
             "button_link": "",
             "layout": "right"
@@ -52,7 +52,7 @@
           "type": "kit",
           "settings": {
             "title": "Commercial Kit No.3",
-            "description": "<p>A broader commercial safety setup designed for multi-floor office buildings. Provides facility teams with multiple units for comprehensive coverage across HVAC systems and centralized boilers.<\/p>",
+            "description": "<p>A broader commercial safety setup designed for multi-floor office buildings. Provides facility teams with multiple units for comprehensive coverage across HVAC systems and centralized boilers.</p>",
             "button_text": "Send a request",
             "button_link": "",
             "layout": "left"
