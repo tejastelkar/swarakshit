@@ -8,7 +8,7 @@
         "padding_bottom": 0
       }
     },
-    "hero": {
+    "hero_com": {
       "type": "svarakshit-app-hero",
       "settings": {
         "bg_image": "shopify://shop_images/af5b448d-d3b0-4f27-b0a8-49aa691ae316.png",
@@ -17,7 +17,7 @@
         "text": "Equip your commercial building with Swarakshit to maintain workplace safety and easily detect combustible gas leaks."
       }
     },
-    "intro": {
+    "intro_com": {
       "type": "svarakshit-app-intro",
       "settings": {
         "heading": "Bring <em>SWARAKSHIT</em> Into Your Workspace",
@@ -25,10 +25,10 @@
         "author": "~ Swarakshit Commercial Safety"
       }
     },
-    "kits": {
+    "kits_com": {
       "type": "svarakshit-app-kits",
       "blocks": {
-        "kit_1": {
+        "com_kit_1": {
           "type": "kit",
           "settings": {
             "title": "Cafeteria & Pantry Checks",
@@ -38,7 +38,7 @@
             "layout": "left"
           }
         },
-        "kit_2": {
+        "com_kit_2": {
           "type": "kit",
           "settings": {
             "title": "Basement Utility Monitoring",
@@ -48,7 +48,7 @@
             "layout": "right"
           }
         },
-        "kit_3": {
+        "com_kit_3": {
           "type": "kit",
           "settings": {
             "title": "Multi-Floor Safety Audits",
@@ -69,7 +69,7 @@
         "text_color": "#1a1a1a"
       }
     },
-    "contact": {
+    "contact_com": {
       "type": "svarakshit-app-contact",
       "settings": {
         "title": "Contact Us",
@@ -81,9 +81,9 @@
   },
   "order": [
     "main",
-    "hero",
-    "intro",
-    "kits",
-    "contact"
+    "hero_com",
+    "intro_com",
+    "kits_com",
+    "contact_com"
   ]
 }

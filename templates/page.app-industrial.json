@@ -8,7 +8,7 @@
         "padding_bottom": 0
       }
     },
-    "hero": {
+    "hero_ind": {
       "type": "svarakshit-app-hero",
       "settings": {
         "bg_image": "shopify://shop_images/af5b448d-d3b0-4f27-b0a8-49aa691ae316.png",
@@ -17,7 +17,7 @@
         "text": "Equip your heavy-duty facility with Swarakshit to maintain industrial safety compliance and easily detect combustible gas leaks."
       }
     },
-    "intro": {
+    "intro_ind": {
       "type": "svarakshit-app-intro",
       "settings": {
         "heading": "Bring <em>SWARAKSHIT</em> Into Your Plant",
@@ -25,10 +25,10 @@
         "author": "~ Swarakshit Industrial Safety"
       }
     },
-    "kits": {
+    "kits_ind": {
       "type": "svarakshit-app-kits",
       "blocks": {
-        "kit_1": {
+        "ind_kit_1": {
           "type": "kit",
           "settings": {
             "title": "Routine Pipeline Inspections",
@@ -38,7 +38,7 @@
             "layout": "left"
           }
         },
-        "kit_2": {
+        "ind_kit_2": {
           "type": "kit",
           "settings": {
             "title": "Safety Officer Patrols",
@@ -48,7 +48,7 @@
             "layout": "right"
           }
         },
-        "kit_3": {
+        "ind_kit_3": {
           "type": "kit",
           "settings": {
             "title": "Multi-Point Compliance",
@@ -69,7 +69,7 @@
         "text_color": "#1a1a1a"
       }
     },
-    "contact": {
+    "contact_ind": {
       "type": "svarakshit-app-contact",
       "settings": {
         "title": "Contact Us",
@@ -81,9 +81,9 @@
   },
   "order": [
     "main",
-    "hero",
-    "intro",
-    "kits",
-    "contact"
+    "hero_ind",
+    "intro_ind",
+    "kits_ind",
+    "contact_ind"
   ]
 }
