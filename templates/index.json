@@ -75,21 +75,12 @@
             "title": "Free Delivery",
             "subtitle": "Across India"
           }
-        },
-        "badge_4": {
-          "type": "badge",
-          "settings": {
-            "icon": "rotate-ccw",
-            "title": "30-Day Return",
-            "subtitle": "No Questions Asked"
-          }
         }
       },
       "block_order": [
         "badge_1",
         "badge_2",
-        "badge_3",
-        "badge_4"
+        "badge_3"
       ],
       "settings": {}
     },
