@@ -193,19 +193,20 @@
   }
 
   .svarakshit-footer-payment-icon {
-    width: 38px;
     height: 24px;
     background-color: #ffffff;
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2px;
+    padding: 2px 6px;
   }
   
-  .svarakshit-footer-payment-icon svg {
-    width: 100%;
+  .svarakshit-footer-payment-icon svg,
+  .svarakshit-footer-payment-icon img {
     height: 100%;
+    width: auto;
+    object-fit: contain;
   }
 
   @media screen and (min-width: 769px) and (max-width: 989px) {
@@ -360,15 +361,15 @@
     </div>
     
     <div class="svarakshit-footer-payments">
-      {% assign payment_types = shop.enabled_payment_types %}
-      {% if payment_types.size == 0 %}
-        {% assign payment_types = 'amex,apple_pay,diners_club,discover,google_pay,jcb,master,paypal,visa' | split: ',' %}
-      {% endif %}
-      {% for type in payment_types %}
-        <div class="svarakshit-footer-payment-icon">
-          {{ type | payment_type_svg_tag }}
-        </div>
-      {% endfor %}
+      <div class="svarakshit-footer-payment-icon">
+        <img src="{{ 'rupay-logo.svg' | asset_url }}" alt="RuPay" width="38" height="24" loading="lazy">
+      </div>
+      <div class="svarakshit-footer-payment-icon">
+        <img src="{{ 'upi-logo.svg' | asset_url }}" alt="UPI" width="38" height="24" loading="lazy">
+      </div>
+      <div class="svarakshit-footer-payment-icon">
+        <img src="{{ 'razorpay-logo.svg' | asset_url }}" alt="Razorpay" width="80" height="24" loading="lazy">
+      </div>
     </div>
   </div>
 </div>
