@@ -16,7 +16,7 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Device parameters",
-            "content": "<p><strong>Multi-Gas Detection:</strong> Detects LPG, PNG, CNG, methane and other combustible gases.</p><p><strong>LCD Display with 'Hi' Alert:</strong> Digital screen shows gas level information during use.</p><p><strong>LERC Certified:</strong> Built around trusted gas-safety positioning for Indian households.</p><p><strong>USB Rechargeable:</strong> Portable design for regular checks around the home and kitchen.</p><p><strong>Best Suited For:</strong> Home kitchens, LPG cylinder checks, PNG joints, gas regulator points, and similar household gas connections.</p>"
+            "content": "<p><strong>Multi-Gas Detection:</strong> Detects LPG, PNG, CNG, methane and other combustible gases.</p><p><strong>LCD Display with 'Hi' Alert:</strong> Digital screen shows gas level information during use.</p><p><strong>LERC Certified:</strong> Built around trusted gas-safety positioning for Indian households.</p><p><strong>AAA Battery Operated:</strong> Portable design for regular checks around the home and kitchen.</p><p><strong>Best Suited For:</strong> Home kitchens, LPG cylinder checks, PNG joints, gas regulator points, and similar household gas connections.</p>"
           }
         },
         "shipping": {
@@ -68,8 +68,8 @@
         "feature_4_arrow_offset": 2,
         "feature_4_arrow_width": 135,
         "feature_4_arrow_height": 135,
-        "feature_5_title": "USB-C Charging",
-        "feature_5_text": "Recharge fast with the included USB-C cable and stay ready to test.",
+        "feature_5_title": "AAA Battery Powered",
+        "feature_5_text": "Uses standard AAA batteries so you can easily replace them anywhere and stay ready to test.",
         "feature_5_arrow_offset": 18,
         "feature_5_arrow_width": 135,
         "feature_5_arrow_height": 135
