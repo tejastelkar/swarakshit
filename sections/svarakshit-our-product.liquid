@@ -235,14 +235,14 @@
             {% if product.images.size > 1 %}
             <div class="prod-thumbs">
               {% for image in product.images %}
-                <button type="button" aria-label="Select image {{ forloop.index }}" class="thumb {% if forloop.first %}act{% endif %}" onclick="setImg_{{ section.id | replace: '-', '_' }}(this, '{{ image | image_url: width: 800 }}')">
+                <div class="thumb {% if forloop.first %}act{% endif %}" onclick="setImg_{{ section.id | replace: '-', '_' }}(this, '{{ image | image_url: width: 800 }}')">
                   <img
                     src="{{ image | image_url: width: 150 }}"
                     alt="{{ image.alt | escape }}"
                     width="{{ image.width }}"
                     height="{{ image.height }}"
                   >
-                </button>
+                </div>
               {% endfor %}
             </div>
             {% endif %}
@@ -327,9 +327,9 @@
           <div class="qty-row">
             <span style="font-size:14px;font-weight:600;color:{{ section.settings.text_color | color_modify: 'alpha', 0.7 }}">Qty:</span>
             <div class="qty-ctrl">
-              <button type="button" aria-label="Decrease quantity" class="qbtn" onclick="changeQty_{{ section.id | replace: '-', '_' }}(-1)">−</button>
-              <input class="qnum" id="qnum-{{ section.id }}" type="number" name="quantity" value="1" min="1" max="10" readonly aria-label="Quantity">
-              <button type="button" aria-label="Increase quantity" class="qbtn" onclick="changeQty_{{ section.id | replace: '-', '_' }}(1)">+</button>
+              <button type="button" class="qbtn" onclick="changeQty_{{ section.id | replace: '-', '_' }}(-1)">−</button>
+              <input class="qnum" id="qnum-{{ section.id }}" type="number" name="quantity" value="1" min="1" max="10" readonly>
+              <button type="button" class="qbtn" onclick="changeQty_{{ section.id | replace: '-', '_' }}(1)">+</button>
             </div>
           </div>
           

@@ -217,7 +217,6 @@
     height: 14px;
     width: auto;
     object-fit: contain;
-    max-width: 100%;
   }
 
   @media screen and (min-width: 769px) and (max-width: 989px) {
@@ -355,11 +354,10 @@
       </p>
 
       <ul class="svarakshit-footer-policies">
-        {%- for policy in shop.policies -%}
-          {%- if policy != blank -%}
-            <li><a href="{{ policy.url }}">{{ policy.title }}</a></li>
-          {%- endif -%}
-        {%- endfor -%}
+        <li><a href="/policies/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/policies/refund-policy">Refund Policy</a></li>
+        <li><a href="/policies/shipping-policy">Shipping Policy</a></li>
+        <li><a href="/policies/terms-of-service">Terms of Service</a></li>
         <li><a href="/pages/contact">Contact information</a></li>
       </ul>
     </div>
