@@ -125,7 +125,9 @@
 </div>
 
 {%- if section.blocks.size > 1 -%}
+  {%- comment -%} theme-check-disable RemoteAsset {%- endcomment -%}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer="defer"></script>
+  {%- comment -%} theme-check-enable RemoteAsset {%- endcomment -%}
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const initSlideshow = () => {

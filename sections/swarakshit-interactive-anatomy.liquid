@@ -76,7 +76,7 @@
     padding: clamp(80px, 12vw, 160px) 20px;
     font-family: 'Inter', sans-serif;
     text-align: center;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .swarakshit-anatomy__heading {
@@ -165,7 +165,8 @@
     border: 1px solid rgba(255, 255, 255, 0.5);
   }
 
-  .swarakshit-hotspot:hover .swarakshit-tooltip {
+  .swarakshit-hotspot:hover .swarakshit-tooltip,
+  .swarakshit-hotspot.is-open .swarakshit-tooltip {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
@@ -222,3 +223,20 @@
     {%- endfor -%}
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var hotspots = document.querySelectorAll('#shopify-section-{{ section.id }} .swarakshit-hotspot');
+  hotspots.forEach(function(hs) {
+    hs.addEventListener('click', function(e) {
+      var isOpen = hs.classList.contains('is-open');
+      hotspots.forEach(function(h) { h.classList.remove('is-open'); });
+      if (!isOpen) hs.classList.add('is-open');
+      e.stopPropagation();
+    });
+  });
+  document.addEventListener('click', function() {
+    hotspots.forEach(function(h) { h.classList.remove('is-open'); });
+  });
+});
+</script>

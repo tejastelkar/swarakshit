@@ -22,16 +22,16 @@
       "settings": {
         "bg_image": "shopify://shop_images/af5b448d-d3b0-4f27-b0a8-49aa691ae316.png",
         "subtitle": "SWARAKSHIT",
-        "title": "Kitchen Safety Solutions",
-        "text": "Choose the Swarakshit setup that fits your home kitchen and daily gas safety routine."
+        "title": "Industrial Plant Solutions",
+        "text": "Choose the Swarakshit setup that fits your heavy-duty facility and industrial safety compliance needs."
       }
     },
     "intro": {
       "type": "svarakshit-app-intro",
       "settings": {
-        "heading": "Bring Swarakshit Into Your Kitchen",
-        "text": "<p>Swarakshit helps households check for combustible gas leaks around stoves, cylinders, regulators, pipes, and other common kitchen gas points. It is portable, rechargeable, and easy to use as part of a regular home safety routine.</p>",
-        "author": "~ Swarakshit Home Safety"
+        "heading": "Bring <em>SWARAKSHIT</em> Into Your Plant",
+        "text": "<p>Industrial facilities require rigorous safety measures. Swarakshit helps floor managers and safety officers run routine checks for combustible gas leaks around heavy machinery, large storage tanks, complex pipeline networks, and industrial burners. Robust, rechargeable, and built to support your daily factory safety protocols.</p>",
+        "author": "~ Swarakshit Industrial Safety"
       }
     },
     "kits": {
@@ -40,8 +40,8 @@
         "kit_1": {
           "type": "kit",
           "settings": {
-            "title": "Kitchen Kit No.1",
-            "description": "<p>A portable rechargeable Swarakshit gas monitor for routine checks around LPG cylinders, PNG joints, regulators, burner connections, and other everyday kitchen gas points.</p>",
+            "title": "Industrial Kit No.1",
+            "description": "<p>A heavy-duty, portable Swarakshit gas monitor for floor managers performing routine leak inspections around high-pressure pipelines, industrial valves, and localized storage areas.</p>",
             "button_text": "Send a request",
             "button_link": "",
             "layout": "left"
@@ -50,8 +50,8 @@
         "kit_2": {
           "type": "kit",
           "settings": {
-            "title": "Kitchen Kit No.2",
-            "description": "<p>A Swarakshit gas monitor with a dedicated placement option for households that want a convenient fixed spot near their main kitchen testing area.</p>",
+            "title": "Industrial Kit No.2",
+            "description": "<p>A Swarakshit gas monitoring setup designed for fixed-point usage near high-risk zones, allowing for consistent spot-checks near main supply lines or heavy manufacturing equipment.</p>",
             "button_text": "Send a request",
             "button_link": "",
             "layout": "right"
@@ -60,8 +60,8 @@
         "kit_3": {
           "type": "kit",
           "settings": {
-            "title": "Kitchen Kit No.3",
-            "description": "<p>A broader kitchen safety setup for larger homes or multi-point checking routines, designed for families that want easier coverage across more than one gas connection area.</p>",
+            "title": "Industrial Kit No.3",
+            "description": "<p>A comprehensive industrial safety setup for sprawling plants. Ideal for multi-point checking routines, providing wide coverage across multiple production lines and storage facilities.</p>",
             "button_text": "Send a request",
             "button_link": "",
             "layout": "left"
@@ -82,7 +82,7 @@
       "type": "svarakshit-app-contact",
       "settings": {
         "title": "Contact Us",
-        "subtitle": "Contact us to choose the right Swarakshit setup for your kitchen.",
+        "subtitle": "Contact our enterprise team to find the right Swarakshit industrial setup for your facility.",
         "bg_color": "#ffffff",
         "text_color": "#141414"
       }

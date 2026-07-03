@@ -1,0 +1,452 @@
+<style>
+  #shopify-section-{{ section.id }} .svarakshit-contact {
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding: 6rem 2rem;
+    font-family: 'Inter', sans-serif;
+  }
+  @media screen and (min-width: 768px) {
+    #shopify-section-{{ section.id }} .svarakshit-contact {
+      padding: 8rem 5rem;
+    }
+  }
+
+  .svarakshit-contact__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .svarakshit-contact__header {
+    margin-bottom: 4rem;
+  }
+
+  .svarakshit-contact__title {
+    font-size: clamp(4rem, 6vw, 7rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin: 0 0 1.5rem 0;
+    color: {{ section.settings.text_color }};
+  }
+
+  .svarakshit-contact__subtitle {
+    font-size: 1.8rem;
+    color: #4a4a4a;
+    line-height: 1.5;
+  }
+
+  .svarakshit-contact__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  @media screen and (min-width: 990px) {
+    .svarakshit-contact__grid {
+      grid-template-columns: 2fr 1fr;
+      gap: 8rem;
+    }
+  }
+
+  /* Form Styles */
+  .svarakshit-contact__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .svarakshit-contact__form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    .svarakshit-contact__form-row {
+      flex-direction: row;
+    }
+    .svarakshit-contact__form-row > * {
+      flex: 1;
+    }
+  }
+
+  .svarakshit-contact__input {
+    width: 100%;
+    background-color: #f6f6f6;
+    border: none;
+    border-radius: 12px;
+    padding: 1.8rem 2rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.6rem;
+    color: #1a1a1a;
+    transition: background-color 0.3s ease;
+  }
+
+  .svarakshit-contact__input:focus {
+    outline: 2px solid #1a1a1a;
+    background-color: #ffffff;
+  }
+
+  .svarakshit-contact__input::placeholder {
+    color: #8c8c8c;
+  }
+
+  textarea.svarakshit-contact__input {
+    min-height: 180px;
+    resize: vertical;
+  }
+
+  select.svarakshit-contact__input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%231A1A1A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 2rem center;
+  }
+
+  .svarakshit-contact__submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: none;
+    border-radius: 100px;
+    padding: 1.5rem 3rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    align-self: flex-start;
+    margin-top: 1rem;
+  }
+
+  .svarakshit-contact__submit:hover {
+    transform: scale(1.02);
+    background-color: #000000;
+  }
+
+  .svarakshit-contact__captcha {
+    font-size: 1.2rem;
+    color: #6a6a6a;
+    margin-top: 2rem;
+  }
+
+  .svarakshit-contact__captcha a {
+    color: #1a1a1a;
+    text-decoration: underline;
+  }
+
+  /* Sidebar Styles */
+  .svarakshit-contact__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .svarakshit-contact__info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .svarakshit-contact__info-label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #8c8c8c;
+  }
+
+  .svarakshit-contact__info-text {
+    font-size: 1.6rem;
+    color: #1a1a1a;
+    line-height: 1.5;
+  }
+
+  .svarakshit-contact__info-text a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .svarakshit-contact__info-text a:hover {
+    opacity: 0.7;
+  }
+
+  .svarakshit-contact__socials {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .svarakshit-contact__social-link {
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+  }
+
+  .svarakshit-contact__social-link:hover {
+    transform: translateY(-2px);
+  }
+
+  .svarakshit-contact__social-link svg {
+    width: 24px;
+    height: 24px;
+  }
+</style>
+
+<div class="svarakshit-contact">
+  <div class="svarakshit-contact__container">
+    <div class="svarakshit-contact__header">
+      {%- if section.settings.title != blank -%}
+        <h1 class="svarakshit-contact__title">{{ section.settings.title }}</h1>
+      {%- endif -%}
+      <p class="svarakshit-contact__subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+
+    <div class="svarakshit-contact__grid">
+      <!-- Left Column: Form -->
+      <div class="svarakshit-contact__form-wrap">
+        {% form 'contact', id: 'SwarakshitContactForm', class: 'svarakshit-contact__form' %}
+          {%- if form.posted_successfully? -%}
+            <div class="form-status form-status-list form__message" tabindex="-1" autofocus>
+              Your message was sent successfully. We will get back to you soon.
+            </div>
+          {%- elsif form.errors -%}
+            <div class="form__message">
+              <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+                Please adjust the following:
+              </h2>
+            </div>
+            <ul class="form-status-list caption-large" role="list">
+              <li>
+                <a href="#ContactForm-email">
+                  {{ form.errors.translated_fields.email | capitalize }}
+                  {{ form.errors.messages.email }}
+                </a>
+              </li>
+            </ul>
+          {%- endif -%}
+
+          <div class="svarakshit-contact__form-row">
+            <input 
+              type="text" 
+              name="contact[name]" 
+              id="ContactForm-name" 
+              class="svarakshit-contact__input" 
+              placeholder="Name" 
+              required
+              value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+            >
+            <input 
+              type="email" 
+              name="contact[email]" 
+              id="ContactForm-email" 
+              class="svarakshit-contact__input" 
+              placeholder="Email"
+              spellcheck="false"
+              autocapitalize="off"
+              required
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+              aria-required="true"
+            >
+          </div>
+
+          <div class="svarakshit-contact__form-row">
+            <input 
+              type="tel" 
+              name="contact[phone]" 
+              id="ContactForm-phone" 
+              class="svarakshit-contact__input" 
+              placeholder="Phone number" 
+              value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+            >
+            <select name="contact[subject]" id="ContactForm-subject" class="svarakshit-contact__input">
+              <option value="" disabled selected>Subject</option>
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="Sales">Sales</option>
+              <option value="Support">Support</option>
+              <option value="Partnership">Partnership</option>
+            </select>
+          </div>
+
+          <textarea 
+            name="contact[body]" 
+            id="ContactForm-body" 
+            class="svarakshit-contact__input" 
+            placeholder="Message"
+          >{%- if form.body -%}{{ form.body }}{%- endif -%}</textarea>
+
+          <button type="submit" class="svarakshit-contact__submit">
+            Send message
+          </button>
+
+          {%- if content_for_header contains 'recaptcha' -%}
+            <p class="svarakshit-contact__captcha">
+              This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.
+            </p>
+          {%- endif -%}
+        {% endform %}
+      </div>
+
+      <!-- Right Column: Sidebar -->
+      <div class="svarakshit-contact__sidebar">
+        {% for block in section.blocks %}
+          <div class="svarakshit-contact__info-block" {{ block.shopify_attributes }}>
+            {% if block.type == 'email' %}
+              <div class="svarakshit-contact__info-label">{{ block.settings.label }}</div>
+              <div class="svarakshit-contact__info-text">
+                <a href="mailto:{{ block.settings.email_address }}">{{ block.settings.email_address }}</a>
+              </div>
+            {% elsif block.type == 'phone' %}
+              <div class="svarakshit-contact__info-label">{{ block.settings.label }}</div>
+              <div class="svarakshit-contact__info-text">
+                {{ block.settings.phone_details | newline_to_br }}
+              </div>
+            {% elsif block.type == 'socials' %}
+              <div class="svarakshit-contact__info-label">{{ block.settings.label }}</div>
+              <div class="svarakshit-contact__socials">
+                {% if block.settings.facebook != blank %}
+                  <a href="{{ block.settings.facebook }}" class="svarakshit-contact__social-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                  </a>
+                {% endif %}
+                {% if block.settings.twitter != blank %}
+                  <a href="{{ block.settings.twitter }}" class="svarakshit-contact__social-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  </a>
+                {% endif %}
+                {% if block.settings.instagram != blank %}
+                  <a href="{{ block.settings.instagram }}" class="svarakshit-contact__social-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                  </a>
+                {% endif %}
+                {% if block.settings.youtube != blank %}
+                  <a href="{{ block.settings.youtube }}" class="svarakshit-contact__social-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 00-2.122 2.136C0 8.07 0 12 0 12s0 3.93.501 5.814a3.016 3.016 0 002.122 2.136c1.871.55 9.377.55 9.377.55s7.505 0 9.377-.55a3.016 3.016 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  </a>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact Page (Swarakshit)",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Contact Us"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "We'd love to hear from you. Our team is here to help."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "email",
+      "name": "Email Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "EMAIL"
+        },
+        {
+          "type": "text",
+          "id": "email_address",
+          "label": "Email Address",
+          "default": "hello@swarakshit.com"
+        }
+      ]
+    },
+    {
+      "type": "phone",
+      "name": "Phone Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "PHONE"
+        },
+        {
+          "type": "textarea",
+          "id": "phone_details",
+          "label": "Phone & Hours",
+          "default": "(+91) 98765 43210\nMon - Sat: 10:00 AM - 06:00 PM (IST)"
+        }
+      ]
+    },
+    {
+      "type": "socials",
+      "name": "Social Links",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "FOLLOW US"
+        },
+        {
+          "type": "url",
+          "id": "facebook",
+          "label": "Facebook URL"
+        },
+        {
+          "type": "url",
+          "id": "twitter",
+          "label": "X (Twitter) URL"
+        },
+        {
+          "type": "url",
+          "id": "instagram",
+          "label": "Instagram URL"
+        },
+        {
+          "type": "url",
+          "id": "youtube",
+          "label": "YouTube URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Page (Airvalent)",
+      "blocks": [
+        { "type": "email" },
+        { "type": "phone" },
+        { "type": "socials" }
+      ]
+    }
+  ]
+}
+{% endschema %}

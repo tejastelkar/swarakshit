@@ -12,7 +12,6 @@
     padding: 0 2rem;
   }
 
-  /* Header */
   .htu-header {
     text-align: center;
     margin-bottom: 4rem;
@@ -20,8 +19,6 @@
     flex-direction: column;
     align-items: center;
   }
-
-
 
   .htu-title {
     font-size: 3.5rem;
@@ -38,18 +35,17 @@
     max-width: 600px;
   }
 
-  /* Timeline */
   .htu-timeline {
     position: relative;
-    padding-left: 120px; /* Space for the line and dots */
+    padding-left: 120px;
   }
 
   .htu-line {
     position: absolute;
     display: block !important;
-    left: 59px; /* Center of the 120px space */
-    top: 40px; /* start at center of first dot */
-    bottom: 40px; /* end at center of last dot */
+    left: 59px;
+    top: 40px;
+    bottom: 40px;
     width: 4px;
     background: #e4e4e4;
     z-index: 1;
@@ -64,12 +60,11 @@
     width: 4px;
     background: #E87722;
     z-index: 2;
-    height: 0px; /* updated via JS in px */
+    height: 0px;
     border-radius: 4px;
     transition: height 0.1s ease-out;
   }
 
-  /* Steps */
   .htu-step {
     position: relative;
     margin-bottom: 5rem;
@@ -82,13 +77,13 @@
 
   .htu-step-indicator {
     position: absolute;
-    left: -120px; /* Pull back into the padding space */
+    left: -120px;
     width: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 3;
-    padding-top: 0; 
+    padding-top: 0;
   }
 
   .htu-step-dot {
@@ -122,7 +117,6 @@
     transition: color 0.4s ease;
   }
 
-  /* Active State for Indicator */
   .htu-step.is-active .htu-step-dot {
     border-color: #E87722;
     background: #E87722;
@@ -133,7 +127,6 @@
     color: #fff;
   }
 
-  /* Card */
   .htu-card {
     flex: 1;
     background: #fff;
@@ -141,7 +134,6 @@
     border-radius: 20px;
     padding: 3rem;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
-    /* subtle shadow */
     box-shadow: 0 8px 24px rgba(0,0,0,0.04);
   }
 
@@ -166,6 +158,7 @@
     background: #f4f4f4;
     border-radius: 16px;
     color: #E87722;
+    flex-shrink: 0;
   }
 
   .htu-card-icon svg {
@@ -198,7 +191,6 @@
     margin-bottom: 0.8rem;
   }
 
-  /* Pills */
   .htu-pill {
     display: inline-flex;
     align-items: center;
@@ -213,7 +205,6 @@
     gap: 8px;
   }
 
-  /* Responsive */
   @media (max-width: 768px) {
     .svarakshit-htu {
       padding: 4rem 0;
@@ -291,170 +282,43 @@
       <div class="htu-line"></div>
       <div class="htu-line-fill" id="htuLineFill"></div>
 
-      <!-- Step 1 -->
-      <div class="htu-step" data-step="1">
-        <div class="htu-step-indicator">
-          <div class="htu-step-dot">
-            <span class="htu-step-num">01</span>
-            <span class="htu-step-lbl">Step</span>
-          </div>
-        </div>
-        <div class="htu-card">
-          <div class="htu-card-header">
-            <div class="htu-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 10.5h.375c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125H21M4.5 10.5h6.75V15H4.5v-4.5zM3.75 18h15A2.25 2.25 0 0021 15.75v-6a2.25 2.25 0 00-2.25-2.25h-15A2.25 2.25 0 001.5 9.75v6A2.25 2.25 0 003.75 18z" />
-              </svg>
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'step' -%}
+          {%- assign step_num = forloop.index -%}
+          {%- if step_num < 10 -%}
+            {%- assign step_label = '0' | append: step_num -%}
+          {%- else -%}
+            {%- assign step_label = step_num | append: '' -%}
+          {%- endif -%}
+          <div class="htu-step" data-step="{{ step_num }}" {{ block.shopify_attributes }}>
+            <div class="htu-step-indicator">
+              <div class="htu-step-dot">
+                <span class="htu-step-num">{{ step_label }}</span>
+                <span class="htu-step-lbl">Step</span>
+              </div>
             </div>
-            <h3 class="htu-card-title">Charge & Power On</h3>
-          </div>
-          <div class="htu-card-desc">
-            <p>Before first use, charge the device fully using the included USB cable. The LED turns green when fully charged (approx. 2 hours). Press and hold the red power button for 2 seconds to switch on. The LCD display will light up and show a startup sequence.</p>
-          </div>
-          <div class="htu-pill">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.516 0c.85.493 1.509 1.333 1.509 2.316V18" />
-            </svg>
-            Tip: Charge once a week for regular household use
-          </div>
-        </div>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="htu-step" data-step="2">
-        <div class="htu-step-indicator">
-          <div class="htu-step-dot">
-            <span class="htu-step-num">02</span>
-            <span class="htu-step-lbl">Step</span>
-          </div>
-        </div>
-        <div class="htu-card">
-          <div class="htu-card-header">
-            <div class="htu-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+            <div class="htu-card">
+              <div class="htu-card-header">
+                <div class="htu-card-icon">
+                  {{ block.settings.icon_svg }}
+                </div>
+                <h3 class="htu-card-title">{{ block.settings.title }}</h3>
+              </div>
+              <div class="htu-card-desc">
+                {{ block.settings.description }}
+              </div>
+              {%- if block.settings.pill_text != blank -%}
+                <div class="htu-pill">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px; flex-shrink: 0;" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                  </svg>
+                  {{ block.settings.pill_text }}
+                </div>
+              {%- endif -%}
             </div>
-            <h3 class="htu-card-title">Wait for Sensor Warmup (30 Seconds)</h3>
           </div>
-          <div class="htu-card-desc">
-            <p>After powering on, wait 30 seconds for the electrochemical sensor to reach operating temperature. The display will show dashes or a countdown. Do NOT start testing until the warmup is complete — early readings may be inaccurate. The device will beep once when ready.</p>
-          </div>
-          <div class="htu-pill">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-            </svg>
-            Important: Do not skip the warmup phase
-          </div>
-        </div>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="htu-step" data-step="3">
-        <div class="htu-step-indicator">
-          <div class="htu-step-dot">
-            <span class="htu-step-num">03</span>
-            <span class="htu-step-lbl">Step</span>
-          </div>
-        </div>
-        <div class="htu-card">
-          <div class="htu-card-header">
-            <div class="htu-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-              </svg>
-            </div>
-            <h3 class="htu-card-title">Scan Near Gas Points</h3>
-          </div>
-          <div class="htu-card-desc">
-            <p>Hold the device by the grip and move the silver metal sensor tip to within <strong style="color:#E87722;">5–10 cm</strong> of potential leak points. Move slowly — about 5 cm per second — to give the sensor time to respond. Check these key areas in order:</p>
-            <ul>
-              <li>LPG cylinder valve & pressure regulator</li>
-              <li>Rubber pipe connections at both ends</li>
-              <li>Gas burner nozzles and knobs</li>
-              <li>Gas geyser pipe connections</li>
-              <li>PNG meter and pipe joints</li>
-            </ul>
-          </div>
-          <div class="htu-pill">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
-            </svg>
-            Keep sensor tip 5–10 cm from surface for best accuracy
-          </div>
-        </div>
-      </div>
-
-      <!-- Step 4 -->
-      <div class="htu-step" data-step="4">
-        <div class="htu-step-indicator">
-          <div class="htu-step-dot">
-            <span class="htu-step-num">04</span>
-            <span class="htu-step-lbl">Step</span>
-          </div>
-        </div>
-        <div class="htu-card">
-          <div class="htu-card-header">
-            <div class="htu-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
-              </svg>
-            </div>
-            <h3 class="htu-card-title">Read the LCD Display</h3>
-          </div>
-          <div class="htu-card-desc">
-            <p>The LCD continuously shows the ambient gas concentration level and temperature. Watch for changes as you move the sensor:</p>
-            <ul>
-              <li><strong style="color:#059669">Normal reading</strong> — Low numbers, no alarm. Area is safe.</li>
-              <li><strong style="color:#E87722">Rising numbers</strong> — Approaching a gas source. Slow down and probe carefully.</li>
-              <li><strong style="color:#EF4444">"Hi" on display + loud beep</strong> — Gas leak detected at this point!</li>
-            </ul>
-          </div>
-          <div class="htu-pill">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-            </svg>
-            The display also shows temperature — useful for kitchen safety checks
-          </div>
-        </div>
-      </div>
-
-      <!-- Step 5 -->
-      <div class="htu-step" data-step="5">
-        <div class="htu-step-indicator">
-          <div class="htu-step-dot">
-            <span class="htu-step-num">05</span>
-            <span class="htu-step-lbl">Step</span>
-          </div>
-        </div>
-        <div class="htu-card">
-          <div class="htu-card-header">
-            <div class="htu-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-              </svg>
-            </div>
-            <h3 class="htu-card-title">If Leak Detected — Act Immediately</h3>
-          </div>
-          <div class="htu-card-desc">
-            <p>If the device shows <strong style="color:#EF4444">"Hi"</strong> and alarms:</p>
-            <ul>
-              <li><strong>DON'T panic</strong> — stay calm</li>
-              <li><strong>Turn OFF</strong> the gas cylinder valve or main PNG valve immediately</li>
-              <li><strong>Open ALL windows & doors</strong> — ventilate the area</li>
-              <li><strong>Do NOT use</strong> electrical switches, lighters, phones near the area</li>
-              <li><strong>Evacuate</strong> everyone from the room</li>
-              <li><strong>Call your gas agency</strong> and a licensed plumber for inspection</li>
-            </ul>
-          </div>
-          <div class="htu-pill">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.896-1.596-5.48-4.18-7.076-7.076l1.293-.97c.362-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-            </svg>
-            Emergency: Call 1906 (LPG) or 101 (Fire)
-          </div>
-        </div>
-      </div>
+        {%- endif -%}
+      {%- endfor -%}
 
     </div>
   </div>
@@ -470,19 +334,17 @@
 
     const onScroll = () => {
       const windowHeight = window.innerHeight;
-      const triggerY = windowHeight * 0.6; // Trigger line is 60% down the screen
+      const triggerY = windowHeight * 0.6;
       
       const firstStep = steps[0].getBoundingClientRect();
       const lastStep = steps[steps.length - 1].getBoundingClientRect();
       
-      // The dot is 80px, so center is at 40px
       const startTrigger = firstStep.top + 40; 
       const endTrigger = lastStep.top + 40;
       
       const totalDistance = endTrigger - startTrigger;
       const scrolledPastStart = triggerY - startTrigger;
       
-      // Stop the gray line exactly at the last dot
       const grayLine = document.querySelector('.htu-line');
       if (grayLine && totalDistance > 0) {
         grayLine.style.height = `${totalDistance}px`;
@@ -496,7 +358,6 @@
       
       fill.style.height = `${fillPixels}px`;
       
-      // Activate steps
       steps.forEach(step => {
         const stepRect = step.getBoundingClientRect();
         const stepCenter = stepRect.top + 40; 
@@ -510,7 +371,6 @@
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    // Run once on load
     setTimeout(onScroll, 100);
   });
 </script>
@@ -540,9 +400,88 @@
       "default": "#f9f9f9"
     }
   ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step Title",
+          "default": "Charge & Power On"
+        },
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Step Icon (paste SVG code)",
+          "default": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M21 10.5h.375c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125H21M4.5 10.5h6.75V15H4.5v-4.5zM3.75 18h15A2.25 2.25 0 0021 15.75v-6a2.25 2.25 0 00-2.25-2.25h-15A2.25 2.25 0 001.5 9.75v6A2.25 2.25 0 003.75 18z' /></svg>"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Step Description",
+          "default": "<p>Before first use, charge the device fully using the included USB cable. The LED turns green when fully charged (approx. 2 hours). Press and hold the red power button for 2 seconds to switch on. The LCD display will light up and show a startup sequence.</p>"
+        },
+        {
+          "type": "text",
+          "id": "pill_text",
+          "label": "Tip / Pill Text (leave blank to hide)",
+          "default": "Tip: Charge once a week for regular household use"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Swarakshit How To Use"
+      "name": "Swarakshit How To Use",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Charge & Power On",
+            "icon_svg": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M21 10.5h.375c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125H21M4.5 10.5h6.75V15H4.5v-4.5zM3.75 18h15A2.25 2.25 0 0021 15.75v-6a2.25 2.25 0 00-2.25-2.25h-15A2.25 2.25 0 001.5 9.75v6A2.25 2.25 0 003.75 18z' /></svg>",
+            "description": "<p>Before first use, charge the device fully using the included USB cable. The LED turns green when fully charged (approx. 2 hours). Press and hold the red power button for 2 seconds to switch on. The LCD display will light up and show a startup sequence.</p>",
+            "pill_text": "Tip: Charge once a week for regular household use"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Wait for Sensor Warmup (30 Seconds)",
+            "icon_svg": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>",
+            "description": "<p>After powering on, wait 30 seconds for the electrochemical sensor to reach operating temperature. The display will show dashes or a countdown. Do NOT start testing until the warmup is complete — early readings may be inaccurate. The device will beep once when ready.</p>",
+            "pill_text": "Important: Do not skip the warmup phase"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Scan Near Gas Points",
+            "icon_svg": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z' /></svg>",
+            "description": "<p>Hold the device by the grip and move the silver metal sensor tip to within <strong>5–10 cm</strong> of potential leak points. Move slowly — about 5 cm per second — to give the sensor time to respond. Check these key areas in order:</p><ul><li>LPG cylinder valve &amp; pressure regulator</li><li>Rubber pipe connections at both ends</li><li>Gas burner nozzles and knobs</li><li>Gas geyser pipe connections</li><li>PNG meter and pipe joints</li></ul>",
+            "pill_text": "Keep sensor tip 5–10 cm from surface for best accuracy"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Read the LCD Display",
+            "icon_svg": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25' /></svg>",
+            "description": "<p>The LCD continuously shows the ambient gas concentration level and temperature. Watch for changes as you move the sensor:</p><ul><li><strong>Normal reading</strong> — Low numbers, no alarm. Area is safe.</li><li><strong>Rising numbers</strong> — Approaching a gas source. Slow down and probe carefully.</li><li><strong>\"Hi\" on display + loud beep</strong> — Gas leak detected at this point!</li></ul>",
+            "pill_text": "The display also shows temperature — useful for kitchen safety checks"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "If Leak Detected — Act Immediately",
+            "icon_svg": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' d='M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z' /></svg>",
+            "description": "<p>If the device shows <strong>\"Hi\"</strong> and alarms:</p><ul><li><strong>DON'T panic</strong> — stay calm</li><li><strong>Turn OFF</strong> the gas cylinder valve or main PNG valve immediately</li><li><strong>Open ALL windows &amp; doors</strong> — ventilate the area</li><li><strong>Do NOT use</strong> electrical switches, lighters, phones near the area</li><li><strong>Evacuate</strong> everyone from the room</li><li><strong>Call your gas agency</strong> and a licensed plumber for inspection</li></ul>",
+            "pill_text": "Emergency: Call 1906 (LPG) or 101 (Fire)"
+          }
+        }
+      ]
     }
   ]
 }

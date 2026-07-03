@@ -2,7 +2,7 @@
   #shopify-section-{{ section.id }} .svarakshit-app-text {
     background-color: {{ section.settings.bg_color }};
     color: {{ section.settings.text_color }};
-    padding: 8rem 2rem;
+    padding: 5rem 1.5rem;
     font-family: 'Inter', sans-serif;
   }
   @media screen and (min-width: 768px) {
@@ -27,21 +27,28 @@
   }
 
   #shopify-section-{{ section.id }} .svarakshit-app-text__title {
-    font-size: clamp(4rem, 6vw, 7rem);
+    font-size: clamp(2.5rem, 8vw, 7rem);
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.04em;
     margin: 0;
     white-space: pre-line;
     color: {{ section.settings.text_color }};
-    position: sticky;
-    top: 4rem;
+    /* Sticky only on desktop where there's enough content to scroll past */
+  }
+
+  @media screen and (min-width: 990px) {
+    #shopify-section-{{ section.id }} .svarakshit-app-text__title {
+      position: sticky;
+      top: 4rem;
+    }
   }
 
   #shopify-section-{{ section.id }} .svarakshit-app-text__content {
     font-size: 1.6rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.85);
+    color: {{ section.settings.text_color }};
+    opacity: 0.85;
     max-width: 600px;
   }
 

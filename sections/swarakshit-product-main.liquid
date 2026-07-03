@@ -1,5 +1,5 @@
 {% comment %}
-  Swarakshit Premium Product Main Section (Airvalent inspired)
+  Swarakshit Premium Product Main Section
 {% endcomment %}
 
 {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
@@ -263,14 +263,16 @@
   }
 
   .svarakshit-swatch-name {
-    font-size: 1.3rem;
+    display: block;
+    font-size: 1.2rem;
     color: #666;
-    display: none; /* Hide name below swatch to match airvalent */
+    text-align: center;
+    margin-top: 4px;
   }
   
   .svarakshit-swatch.active .svarakshit-swatch-name {
     color: #000;
-    font-weight: 400;
+    font-weight: 600;
   }
 
   /* Quantity & Add to Cart Container */
@@ -294,9 +296,10 @@
   }
   
   .svarakshit-stock-bar-fill {
-    width: 30%; /* Fake stock level */
+    width: 30%;
     height: 100%;
-    background: #ffc107; /* Yellowish / Airvalent style */
+    background: #ffc107;
+    transition: width 0.4s ease;
   }
   
   .svarakshit-form-actions {
@@ -376,6 +379,7 @@
     border-radius: 50px !important;
     font-family: inherit !important;
     height: 54px !important;
+    font-size: 1.5rem !important;
   }
   .shopify-payment-button__button--unbranded {
     background-color: #ffc439 !important; /* PayPal yellow color approximation */
@@ -474,9 +478,14 @@
     margin-bottom: 0;
   }
 
-  /* Trust Badges - Hidden for exact Airvalent match unless needed */
+  /* Trust Badges */
   .svarakshit-trust {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eaeaea;
   }
 
   .svarakshit-trust-item {
@@ -491,11 +500,7 @@
     width: 24px;
     height: 24px;
     color: #111;
-  }
-  
-  .shopify-payment-button__button {
-    border-radius: 4px !important;
-    font-family: inherit !important;
+    flex-shrink: 0;
   }
   
   /* Feature List below form */
@@ -568,7 +573,7 @@
             loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
             width="{{ media.preview_image.width }}"
             height="{{ media.preview_image.height }}"
-            alt="{{ media.preview_image.alt | escape }}"
+            alt="{{ media.preview_image.alt | default: product.title | escape }}"
           >
         {%- else -%}
           {{ media | media_tag }}
@@ -596,7 +601,7 @@
 
     {%- if product.description != blank -%}
       <div class="svarakshit-product-description">
-        {{ product.description | strip_html | truncatewords: 30 }}
+        {{ product.description | truncatewords: 60 }}
       </div>
     {%- endif -%}
     
@@ -642,8 +647,15 @@
     {%- endunless -%}
 
     <div class="svarakshit-product-form">
-      <div class="svarakshit-stock-warning">Hurry, only 7 items left in stock!</div>
-      <div class="svarakshit-stock-bar"><div class="svarakshit-stock-bar-fill"></div></div>
+      {%- assign current_variant = product.selected_or_first_available_variant -%}
+      {%- if current_variant.inventory_management == 'shopify' and current_variant.inventory_quantity > 0 and current_variant.inventory_quantity <= 10 -%}
+        <div class="svarakshit-stock-warning">Hurry, only {{ current_variant.inventory_quantity }} items left in stock!</div>
+      {%- endif -%}
+      {%- if current_variant.inventory_management == 'shopify' and current_variant.inventory_quantity > 0 -%}
+        {%- assign stock_pct = current_variant.inventory_quantity | times: 100 | divided_by: 50 -%}
+        {%- if stock_pct > 100 -%}{%- assign stock_pct = 100 -%}{%- endif -%}
+        <div class="svarakshit-stock-bar"><div class="svarakshit-stock-bar-fill" style="width: {{ stock_pct }}%"></div></div>
+      {%- endif -%}
 
       {%- form 'product', product, id: 'product-form-installment', class: 'form' -%}
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
@@ -720,20 +732,68 @@
 </div>
 
 <script>
-  // Very simple variant handling script
+  window.svarakshitVariants = {{ product.variants | json }};
+</script>
+<script>
   document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('#product-form-installment');
+    const variantInput = form ? form.querySelector('input[name="id"]') : null;
+    const priceEl = document.querySelector('.svarakshit-product-price');
+    const addBtn = document.querySelector('.svarakshit-add-to-cart span');
+    const allVariants = window.svarakshitVariants || [];
+
+    function getSelectedOptions() {
+      const picker = document.querySelector('.svarakshit-variant-picker');
+      if (!picker) return [];
+      const swatchGroups = picker.querySelectorAll('.svarakshit-swatches');
+      return Array.from(swatchGroups).map(group => {
+        const active = group.querySelector('.svarakshit-swatch.active');
+        return active ? active.querySelector('.svarakshit-swatch-name').textContent.trim() : null;
+      });
+    }
+
+    function findMatchingVariant(selectedOptions) {
+      return allVariants.find(v =>
+        selectedOptions.every((opt, i) => opt === null || v['option' + (i + 1)] === opt)
+      );
+    }
+
+    function updateUI(variant) {
+      if (!variant) return;
+      if (variantInput) variantInput.value = variant.id;
+      if (priceEl) {
+        const formatted = (variant.price / 100).toLocaleString('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 });
+        priceEl.textContent = formatted;
+      }
+      if (addBtn) {
+        const btn = addBtn.closest('button');
+        if (variant.available) {
+          const formatted = (variant.price / 100).toLocaleString('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 });
+          addBtn.textContent = 'Add to cart - ' + formatted;
+          if (btn) btn.disabled = false;
+        } else {
+          addBtn.textContent = 'Sold out';
+          if (btn) btn.disabled = true;
+        }
+      }
+    }
+
     const swatches = document.querySelectorAll('.svarakshit-swatch');
     swatches.forEach(swatch => {
       swatch.addEventListener('click', function() {
-        // Find siblings and remove active class
         const siblings = this.parentElement.querySelectorAll('.svarakshit-swatch');
         siblings.forEach(sib => sib.classList.remove('active'));
         this.classList.add('active');
-        
-        // This is a naive implementation just for visuals in the custom section
-        // In a real scenario, this would update the hidden variant ID input.
+        const selected = getSelectedOptions();
+        const match = findMatchingVariant(selected);
+        updateUI(match);
       });
     });
+
+    // Initialise on page load
+    const initSelected = getSelectedOptions();
+    const initVariant = findMatchingVariant(initSelected);
+    if (initVariant && variantInput) variantInput.value = initVariant.id;
   });
 
   // Lightbox Implementation
@@ -781,7 +841,9 @@
 <!-- Lightbox DOM -->
 <div id="svarakshit-lightbox" class="svarakshit-lightbox">
   <span class="svarakshit-lightbox-close">&times;</span>
-  <img class="svarakshit-lightbox-img" id="svarakshit-lightbox-img" src="">
+  {%- comment -%} theme-check-disable RemoteAsset {%- endcomment -%}
+  <img class="svarakshit-lightbox-img" id="svarakshit-lightbox-img" src="" width="1000" height="1000" alt="Product image">
+  {%- comment -%} theme-check-enable RemoteAsset {%- endcomment -%}
 </div>
 
 {% schema %}

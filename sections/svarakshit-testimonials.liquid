@@ -134,11 +134,11 @@
   }
   .svarakshit-rev-marquee::before {
     left: 0;
-    background: linear-gradient(90deg, {{ section.settings.bg_color }} 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(90deg, {{ section.settings.bg_color }} 0%, transparent 100%);
   }
   .svarakshit-rev-marquee::after {
     right: 0;
-    background: linear-gradient(270deg, {{ section.settings.bg_color }} 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(270deg, {{ section.settings.bg_color }} 0%, transparent 100%);
   }
   .svarakshit-rev-track {
     display: flex;
@@ -150,8 +150,35 @@
     padding-bottom: 54px; /* Space for box-shadow and hover translate */
     padding-left: 5rem;
   }
-  .svarakshit-rev-marquee:hover .svarakshit-rev-track {
+  .svarakshit-rev-marquee:hover .svarakshit-rev-track,
+  .svarakshit-rev-marquee.is-paused .svarakshit-rev-track {
     animation-play-state: paused;
+  }
+
+  /* Pause button (WCAG 2.2.2) */
+  .svarakshit-testimonials-controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  .svarakshit-pause-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1.5px solid rgba(17,17,17,0.15);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .svarakshit-pause-btn:hover {
+    border-color: #111;
+    color: #111;
   }
   .svarakshit-rev-card {
     background: #ffffff;
@@ -388,15 +415,27 @@
       </div>
       <div class="svarakshit-rsep"></div>
       <div class="svarakshit-rbars">
-        <div class="svarakshit-rbar"><span class="svarakshit-rbl">5★</span><div class="svarakshit-rbt"><div class="svarakshit-rbf" style="width: 78%"></div></div><span class="svarakshit-rbp">78%</span></div>
-        <div class="svarakshit-rbar"><span class="svarakshit-rbl">4★</span><div class="svarakshit-rbt"><div class="svarakshit-rbf" style="width: 14%"></div></div><span class="svarakshit-rbp">14%</span></div>
-        <div class="svarakshit-rbar"><span class="svarakshit-rbl">3★</span><div class="svarakshit-rbt"><div class="svarakshit-rbf" style="width: 5%"></div></div><span class="svarakshit-rbp">5%</span></div>
-        <div class="svarakshit-rbar"><span class="svarakshit-rbl">2★</span><div class="svarakshit-rbt"><div class="svarakshit-rbf" style="width: 2%"></div></div><span class="svarakshit-rbp">2%</span></div>
-        <div class="svarakshit-rbar"><span class="svarakshit-rbl">1★</span><div class="svarakshit-rbt"><div class="svarakshit-rbf" style="width: 1%"></div></div><span class="svarakshit-rbp">1%</span></div>
+        <div class="svarakshit-rbar"><span class="svarakshit-rbl">5★</span><div class="svarakshit-rbt"><div class="svarakshit-rbf" style="width: {{ section.settings.bar_5 }}%"></div></div><span class="svarakshit-rbp">{{ section.settings.bar_5 }}%</span></div>
+        <div class="svarakshit-rbar"><span class="svarakshit-rbl">4★</span><div class="svarakshit-rbt"><div class="svarakshit-rbf" style="width: {{ section.settings.bar_4 }}%"></div></div><span class="svarakshit-rbp">{{ section.settings.bar_4 }}%</span></div>
+        <div class="svarakshit-rbar"><span class="svarakshit-rbl">3★</span><div class="svarakshit-rbt"><div class="svarakshit-rbf" style="width: {{ section.settings.bar_3 }}%"></div></div><span class="svarakshit-rbp">{{ section.settings.bar_3 }}%</span></div>
+        <div class="svarakshit-rbar"><span class="svarakshit-rbl">2★</span><div class="svarakshit-rbt"><div class="svarakshit-rbf" style="width: {{ section.settings.bar_2 }}%"></div></div><span class="svarakshit-rbp">{{ section.settings.bar_2 }}%</span></div>
+        <div class="svarakshit-rbar"><span class="svarakshit-rbl">1★</span><div class="svarakshit-rbt"><div class="svarakshit-rbf" style="width: {{ section.settings.bar_1 }}%"></div></div><span class="svarakshit-rbp">{{ section.settings.bar_1 }}%</span></div>
       </div>
     </div>
 
-    <div class="svarakshit-rev-marquee">
+    <div class="svarakshit-testimonials-controls">
+      <button
+        class="svarakshit-pause-btn"
+        id="testimonials-pause-{{ section.id }}"
+        aria-label="Pause testimonials"
+        type="button"
+      >
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        Pause
+      </button>
+    </div>
+
+    <div class="svarakshit-rev-marquee" id="testimonials-marquee-{{ section.id }}">
       <div class="svarakshit-rev-track">
         {% for repeat in (1..2) %}
           {% for block in section.blocks %}
@@ -410,7 +449,11 @@
                     <div class="svarakshit-rev-ver">{{ block.settings.verified_text }}</div>
                   </div>
                 </div>
-                <div class="svarakshit-rev-stars">★★★★★</div>
+                <div class="svarakshit-rev-stars">
+                  {%- assign star_count = block.settings.star_count | default: 5 -%}
+                  {%- for i in (1..star_count) -%}★{%- endfor -%}
+                  {%- if star_count < 5 -%}{%- assign empty_count = 5 | minus: star_count -%}{%- for i in (1..empty_count) -%}☆{%- endfor -%}{%- endif -%}
+                </div>
               </div>
               <p class="svarakshit-rev-q">{{ block.settings.text }}</p>
             </div>
@@ -421,9 +464,27 @@
   </div>
 </div>
 
+<script>
+  (function() {
+    var btn = document.getElementById('testimonials-pause-{{ section.id }}');
+    var marquee = document.getElementById('testimonials-marquee-{{ section.id }}');
+    if (!btn || !marquee) return;
+    var paused = false;
+    btn.addEventListener('click', function() {
+      paused = !paused;
+      marquee.classList.toggle('is-paused', paused);
+      btn.setAttribute('aria-label', paused ? 'Resume testimonials' : 'Pause testimonials');
+      btn.querySelector('svg').innerHTML = paused
+        ? '<polygon points="5,3 19,12 5,21" fill="currentColor"/>'
+        : '<rect x="6" y="4" width="4" height="16" fill="currentColor"/><rect x="14" y="4" width="4" height="16" fill="currentColor"/>';
+      btn.childNodes[btn.childNodes.length - 1].textContent = paused ? ' Play' : ' Pause';
+    });
+  })();
+</script>
+
 {% schema %}
 {
-  "name": "Svarakshit Testimonials",
+  "name": "Swarakshit Testimonials",
   "tag": "section",
   "class": "section",
   "settings": [
@@ -450,6 +511,51 @@
       "id": "reviews_count",
       "label": "Reviews Count",
       "default": "1,247 verified reviews"
+    },
+    {
+      "type": "range",
+      "id": "bar_5",
+      "label": "5-Star % of reviews",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 78
+    },
+    {
+      "type": "range",
+      "id": "bar_4",
+      "label": "4-Star % of reviews",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "bar_3",
+      "label": "3-Star % of reviews",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "bar_2",
+      "label": "2-Star % of reviews",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "bar_1",
+      "label": "1-Star % of reviews",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 1
     }
   ],
   "blocks": [
@@ -478,13 +584,22 @@
           "id": "avatar_color",
           "label": "Avatar Color",
           "default": "#ff6b00"
+        },
+        {
+          "type": "range",
+          "id": "star_count",
+          "label": "Star Rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Svarakshit Testimonials",
+      "name": "Swarakshit Testimonials",
       "blocks": [
         {
           "type": "testimonial",

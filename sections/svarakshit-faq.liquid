@@ -1,168 +1,143 @@
 <style>
-  .svarakshit-faq-section {
-    padding: 80px 5rem;
+  #shopify-section-{{ section.id }} .svarakshit-faq-wrapper {
     background-color: {{ section.settings.bg_color }};
+    padding: 100px 5rem;
+    font-family: 'Inter', sans-serif;
   }
   
-  .svarakshit-faq-container {
-    max-width: 800px; /* Narrow width as requested */
+  #shopify-section-{{ section.id }} .svarakshit-faq-container {
+    max-width: 800px;
     margin: 0 auto;
   }
-  
-  .svarakshit-faq-heading {
+
+  #shopify-section-{{ section.id }} .svarakshit-faq-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  #shopify-section-{{ section.id }} .svarakshit-faq-header h2 {
+    color: {{ section.settings.text_color }};
     font-size: 3.5rem;
     font-weight: 800;
-    text-align: center;
-    margin: 0 0 4rem;
+    margin: 0;
     line-height: 1.1;
     letter-spacing: -0.02em;
-    color: #111111;
   }
-  
-  .svarakshit-faq-item {
-    border-bottom: 1px solid #eaeaea;
+
+  #shopify-section-{{ section.id }} .svarakshit-faq-item {
+    background-color: {{ section.settings.item_bg_color }};
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
   }
-  .svarakshit-faq-item:first-child {
-    border-top: 1px solid #eaeaea;
+
+  .svarakshit-faq-item details {
+    width: 100%;
   }
-  
-  .svarakshit-faq-question {
+
+  #shopify-section-{{ section.id }} .svarakshit-faq-item summary {
+    padding: 24px;
+    font-size: 18px;
+    font-weight: 600;
+    color: {{ section.settings.text_color }};
+    cursor: pointer;
+    list-style: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 24px 0;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 600;
-    color: #000000;
-    background: none;
+    position: relative;
     border: none;
+    background: transparent;
     width: 100%;
     text-align: left;
-    transition: color 0.3s ease;
   }
   
-  .svarakshit-faq-question:hover {
-    color: #555555;
+  #shopify-section-{{ section.id }} .svarakshit-faq-item summary::-webkit-details-marker {
+    display: none;
   }
-  
-  .svarakshit-faq-icon {
+
+  #shopify-section-{{ section.id }} .svarakshit-faq-item summary::after {
+    content: '+';
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1;
+    color: {{ section.settings.text_color }};
+    transition: transform 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 32px;
     height: 32px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    color: #000000;
-    font-size: 20px;
-    font-weight: 400;
-    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-    flex-shrink: 0;
-    margin-left: 20px;
   }
-  
-  .svarakshit-faq-item.active .svarakshit-faq-icon {
+
+  #shopify-section-{{ section.id }} .svarakshit-faq-item details[open] summary::after {
     transform: rotate(45deg);
-    background-color: #000000;
-    color: #ffffff;
   }
-  
-  .svarakshit-faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-  }
-  
-  .svarakshit-faq-answer-inner {
-    padding-bottom: 24px;
+
+  #shopify-section-{{ section.id }} .svarakshit-faq-content {
+    padding: 0 24px 24px 24px;
     font-size: 16px;
-    color: #555555;
     line-height: 1.6;
-    padding-right: 52px; /* Space for the icon so text doesn't overlap under it */
+    color: {{ section.settings.text_color }};
+    opacity: 0.8;
+  }
+
+  #shopify-section-{{ section.id }} .svarakshit-faq-content p {
+    margin: 0;
   }
 
   @media screen and (max-width: 768px) {
-    .svarakshit-faq-section {
-      padding: 60px 2rem;
+    #shopify-section-{{ section.id }} .svarakshit-faq-wrapper {
+      padding: 40px 1.5rem;
     }
     
-    .svarakshit-faq-heading {
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
+    #shopify-section-{{ section.id }} .svarakshit-faq-header {
+      margin-bottom: 2rem;
     }
-    
-    .svarakshit-faq-question {
+
+    #shopify-section-{{ section.id }} .svarakshit-faq-header h2 {
+      font-size: 2rem;
+    }
+
+    #shopify-section-{{ section.id }} .svarakshit-faq-item summary {
+      padding: 20px;
       font-size: 16px;
-      padding: 20px 0;
     }
     
-    .svarakshit-faq-answer-inner {
-      font-size: 14px;
-      padding-right: 0;
+    #shopify-section-{{ section.id }} .svarakshit-faq-content {
+      padding: 0 20px 20px 20px;
+      font-size: 15px;
     }
   }
 </style>
 
-<div class="svarakshit-faq-section">
+<div class="svarakshit-faq-wrapper">
   <div class="svarakshit-faq-container">
     {% if section.settings.heading != blank %}
-      <h2 class="svarakshit-faq-heading">{{ section.settings.heading }}</h2>
+      <div class="svarakshit-faq-header">
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
     {% endif %}
 
     <div class="svarakshit-faq-list">
       {% for block in section.blocks %}
         <div class="svarakshit-faq-item" {{ block.shopify_attributes }}>
-          <button class="svarakshit-faq-question">
-            <span>{{ block.settings.question }}</span>
-            <span class="svarakshit-faq-icon">+</span>
-          </button>
-          <div class="svarakshit-faq-answer">
-            <div class="svarakshit-faq-answer-inner">
+          <details>
+            <summary>{{ block.settings.question }}</summary>
+            <div class="svarakshit-faq-content">
               {{ block.settings.answer }}
             </div>
-          </div>
+          </details>
         </div>
       {% endfor %}
     </div>
   </div>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const faqItems = document.querySelectorAll('.svarakshit-faq-item');
-    
-    faqItems.forEach(item => {
-      const question = item.querySelector('.svarakshit-faq-question');
-      const answer = item.querySelector('.svarakshit-faq-answer');
-      
-      question.addEventListener('click', () => {
-        const isActive = item.classList.contains('active');
-        
-        // Close all other items
-        faqItems.forEach(otherItem => {
-          if (otherItem !== item) {
-            otherItem.classList.remove('active');
-            otherItem.querySelector('.svarakshit-faq-answer').style.maxHeight = null;
-          }
-        });
-        
-        // Toggle current item
-        if (isActive) {
-          item.classList.remove('active');
-          answer.style.maxHeight = null;
-        } else {
-          item.classList.add('active');
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-        }
-      });
-    });
-  });
-</script>
-
 {% schema %}
 {
-  "name": "Svarakshit FAQ",
+  "name": "Swarakshit FAQ",
   "tag": "section",
   "class": "section",
   "settings": [
@@ -170,7 +145,20 @@
       "type": "color",
       "id": "bg_color",
       "label": "Background Color",
-      "default": "#f9f9f9"
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "item_bg_color",
+      "label": "FAQ Card Background Color",
+      "default": "#f7f7f7",
+      "info": "Change to #2a2a2a for dark mode"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#1a1a1a"
     },
     {
       "type": "text",
@@ -191,65 +179,72 @@
           "default": "Question goes here?"
         },
         {
-          "type": "textarea",
+          "type": "richtext",
           "id": "answer",
           "label": "Answer",
-          "default": "Answer goes here."
+          "default": "<p>Answer goes here.</p>"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Svarakshit FAQ",
+      "name": "Swarakshit FAQ",
       "blocks": [
         {
           "type": "faq_item",
           "settings": {
-            "question": "What gases does Swarakshit detect?",
-            "answer": "Swarakshit detects all combustible gases including LPG, PNG, CNG, methane, propane, butane and other hydrocarbons. It is NOT designed to detect CO (carbon monoxide) — for CO, you need a dedicated CO alarm."
+            "question": "Which gases does it detect? (LPG, CNG, smoke?)",
+            "answer": "<p>Swarakshit is engineered specifically to detect combustible gases like LPG (cylinder gas) and PNG/CNG (piped natural gas). Its highly calibrated sensors will trigger long before these gases reach explosive levels. Please note: it does <strong>not</strong> detect smoke or carbon monoxide (CO). It is designed to prevent gas leak disasters.</p>"
           }
         },
         {
           "type": "faq_item",
           "settings": {
-            "question": "What does LERC certification mean?",
-            "answer": "LERC (Liquefied Petroleum Gas Equipment Research Centre) is India's premier government-recognized body for testing and certifying LPG safety equipment. LERC certification means the device has been independently tested for accuracy, sensitivity, and durability — the gold standard in India."
+            "question": "How hard is it to install?",
+            "answer": "<p>Installation takes less than 2 minutes and requires zero technical expertise. It comes with a simple wall-mount bracket and double-sided adhesive. Just stick it to the wall near your gas cylinder or stove, plug it into a standard power outlet, and it begins monitoring immediately.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Does it work during a power outage?",
+            "answer": "<p>Yes! Safety should never take a break. Swarakshit features a robust built-in rechargeable battery backup that keeps the device monitoring your kitchen for up to 8–10 hours even during complete grid blackouts.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How does the smart integration work?",
+            "answer": "<p>Swarakshit connects seamlessly to your home Wi-Fi. Once linked to your network, if a leak is detected, the device will sound a piercing 85dB localized alarm while simultaneously pushing a high-priority notification directly to your devices—wherever you are in the world.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Where is the best place to install the detector?",
+            "answer": "<p>For optimal performance with LPG (which is heavier than air), install the detector low on the wall, about 1 foot above the floor and within 1-2 meters of your gas cylinder or stove. If using PNG (lighter than air), mount it higher up, about 1 foot below the ceiling.</p>"
           }
         },
         {
           "type": "faq_item",
           "settings": {
             "question": "How long does the battery last?",
-            "answer": "The built-in rechargeable battery lasts 8–10 hours of continuous use. For typical home use (5–10 minute daily checks), the battery lasts several weeks between charges. USB charging takes approximately 2 hours to full."
+            "answer": "<p>The internal battery provides 8–10 hours of continuous backup monitoring during a power cut. It charges automatically while plugged in, so it's always ready when you need it.</p>"
           }
         },
         {
           "type": "faq_item",
           "settings": {
-            "question": "Can I use it for commercial kitchens?",
-            "answer": "Yes. Swarakshit is used in hotels, restaurants, cloud kitchens, gas stations, and industrial facilities across India. LERC certification makes it compliant with safety audit requirements. We offer bulk pricing — WhatsApp us for commercial orders."
+            "question": "Is there a warranty or return policy?",
+            "answer": "<p>Yes! Every Swarakshit detector comes with a comprehensive 1-year manufacturer's warranty against defects. We also offer a 30-day return policy if you aren't completely satisfied with your purchase.</p>"
           }
         },
         {
           "type": "faq_item",
           "settings": {
-            "question": "What is the warranty and return policy?",
-            "answer": "Every Swarakshit device comes with a 1-year manufacturer's warranty and a 30-day no-questions-asked return policy. Contact us at info@rakshit.net.in or call 9529154548."
-          }
-        },
-        {
-          "type": "faq_item",
-          "settings": {
-            "question": "How often should I test for gas leaks?",
-            "answer": "Weekly — around LPG cylinder and rubber pipe connections. Monthly — around all gas appliances including geysers. Immediately — after any new appliance installation or if you smell even a faint gas odour."
-          }
-        },
-        {
-          "type": "faq_item",
-          "settings": {
-            "question": "Is it safe to use if I already smell gas?",
-            "answer": "If you already smell strong gas, DO NOT use any electrical device including Swarakshit. Immediately turn off the main gas valve, open all windows, evacuate, and call your gas agency. Use Swarakshit for routine preventive checks when no visible leak is apparent."
+            "question": "What happens if I change my Wi-Fi network?",
+            "answer": "<p>If you get a new router or change your Wi-Fi password, simply reset the device's Wi-Fi settings using the reset button on the unit and follow the 60-second pairing process to connect it to your new network.</p>"
           }
         }
       ]

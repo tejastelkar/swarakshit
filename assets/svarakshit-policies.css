@@ -1,0 +1,85 @@
+/* Swarakshit Policies Styling (Airvalent Match) */
+
+.shopify-policy__container {
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+  padding: 6rem 2rem !important;
+  font-family: 'Inter', sans-serif !important;
+  color: #1a1a1a !important;
+  background-color: #ffffff !important;
+}
+
+@media screen and (min-width: 768px) {
+  .shopify-policy__container {
+    padding: 8rem 5rem !important;
+  }
+}
+
+.shopify-policy__title {
+  text-align: center !important;
+  margin-bottom: 4rem !important;
+}
+
+.shopify-policy__title h1 {
+  font-size: clamp(3rem, 5vw, 5rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.04em !important;
+  margin: 0 !important;
+  color: #1a1a1a !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.shopify-policy__body {
+  font-size: 1.6rem !important;
+  line-height: 1.6 !important;
+  color: #1a1a1a !important;
+}
+
+.shopify-policy__body h1,
+.shopify-policy__body h2,
+.shopify-policy__body h3,
+.shopify-policy__body h4,
+.shopify-policy__body h5,
+.shopify-policy__body h6,
+.shopify-policy__body strong,
+.shopify-policy__body b {
+  font-weight: 700 !important;
+  color: #1a1a1a !important;
+}
+
+.shopify-policy__body h1,
+.shopify-policy__body h2,
+.shopify-policy__body h3,
+.shopify-policy__body h4,
+.shopify-policy__body h5,
+.shopify-policy__body h6 {
+  margin-top: 3rem !important;
+  margin-bottom: 1.5rem !important;
+  line-height: 1.2 !important;
+}
+
+.shopify-policy__body p {
+  margin-bottom: 1.5rem !important;
+}
+
+.shopify-policy__body a {
+  color: #1a1a1a !important;
+  text-decoration: underline !important;
+  text-underline-offset: 4px !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.shopify-policy__body a:hover {
+  opacity: 0.7 !important;
+}
+
+.shopify-policy__body ul,
+.shopify-policy__body ol {
+  margin-bottom: 1.5rem !important;
+  padding-left: 2rem !important;
+}
+
+.shopify-policy__body li {
+  margin-bottom: 0.5rem !important;
+}

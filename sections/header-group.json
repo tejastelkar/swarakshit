@@ -17,7 +17,7 @@
         "announcement_1": {
           "type": "announcement",
           "settings": {
-            "icon": "email",
+            "icon": "none",
             "text": "For company purchases, please contact us via email",
             "link": ""
           }
@@ -25,7 +25,7 @@
         "announcement_2": {
           "type": "announcement",
           "settings": {
-            "icon": "star",
+            "icon": "none",
             "text": "GET 10% OFF",
             "link": ""
           }

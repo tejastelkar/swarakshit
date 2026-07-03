@@ -67,7 +67,12 @@
   @media screen and (max-width: 989px) {
     .svarakshit-use-cases-grid {
       grid-template-columns: 1fr;
-      grid-auto-rows: 300px;
+      grid-auto-rows: 240px;
+    }
+    /* Cancel bento span on mobile — all cards same height */
+    .svarakshit-uc-card--tall,
+    .svarakshit-uc-card--small {
+      grid-row: span 1;
     }
   }
 

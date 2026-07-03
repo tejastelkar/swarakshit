@@ -88,14 +88,14 @@ body {
 @media (min-width: 1024px) {
   .av-gallery {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) clamp(10rem, 18vw, 14rem);
+    grid-template-columns: minmax(0, 1fr) clamp(8rem, 14vw, 11rem);
     grid-template-rows: auto;
     gap: 1rem;
     align-items: flex-start;
   }
 }
 
-/* MAIN IMAGE — left cell, bounded height matching Airvalent ~505px */
+/* MAIN IMAGE — left cell, large and prominent */
 .av-gallery__main {
   width: 100%;
   background: transparent;
@@ -105,20 +105,22 @@ body {
   overflow: hidden;
   grid-row: 1;
   grid-column: 1;
-  height: clamp(30rem, 55vw, 56rem);
+  aspect-ratio: 1 / 1;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .av-gallery__main img {
-  width: auto;
+  width: 100%;
   max-width: 100%;
-  height: auto;
+  height: 100%;
   max-height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center center;
-  padding: clamp(3rem, 4.6vw, 4.5rem) clamp(1.2rem, 1.8vw, 1.6rem) clamp(1.2rem, 1.8vw, 1.6rem);
+  border-radius: 24px;
+  padding: 0;
   margin: 0 auto;
   display: block;
 }
@@ -126,12 +128,16 @@ body {
 /* On mobile: fixed height */
 @media (max-width: 1023px) {
   .av-gallery__main {
-    height: 480px;
+    aspect-ratio: 1 / 1;
+    height: auto;
   }
   .av-gallery__main img {
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     object-position: center center;
-    padding: 2.25rem 1rem 1rem;
+    border-radius: 24px;
+    padding: 0;
   }
 }
 
@@ -169,13 +175,14 @@ body {
 .av-gallery__thumb:hover { opacity: 0.85; }
 
 .av-gallery__thumb img {
-  width: auto;
+  width: 100%;
   max-width: 100%;
-  height: auto;
+  height: 100%;
   max-height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center center;
-  padding: 1.4rem 0.85rem 0.85rem;
+  border-radius: 22px;
+  padding: 0;
   margin: 0 auto;
   display: block;
 }
@@ -186,9 +193,9 @@ body {
     aspect-ratio: 1 / 1;
   }
   .av-gallery__thumb img {
-    object-fit: contain;
+    object-fit: cover;
     object-position: center center;
-    padding: 1.1rem 0.75rem 0.75rem;
+    padding: 0;
   }
 }
 
@@ -993,6 +1000,7 @@ details[open].av-info__accordion .av-info__accordion-icon::after {
   margin: 0;
 }
 
+
 .av-info__reviews {
   display: flex;
   align-items: center;
@@ -1537,18 +1545,64 @@ details[open].av-info__accordion .av-info__accordion-icon::after {
     var lb = document.getElementById('av-lightbox');
     if (lb) lb.classList.add('av-lightbox--open');
     document.body.style.overflow = 'hidden';
+    /* Hide sticky header to prevent z-index bleed-through */
+    var hdr = document.querySelector('.shopify-section-group-header-group, [class*="section-header"]');
+    if (hdr) hdr.style.visibility = 'hidden';
   }
 
   function avUpdateLightbox() {
     var src = window.avProductMedias[window.avLbIndex];
     if (!src) return;
+
+    /* 1. Update main lightbox image */
     var lbImg = document.getElementById('av-lightbox-img');
-    if (lbImg) lbImg.src = src;
-    
+    if (lbImg) {
+      lbImg.src = src;
+      lbImg.style.animation = 'none';
+      lbImg.offsetHeight; /* reflow to restart animation */
+      lbImg.style.animation = '';
+    }
+
+    /* 2. Update counter */
     var currentEl = document.getElementById('av-lb-current');
     if (currentEl) currentEl.innerText = window.avLbIndex + 1;
     var totalEl = document.getElementById('av-lb-total');
     if (totalEl) totalEl.innerText = window.avProductMedias.length;
+
+    /* 3. Sync lightbox bottom thumb strip */
+    var strip = document.getElementById('av-lb-thumb-strip');
+    if (strip) {
+      strip.querySelectorAll('.av-lb-thumb').forEach(function(b) {
+        var bi = parseInt(b.getAttribute('data-index'), 10);
+        b.classList.toggle('active', bi === window.avLbIndex);
+      });
+      var activeThumb = strip.querySelector('.av-lb-thumb.active');
+      if (activeThumb) activeThumb.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+    }
+
+    /* 4. Sync side carousel on main page */
+    var sideThumb = document.querySelector('.av-gallery__thumb[data-index="' + window.avLbIndex + '"]');
+    if (sideThumb) {
+      document.querySelectorAll('.av-gallery__thumb').forEach(function(t) {
+        t.classList.remove('av-gallery__thumb--active');
+      });
+      sideThumb.classList.add('av-gallery__thumb--active');
+      window.avCurrentIndex = window.avLbIndex;
+      /* Also update main gallery image */
+      var mainImg = document.getElementById('av-main-img');
+      if (mainImg && sideThumb.dataset.src) {
+        mainImg.removeAttribute('srcset');
+        mainImg.src = sideThumb.dataset.src;
+      }
+    }
+
+
+    /* 5. Show/hide nav arrows when only 1 image */
+    var total = window.avProductMedias.length;
+    ['av-lb-prev-btn','av-lb-next-btn'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.style.display = total > 1 ? '' : 'none';
+    });
   }
 
   function avPrevImage() {
@@ -1574,6 +1628,9 @@ details[open].av-info__accordion .av-info__accordion-icon::after {
     if (!lb) return;
     lb.classList.remove('av-lightbox--open');
     document.body.style.overflow = '';
+    /* Restore sticky header */
+    var hdr = document.querySelector('.shopify-section-group-header-group, [class*="section-header"]');
+    if (hdr) hdr.style.visibility = '';
   }
 
   document.addEventListener('keydown', function(e) {
@@ -1584,37 +1641,53 @@ details[open].av-info__accordion .av-info__accordion-icon::after {
       if (e.key === 'ArrowRight') avNextImage();
     }
   });
+
+  /* Move lightbox to document.body so it forms its own top-level stacking context */
+  document.addEventListener('DOMContentLoaded', function() {
+    var lb = document.getElementById('av-lightbox');
+    if (lb && lb.parentElement !== document.body) {
+      document.body.appendChild(lb);
+    }
+  });
+
 </script>
 
 <!-- Lightbox overlay -->
 <style>
+  /* ── Full-viewport lightbox ── */
   #av-lightbox {
     display: none;
     position: fixed;
     inset: 0;
-    z-index: 999999;
+    z-index: 10000;
     background: #ffffff;
     flex-direction: column;
   }
   #av-lightbox.av-lightbox--open { display: flex; }
+  body.av-lb-open { overflow: hidden; }
+
+  /* Header bar */
   .av-lb-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 24px 32px;
+    padding: 16px 24px;
     flex-shrink: 0;
+    border-bottom: 1px solid #f0f0f0;
   }
   .av-lb-counter {
     border: 1px solid #E5E5E5;
     border-radius: 20px;
-    padding: 8px 16px;
-    font-size: 14px;
-    font-weight: 500;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 600;
     color: #141414;
+    font-family: -apple-system, sans-serif;
+    letter-spacing: 0.02em;
   }
   .av-lb-close {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     border: 1px solid #E5E5E5;
     border-radius: 50%;
     background: #fff;
@@ -1624,54 +1697,113 @@ details[open].av-info__accordion .av-info__accordion-icon::after {
     cursor: pointer;
     color: #141414;
     transition: background 0.2s;
+    flex-shrink: 0;
   }
-  .av-lb-close:hover, .av-lb-nav:hover { background: #f7f7f7; }
+  .av-lb-close:hover { background: #f7f7f7; }
+
+  /* Main image area */
   .av-lb-content {
-    flex-grow: 1;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
     position: relative;
     min-height: 0;
+    overflow: hidden;
   }
+
+  /* The image itself — fills all available space */
+  #av-lightbox-img {
+    max-width: calc(100% - 120px); /* leave room for arrows */
+    max-height: 100%;
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    animation: avLbIn 0.22s ease;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  @media (max-width: 640px) {
+    #av-lightbox-img {
+      max-width: calc(100% - 80px);
+      height: 100%;
+      padding: 0;
+    }
+  }
+  @keyframes avLbIn {
+    from { transform: scale(0.97); opacity: 0; }
+    to   { transform: scale(1);    opacity: 1; }
+  }
+
+  /* Nav arrows — overlaid on image left/right */
   .av-lb-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 48px;
     height: 48px;
-    border: 1px solid #E5E5E5;
+    border: 1.5px solid rgba(20,20,20,0.15);
     border-radius: 50%;
-    background: #fff;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     color: #141414;
-    transition: background 0.2s;
+    transition: background 0.2s, border-color 0.2s;
     z-index: 10;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    flex-shrink: 0;
   }
-  .av-lb-prev { left: 40px; }
-  .av-lb-next { right: 40px; }
-  #av-lightbox-img {
+  .av-lb-nav:hover { background: #fff; border-color: rgba(20,20,20,0.3); }
+  .av-lb-prev { left: 16px; }
+  .av-lb-next { right: 16px; }
+
+  /* Bottom thumbnail strip */
+  .av-lb-thumbs {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 14px 20px;
+    flex-shrink: 0;
+    overflow-x: auto;
+    justify-content: center;
+    border-top: 1px solid #f0f0f0;
+    scrollbar-width: none;
+  }
+  .av-lb-thumbs::-webkit-scrollbar { display: none; }
+  .av-lb-thumb {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.15s, opacity 0.15s;
+    background: #f4f4f4;
+  }
+  .av-lb-thumb:hover { opacity: 0.8; }
+  .av-lb-thumb.active { border-color: #141414; }
+  .av-lb-thumb img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    min-height: 0;
-    min-width: 0;
-    animation: avLbIn 0.25s ease;
+    object-fit: cover;
+    display: block;
   }
-  @keyframes avLbIn {
-    from { transform: scale(0.96); opacity: 0; }
-    to   { transform: scale(1);    opacity: 1; }
-  }
-  @media (max-width: 768px) {
-    .av-lb-header { padding: 16px; }
-    .av-lb-prev { left: 16px; }
-    .av-lb-next { right: 16px; }
+
+  /* Mobile adjustments */
+  @media (max-width: 640px) {
+    .av-lb-header { padding: 12px 16px; }
     .av-lb-nav { width: 40px; height: 40px; }
-    .av-lb-close { width: 40px; height: 40px; }
+    .av-lb-prev { left: 8px; }
+    .av-lb-next { right: 8px; }
+    .av-lb-thumb { width: 52px; height: 52px; }
+    .av-lb-thumbs { gap: 8px; padding: 12px 12px; }
   }
 
   .av-gallery__thumb--active {
@@ -1681,23 +1813,84 @@ details[open].av-info__accordion .av-info__accordion-icon::after {
   }
 </style>
 
-<div id="av-lightbox">
+<div id="av-lightbox" role="dialog" aria-modal="true" aria-label="Product image viewer">
   <div class="av-lb-header">
     <div class="av-lb-counter"><span id="av-lb-current">1</span> / <span id="av-lb-total">1</span></div>
-    <button class="av-lb-close" onclick="avCloseLightbox()" aria-label="Close">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    <button class="av-lb-close" onclick="avCloseLightbox()" aria-label="Close image viewer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
     </button>
   </div>
-  <div class="av-lb-content" onclick="if(event.target===this)avCloseLightbox()">
-    <button class="av-lb-nav av-lb-prev" onclick="avPrevImage()" aria-label="Previous">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  <div class="av-lb-content" id="av-lb-content-area" onclick="if(event.target===this)avCloseLightbox()">
+    <button class="av-lb-nav av-lb-prev" id="av-lb-prev-btn" onclick="avPrevImage()" aria-label="Previous image">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
     </button>
-    <img id="av-lightbox-img" src="" alt="Product view">
-    <button class="av-lb-nav av-lb-next" onclick="avNextImage()" aria-label="Next">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    {%- comment -%} theme-check-disable RemoteAsset {%- endcomment -%}
+    <img id="av-lightbox-img" src="" alt="Product image" draggable="false" width="1000" height="1000">
+    {%- comment -%} theme-check-enable RemoteAsset {%- endcomment -%}
+    <button class="av-lb-nav av-lb-next" id="av-lb-next-btn" onclick="avNextImage()" aria-label="Next image">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
     </button>
   </div>
+  <div class="av-lb-thumbs" id="av-lb-thumb-strip"></div>
 </div>
+
+<script>
+(function() {
+  /* ── Build bottom thumb strip from gallery thumbs ── */
+  function buildLbThumbs() {
+    var strip = document.getElementById('av-lb-thumb-strip');
+    if (!strip) return;
+    strip.innerHTML = '';
+
+    /* Index 0 = first/main image */
+    var mainImg = document.getElementById('av-main-img');
+    if (mainImg) {
+      var th0 = document.createElement('button');
+      th0.className = 'av-lb-thumb';
+      th0.setAttribute('aria-label', 'View image 1');
+      th0.setAttribute('data-index', '0');
+      th0.innerHTML = '<img src="' + mainImg.src + '" alt="" loading="eager">';
+      th0.addEventListener('click', function() { avOpenLightbox(0); });
+      strip.appendChild(th0);
+    }
+
+    /* Indices 1..N = side carousel thumbs */
+    document.querySelectorAll('.av-gallery__thumb').forEach(function(t, i) {
+      var img = t.querySelector('img');
+      var src = img ? img.src : '';
+      var th = document.createElement('button');
+      th.className = 'av-lb-thumb';
+      th.setAttribute('aria-label', 'View image ' + (i + 2));
+      th.setAttribute('data-index', String(i + 1));
+      th.innerHTML = '<img src="' + src + '" alt="" loading="lazy">';
+      th.addEventListener('click', function() { avOpenLightbox(i + 1); });
+      strip.appendChild(th);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', buildLbThumbs);
+
+  /* ── Touch swipe support ── */
+  var touchStartX = 0;
+  var touchStartY = 0;
+  document.addEventListener('DOMContentLoaded', function() {
+    var content = document.getElementById('av-lb-content-area');
+    if (!content) return;
+    content.addEventListener('touchstart', function(e) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    content.addEventListener('touchend', function(e) {
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      var dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+        if (dx < 0) window.avNextImage && avNextImage();
+        else window.avPrevImage && avPrevImage();
+      }
+    }, { passive: true });
+  });
+})();
+</script>
 
 
 {% schema %}

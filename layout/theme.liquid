@@ -36,8 +36,10 @@
     <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
 
     <!-- GSAP for Animations -->
+    {%- comment -%} theme-check-disable RemoteAsset {%- endcomment -%}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer="defer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer="defer"></script>
+    {%- comment -%} theme-check-enable RemoteAsset {%- endcomment -%}
 
     {%- if settings.animations_reveal_on_scroll -%}
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
@@ -275,6 +277,10 @@
       {{ 'component-totals.css' | asset_url | stylesheet_tag }}
       {{ 'component-price.css' | asset_url | stylesheet_tag }}
       {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+    {%- endif -%}
+
+    {%- if request.page_type == 'policy' -%}
+      {{ 'svarakshit-policies.css' | asset_url | stylesheet_tag }}
     {%- endif -%}
 
     {%- unless settings.type_body_font.system? -%}

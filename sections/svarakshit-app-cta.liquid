@@ -1,0 +1,133 @@
+<style>
+  #shopify-section-{{ section.id }} .svarakshit-app-cta {
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding: 6rem 2rem;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+  }
+  @media screen and (min-width: 768px) {
+    #shopify-section-{{ section.id }} .svarakshit-app-cta {
+      padding: 8rem 5rem;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .svarakshit-app-cta__container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .svarakshit-app-cta__title {
+    font-size: clamp(2.2rem, 5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    margin: 0 0 1rem 0;
+    color: {{ section.settings.text_color }};
+  }
+
+  #shopify-section-{{ section.id }} .svarakshit-app-cta__subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    opacity: 0.7;
+    margin-bottom: 2.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .svarakshit-app-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    background-color: {{ section.settings.btn_bg_color }};
+    color: {{ section.settings.btn_text_color }};
+    border-radius: 60px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .svarakshit-app-cta__btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+</style>
+
+<div class="svarakshit-app-cta">
+  <div class="svarakshit-app-cta__container">
+    {% if section.settings.title != blank %}
+      <h2 class="svarakshit-app-cta__title">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.subtitle != blank %}
+      <div class="svarakshit-app-cta__subtitle">{{ section.settings.subtitle }}</div>
+    {% endif %}
+    {% if section.settings.btn_text != blank and section.settings.btn_link != blank %}
+      <a href="{{ section.settings.btn_link }}" class="svarakshit-app-cta__btn">
+        {{ section.settings.btn_text }}
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Application CTA",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Upgrade Your Safety"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Order your Swarakshit Gas Leak Tester today and experience peace of mind."
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "Buy Now"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Button Background Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Application CTA"
+    }
+  ]
+}
+{% endschema %}

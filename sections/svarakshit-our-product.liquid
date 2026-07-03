@@ -153,7 +153,7 @@
     display:flex;gap:12px;margin-bottom:16px;
   }
   #shopify-section-{{ section.id }} .btn-ac {
-    flex:1;height:52px;padding:0 20px;border-radius:40px;font-size:17px;font-weight:800;background:{{ section.settings.heading_color }};color:#ffffff;border:none;cursor:pointer;font-family:inherit;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:8px;
+    flex:1;height:52px;padding:0 20px;border-radius:40px;font-size:17px;font-weight:800;background:#111111;color:#ffffff;border:none;cursor:pointer;font-family:inherit;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:8px;
   }
   #shopify-section-{{ section.id }} .btn-ac:hover {
     opacity:0.8;
@@ -180,6 +180,11 @@
     width: 18px; height: 18px; color: {{ section.settings.heading_color }};
   }
   
+  @media(max-width:1280px){
+    #shopify-section-{{ section.id }} .prod-grid {
+      gap:32px;
+    }
+  }
   @media(max-width:1024px){
     #shopify-section-{{ section.id }} .prod-grid {
       grid-template-columns:1fr;
@@ -413,13 +418,19 @@
       submitButton.disabled = true;
       if (buttonLabel) buttonLabel.textContent = 'Adding...';
 
-      var config = fetchConfig('javascript');
-      config.headers['X-Requested-With'] = 'XMLHttpRequest';
-      delete config.headers['Content-Type'];
+      /* Use fetchConfig if available (Dawn theme), else build config manually */
+      var config;
+      if (typeof fetchConfig === 'function') {
+        config = fetchConfig('javascript');
+        config.headers['X-Requested-With'] = 'XMLHttpRequest';
+        delete config.headers['Content-Type'];
+      } else {
+        config = { method: 'POST', headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/javascript' } };
+      }
 
       var formData = new FormData(form);
 
-      if (cartDrawer) {
+      if (cartDrawer && typeof cartDrawer.getSectionsToRender === 'function') {
         formData.append(
           'sections',
           cartDrawer.getSectionsToRender().map(function(section) {
@@ -427,12 +438,17 @@
           })
         );
         formData.append('sections_url', window.location.pathname);
-        cartDrawer.setActiveElement(document.activeElement);
+        if (typeof cartDrawer.setActiveElement === 'function') {
+          cartDrawer.setActiveElement(document.activeElement);
+        }
       }
 
       config.body = formData;
 
-      fetch(routes.cart_add_url, config)
+      var cartAddUrl = (window.routes && window.routes.cart_add_url) ? window.routes.cart_add_url : '/cart/add.js';
+      var cartUrl = (window.routes && window.routes.cart_url) ? window.routes.cart_url : '/cart';
+
+      fetch(cartAddUrl, config)
         .then(function(response) {
           return response.json();
         })
@@ -441,10 +457,10 @@
             throw new Error(response.description || 'Unable to add this item to the cart.');
           }
 
-          if (cartDrawer) {
+          if (cartDrawer && typeof cartDrawer.renderContents === 'function') {
             cartDrawer.renderContents(response);
           } else {
-            window.location.href = window.routes.cart_url;
+            window.location.href = cartUrl;
           }
         })
         .catch(function(error) {
@@ -504,16 +520,8 @@
       "default": "Portable · Instant Alert · Multi-Gas Detection"
     },
     {
-      "type": "text",
-      "id": "rating_score",
-      "label": "Rating Score",
-      "default": "4.8"
-    },
-    {
-      "type": "text",
-      "id": "rating_text",
-      "label": "Rating Text",
-      "default": "(1,247 reviews)"
+      "type": "header",
+      "content": "Ratings from Judge.me (auto)"
     },
     {
       "type": "text",

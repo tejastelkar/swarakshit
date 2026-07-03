@@ -132,7 +132,7 @@
   }
 
   .swarakshit-fc-accordion.is-open .swarakshit-fc-accordion__content {
-    max-height: 500px;
+    max-height: 2000px;
   }
 
   .swarakshit-fc-accordion.is-open .swarakshit-fc-accordion__icon {
@@ -312,7 +312,7 @@
         </button>
         <div class="swarakshit-fc-accordion__content">
           <div class="swarakshit-fc-accordion__inner">
-            <p>Every Swarakshit device comes with a 1-year manufacturer's warranty and a 30-day no-questions-asked return policy. Contact us at info@rakshit.net.in or call 9529154548.</p>
+          <p>Every Swarakshit device comes with a 1-year manufacturer's warranty and a 30-day no-questions-asked return policy. Contact us via the form below or visit our <a href="/pages/contact" style="color:inherit;text-decoration:underline;">contact page</a> for support.</p>
           </div>
         </div>
       </div>
@@ -347,10 +347,22 @@
     <h3 class="swarakshit-fc__contact-title">{{ section.settings.contact_title }}</h3>
     <p class="swarakshit-fc__contact-subtitle">{{ section.settings.contact_subtitle }}</p>
     
-    {%- form 'contact', id: 'ContactForm', class: 'swarakshit-fc-form' -%}
-      <input type="text" name="contact[name]" class="swarakshit-fc-input" placeholder="Name" required>
-      <input type="email" name="contact[email]" class="swarakshit-fc-input" placeholder="Email" required>
-      <textarea name="contact[body]" class="swarakshit-fc-textarea" placeholder="Message" required></textarea>
+    {%- form 'contact', id: 'FAQContactForm', class: 'swarakshit-fc-form' -%}
+      {%- if form.posted_successfully? -%}
+        <div style="color: #4CAF50; background: rgba(76, 175, 80, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 10px; font-weight: 500;">
+          Thank you for your message! We will get back to you soon.
+        </div>
+      {%- elsif form.errors -%}
+        <div style="color: #f44336; background: rgba(244, 67, 54, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 10px; font-weight: 500;">
+          Please check the errors below.
+        </div>
+      {%- endif -%}
+      <label for="FAQContactForm-name" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0;">Name</label>
+      <input type="text" id="FAQContactForm-name" name="contact[name]" class="swarakshit-fc-input" placeholder="Name" autocomplete="name" required>
+      <label for="FAQContactForm-email" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0;">Email <span aria-hidden="true">*</span></label>
+      <input type="email" id="FAQContactForm-email" name="contact[email]" class="swarakshit-fc-input" placeholder="Email" autocomplete="email" aria-required="true" required>
+      <label for="FAQContactForm-body" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0;">Message</label>
+      <textarea id="FAQContactForm-body" name="contact[body]" class="swarakshit-fc-textarea" placeholder="Message" aria-required="true" required></textarea>
       <button type="submit" class="swarakshit-fc-submit">Submit</button>
     {%- endform -%}
   </div>
@@ -358,9 +370,12 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const accordions = document.querySelectorAll('.js-fc-accordion');
+    const sectionEl = document.getElementById('shopify-section-{{ section.id }}');
+    if (!sectionEl) return;
+    const accordions = sectionEl.querySelectorAll('.js-fc-accordion');
     accordions.forEach(acc => {
       const btn = acc.querySelector('.js-fc-accordion-btn');
+      if (!btn) return;
       btn.addEventListener('click', () => {
         const isOpen = acc.classList.contains('is-open');
         // Close all other accordions

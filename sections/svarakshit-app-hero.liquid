@@ -11,7 +11,7 @@
     padding-top: 150px; /* space for header */
     padding-left: 5rem;
     padding-right: 5rem;
-    padding-bottom: 8rem; /* space for the rounded overlap of the next section */
+    padding-bottom: 11rem; /* space for the rounded overlap of the next section */
     overflow: hidden;
     font-family: 'Inter', sans-serif;
   }
@@ -38,16 +38,9 @@
     padding-bottom: 2rem;
     max-width: 100%;
   }
-  .app-hero__subtitle {
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    letter-spacing: 0.25em;
-    color: #c49a6c;
-    margin-bottom: 1.5rem;
-    font-weight: 400;
-  }
+
   .app-hero__title {
-    font-size: clamp(4rem, 6vw, 7rem);
+    font-size: clamp(2.5rem, 8vw, 7rem);
     font-weight: 700;
     line-height: 1;
     margin: 0 0 1.5rem 0;
@@ -75,9 +68,10 @@
   @media screen and (max-width: 990px) {
     .app-hero {
       min-height: 80vh;
+      padding-top: 90px;
       padding-left: 2rem;
       padding-right: 2rem;
-      padding-bottom: 6rem;
+      padding-bottom: 8rem;
     }
     .app-hero__container {
       align-items: flex-start;
@@ -100,9 +94,7 @@
   {% endif %}
   <div class="app-hero__container">
     <div class="app-hero__content">
-      {% if section.settings.subtitle != blank %}
-        <div class="app-hero__subtitle">{{ section.settings.subtitle }}</div>
-      {% endif %}
+
       {% if section.settings.title != blank %}
         <h1 class="app-hero__title">{{ section.settings.title }}</h1>
       {% endif %}
@@ -127,20 +119,20 @@
     {
       "type": "text",
       "id": "subtitle",
-      "label": "Subtitle",
-      "default": "SWARAKSHIT"
+      "label": "Subtitle (small label above title)",
+      "default": "OUR MISSION"
     },
     {
       "type": "text",
       "id": "title",
       "label": "Title",
-      "default": "Office Kit"
+      "default": "Protecting Your Home"
     },
     {
       "type": "text",
       "id": "text",
-      "label": "Text",
-      "default": "Get personalized SWARAKSHIT set for your Office"
+      "label": "Description Text",
+      "default": "At Swarakshit, we believe that every home deserves uncompromising safety."
     }
   ],
   "presets": [

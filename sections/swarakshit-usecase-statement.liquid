@@ -34,11 +34,14 @@
 <style>
   #shopify-section-{{ section.id }} {
     background-color: {{ section.settings.bg_color }};
+    font-family: 'Inter', sans-serif;
+  }
+
+  #shopify-section-{{ section.id }} .swarakshit-statement-outer {
     padding: clamp(100px, 15vw, 200px) 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Inter', sans-serif;
   }
 
   #shopify-section-{{ section.id }} .swarakshit-statement {
@@ -54,10 +57,16 @@
     letter-spacing: -0.03em;
     color: {{ section.settings.text_color }};
     margin: 0;
-    /* Animation state */
+    /* Default: always visible. JS will add animation class to enable animation */
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Only hide when JS has confirmed it's running AND will animate it in */
+  #shopify-section-{{ section.id }} .swarakshit-statement.js-animate .swarakshit-statement__text {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   #shopify-section-{{ section.id }} .swarakshit-statement.is-visible .swarakshit-statement__text {
@@ -66,10 +75,12 @@
   }
 </style>
 
-<div class="swarakshit-statement" id="statement-{{ section.id }}">
-  <h2 class="swarakshit-statement__text">
-    {{ section.settings.statement }}
-  </h2>
+<div class="swarakshit-statement-outer">
+  <div class="swarakshit-statement" id="statement-{{ section.id }}">
+    <h2 class="swarakshit-statement__text">
+      {{ section.settings.statement | escape }}
+    </h2>
+  </div>
 </div>
 
 <script>
@@ -77,9 +88,13 @@
     const statementContainer = document.getElementById('statement-{{ section.id }}');
     if (!statementContainer) return;
 
+    // Add animation class now that JS is confirmed running
+    statementContainer.classList.add('js-animate');
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          statementContainer.classList.remove('js-animate');
           statementContainer.classList.add('is-visible');
           observer.unobserve(statementContainer);
         }

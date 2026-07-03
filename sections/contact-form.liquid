@@ -106,7 +106,9 @@
           class="field__input"
           autocomplete="tel"
           name="contact[{{ 'templates.contact.form.phone' | t }}]"
-          pattern="[0-9\-]*"
+          pattern="[0-9]*"
+          oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+          title="Please enter numbers only"
           value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
           placeholder="{{ 'templates.contact.form.phone' | t }}"
         >
@@ -119,9 +121,7 @@
           class="text-area field__input"
           name="contact[{{ 'templates.contact.form.comment' | t }}]"
           placeholder="{{ 'templates.contact.form.comment' | t }}"
-        >
-          {{- form.body -}}
-        </textarea>
+        >{{- form.body -}}</textarea>
         <label class="form__label field__label" for="ContactForm-body">
           {{- 'templates.contact.form.comment' | t -}}
         </label>

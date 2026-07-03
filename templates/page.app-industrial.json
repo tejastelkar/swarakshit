@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -20,50 +29,13 @@
     "intro_ind": {
       "type": "svarakshit-app-intro",
       "settings": {
-        "heading": "Bring <em>SWARAKSHIT</em> Into Your Plant",
+        "heading": "Bring Swarakshit Into Your Plant",
         "text": "<p>Industrial facilities require rigorous safety measures. The Swarakshit Gas Leak Tester helps floor managers and safety officers run routine checks for combustible gas leaks around heavy machinery, large storage tanks, complex pipeline networks, and industrial burners. Robust, rechargeable, and built to support your daily factory safety protocols.</p>",
         "author": "~ Swarakshit Industrial Safety"
       }
     },
     "kits_ind": {
       "type": "svarakshit-app-kits",
-      "blocks": {
-        "ind_kit_1": {
-          "type": "kit",
-          "settings": {
-            "title": "Routine Pipeline Inspections",
-            "description": "<p>A heavy-duty, portable gas monitor for floor managers performing daily or weekly leak inspections around high-pressure pipelines, industrial valves, and localized storage areas.</p>",
-            "button_text": "Buy Now",
-            "button_link": "",
-            "layout": "left"
-          }
-        },
-        "ind_kit_2": {
-          "type": "kit",
-          "settings": {
-            "title": "Safety Officer Patrols",
-            "description": "<p>Equip your safety officers with a highly sensitive, portable device. The 8-10 hour battery life ensures continuous monitoring during long shifts and expansive factory patrols.</p>",
-            "button_text": "Buy Now",
-            "button_link": "",
-            "layout": "right"
-          }
-        },
-        "ind_kit_3": {
-          "type": "kit",
-          "settings": {
-            "title": "Multi-Point Compliance",
-            "description": "<p>Easily check for leaks across sprawling plants and multiple production lines. Swarakshit detects LPG, PNG, CNG, and methane, providing an essential tool for your compliance toolkit.</p>",
-            "button_text": "Buy Now",
-            "button_link": "",
-            "layout": "left"
-          }
-        }
-      },
-      "block_order": [
-        "kit_1",
-        "kit_2",
-        "kit_3"
-      ],
       "settings": {
         "bg_color": "#ffffff",
         "text_color": "#1a1a1a"

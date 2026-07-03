@@ -1,6 +1,6 @@
 {% schema %}
 {
-  "name": "Svarakshit Cards Slider",
+  "name": "Swarakshit Cards Slider",
   "tag": "section",
   "settings": [
     {
@@ -48,7 +48,7 @@
   ],
   "presets": [
     {
-      "name": "Svarakshit Cards Slider",
+      "name": "Swarakshit Cards Slider",
       "blocks": [
         { "type": "card", "settings": { "title": "LPG Cylinders", "card_subtitle": "Check cylinder valves, rubber pipes & pressure regulators before they become dangerous" } },
         { "type": "card", "settings": { "title": "PNG Pipelines", "card_subtitle": "Test piped natural gas connections at meter points, joints & burner connections" } },
@@ -115,6 +115,8 @@
     .svarakshit-cards-slider-wrapper {
       padding-left: 2rem;
       padding-right: 2rem;
+      padding-top: 60px;
+      padding-bottom: 60px;
     }
   }
 
@@ -133,7 +135,7 @@
     }
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     .svarakshit-cards-slider {
       grid-template-columns: 1fr;
     }
@@ -248,14 +250,7 @@
     .svarakshit-card__content {
       padding: 18px 16px 16px;
     }
-
-    .svarakshit-card__title {
-      font-size: 17px;
-    }
-
-    .svarakshit-card__subtitle {
-      font-size: 12.5px;
-    }
+    /* Removed fixed font-size overrides here — clamp() handles responsiveness correctly */
   }
 
   @media (max-width: 989px) {

@@ -12,13 +12,6 @@
     "image_banner": {
       "type": "image-banner",
       "blocks": {
-        "slide_YNLk48": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/4.png",
-            "link": ""
-          }
-        },
         "slide_PPWyYt": {
           "type": "slide",
           "settings": {
@@ -49,7 +42,6 @@
         }
       },
       "block_order": [
-        "slide_YNLk48",
         "slide_PPWyYt",
         "slide_Knq84K",
         "slide_d6dTpb",
@@ -122,8 +114,8 @@
         "feature_1_arrow_offset": -10,
         "feature_1_arrow_width": 130,
         "feature_1_arrow_height": 130,
-        "feature_2_title": "Smart App Views",
-        "feature_2_text": "Access 10 useful screens and guided readings inside the SWARAKSHIT app.",
+        "feature_2_title": "Smart Views",
+        "feature_2_text": "Access 10 useful screens and guided readings with SWARAKSHIT.",
         "feature_2_arrow_offset": 12,
         "feature_2_arrow_width": 130,
         "feature_2_arrow_height": 130,
@@ -235,14 +227,67 @@
         "product": "gas-sensor",
         "title": "Swarakshit Gas Leak Tester",
         "subtitle": "Portable · Instant Alert · Multi-Gas Detection",
-        "rating_score": "4.8",
-        "rating_text": "(1,247 reviews)",
         "whatsapp_number": "919529154548",
         "whatsapp_message": "Buy: Swarakshit Gas Leak Tester"
       }
     },
-    "svarakshit_how_to_use": {
+    "svarakshit_how_to_use_T9k7EF": {
       "type": "svarakshit-how-to-use",
+      "blocks": {
+        "step_99WJix": {
+          "type": "step",
+          "settings": {
+            "title": "Charge & Power On",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewbox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21 10.5h.375c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125H21M4.5 10.5h6.75V15H4.5v-4.5zM3.75 18h15A2.25 2.25 0 0021 15.75v-6a2.25 2.25 0 00-2.25-2.25h-15A2.25 2.25 0 001.5 9.75v6A2.25 2.25 0 003.75 18z\"></path></svg>",
+            "description": "<p>Before first use, charge the device fully using the included USB cable. The LED turns green when fully charged (approx. 2 hours). Press and hold the red power button for 2 seconds to switch on. The LCD display will light up and show a startup sequence.</p>",
+            "pill_text": "Tip: Charge once a week for regular household use"
+          }
+        },
+        "step_9w4Gmz": {
+          "type": "step",
+          "settings": {
+            "title": "Wait for Sensor Warmup (30 Seconds)",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewbox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z\"></path></svg>",
+            "description": "<p>After powering on, wait 30 seconds for the electrochemical sensor to reach operating temperature. The display will show dashes or a countdown. Do NOT start testing until the warmup is complete — early readings may be inaccurate. The device will beep once when ready.</p>",
+            "pill_text": "Important: Do not skip the warmup phase"
+          }
+        },
+        "step_pdtCpk": {
+          "type": "step",
+          "settings": {
+            "title": "Scan Near Gas Points",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewbox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z\"></path></svg>",
+            "description": "<p>Hold the device by the grip and move the silver metal sensor tip to within <strong>5–10 cm</strong> of potential leak points. Move slowly — about 5 cm per second — to give the sensor time to respond. Check these key areas in order:</p><ul><li>LPG cylinder valve &amp; pressure regulator</li><li>Rubber pipe connections at both ends</li><li>Gas burner nozzles and knobs</li><li>Gas geyser pipe connections</li><li>PNG meter and pipe joints</li></ul>",
+            "pill_text": "Keep sensor tip 5–10 cm from surface for best accuracy"
+          }
+        },
+        "step_63NCYy": {
+          "type": "step",
+          "settings": {
+            "title": "Read the LCD Display",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewbox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25\"></path></svg>",
+            "description": "<p>The LCD continuously shows the ambient gas concentration level and temperature. Watch for changes as you move the sensor:</p><ul><li><strong>Normal reading</strong> — Low numbers, no alarm. Area is safe.</li><li><strong>Rising numbers</strong> — Approaching a gas source. Slow down and probe carefully.</li><li><strong>\"Hi\" on display + loud beep</strong> — Gas leak detected at this point!</li></ul>",
+            "pill_text": "The display also shows temperature — useful for kitchen safety checks"
+          }
+        },
+        "step_RgN3Xw": {
+          "type": "step",
+          "settings": {
+            "title": "If Leak Detected — Act Immediately",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewbox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z\"></path></svg>",
+            "description": "<p>If the device shows <strong>\"Hi\"</strong> and alarms:</p><ul><li><strong>DON'T panic</strong> — stay calm</li><li><strong>Turn OFF</strong> the gas cylinder valve or main PNG valve immediately</li><li><strong>Open ALL windows & doors</strong> — ventilate the area</li><li><strong>Do NOT use</strong> electrical switches, lighters, phones near the area</li><li><strong>Evacuate</strong> everyone from the room</li><li><strong>Call your gas agency</strong> and a licensed plumber for inspection</li></ul>",
+            "pill_text": "Emergency: Call 1906 (LPG) or 101 (Fire)"
+          }
+        }
+      },
+      "block_order": [
+        "step_99WJix",
+        "step_9w4Gmz",
+        "step_pdtCpk",
+        "step_63NCYy",
+        "step_RgN3Xw"
+      ],
+      "name": "Swarakshit How To Use",
       "settings": {
         "title": "How to Use Swarakshit",
         "subtitle": "Follow these 5 simple steps to detect gas leaks accurately and keep your home safe",
@@ -295,7 +340,7 @@
         "card_JHVe46",
         "card_3tQC9T"
       ],
-      "name": "Svarakshit Cards Slider",
+      "name": "Swarakshit Cards Slider",
       "settings": {
         "heading": "Where Families Use Swarakshit",
         "subtitle": "From kitchen cylinders to PNG joints and gas geysers, Swarakshit helps households check the gas points they rely on every day."
@@ -363,6 +408,7 @@
           "type": "use_case",
           "settings": {
             "size": "tall",
+            "image": "shopify://shop_images/2.png",
             "subtitle": "SWARAKSHIT",
             "title": "LPG Cylinder Checks",
             "link": ""
@@ -372,6 +418,7 @@
           "type": "use_case",
           "settings": {
             "size": "small",
+            "image": "shopify://shop_images/3.png",
             "subtitle": "SWARAKSHIT",
             "title": "Home Kitchens",
             "link": ""
@@ -381,26 +428,9 @@
           "type": "use_case",
           "settings": {
             "size": "small",
+            "image": "shopify://shop_images/1.png",
             "subtitle": "SWARAKSHIT",
             "title": "Basements",
-            "link": ""
-          }
-        },
-        "uc_4": {
-          "type": "use_case",
-          "settings": {
-            "size": "small",
-            "subtitle": "SWARAKSHIT",
-            "title": "PNG Connections",
-            "link": ""
-          }
-        },
-        "use_case_kGr8JU": {
-          "type": "use_case",
-          "settings": {
-            "size": "small",
-            "subtitle": "SWARAKSHIT",
-            "title": "Gas Geysers",
             "link": ""
           }
         }
@@ -408,9 +438,7 @@
       "block_order": [
         "uc_1",
         "uc_2",
-        "uc_3",
-        "uc_4",
-        "use_case_kGr8JU"
+        "uc_3"
       ],
       "settings": {
         "heading": "Home Safety Use Cases",
@@ -512,10 +540,10 @@
         "certification_QRUXKN",
         "certification_8ztHVC"
       ],
-      "name": "Svarakshit Certifications",
+      "name": "Swarakshit Certifications",
       "settings": {
         "heading": "Our Certifications",
-        "subtext": "Every Svarakshit device is backed by India's most rigorous safety standards."
+        "subtext": "Every Swarakshit device is backed by India's most rigorous safety standards."
       }
     },
     "svarakshit_testimonials": {
@@ -527,7 +555,8 @@
             "author": "Priya S.",
             "verified_text": "Verified",
             "text": "This device gave me real peace of mind at home. We now check our cylinder valve, pipe joints, and regulator every few days. It feels simple, fast, and genuinely useful for family safety.",
-            "avatar_color": "#ff6b00"
+            "avatar_color": "#ff6b00",
+            "star_count": 5
           }
         },
         "test_2": {
@@ -536,7 +565,8 @@
             "author": "Rahul M.",
             "verified_text": "Verified",
             "text": "It is easy to keep in the kitchen and simple to use during our weekly gas safety checks. The display is clear, the alert is loud, and the whole process feels practical even for regular everyday use.",
-            "avatar_color": "#ff6b00"
+            "avatar_color": "#ff6b00",
+            "star_count": 5
           }
         },
         "test_3": {
@@ -545,7 +575,8 @@
             "author": "Ananya D.",
             "verified_text": "Verified",
             "text": "It feels well made and easy to keep nearby, which makes regular home gas checks much more practical for us. We do not need anything complicated, and this fits naturally into our home safety routine.",
-            "avatar_color": "#ff6b00"
+            "avatar_color": "#ff6b00",
+            "star_count": 5
           }
         },
         "test_4": {
@@ -554,7 +585,8 @@
             "author": "Karan V.",
             "verified_text": "Verified",
             "text": "We use it as part of our home safety routine and it gives us more confidence around the gas points we check most often. It is portable, quick to recharge, and easy for everyone in the house to understand.",
-            "avatar_color": "#ff6b00"
+            "avatar_color": "#ff6b00",
+            "star_count": 5
           }
         },
         "test_5": {
@@ -563,7 +595,8 @@
             "author": "Sneha P.",
             "verified_text": "Verified",
             "text": "Installed it in my parents' kitchen and the setup was very straightforward. The loud siren is reassuring, the form factor is compact, and it gives us extra confidence without adding any hassle.",
-            "avatar_color": "#ff6b00"
+            "avatar_color": "#ff6b00",
+            "star_count": 5
           }
         }
       },
@@ -578,7 +611,12 @@
         "bg_color": "#ffffff",
         "heading": "Trusted by 50,000+ Families",
         "rating": "4.8",
-        "reviews_count": "1,247 verified reviews"
+        "reviews_count": "1,247 verified reviews",
+        "bar_5": 78,
+        "bar_4": 14,
+        "bar_3": 5,
+        "bar_2": 2,
+        "bar_1": 1
       }
     },
     "swarakshit_faq_contact_84ipWP": {
@@ -597,7 +635,7 @@
     "svarakshit_why_section",
     "swarakshit_features_anatomy_jaq6qj",
     "svarakshit_our_product_epPYPh",
-    "svarakshit_how_to_use",
+    "svarakshit_how_to_use_T9k7EF",
     "svarakshit_cards_slider_G9qiDA",
     "svarakshit_numbers",
     "svarakshit_marquee",

@@ -131,6 +131,8 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    let gsapRetryCount = 0;
+    const MAX_GSAP_RETRIES = 50; // max 5 seconds of retrying
     const initGasSafetyAnimation = () => {
       if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
@@ -147,16 +149,20 @@
             }
           });
 
+          const headingEl = sectionEl.querySelector(".svarakshit-numbers-heading");
+          if (headingEl) {
+            tl.fromTo(
+              headingEl,
+              { opacity: 0, y: 30 },
+              { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+            );
+          }
+
           tl.fromTo(
-            sectionEl.querySelector(".svarakshit-numbers-heading"),
-            { opacity: 0, y: 30 },
-            { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
-          )
-          .fromTo(
             sectionEl.querySelectorAll(".svarakshit-stat-item"),
             { opacity: 0, y: 30 },
             { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: "power2.out" },
-            "-=0.4"
+            headingEl ? "-=0.4" : "0"
           )
           .add("startCounters", "-=0.6");
 
@@ -190,10 +196,12 @@
             }
           });
         }
-      } else {
-        // If GSAP hasn't loaded yet, try again in 100ms
+      } else if (gsapRetryCount < MAX_GSAP_RETRIES) {
+        // GSAP hasn't loaded yet — retry with a limit to avoid infinite loop
+        gsapRetryCount++;
         setTimeout(initGasSafetyAnimation, 100);
       }
+      // If max retries exceeded, give up gracefully — items stay visible via CSS
     };
     
     initGasSafetyAnimation();
@@ -202,7 +210,7 @@
 
 {% schema %}
 {
-  "name": "Svarakshit Numbers",
+  "name": "Swarakshit Numbers",
   "tag": "section",
   "class": "section",
   "settings": [
@@ -260,7 +268,7 @@
   ],
   "presets": [
     {
-      "name": "Svarakshit Numbers",
+      "name": "Swarakshit Numbers",
       "blocks": [
         {
           "type": "stat",

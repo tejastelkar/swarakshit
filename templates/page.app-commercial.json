@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -20,50 +29,13 @@
     "intro_com": {
       "type": "svarakshit-app-intro",
       "settings": {
-        "heading": "Bring <em>SWARAKSHIT</em> Into Your Workspace",
+        "heading": "Bring Swarakshit Into Your Workspace",
         "text": "<p>Commercial buildings, hotels, and corporate cafeterias require reliable safety tools. The Swarakshit Gas Leak Tester helps facility managers and maintenance staff run routine checks for combustible gas leaks around commercial kitchens, pantry areas, HVAC gas lines, and basement utilities. Compact, rechargeable, and professional.</p>",
         "author": "~ Swarakshit Commercial Safety"
       }
     },
     "kits_com": {
       "type": "svarakshit-app-kits",
-      "blocks": {
-        "com_kit_1": {
-          "type": "kit",
-          "settings": {
-            "title": "Cafeteria & Pantry Checks",
-            "description": "<p>A portable gas monitor for maintenance staff performing daily leak inspections around office cafeterias, commercial stoves, and food-court gas connections.</p>",
-            "button_text": "Buy Now",
-            "button_link": "",
-            "layout": "left"
-          }
-        },
-        "com_kit_2": {
-          "type": "kit",
-          "settings": {
-            "title": "Basement Utility Monitoring",
-            "description": "<p>Equip your facility team with a highly sensitive device for checking basement utility rooms and HVAC gas lines. The loud 85dB alarm ensures any leak is detected immediately.</p>",
-            "button_text": "Buy Now",
-            "button_link": "",
-            "layout": "right"
-          }
-        },
-        "com_kit_3": {
-          "type": "kit",
-          "settings": {
-            "title": "Multi-Floor Safety Audits",
-            "description": "<p>Easily check for leaks across sprawling commercial complexes and multiple floors. The 8-10 hour battery life supports comprehensive safety audits without needing a recharge.</p>",
-            "button_text": "Buy Now",
-            "button_link": "",
-            "layout": "left"
-          }
-        }
-      },
-      "block_order": [
-        "kit_1",
-        "kit_2",
-        "kit_3"
-      ],
       "settings": {
         "bg_color": "#ffffff",
         "text_color": "#1a1a1a"

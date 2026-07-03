@@ -1,0 +1,102 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "hero": {
+      "type": "svarakshit-app-hero",
+      "settings": {
+        "bg_image": "shopify://shop_images/af5b448d-d3b0-4f27-b0a8-49aa691ae316.png",
+        "subtitle": "ADVANCED SENSOR TECHNOLOGY",
+        "title": "How Swarakshit Works",
+        "text": "Discover the engineering behind our smart gas leak detectors. Built with precision sensors to ensure you are alerted instantly at the first sign of danger."
+      }
+    },
+    "intro": {
+      "type": "svarakshit-app-intro",
+      "settings": {
+        "heading": "Precision Engineered for <em>SAFETY</em>",
+        "text": "<p>Unlike traditional alarms, Swarakshit utilizes highly calibrated sensors specifically tuned to detect combustible gases like LPG and PNG long before they reach explosive concentrations. It’s an intelligent system designed for continuous, reliable monitoring.</p>",
+        "author": "~ Swarakshit Engineering"
+      }
+    },
+    "kits": {
+      "type": "svarakshit-app-kits",
+      "blocks": {
+        "kit_1": {
+          "type": "kit",
+          "settings": {
+            "title": "Precision Gas Sensing",
+            "description": "<p>At the core of the Swarakshit device is an industrial-grade catalytic bead sensor. It constantly analyzes the ambient air, detecting minute traces of combustible gas leaks with zero false positives from common cooking fumes.</p>",
+            "button_text": "Buy Now",
+            "button_link": "shopify://collections/all",
+            "layout": "left"
+          }
+        },
+        "kit_2": {
+          "type": "kit",
+          "settings": {
+            "title": "Instant Smart Alerts",
+            "description": "<p>Detection is only half the battle. The moment a leak is sensed, Swarakshit triggers a piercing 85dB localized alarm. Simultaneously, it pushes an instant notification to your devices, ensuring you know immediately, even if you aren't home.</p>",
+            "button_text": "Contact Support",
+            "button_link": "shopify://pages/contact",
+            "layout": "right"
+          }
+        },
+        "kit_3": {
+          "type": "kit",
+          "settings": {
+            "title": "Reliable & Always On",
+            "description": "<p>Safety doesn't take a break during power outages. Swarakshit features a robust built-in rechargeable battery backup, ensuring your home remains monitored 24/7, regardless of grid stability.</p>",
+            "button_text": "View Products",
+            "button_link": "shopify://collections/all",
+            "layout": "left"
+          }
+        }
+      },
+      "block_order": [
+        "kit_1",
+        "kit_2",
+        "kit_3"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "text_color": "#1a1a1a"
+      }
+    },
+    "contact": {
+      "type": "svarakshit-app-cta",
+      "settings": {
+        "title": "Upgrade Your Safety",
+        "subtitle": "Order your Swarakshit Gas Leak Tester today and experience peace of mind.",
+        "btn_text": "Buy Now",
+        "btn_link": "shopify://collections/all",
+        "bg_color": "#f9f9f9",
+        "text_color": "#1a1a1a",
+        "btn_bg_color": "#111111",
+        "btn_text_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hero",
+    "intro",
+    "kits",
+    "contact"
+  ]
+}

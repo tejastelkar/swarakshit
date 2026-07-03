@@ -1,0 +1,128 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "svarakshit-usecase-hero",
+      "settings": {
+        "heading": "Swarakshit for Basements & Garages",
+        "subtitle": "Protect enclosed lower-level spaces where combustible gas can collect unnoticed.",
+        "overlay_opacity": 40
+      }
+    },
+    "intro_text": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "The Silent Danger Below",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Basements, garages, and utility rooms can become risky when they contain gas cylinders, joints, pipes, or appliances in poorly ventilated spaces. Combustible gas can collect in enclosed lower-level areas without being noticed right away. Swarakshit helps households carry out safety checks in these hidden spaces as part of a regular home routine.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 80
+      }
+    },
+    "content_features": {
+      "type": "swarakshit-usecase-content",
+      "blocks": {
+        "block_1": {
+          "type": "content_block",
+          "settings": {
+            "image_position": "left",
+            "subtitle": "OPTIMIZED SENSORS",
+            "heading": "Detect Heavy Gases",
+            "text": "<p>In enclosed lower-level spaces, gas from cylinders or nearby connections can settle and build up. Swarakshit helps households check those areas directly instead of relying only on smell or assumptions.</p>"
+          }
+        },
+        "block_2": {
+          "type": "content_block",
+          "settings": {
+            "image_position": "right",
+            "subtitle": "ROUTINE HOME SAFETY",
+            "heading": "Check Utility Spaces Regularly",
+            "text": "<p>Adding lower-level spaces to your regular gas-checking routine can help you catch problems earlier around cylinders, joints, and utility-area connections that are easy to overlook.</p>"
+          }
+        },
+        "block_3": {
+          "type": "content_block",
+          "settings": {
+            "image_position": "left",
+            "subtitle": "PRACTICAL COVERAGE",
+            "heading": "Include Hidden Areas in Your Checks",
+            "text": "<p>If your home has a basement, garage, or utility room with gas-related points, Swarakshit gives you a practical way to include those spaces in the same safety routine as your kitchen.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "block_1",
+        "block_2",
+        "block_3"
+      ],
+      "settings": {
+        "bg_color": "#FAFAFA"
+      }
+    },
+    "testimonials": {
+      "type": "svarakshit-testimonials",
+      "blocks": {
+        "test_1": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Mark D., Homeowner",
+            "text": "Our utility area is easy to forget during regular home checks. Keeping Swarakshit for those spaces has made our overall gas safety routine more complete."
+          }
+        },
+        "test_2": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Pooja T., Mother of Two",
+            "text": "It helped us think beyond the kitchen and start checking the enclosed spaces in our home where gas points are also present."
+          }
+        }
+      },
+      "block_order": [
+        "test_1",
+        "test_2"
+      ],
+      "settings": {
+        "heading": "Stories of Safety"
+      }
+    },
+    "product": {
+      "type": "svarakshit-our-product",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "intro_text",
+    "content_features",
+    "testimonials",
+    "product"
+  ]
+}
