@@ -362,6 +362,12 @@
     
     <div class="svarakshit-footer-payments">
       <div class="svarakshit-footer-payment-icon">
+        {{ 'visa' | payment_type_svg_tag }}
+      </div>
+      <div class="svarakshit-footer-payment-icon">
+        {{ 'master' | payment_type_svg_tag }}
+      </div>
+      <div class="svarakshit-footer-payment-icon">
         <img src="{{ 'rupay-logo.svg' | asset_url }}" alt="RuPay" width="38" height="24" loading="lazy">
       </div>
       <div class="svarakshit-footer-payment-icon">
