@@ -193,6 +193,17 @@
   }
 
   .svarakshit-footer-payment-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .svarakshit-footer-payment-icon svg {
+    height: 24px;
+    width: auto;
+  }
+  
+  .svarakshit-footer-payment-icon-custom {
     height: 24px;
     background-color: #ffffff;
     border-radius: 4px;
@@ -202,12 +213,7 @@
     padding: 0 4px;
   }
   
-  .svarakshit-footer-payment-icon svg {
-    height: 100%;
-    width: auto;
-  }
-  
-  .svarakshit-footer-payment-icon img {
+  .svarakshit-footer-payment-icon-custom img {
     height: 14px;
     width: auto;
     object-fit: contain;
@@ -371,13 +377,13 @@
       <div class="svarakshit-footer-payment-icon">
         {{ 'master' | payment_type_svg_tag }}
       </div>
-      <div class="svarakshit-footer-payment-icon">
+      <div class="svarakshit-footer-payment-icon-custom">
         <img src="{{ 'rupay-logo.svg' | asset_url }}" alt="RuPay" width="38" height="24" loading="lazy">
       </div>
-      <div class="svarakshit-footer-payment-icon">
+      <div class="svarakshit-footer-payment-icon-custom">
         <img src="{{ 'upi-logo.svg' | asset_url }}" alt="UPI" width="38" height="24" loading="lazy">
       </div>
-      <div class="svarakshit-footer-payment-icon">
+      <div class="svarakshit-footer-payment-icon-custom">
         <img src="{{ 'razorpay-logo.svg' | asset_url }}" alt="Razorpay" width="80" height="24" loading="lazy">
       </div>
     </div>
