@@ -30,12 +30,51 @@
       "type": "svarakshit-app-intro",
       "settings": {
         "heading": "Bring Swarakshit Into Your Plant",
-        "text": "<p>Industrial facilities require rigorous safety measures. The Swarakshit Gas Leak Tester helps floor managers and safety officers run routine checks for combustible gas leaks around heavy machinery, large storage tanks, complex pipeline networks, and industrial burners. Robust, rechargeable, and built to support your daily factory safety protocols.</p>",
+        "text": "<p>Industrial facilities require rigorous safety measures. The Swarakshit Gas Leak Tester helps floor managers and safety officers run routine checks for combustible gas leaks around heavy machinery, large storage tanks, complex pipeline networks, and industrial burners. Robust, battery-powered, and built to support your daily factory safety protocols.</p>",
         "author": "~ Swarakshit Industrial Safety"
       }
     },
     "kits_ind": {
       "type": "svarakshit-app-kits",
+      "blocks": {
+        "kit_1": {
+          "type": "kit",
+          "settings": {
+            "title": "Furnace Gas Inlet",
+            "description": "<p>Industrial furnaces rely on high-pressure gas regulation systems. Swarakshit equips facility managers with the capability to perform rigorous, pre-operational leak diagnostics on critical inlets, ensuring uncompromising factory floor safety and compliance.</p>",
+            "button_text": "Send a request",
+            "button_link": "",
+            "image": "shopify:\/\/shop_images\/in2.png",
+            "layout": "left"
+          }
+        },
+        "kit_2": {
+          "type": "kit",
+          "settings": {
+            "title": "Industrial Gas Cylinders",
+            "description": "<p>High-volume cylinder storage and manifold banks require stringent monitoring. Swarakshit facilitates rapid, highly sensitive sweeps of valve assemblies and regulators, instantly identifying combustible gas accumulation to prevent catastrophic industrial hazards.</p>",
+            "button_text": "Send a request",
+            "button_link": "",
+            "image": "shopify:\/\/shop_images\/in3.png",
+            "layout": "right"
+          }
+        },
+        "kit_3": {
+          "type": "kit",
+          "settings": {
+            "title": "Gas Pipelines & Valves",
+            "description": "<p>Over time, industrial pipeline networks are susceptible to structural micro-leaks. Swarakshit’s ergonomic, battery-operated design allows safety personnel to conduct precise diagnostic tests on flanges, shut-off valves, and hard-to-access junctions.</p>",
+            "button_text": "Send a request",
+            "button_link": "",
+            "layout": "left"
+          }
+        }
+      },
+      "block_order": [
+        "kit_1",
+        "kit_2",
+        "kit_3"
+      ],
       "settings": {
         "bg_color": "#ffffff",
         "text_color": "#1a1a1a"
@@ -44,8 +83,9 @@
     "contact_ind": {
       "type": "svarakshit-app-contact",
       "settings": {
-        "title": "Contact Us",
-        "subtitle": "Contact our enterprise team for bulk orders of Swarakshit devices for your facility.",
+        "title": "Ready to secure your industrial facility?",
+        "subtitle": "Deploy Swarakshit Smart Gas Leak Detectors across your plant to ensure maximum safety and compliance.",
+        "button_text": "Buy Swarakshit Now",
         "bg_color": "#ffffff",
         "text_color": "#141414"
       }

@@ -240,8 +240,8 @@ body {
 .av-info__head {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  margin-bottom: 0.75rem;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
 }
 
 .av-info__title {
@@ -261,7 +261,7 @@ body {
   letter-spacing: normal;
   color: rgb(20, 20, 20);
   white-space: nowrap;
-  padding-top: 0;
+  padding-top: 4px;
 }
 
 /* ── Description ───────────── */
@@ -271,7 +271,7 @@ body {
   line-height: 25.6px;
   letter-spacing: normal;
   color: rgb(20, 20, 20);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   opacity: 0.85;
 }
 
@@ -279,7 +279,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 
@@ -730,12 +730,16 @@ details[open].av-info__accordion .av-info__accordion-icon::after {
         <div class="av-info__price">{{ product.price | money }}</div>
       </div>
 
-      <div class="av-info__reviews" aria-label="Customer reviews summary">
-        <!-- Start of Judge.me code -->
-        <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
-          {{ product.metafields.judgeme.badge }}
+      <div class="av-social-proof">
+        <div class="av-social-proof__item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span><strong>15+</strong> people watching right now</span>
         </div>
-        <!-- End of Judge.me code -->
+        <div class="av-social-proof__divider"></div>
+        <div class="av-social-proof__item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span><strong>150+</strong> bought in the past 10 days</span>
+        </div>
       </div>
 
       {%- comment -%} Short description from product {%- endcomment -%}
@@ -867,11 +871,10 @@ details[open].av-info__accordion .av-info__accordion-icon::after {
           <span>5-Year manufacturer's Warranty</span>
         </div>
         <div class="av-info__trust-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="7" width="16" height="10" rx="2" ry="2"></rect>
-            <line x1="22" y1="11" x2="22" y2="13"></line>
+          <svg viewBox="0 0 24 24">
+            <polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/>
           </svg>
-          <span>AAA Battery Operated</span>
+          <span>Powered by 2 AAA batteries (included)</span>
         </div>
       </div>
 
@@ -1015,54 +1018,61 @@ details[open].av-info__accordion .av-info__accordion-icon::after {
 }
 
 
-.av-info__reviews {
+.av-social-proof {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 14px 0 18px;
+  background: #f3f3f3;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e8e8e8;
+}
+
+.av-social-proof__item {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 14px 0 18px;
-  min-height: 24px;
+  padding: 9px 14px;
+  flex: 1;
+  font-size: 1.3rem;
+  color: #444;
+  line-height: 1.3;
 }
 
-.av-info__app-blocks {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin: 14px 0 18px;
+.av-social-proof__item svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  stroke: #555;
 }
 
-.av-info__app-blocks:empty {
-  display: none;
+.av-social-proof__item strong {
+  color: #111;
+  font-weight: 700;
 }
 
-.av-info__reviews .jdgm-widget {
-  display: inline-flex;
-  align-items: center;
-  min-height: 24px;
+.av-social-proof__divider {
+  width: 1px;
+  height: 36px;
+  background: #e0e0e0;
+  flex-shrink: 0;
 }
 
-.av-info__reviews .jdgm-prev-badge {
-  display: inline-flex !important;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.av-info__reviews .jdgm-prev-badge__stars {
-  display: inline-flex;
-  align-items: center;
-}
-
-.av-info__reviews .jdgm-star {
-  color: #e87722 !important;
-}
-
-.av-info__reviews .jdgm-prev-badge__text {
-  visibility: visible !important;
-  color: rgba(17, 17, 17, 0.72) !important;
-  font-family: 'Inter', sans-serif !important;
-  font-size: 14px !important;
-  font-weight: 500 !important;
-  line-height: 1.4 !important;
+@media screen and (max-width: 749px) {
+  .av-social-proof {
+    flex-direction: column;
+    gap: 0;
+  }
+  .av-social-proof__divider {
+    width: 100%;
+    height: 1px;
+  }
+  .av-social-proof__item {
+    width: 100%;
+    padding: 8px 14px;
+    font-size: 1.25rem;
+  }
 }
 
 .av-reviews-section {
@@ -1197,7 +1207,7 @@ details[open].av-info__accordion .av-info__accordion-icon::after {
           <p><strong>Multi-Gas Detection:</strong> Detects LPG, PNG, CNG, methane & all combustible gases.</p>
           <p><strong>LCD Display with "Hi" Alert:</strong> Digital screen shows gas level + 24°C temperature reading.</p>
           <p><strong>LERC Certified:</strong> Approved by India's top gas safety authority.</p>
-          <p><strong>USB Rechargeable:</strong> 8+ hours battery with wrist strap for portability.</p>
+          <p><strong>AAA Battery Operated:</strong> Runs on 2 AAA batteries — no charging needed, always ready to detect.</p>
           <p><strong>Best Suited For:</strong> Home kitchens, LPG cylinder checks, PNG joints, gas regulator points, and similar household gas connections.</p>
         {%- endif -%}
       </div>

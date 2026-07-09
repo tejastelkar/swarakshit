@@ -90,29 +90,9 @@
   #Banner-{{ section.id }} .banner__dot.active {
     background: rgba(255, 255, 255, 1);
   }
-  
-  .lerc-logo-overlay {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    width: 120px;
-    height: auto;
-    z-index: 10;
-    pointer-events: none;
-  }
-  @media screen and (max-width: 749px) {
-    .lerc-logo-overlay {
-      width: 80px;
-      bottom: 10px;
-      right: 10px;
-    }
-  }
 </style>
 
 <div id="Banner-{{ section.id }}" class="banner-slideshow">
-  <!-- LERC OMC Logo Overlay -->
-  <img src="{{ 'lerc-logo.png' | file_url }}" alt="LERC Approved - IOCL, BPCL, HPCL" class="lerc-logo-overlay" onerror="this.style.display='none'">
-  
   {%- for block in section.blocks -%}
     {%- if block.type == 'slide' -%}
       <div class="banner__slide {% if forloop.first %}active{% endif %}" {{ block.shopify_attributes }}>

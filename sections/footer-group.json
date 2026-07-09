@@ -14,13 +14,7 @@
     "footer": {
       "type": "svarakshit-footer",
       "blocks": {
-        "footer-0": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Quick links",
-            "menu": "footer"
-          }
-        },
+
         "footer-1": {
           "type": "link_list",
           "settings": {
@@ -31,14 +25,21 @@
         "footer-2": {
           "type": "contact_info",
           "settings": {
+            "heading": "Contact",
             "text": "Emergency: (+91) 90213 87670\nSales: (+91) 95294 91719\nsupport@swarakshit.com"
+          }
+        },
+        "footer-3": {
+          "type": "policies",
+          "settings": {
+            "heading": "Policies"
           }
         }
       },
       "block_order": [
-        "footer-0",
         "footer-1",
-        "footer-2"
+        "footer-2",
+        "footer-3"
       ],
       "settings": {
         "logo_text": "SWARAKSHIT"

@@ -30,12 +30,49 @@
       "type": "svarakshit-app-intro",
       "settings": {
         "heading": "Bring Swarakshit Into Your Workspace",
-        "text": "<p>Commercial buildings, hotels, and corporate cafeterias require reliable safety tools. The Swarakshit Gas Leak Tester helps facility managers and maintenance staff run routine checks for combustible gas leaks around commercial kitchens, pantry areas, HVAC gas lines, and basement utilities. Compact, rechargeable, and professional.</p>",
+        "text": "<p>Commercial buildings, hotels, and corporate cafeterias require reliable safety tools. The Swarakshit Gas Leak Tester helps facility managers and maintenance staff run routine checks for combustible gas leaks around commercial kitchens, pantry areas, HVAC gas lines, and basement utilities. Compact, battery-powered, and professional.</p>",
         "author": "~ Swarakshit Commercial Safety"
       }
     },
     "kits_com": {
       "type": "svarakshit-app-kits",
+      "blocks": {
+        "kit_1": {
+          "type": "kit",
+          "settings": {
+            "title": "Commercial Kitchens",
+            "description": "<p>Designed for high-traffic culinary environments, Swarakshit delivers rapid gas leak detection for commercial ranges, deep fryers, and high-capacity ovens, ensuring uninterrupted operational safety for restaurant and hospitality teams.</p>",
+            "button_text": "Send a request",
+            "button_link": "",
+            "layout": "left"
+          }
+        },
+        "kit_2": {
+          "type": "kit",
+          "settings": {
+            "title": "HVAC & Utility Rooms",
+            "description": "<p>Safeguard basement utilities and complex HVAC gas feeds. Facility managers can utilize Swarakshit for periodic maintenance audits, quickly identifying localized combustible gas concentrations in enclosed mechanical spaces.</p>",
+            "button_text": "Send a request",
+            "button_link": "",
+            "layout": "right"
+          }
+        },
+        "kit_3": {
+          "type": "kit",
+          "settings": {
+            "title": "Cafeterias & Pantries",
+            "description": "<p>Maintain a secure environment in corporate cafeterias and office pantries. Swarakshit provides a discreet, highly effective solution for monitoring localized gas connections, protecting employees and building infrastructure.</p>",
+            "button_text": "Send a request",
+            "button_link": "",
+            "layout": "left"
+          }
+        }
+      },
+      "block_order": [
+        "kit_1",
+        "kit_2",
+        "kit_3"
+      ],
       "settings": {
         "bg_color": "#ffffff",
         "text_color": "#1a1a1a"
@@ -44,8 +81,9 @@
     "contact_com": {
       "type": "svarakshit-app-contact",
       "settings": {
-        "title": "Contact Us",
-        "subtitle": "Contact our enterprise team for bulk orders of Swarakshit devices for your commercial property.",
+        "title": "Ready to secure your commercial property?",
+        "subtitle": "Equip your building with Swarakshit Smart Gas Leak Detectors for robust and reliable safety.",
+        "button_text": "Buy Swarakshit Now",
         "bg_color": "#ffffff",
         "text_color": "#141414"
       }

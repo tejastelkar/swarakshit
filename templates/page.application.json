@@ -30,7 +30,7 @@
       "type": "svarakshit-app-intro",
       "settings": {
         "heading": "Bring Swarakshit Into Your Kitchen",
-        "text": "<p>Swarakshit helps households check for combustible gas leaks around stoves, cylinders, regulators, pipes, and other common kitchen gas points. It is portable, rechargeable, and easy to use as part of a regular home safety routine.</p>",
+        "text": "<p>Swarakshit helps households check for combustible gas leaks around stoves, cylinders, regulators, pipes, and other common kitchen gas points. It is battery-powered and easy to use as part of a regular home safety routine.</p>",
         "author": "~ Swarakshit Home Safety"
       }
     },
@@ -40,8 +40,8 @@
         "kit_1": {
           "type": "kit",
           "settings": {
-            "title": "Kitchen Kit No.1",
-            "description": "<p>A portable rechargeable Swarakshit gas monitor for routine checks around LPG cylinders, PNG joints, regulators, burner connections, and other everyday kitchen gas points.</p>",
+            "title": "Gas Cylinder",
+            "description": "<p>Ensure absolute safety with every LPG cylinder replacement. Swarakshit enables a rapid, 60-second Pre-Delivery Check (PDC) to accurately detect trace combustible gases around regulators, valves, and seals, mitigating risks before they arise.</p>",
             "button_text": "Send a request",
             "button_link": "",
             "layout": "left"
@@ -50,8 +50,8 @@
         "kit_2": {
           "type": "kit",
           "settings": {
-            "title": "Kitchen Kit No.2",
-            "description": "<p>A Swarakshit gas monitor with a dedicated placement option for households that want a convenient fixed spot near their main kitchen testing area.</p>",
+            "title": "Stove",
+            "description": "<p>Safeguard your primary culinary workspace. Designed for periodic diagnostics, Swarakshit identifies micro-leaks at critical junctures—including burner connections, control valves, and flexible hose lines—where mechanical wear is most prevalent.</p>",
             "button_text": "Send a request",
             "button_link": "",
             "layout": "right"
@@ -60,8 +60,8 @@
         "kit_3": {
           "type": "kit",
           "settings": {
-            "title": "Kitchen Kit No.3",
-            "description": "<p>A broader kitchen safety setup for larger homes or multi-point checking routines, designed for families that want easier coverage across more than one gas connection area.</p>",
+            "title": "PNG Pipeline",
+            "description": "<p>Maintain the integrity of continuous gas delivery systems. Swarakshit provides precise leak detection across residential pipeline infrastructure, from primary metering stations to concealed joints and secondary shut-off valves.</p>",
             "button_text": "Send a request",
             "button_link": "",
             "layout": "left"
@@ -81,9 +81,10 @@
     "contact": {
       "type": "svarakshit-app-contact",
       "settings": {
-        "title": "Contact Us",
-        "subtitle": "Contact us to choose the right Swarakshit setup for your kitchen.",
-        "bg_color": "#ffffff",
+        "title": "Ready for a safer kitchen?",
+        "subtitle": "Get your Swarakshit Smart Gas Leak Detector today and ensure peace of mind for your family.",
+        "button_text": "Buy Swarakshit Now",
+        "bg_color": "#f8f8f8",
         "text_color": "#141414"
       }
     }

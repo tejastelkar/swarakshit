@@ -48,10 +48,9 @@
     opacity: 1;
   }
 
-  /* Right Columns: Menus & Contact Info */
   .svarakshit-footer-menus {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 40px;
   }
 
@@ -59,7 +58,7 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
-    min-width: 150px;
+    min-width: max-content;
   }
 
   .svarakshit-footer-block h4 {
@@ -120,6 +119,7 @@
     color: #ffffff;
     text-decoration: none;
     transition: opacity 0.3s ease;
+    white-space: nowrap;
   }
 
   .svarakshit-footer-contact-text p a:hover {
@@ -142,9 +142,9 @@
 
   .svarakshit-footer-bottom-left {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
   }
 
   .svarakshit-footer-copyright {
@@ -165,11 +165,29 @@
 
   .svarakshit-footer-policies {
     display: flex;
-    gap: 20px;
     list-style: none;
     padding: 0;
     margin: 0;
     flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .svarakshit-footer-policies li {
+    position: relative;
+    padding-right: 15px;
+    margin-right: 15px;
+  }
+  
+  .svarakshit-footer-policies li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -2px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 50%;
   }
 
   .svarakshit-footer-policies a {
@@ -193,30 +211,19 @@
   }
 
   .svarakshit-footer-payment-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .svarakshit-footer-payment-icon svg {
-    height: 24px;
-    width: auto;
-  }
-  
-  .svarakshit-footer-payment-icon-custom {
+    width: 38px;
     height: 24px;
     background-color: #ffffff;
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 4px;
+    padding: 2px;
   }
   
-  .svarakshit-footer-payment-icon-custom img {
-    height: 14px;
-    width: auto;
-    object-fit: contain;
+  .svarakshit-footer-payment-icon svg {
+    width: 100%;
+    height: 100%;
   }
 
   @media screen and (min-width: 769px) and (max-width: 989px) {
@@ -342,6 +349,25 @@
               </div>
             {% endif %}
           </div>
+        {% elsif block.type == 'policies' %}
+          <div class="svarakshit-footer-block svarakshit-footer-menu" {{ block.shopify_attributes }}>
+            <h4>{{ block.settings.heading | default: 'Policies' }}</h4>
+            <ul>
+
+              {%- if shop.shipping_policy != blank -%}
+                <li><a href="{{ shop.shipping_policy.url }}">{{ shop.shipping_policy.title }}</a></li>
+              {%- endif -%}
+              {%- if shop.privacy_policy != blank -%}
+                <li><a href="{{ shop.privacy_policy.url }}">{{ shop.privacy_policy.title }}</a></li>
+              {%- endif -%}
+              {%- if shop.terms_of_service != blank -%}
+                <li><a href="{{ shop.terms_of_service.url }}">{{ shop.terms_of_service.title }}</a></li>
+              {%- endif -%}
+              {%- if shop.legal_notice != blank -%}
+                <li><a href="{{ shop.legal_notice.url }}">{{ shop.legal_notice.title }}</a></li>
+              {%- endif -%}
+            </ul>
+          </div>
         {% endif %}
       {% endfor %}
     </div>
@@ -352,31 +378,17 @@
       <p class="svarakshit-footer-copyright">
         &copy; {{ 'now' | date: "%Y" }} {{ shop.name }}. <a href="https://www.shopify.com" target="_blank" rel="nofollow">Powered by Shopify</a>
       </p>
-
-      <ul class="svarakshit-footer-policies">
-        <li><a href="/policies/privacy-policy">Privacy Policy</a></li>
-        <li><a href="/policies/refund-policy">Refund Policy</a></li>
-        <li><a href="/policies/shipping-policy">Shipping Policy</a></li>
-        <li><a href="/policies/terms-of-service">Terms of Service</a></li>
-        <li><a href="/pages/contact">Contact information</a></li>
-      </ul>
     </div>
     
     <div class="svarakshit-footer-payments">
-      <div class="svarakshit-footer-payment-icon">
-        {{ 'visa' | payment_type_svg_tag }}
-      </div>
-      <div class="svarakshit-footer-payment-icon">
-        {{ 'master' | payment_type_svg_tag }}
-      </div>
-      <div class="svarakshit-footer-payment-icon-custom">
-        <img src="{{ 'rupay-logo.svg' | asset_url }}" alt="RuPay" width="38" height="24" loading="lazy">
-      </div>
-      <div class="svarakshit-footer-payment-icon-custom">
-        <img src="{{ 'upi-logo.svg' | asset_url }}" alt="UPI" width="38" height="24" loading="lazy">
-      </div>
-      <div class="svarakshit-footer-payment-icon-custom">
-        <img src="{{ 'razorpay-logo.svg' | asset_url }}" alt="Razorpay" width="80" height="24" loading="lazy">
+      {% assign payment_types = 'upi,visa,master' | split: ',' %}
+      {% for type in payment_types %}
+        <div class="svarakshit-footer-payment-icon">
+          {{ type | payment_type_svg_tag }}
+        </div>
+      {% endfor %}
+      <div class="svarakshit-footer-payment-icon custom-razorpay" style="display: flex; align-items: center; justify-content: center; background: #fff; padding: 2px 4px; border-radius: 4px; height: 24px; width: auto;">
+        <img src="{{ 'razorpay-logo.svg' | asset_url }}" alt="Razorpay" style="height: 14px; width: auto; display: block;">
       </div>
     </div>
   </div>
@@ -457,7 +469,19 @@
           "type": "textarea",
           "id": "text",
           "label": "Contact Details",
-          "default": "Emergency: (+91) 90213 87670\nSales: (+91) 95294 91719\nsupport@swarakshit.com"
+          "default": "(+91) 98765 43210\nsupport@swarakshit.com"
+        }
+      ]
+    },
+    {
+      "type": "policies",
+      "name": "Policies",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Policies",
+          "label": "Heading"
         }
       ]
     }
@@ -484,7 +508,7 @@
           "type": "contact_info",
           "settings": {
             "heading": "Contact",
-            "text": "Emergency: (+91) 90213 87670\nSales: (+91) 95294 91719\nsupport@swarakshit.com"
+            "text": "(+91) 98765 43210\nsupport@swarakshit.com"
           }
         }
       ]

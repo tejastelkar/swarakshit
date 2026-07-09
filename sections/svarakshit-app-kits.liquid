@@ -40,16 +40,15 @@
   #shopify-section-{{ section.id }} .svarakshit-app-kits__image-wrap {
     flex: 1;
     width: 100%;
-    border-radius: 36px;
-    overflow: hidden;
   }
 
   #shopify-section-{{ section.id }} .svarakshit-app-kits__image {
     width: 100%;
-    height: 100%;
-    aspect-ratio: 1064 / 764;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    border-radius: 36px;
     display: block;
-    object-fit: contain;
+    object-fit: cover;
   }
 
   #shopify-section-{{ section.id }} .svarakshit-app-kits__content {
@@ -57,8 +56,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 550px;
-    padding-top: 2rem;
   }
 
   #shopify-section-{{ section.id }} .svarakshit-app-kits__title {

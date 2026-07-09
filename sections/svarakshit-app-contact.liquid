@@ -2,18 +2,22 @@
   #shopify-section-{{ section.id }} .svarakshit-app-contact {
     background-color: {{ section.settings.bg_color }};
     color: {{ section.settings.text_color }};
-    padding: 4rem 1.5rem;
+    padding: 6rem 1.5rem;
     font-family: 'Inter', sans-serif;
+    text-align: center;
   }
   @media screen and (min-width: 768px) {
     #shopify-section-{{ section.id }} .svarakshit-app-contact {
-      padding: 8rem 5rem;
+      padding: 10rem 5rem;
     }
   }
 
   #shopify-section-{{ section.id }} .svarakshit-app-contact__container {
     max-width: 800px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   #shopify-section-{{ section.id }} .svarakshit-app-contact__header {
@@ -30,113 +34,42 @@
   }
 
   #shopify-section-{{ section.id }} .svarakshit-app-contact__subtitle {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
     line-height: 1.6;
-    color: #4a4a4a;
+    color: {{ section.settings.text_color }};
+    opacity: 0.8;
   }
 
-  #shopify-section-{{ section.id }} .svarakshit-app-contact__form {
-    width: 100%;
-  }
-
-  .svarakshit-app-contact__row {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  @media screen and (min-width: 768px) {
-    .svarakshit-app-contact__row {
-      flex-direction: row;
-    }
-  }
-
-  .svarakshit-app-contact__field {
-    flex: 1;
-    margin-bottom: 1.5rem;
-  }
-  .svarakshit-app-contact__row .svarakshit-app-contact__field {
-    margin-bottom: 0;
-  }
-
-  /* Hide labels visually but keep for screen readers */
-  .svarakshit-app-contact__label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-  }
-
-  .svarakshit-app-contact__input,
-  .svarakshit-app-contact__textarea {
-    width: 100%;
-    border: 2px solid transparent;
-    border-radius: 12px;
-    font-size: 15px;
-    font-family: inherit;
-    color: #1a1a1a;
-    background-color: #f4f4f4;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
-  }
-
-  .svarakshit-app-contact__input {
-    height: 56px;
-    padding: 0 20px;
-  }
-
-  .svarakshit-app-contact__textarea {
-    padding: 20px;
-  }
-  
-  .svarakshit-app-contact__input::placeholder,
-  .svarakshit-app-contact__textarea::placeholder {
-    color: #888888;
-  }
-
-  .svarakshit-app-contact__input:focus,
-  .svarakshit-app-contact__textarea:focus {
-    outline: none;
-    border-color: #111111;
-    background-color: #ffffff;
-    box-shadow: none;
-  }
-
-  .svarakshit-app-contact__textarea {
-    min-height: 200px;
-    resize: vertical;
-  }
-
-  .svarakshit-app-contact__submit {
+  .svarakshit-app-contact__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 22px;
-    background-color: {{ section.settings.text_color }};
-    color: {{ section.settings.bg_color }};
-    border: none;
-    border-radius: 60px;
-    font-size: 15.3px;
+    gap: 0.75rem;
+    padding: 1.2rem 3.5rem;
+    background-color: {{ section.settings.btn_color }};
+    color: {{ section.settings.btn_text_color }};
+    border-radius: 100px;
+    text-decoration: none;
     font-weight: 700;
-    cursor: pointer;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    width: 100%;
+    font-size: 1.8rem;
+    letter-spacing: normal;
+    transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
-  @media screen and (min-width: 768px) {
-    .svarakshit-app-contact__submit {
-      width: auto;
-    }
-  }
-
-  .svarakshit-app-contact__submit:hover {
+  .svarakshit-app-contact__btn:hover {
+    transform: scale(1.02);
     opacity: 0.9;
+  }
+  
+  .svarakshit-app-contact__btn svg {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+  }
+  
+  .svarakshit-app-contact__btn:hover svg {
+    transform: translateX(5px);
   }
 </style>
 
@@ -151,88 +84,45 @@
       {% endif %}
     </div>
 
-    <div class="svarakshit-app-contact__form">
-      {%- form 'contact', id: 'ApplicationContactForm' -%}
-        {%- if form.posted_successfully? -%}
-          <div class="form-status form-status-list form__message" tabindex="-1" autofocus>
-            Thank you for your message. We will get back to you soon.
-          </div>
-        {%- elsif form.errors -%}
-          <div class="form__message">
-            Please check the errors below.
-          </div>
-        {%- endif -%}
-
-        <div class="svarakshit-app-contact__row">
-          <div class="svarakshit-app-contact__field">
-            <label class="svarakshit-app-contact__label" for="ContactForm-name">Name</label>
-            <input class="svarakshit-app-contact__input" autocomplete="name" type="text" id="ContactForm-name" name="contact[name]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="Name">
-          </div>
-
-          <div class="svarakshit-app-contact__field">
-            <label class="svarakshit-app-contact__label" for="ContactForm-email">Email <span aria-hidden="true">*</span></label>
-            <input
-              autocomplete="email"
-              type="email"
-              id="ContactForm-email"
-              class="svarakshit-app-contact__input"
-              name="contact[email]"
-              spellcheck="false"
-              autocapitalize="off"
-              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-              aria-required="true"
-              {% if form.errors contains 'email' %}
-                aria-invalid="true"
-                aria-describedby="ContactForm-email-error"
-              {% endif %}
-              placeholder="Email"
-              required
-            >
-          </div>
-        </div>
-
-        <div class="svarakshit-app-contact__field">
-          <label class="svarakshit-app-contact__label" for="ContactForm-phone">Phone</label>
-          <input class="svarakshit-app-contact__input" autocomplete="tel" type="tel" id="ContactForm-phone" name="contact[phone]" inputmode="numeric" pattern="[0-9+\-\s()]*" title="Please enter a valid phone number" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" placeholder="Phone (e.g. +91 98765 43210)">
-        </div>
-
-        <div class="svarakshit-app-contact__field">
-          <label class="svarakshit-app-contact__label" for="ContactForm-body">Message</label>
-          <textarea
-            rows="10"
-            id="ContactForm-body"
-            class="svarakshit-app-contact__textarea"
-            name="contact[body]"
-            placeholder="Message"
-          >{{ form.body }}</textarea>
-        </div>
-
-        <div class="svarakshit-app-contact__field">
-          <button type="submit" class="svarakshit-app-contact__submit">
-            Send message
-          </button>
-        </div>
-      {%- endform -%}
-    </div>
+    {% if section.settings.button_text != blank %}
+      <a href="{{ section.settings.button_link | default: '/products/smart-gas-leak-detector' }}" class="svarakshit-app-contact__btn">
+        {{ section.settings.button_text }}
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    {% endif %}
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "Application Contact",
+  "name": "Application CTA",
   "tag": "section",
   "settings": [
     {
       "type": "text",
       "id": "title",
       "label": "Title",
-      "default": "Contact Us"
+      "default": "Ready to secure your premises?"
     },
     {
       "type": "text",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "Contact us to bring SWARAKSHIT to your kitchen!"
+      "default": "Get the Swarakshit Smart Gas Leak Detector today and ensure peace of mind for you and your team."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Buy Swarakshit Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
     },
     {
       "type": "color",
@@ -245,11 +135,23 @@
       "id": "text_color",
       "label": "Text Color",
       "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "btn_color",
+      "label": "Button Background Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
     }
   ],
   "presets": [
     {
-      "name": "Application Contact"
+      "name": "Application CTA"
     }
   ]
 }

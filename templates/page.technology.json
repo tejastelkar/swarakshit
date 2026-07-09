@@ -61,7 +61,7 @@
           "type": "kit",
           "settings": {
             "title": "Reliable & Always On",
-            "description": "<p>Safety doesn't take a break during power outages. Swarakshit features a robust built-in rechargeable battery backup, ensuring your home remains monitored 24/7, regardless of grid stability.</p>",
+            "description": "<p>Safety doesn't take a break during power outages. Swarakshit runs on 2 AAA batteries, so it works completely off-grid. Simply keep fresh batteries installed and it is always ready to detect gas leaks u2014 no power outlet needed.</p>",
             "button_text": "View Products",
             "button_link": "shopify://collections/all",
             "layout": "left"
