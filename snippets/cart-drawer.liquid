@@ -153,9 +153,9 @@
         <div class="svk-disc-wrap">
           <div class="svk-disc-msg">
             {%- if goal_reached -%}
-              🎉 You've unlocked <strong>{{ disc_text }}</strong>!
+              🎉 You've unlocked <strong>{{ disc_text }}</strong>! 🎁
             {%- else -%}
-              Add <strong>{{ remaining }}</strong> more to get <strong>{{ disc_text }}</strong>
+              Add <strong>{{ remaining }}</strong> more to get <strong>{{ disc_text }}</strong> 🎁
             {%- endif -%}
           </div>
           <div class="svk-disc-track" style="width: 100%; height: 8px; background: #e5e5e5; border-radius: 999px; margin-bottom: 15px; overflow: hidden; display: block;">
@@ -199,7 +199,7 @@
             {%- if cart != empty -%}
               <div class="drawer__cart-items-wrapper">
                 <table class="cart-items" role="table">
-                  <thead role="rowgroup">
+                  <thead role="rowgroup" style="display: none;">
                     <tr role="row">
                       <th id="CartDrawer-ColumnProductImage" role="columnheader">
                         <span class="visually-hidden">{{ 'sections.cart.headings.image' | t }}</span>
