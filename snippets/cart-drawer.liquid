@@ -146,7 +146,8 @@
               assign msg_success = settings.cart_discount_msg_success | default: 'You have unlocked {discount}!'
             -%}
             {%- if remaining > 0 -%}
-              {{ msg_initial | replace: '{remaining}', remaining | replace: '{discount}', discount_html }}
+              {%- assign remaining_str = remaining | append: '' -%}
+              {{ msg_initial | replace: '{remaining}', remaining_str | replace: '{discount}', discount_html }}
             {%- else -%}
               {{ msg_success | replace: '{discount}', discount_html }}
             {%- endif -%}
