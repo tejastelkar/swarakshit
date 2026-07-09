@@ -1,7 +1,9 @@
 /**
  * Swarakshit Discount Progress Bar
  * Handles animation of .svk-disc-fill elements after cart renders
+ * Note: Disabled because we now use pure CSS @keyframes in cart-drawer.liquid for 100% reliability
  */
+/*
 (function () {
   'use strict';
 
@@ -37,3 +39,4 @@
     setTimeout(animateDiscountBar, 50);
   });
 })();
+*/

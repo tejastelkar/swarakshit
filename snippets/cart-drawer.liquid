@@ -149,6 +149,10 @@
           .svk-disc-fill {
             /* styles set inline via Liquid for reliability across AJAX re-renders */
           }
+          @keyframes svk-fill-anim-{{ pct | default: 0 }} {
+            from { width: 0%; }
+            to { width: {{ pct }}%; }
+          }
         </style>
         <div class="svk-disc-wrap">
           <div class="svk-disc-msg">
@@ -159,7 +163,7 @@
             {%- endif -%}
           </div>
           <div class="svk-disc-track" style="width: 100%; height: 8px; background: #e5e5e5; border-radius: 999px; margin-bottom: 15px; overflow: hidden; display: block;">
-            <div class="svk-disc-fill" data-pct="{{ pct }}" data-color="{% if bar_color != blank %}{{ bar_color }}{% else %}#ff6b00{% endif %}" style="display: block; height: 100%; background-color: {% if bar_color != blank %}{{ bar_color }}{% else %}#ff6b00{% endif %} !important; width: {{ pct }}%; border-radius: 999px; transition: width 0.7s cubic-bezier(0.4,0,0.2,1);"></div>
+            <div class="svk-disc-fill" data-pct="{{ pct }}" data-color="{% if bar_color != blank %}{{ bar_color }}{% else %}#ff6b00{% endif %}" style="display: block; height: 100%; background-color: {% if bar_color != blank %}{{ bar_color }}{% else %}#ff6b00{% endif %} !important; width: {{ pct }}%; border-radius: 999px; animation: svk-fill-anim-{{ pct | default: 0 }} 0.7s cubic-bezier(0.4,0,0.2,1) forwards;"></div>
           </div>
         </div>
 
