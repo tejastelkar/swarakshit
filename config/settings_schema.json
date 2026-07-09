@@ -1476,15 +1476,15 @@
         "type": "text",
         "id": "cart_discount_msg_initial",
         "label": "Initial Message",
-        "info": "Use {remaining} and {discount} as placeholders.",
-        "default": "Add {remaining} more to get {discount}!"
+        "info": "Use __REMAINING__ and __DISCOUNT__ as placeholders.",
+        "default": "Add __REMAINING__ more to get __DISCOUNT__!"
       },
       {
         "type": "text",
         "id": "cart_discount_msg_success",
         "label": "Success Message",
-        "info": "Use {discount} as a placeholder.",
-        "default": "You've unlocked {discount}!"
+        "info": "Use __DISCOUNT__ as a placeholder.",
+        "default": "You've unlocked __DISCOUNT__!"
       },
       {
         "type": "color",

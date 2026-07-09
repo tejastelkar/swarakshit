@@ -142,14 +142,14 @@
             {%- liquid
               assign discount_text = settings.cart_discount_text | default: '10% OFF'
               assign discount_html = '<strong>' | append: discount_text | append: '</strong>'
-              assign msg_initial = settings.cart_discount_msg_initial | default: 'Add {remaining} more to get {discount}!'
-              assign msg_success = settings.cart_discount_msg_success | default: 'You have unlocked {discount}!'
+              assign msg_initial = settings.cart_discount_msg_initial | default: 'Add __REMAINING__ more to get __DISCOUNT__!'
+              assign msg_success = settings.cart_discount_msg_success | default: 'You have unlocked __DISCOUNT__!'
             -%}
             {%- if remaining > 0 -%}
               {%- assign remaining_str = remaining | append: '' -%}
-              {{ msg_initial | replace: '{remaining}', remaining_str | replace: '{discount}', discount_html }}
+              {{ msg_initial | replace: '__REMAINING__', remaining_str | replace: '__DISCOUNT__', discount_html }}
             {%- else -%}
-              {{ msg_success | replace: '{discount}', discount_html }}
+              {{ msg_success | replace: '__DISCOUNT__', discount_html }}
             {%- endif -%}
           </div>
           <div class="cart-discount-bar">
