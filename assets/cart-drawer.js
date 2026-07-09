@@ -86,6 +86,8 @@ class CartDrawer extends HTMLElement {
     setTimeout(() => {
       this.querySelector('#CartDrawer-Overlay').addEventListener('click', this.close.bind(this));
       this.open();
+      // Notify discount bar script that cart HTML has been re-rendered
+      document.dispatchEvent(new CustomEvent('cart:rendered'));
     });
   }
 
