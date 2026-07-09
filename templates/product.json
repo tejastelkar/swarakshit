@@ -69,7 +69,7 @@
         "feature_4_arrow_width": 135,
         "feature_4_arrow_height": 135,
         "feature_5_title": "AAA Battery Operated",
-        "feature_5_text": "Powered by 2 AAA batteries — no charging needed, always ready to use.",
+        "feature_5_text": "Powered by 2 AAA batteries \u2014 no charging needed, always ready to use.",
         "feature_5_arrow_offset": 18,
         "feature_5_arrow_width": 135,
         "feature_5_arrow_height": 135
@@ -82,21 +82,21 @@
           "type": "faq",
           "settings": {
             "question": "What gases does Swarakshit detect?",
-            "answer": "<p>Swarakshit detects all combustible gases including LPG, PNG, CNG, methane, propane, butane and other hydrocarbons. It is NOT designed to detect CO (carbon monoxide) — for CO, you need a dedicated CO alarm.</p>"
+            "answer": "<p>Swarakshit detects all combustible gases including LPG, PNG, CNG, methane, propane, butane and other hydrocarbons. It is NOT designed to detect CO (carbon monoxide) \u2014 for CO, you need a dedicated CO alarm.</p>"
           }
         },
         "faq2": {
           "type": "faq",
           "settings": {
             "question": "What does LERC certification mean?",
-            "answer": "<p>LERC (Liquefied Petroleum Gas Equipment Research Centre) is India's premier government-recognized body for testing and certifying LPG safety equipment. LERC certification means the device has been independently tested for accuracy, sensitivity, and durability — the gold standard in India.</p>"
+            "answer": "<p>LERC (Liquefied Petroleum Gas Equipment Research Centre) is India's premier government-recognized body for testing and certifying LPG safety equipment. LERC certification means the device has been independently tested for accuracy, sensitivity, and durability \u2014 the gold standard in India.</p>"
           }
         },
         "faq3": {
           "type": "faq",
           "settings": {
             "question": "How long does the battery last?",
-            "answer": "<p>The device runs on 2 AAA batteries. For typical home use (5–10 minute daily checks), batteries last several months. Simply replace the AAA batteries when the low battery indicator appears on the LCD screen.</p>"
+            "answer": "<p>The device runs on 2 AAA batteries. For typical home use (5\u201310 minute daily checks), batteries last several months. Simply replace the AAA batteries when the low battery indicator appears on the LCD screen.</p>"
           }
         },
         "faq4": {
@@ -117,7 +117,7 @@
           "type": "faq",
           "settings": {
             "question": "How often should I test for gas leaks?",
-            "answer": "<p>Weekly — around LPG cylinder and rubber pipe connections. Monthly — around all gas appliances including geysers. Immediately — after any new appliance installation or if you smell even a faint gas odour.</p>"
+            "answer": "<p>Weekly \u2014 around LPG cylinder and rubber pipe connections. Monthly \u2014 around all gas appliances including geysers. Immediately \u2014 after any new appliance installation or if you smell even a faint gas odour.</p>"
           }
         },
         "faq7": {
@@ -173,11 +173,135 @@
         "payment"
       ],
       "settings": {}
+    },
+    "svarakshit_watch_shop": {
+      "type": "svarakshit-watch-shop",
+      "blocks": {
+        "video_item_LkHHJ3": {
+          "type": "video_item",
+          "settings": {
+            "video": "shopify://files/videos/\u26a0\ufe0f Most gas leaks don\u2019t come with a warning smell. Sometimes, they stay completely silent\u2026 until.mp4",
+            "product": "gas-sensor",
+            "tag": ""
+          }
+        },
+        "video_item_ftrDiJ": {
+          "type": "video_item",
+          "settings": {
+            "video": "shopify://files/videos/\ud83d\udea8 A gas leak doesnt always come with a warning. Tiny leaks around PNG pipelines, joints, fitti.mp4",
+            "product": "gas-sensor",
+            "tag": ""
+          }
+        },
+        "video_item_9mabW9": {
+          "type": "video_item",
+          "settings": {
+            "video": "shopify://files/videos/\ud83d\udd25 Think your PNG gas bill is too high The reason might not be your usage \u2014 it could be a hidden.mp4",
+            "product": "gas-sensor",
+            "tag": ""
+          }
+        },
+        "video_item_zUdTLp": {
+          "type": "video_item",
+          "settings": {
+            "video": "shopify://files/videos/Cylinder check ki Regulator check kiPipeline check kiNahi Toh Swarakshit chahiye aapko.India ka .mp4",
+            "product": "gas-sensor",
+            "tag": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_item_LkHHJ3",
+        "video_item_ftrDiJ",
+        "video_item_9mabW9",
+        "video_item_zUdTLp"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "eyebrow": "",
+        "heading": "Watch & Shop",
+        "subtext": "Experience the Swarakshit Monitor in real homes. Tap any video to view details."
+      }
+    },
+    "svarakshit_testimonials": {
+      "type": "svarakshit-testimonials",
+      "blocks": {
+        "test_1": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Priya S.",
+            "verified_text": "Verified",
+            "text": "This device gave me real peace of mind at home. We now check our cylinder valve, pipe joints, and regulator every few days. It feels simple, fast, and genuinely useful for family safety.",
+            "avatar_color": "#ff6b00",
+            "star_count": 5
+          }
+        },
+        "test_2": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Rahul M.",
+            "verified_text": "Verified",
+            "text": "It is easy to keep in the kitchen and simple to use during our weekly gas safety checks. The display is clear, the alert is loud, and the whole process feels practical even for regular everyday use.",
+            "avatar_color": "#ff6b00",
+            "star_count": 5
+          }
+        },
+        "test_3": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Ananya D.",
+            "verified_text": "Verified",
+            "text": "It feels well made and easy to keep nearby, which makes regular home gas checks much more practical for us. We do not need anything complicated, and this fits naturally into our home safety routine.",
+            "avatar_color": "#ff6b00",
+            "star_count": 5
+          }
+        },
+        "test_4": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Karan V.",
+            "verified_text": "Verified",
+            "text": "We use it as part of our home safety routine and it gives us more confidence around the gas points we check most often. It is portable, battery-powered, and easy for everyone in the house to understand.",
+            "avatar_color": "#ff6b00",
+            "star_count": 5
+          }
+        },
+        "test_5": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Sneha P.",
+            "verified_text": "Verified",
+            "text": "Installed it in my parents' kitchen and the setup was very straightforward. The loud siren is reassuring, the form factor is compact, and it gives us extra confidence without adding any hassle.",
+            "avatar_color": "#ff6b00",
+            "star_count": 5
+          }
+        }
+      },
+      "block_order": [
+        "test_1",
+        "test_2",
+        "test_3",
+        "test_4",
+        "test_5"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "heading": "Trusted by 50,000+ Families",
+        "rating": "4.8",
+        "reviews_count": "1,247 verified reviews",
+        "bar_5": 78,
+        "bar_4": 14,
+        "bar_3": 5,
+        "bar_2": 2,
+        "bar_1": 1
+      }
     }
   },
   "order": [
     "main",
     "swarakshit_features_anatomy",
+    "svarakshit_watch_shop",
+    "svarakshit_testimonials",
     "swarakshit_faq_contact",
     "swarakshit_trust_badges"
   ]
