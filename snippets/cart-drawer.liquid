@@ -96,66 +96,130 @@
       {%- if settings.cart_discount_bar_enable != false -%}
         {%- liquid
           assign goal = settings.cart_discount_goal | default: 2
-          assign current_count = cart.item_count
-          assign percentage = current_count | times: 100.0 | divided_by: goal
-          if percentage > 100
-            assign percentage = 100
-          endif
-          assign remaining = goal | minus: current_count
-          if remaining < 0
-            assign remaining = 0
-          endif
+          assign discount_text = settings.cart_discount_text | default: '10% OFF'
+          assign bar_color = settings.cart_discount_color | default: '#ff6b00'
+          assign msg_initial = settings.cart_discount_msg_initial | default: 'Add __REMAINING__ more to get __DISCOUNT__!'
+          assign msg_success = settings.cart_discount_msg_success | default: 'You have unlocked __DISCOUNT__!'
         -%}
         <style>
           .cart-discount-bar-container {
-            padding: 10px 20px 15px;
-            background-color: transparent;
+            padding: 12px 20px 16px;
+            background: transparent;
             flex-shrink: 0;
+            border-bottom: 1px solid rgba(var(--color-foreground), 0.08);
           }
           .cart-discount-message {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
             text-align: center;
             font-weight: 500;
             color: rgba(var(--color-foreground), 0.85);
           }
           .cart-discount-message strong {
-            color: {{ settings.cart_discount_color | default: '#ff6b00' }};
+            color: {{ bar_color }};
+            font-weight: 700;
           }
           .cart-discount-bar {
             width: 100%;
-            height: 6px;
-            background-color: rgba(var(--color-foreground), 0.1);
-            border-radius: 4px;
+            height: 8px;
+            background-color: rgba(var(--color-foreground), 0.12);
+            border-radius: 999px;
             overflow: hidden;
           }
           .cart-discount-progress {
             height: 100%;
-            background-color: {{ settings.cart_discount_color | default: '#ff6b00' }};
-            width: {{ percentage }}%;
-            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 4px;
+            background-color: {{ bar_color }};
+            width: 0%;
+            border-radius: 999px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
           }
         </style>
-        <div class="cart-discount-bar-container">
-          <div class="cart-discount-message">
-            {%- liquid
-              assign discount_text = settings.cart_discount_text | default: '10% OFF'
-              assign discount_html = '<strong>' | append: discount_text | append: '</strong>'
-              assign msg_initial = settings.cart_discount_msg_initial | default: 'Add __REMAINING__ more to get __DISCOUNT__!'
-              assign msg_success = settings.cart_discount_msg_success | default: 'You have unlocked __DISCOUNT__!'
-            -%}
-            {%- if remaining > 0 -%}
-              {%- assign remaining_str = remaining | append: '' -%}
-              {{ msg_initial | replace: '__REMAINING__', remaining_str | replace: '__DISCOUNT__', discount_html }}
-            {%- else -%}
-              {{ msg_success | replace: '__DISCOUNT__', discount_html }}
-            {%- endif -%}
-          </div>
+        <div class="cart-discount-bar-container"
+          data-discount-goal="{{ goal }}"
+          data-discount-text="{{ discount_text | escape }}"
+          data-msg-initial="{{ msg_initial | escape }}"
+          data-msg-success="{{ msg_success | escape }}"
+        >
+          <div class="cart-discount-message" id="cart-discount-message"></div>
           <div class="cart-discount-bar">
-            <div class="cart-discount-progress"></div>
+            <div class="cart-discount-progress" id="cart-discount-progress"></div>
           </div>
         </div>
+        <script>
+          (function() {
+            function updateDiscountBar(itemCount) {
+              var container = document.querySelector('.cart-discount-bar-container');
+              if (!container) return;
+              var goal = parseInt(container.dataset.discountGoal) || 2;
+              var discountText = container.dataset.discountText || '10% OFF';
+              var msgInitial = container.dataset.msgInitial || 'Add __REMAINING__ more to get __DISCOUNT__!';
+              var msgSuccess = container.dataset.msgSuccess || 'You have unlocked __DISCOUNT__!';
+              var remaining = Math.max(0, goal - itemCount);
+              var pct = Math.min(100, (itemCount / goal) * 100);
+              var messageEl = document.getElementById('cart-discount-message');
+              var progressEl = document.getElementById('cart-discount-progress');
+              if (!messageEl || !progressEl) return;
+              var discountHtml = '<strong>' + discountText + '</strong>';
+              if (remaining > 0) {
+                messageEl.innerHTML = msgInitial.replace('__REMAINING__', remaining).replace('__DISCOUNT__', discountHtml);
+              } else {
+                messageEl.innerHTML = msgSuccess.replace('__DISCOUNT__', discountHtml);
+              }
+              // Use rAF to trigger CSS transition
+              requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                  progressEl.style.width = pct + '%';
+                });
+              });
+            }
+
+            // Initial load: read from cart object
+            var initialCount = {{ cart.item_count }};
+            // Small delay so element is in DOM and transition fires
+            setTimeout(function() { updateDiscountBar(initialCount); }, 50);
+
+            // Hook into Shopify cart AJAX events
+            document.addEventListener('cart:refresh', function(e) {
+              if (e.detail && typeof e.detail.cart !== 'undefined') {
+                updateDiscountBar(e.detail.cart.item_count || 0);
+              }
+            });
+
+            // Also observe DOM changes inside cart-drawer for re-renders
+            var observer = new MutationObserver(function() {
+              var countEl = document.querySelector('cart-drawer .cart-item__quantity');
+              // Re-read item count from the server-rendered data attribute if present
+              var itemCountEl = document.querySelector('[data-cart-item-count]');
+              if (itemCountEl) {
+                updateDiscountBar(parseInt(itemCountEl.textContent) || 0);
+              }
+            });
+
+            document.addEventListener('DOMContentLoaded', function() {
+              var drawer = document.querySelector('cart-drawer');
+              if (drawer) {
+                observer.observe(drawer, { childList: true, subtree: true });
+              }
+            });
+
+            // Hook into fetch requests to detect cart changes
+            var origFetch = window.fetch;
+            window.fetch = function() {
+              return origFetch.apply(this, arguments).then(function(response) {
+                var url = arguments[0] || '';
+                if (typeof url === 'string' && (url.includes('/cart/add') || url.includes('/cart/change') || url.includes('/cart/update'))) {
+                  var clone = response.clone();
+                  clone.json().then(function(data) {
+                    if (data && typeof data.item_count !== 'undefined') {
+                      setTimeout(function() { updateDiscountBar(data.item_count); }, 100);
+                    }
+                  }).catch(function(){});
+                }
+                return response;
+              });
+            };
+          })();
+        </script>
       {%- endif -%}
 
       {%- if cart == empty -%}
