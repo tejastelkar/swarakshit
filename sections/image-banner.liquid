@@ -74,21 +74,36 @@
     left: 50%;
     transform: translateX(-50%);
     display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
     gap: 8px;
     z-index: 10;
   }
   
   #Banner-{{ section.id }} .banner__dot {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    display: block;
   }
   
   #Banner-{{ section.id }} .banner__dot.active {
-    background: rgba(255, 255, 255, 1);
+    background: #ff6b00;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    width: 24px;
+    border-radius: 5px;
+  }
+
+  @media screen and (max-width: 749px) {
+    #Banner-{{ section.id }} .banner__dots {
+      bottom: 10px;
+    }
   }
 </style>
 
