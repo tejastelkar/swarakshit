@@ -20,7 +20,8 @@
     "hero": {
       "type": "svarakshit-app-hero",
       "settings": {
-        "bg_image": "shopify://shop_images/af5b448d-d3b0-4f27-b0a8-49aa691ae316.png",
+        "bg_image": "shopify://shop_images/faq.png",
+        "subtitle": "OUR MISSION",
         "title": "Frequently Asked Questions",
         "text": "Everything you need to know about the Swarakshit Gas Leak Detector, installation, and how it keeps your family safe."
       }
@@ -46,7 +47,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Does it work during a power outage?",
-            "answer": "<p>Yes! The Swarakshit runs on 2 AAA batteries, so it works completely independently of the power grid. Simply keep fresh batteries installed and the device is always ready to detect gas leaks \u2014 no charging or power outlet needed.</p>"
+            "answer": "<p>Yes! The Swarakshit runs on 2 AAA batteries, so it works completely independently of the power grid. Simply keep fresh batteries installed and the device is always ready to detect gas leaks — no charging or power outlet needed.</p>"
           }
         },
         "faq_4": {
@@ -97,6 +98,7 @@
       ],
       "settings": {
         "bg_color": "#ffffff",
+        "item_bg_color": "#f7f7f7",
         "text_color": "#1a1a1a",
         "heading": "Answers to Common Questions"
       }
@@ -106,8 +108,12 @@
       "settings": {
         "title": "Still have questions?",
         "subtitle": "Reach out to our support team and we'll be happy to help.",
+        "button_text": "Buy Swarakshit Now",
+        "button_link": "",
         "bg_color": "#ffffff",
-        "text_color": "#141414"
+        "text_color": "#141414",
+        "btn_color": "#1a1a1a",
+        "btn_text_color": "#ffffff"
       }
     }
   },
