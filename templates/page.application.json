@@ -40,6 +40,7 @@
         "kit_1": {
           "type": "kit",
           "settings": {
+            "image": "shopify://shop_images/kitchen1.png",
             "title": "Gas Cylinder",
             "description": "<p>Ensure absolute safety with every LPG cylinder replacement. Swarakshit enables a rapid, 60-second Pre-Delivery Check (PDC) to accurately detect trace combustible gases around regulators, valves, and seals, mitigating risks before they arise.</p>",
             "button_text": "Send a request",
@@ -50,6 +51,7 @@
         "kit_2": {
           "type": "kit",
           "settings": {
+            "image": "shopify://shop_images/kitchen2.png",
             "title": "Stove",
             "description": "<p>Safeguard your primary culinary workspace. Designed for periodic diagnostics, Swarakshit identifies micro-leaks at critical junctures—including burner connections, control valves, and flexible hose lines—where mechanical wear is most prevalent.</p>",
             "button_text": "Send a request",
@@ -60,6 +62,7 @@
         "kit_3": {
           "type": "kit",
           "settings": {
+            "image": "shopify://shop_images/kitchen3.png",
             "title": "PNG Pipeline",
             "description": "<p>Maintain the integrity of continuous gas delivery systems. Swarakshit provides precise leak detection across residential pipeline infrastructure, from primary metering stations to concealed joints and secondary shut-off valves.</p>",
             "button_text": "Send a request",
@@ -75,7 +78,9 @@
       ],
       "settings": {
         "bg_color": "#ffffff",
-        "text_color": "#1a1a1a"
+        "text_color": "#1a1a1a",
+        "btn_color": "#1a1a1a",
+        "btn_text_color": "#ffffff"
       }
     },
     "contact": {
@@ -84,8 +89,11 @@
         "title": "Ready for a safer kitchen?",
         "subtitle": "Get your Swarakshit Smart Gas Leak Detector today and ensure peace of mind for your family.",
         "button_text": "Buy Swarakshit Now",
+        "button_link": "",
         "bg_color": "#f8f8f8",
-        "text_color": "#141414"
+        "text_color": "#141414",
+        "btn_color": "#1a1a1a",
+        "btn_text_color": "#ffffff"
       }
     }
   },

@@ -20,7 +20,7 @@
     "hero": {
       "type": "svarakshit-app-hero",
       "settings": {
-        "bg_image": "shopify://shop_images/af5b448d-d3b0-4f27-b0a8-49aa691ae316.png",
+        "bg_image": "shopify://shop_images/how_it_works.png",
         "subtitle": "ADVANCED SENSOR TECHNOLOGY",
         "title": "How Swarakshit Works",
         "text": "Discover the engineering behind our smart gas leak detectors. Built with precision sensors to ensure you are alerted instantly at the first sign of danger."
@@ -40,6 +40,7 @@
         "kit_1": {
           "type": "kit",
           "settings": {
+            "image": "shopify://shop_images/probe.png",
             "title": "Precision Gas Sensing",
             "description": "<p>At the core of the Swarakshit device is an industrial-grade catalytic bead sensor. It constantly analyzes the ambient air, detecting minute traces of combustible gas leaks with zero false positives from common cooking fumes.</p>",
             "button_text": "Buy Now",
@@ -50,6 +51,7 @@
         "kit_2": {
           "type": "kit",
           "settings": {
+            "image": "shopify://shop_images/sound.png",
             "title": "Instant Smart Alerts",
             "description": "<p>Detection is only half the battle. The moment a leak is sensed, Swarakshit triggers a piercing 85dB localized alarm. Simultaneously, it pushes an instant notification to your devices, ensuring you know immediately, even if you aren't home.</p>",
             "button_text": "Contact Support",
@@ -60,6 +62,7 @@
         "kit_3": {
           "type": "kit",
           "settings": {
+            "image": "shopify://shop_images/aaa.png",
             "title": "Reliable & Always On",
             "description": "<p>Safety doesn't take a break during power outages. Swarakshit runs on 2 AAA batteries, so it works completely off-grid. Simply keep fresh batteries installed and it is always ready to detect gas leaks u2014 no power outlet needed.</p>",
             "button_text": "View Products",
@@ -75,7 +78,9 @@
       ],
       "settings": {
         "bg_color": "#ffffff",
-        "text_color": "#1a1a1a"
+        "text_color": "#1a1a1a",
+        "btn_color": "#1a1a1a",
+        "btn_text_color": "#ffffff"
       }
     },
     "contact": {
