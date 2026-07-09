@@ -662,7 +662,12 @@
   var RV_MAX = 10;
 
   function getRecentlyViewed() {
-    try { return JSON.parse(localStorage.getItem(RV_KEY)) || []; } catch(e) { return []; }
+    try { 
+      var list = JSON.parse(localStorage.getItem(RV_KEY)) || []; 
+      return list.filter(function(p) {
+        return p.url && p.url.indexOf('/products/') !== -1;
+      });
+    } catch(e) { return []; }
   }
 
   function saveRecentlyViewed(list) {
@@ -671,18 +676,27 @@
 
   /* Call this on product pages to track the current product */
   function trackCurrentProduct() {
+    var typeEl = document.querySelector('meta[property="og:type"]');
+    if (!typeEl || typeEl.getAttribute('content') !== 'product') return; // strictly require product page
+
     var metaEl = document.querySelector('meta[property="og:title"]');
     var imgEl  = document.querySelector('meta[property="og:image"]');
     var urlEl  = document.querySelector('link[rel="canonical"]') || { href: window.location.href };
-    var priceEl= document.querySelector('meta[property="product:price:amount"]');
+    var priceEl= document.querySelector('meta[property="og:price:amount"]');
+    var currencyEl = document.querySelector('meta[property="og:price:currency"]');
 
-    if (!metaEl) return; // not a product page
+    if (!metaEl) return;
+
+    var formattedPrice = '';
+    if (priceEl && currencyEl) {
+      formattedPrice = priceEl.getAttribute('content') + ' ' + currencyEl.getAttribute('content');
+    }
 
     var product = {
       title : metaEl.getAttribute('content') || '',
       url   : urlEl.href || window.location.href,
       image : imgEl  ? imgEl.getAttribute('content')  : '',
-      price : priceEl ? priceEl.getAttribute('content') : ''
+      price : formattedPrice
     };
 
     var list = getRecentlyViewed();
