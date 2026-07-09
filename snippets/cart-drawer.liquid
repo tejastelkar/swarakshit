@@ -93,7 +93,7 @@
         </button>
       </div>
 
-      {%- if settings.cart_discount_bar_enable -%}
+      {%- if settings.cart_discount_bar_enable != false -%}
         {%- liquid
           assign goal = settings.cart_discount_goal | default: 2
           assign current_count = cart.item_count
@@ -140,12 +140,15 @@
         <div class="cart-discount-bar-container">
           <div class="cart-discount-message">
             {%- liquid
-              assign discount_html = '<strong>' | append: settings.cart_discount_text | append: '</strong>'
+              assign discount_text = settings.cart_discount_text | default: '10% OFF'
+              assign discount_html = '<strong>' | append: discount_text | append: '</strong>'
+              assign msg_initial = settings.cart_discount_msg_initial | default: 'Add {remaining} more to get {discount}!'
+              assign msg_success = settings.cart_discount_msg_success | default: 'You have unlocked {discount}!'
             -%}
             {%- if remaining > 0 -%}
-              {{ settings.cart_discount_msg_initial | replace: '{remaining}', remaining | replace: '{discount}', discount_html }}
+              {{ msg_initial | replace: '{remaining}', remaining | replace: '{discount}', discount_html }}
             {%- else -%}
-              {{ settings.cart_discount_msg_success | replace: '{discount}', discount_html }}
+              {{ msg_success | replace: '{discount}', discount_html }}
             {%- endif -%}
           </div>
           <div class="cart-discount-bar">
