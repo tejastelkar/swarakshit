@@ -9,11 +9,17 @@
     var fills = document.querySelectorAll('.svk-disc-fill');
     fills.forEach(function (el) {
       var pct = parseFloat(el.getAttribute('data-pct')) || 0;
-      // Reset to 0 so the CSS transition fires visually
+      var color = el.getAttribute('data-color') || '#ff6b00';
+
+      // Ensure the background color is always set
+      el.style.setProperty('background-color', color && color.trim() !== '' && color !== 'rgba(0,0,0,0)' ? color : '#ff6b00', 'important');
+
+      // Force reflow to reset transition
       el.style.transition = 'none';
       el.style.width = '0%';
-      // Force reflow so the browser registers the reset
-      el.getBoundingClientRect();
+      // eslint-disable-next-line no-unused-expressions
+      el.getBoundingClientRect(); // force reflow
+
       // Re-enable transition and animate to target width
       el.style.transition = 'width 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
       el.style.width = pct + '%';
